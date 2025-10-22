@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDMA &amp; Psilocybin: A Beginner's Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+  /* Primitive Color Tokens */
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-300: rgba(167, 169, 169, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-brown-600: rgba(94, 82, 64, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-400: rgba(45, 166, 178, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-teal-700: rgba(26, 104, 115, 1);
+  --color-teal-800: rgba(41, 150, 161, 1);
+  --color-red-400: rgba(255, 84, 89, 1);
+  --color-red-500: rgba(192, 21, 47, 1);
+  --color-orange-400: rgba(230, 129, 97, 1);
+  --color-orange-500: rgba(168, 75, 47, 1);
+
+  /* RGB versions for opacity control */
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
+  --color-slate-500-rgb: 98, 108, 113;
+  --color-red-500-rgb: 192, 21, 47;
+  --color-red-400-rgb: 255, 84, 89;
+  --color-orange-500-rgb: 168, 75, 47;
+  --color-orange-400-rgb: 230, 129, 97;
+
+  /* Background color tokens (Light Mode) */
+  --color-bg-1: rgba(59, 130, 246, 0.08);
+  --color-bg-2: rgba(245, 158, 11, 0.08);
+  --color-bg-3: rgba(34, 197, 94, 0.08);
+  --color-bg-4: rgba(239, 68, 68, 0.08);
+  --color-bg-5: rgba(147, 51, 234, 0.08);
+  --color-bg-6: rgba(249, 115, 22, 0.08);
+  --color-bg-7: rgba(236, 72, 153, 0.08);
+  --color-bg-8: rgba(6, 182, 212, 0.08);
+
+  /* Semantic Color Tokens (Light Mode) */
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-error: var(--color-red-500);
+  --color-success: var(--color-teal-500);
+  --color-warning: var(--color-orange-500);
+  --color-info: var(--color-slate-500);
+  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+  --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+
+  /* Common style patterns */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+
+  /* RGB versions for opacity control */
+  --color-success-rgb: 33, 128, 141;
+  --color-error-rgb: 192, 21, 47;
+  --color-warning-rgb: 168, 75, 47;
+  --color-info-rgb: 98, 108, 113;
+
+  /* Typography */
+  --font-family-base: "Inter", "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 600;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --letter-spacing-tight: -0.01em;
+
+  /* Spacing */
+  --space-0: 0;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-80: 80px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+
+  /* Animation */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Custom infographic colors */
+  --mdma-primary: #E67E22;
+  --mdma-secondary: #F39C12;
+  --mdma-light: rgba(230, 126, 34, 0.1);
+  --psilocybin-primary: #8E44AD;
+  --psilocybin-secondary: #9B59B6;
+  --psilocybin-light: rgba(142, 68, 173, 0.1);
+  --benefit-green: #27AE60;
+  --risk-red: #E74C3C;
+  --warning-yellow: #F1C40F;
+}
+
+/* Dark mode colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--color-charcoal-700);
+    --color-surface: var(--color-charcoal-800);
+    --color-text: var(--color-gray-200);
+    --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+    --color-primary: var(--color-teal-300);
+    --color-primary-hover: var(--color-teal-400);
+    --color-primary-active: var(--color-teal-800);
+    --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-base);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: var(--line-height-normal);
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-20);
+}
+
+/* Header Styles */
+.hero {
+  background: linear-gradient(135deg, var(--mdma-primary) 0%, var(--psilocybin-primary) 100%);
+  color: white;
+  text-align: center;
+  padding: var(--space-80) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="80" r="3" fill="white" opacity="0.1"/><circle cx="40" cy="60" r="1" fill="white" opacity="0.1"/></svg>') repeat;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-16);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero p {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-32);
+  opacity: 0.9;
+}
+
+.hero-icons {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-40);
+  margin-top: var(--space-32);
+}
+
+.hero-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.hero-icon i {
+  font-size: 4rem;
+  opacity: 0.8;
+}
+
+.hero-icon span {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Section Styles */
+.section {
+  padding: var(--space-80) 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-64);
+}
+
+.section-title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-16);
+  background: linear-gradient(135deg, var(--mdma-primary), var(--psilocybin-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-subtitle {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Comparison Cards */
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: var(--space-32);
+  margin-bottom: var(--space-64);
+}
+
+.substance-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: var(--space-32);
+  box-shadow: var(--shadow-lg);
+  border: 3px solid transparent;
+  transition: all var(--duration-normal) var(--ease-standard);
+  position: relative;
+  overflow: hidden;
+}
+
+.substance-card.mdma {
+  border-image: linear-gradient(135deg, var(--mdma-primary), var(--mdma-secondary)) 1;
+}
+
+.substance-card.psilocybin {
+  border-image: linear-gradient(135deg, var(--psilocybin-primary), var(--psilocybin-secondary)) 1;
+}
+
+.substance-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--mdma-primary), var(--psilocybin-primary));
+}
+
+.substance-card.mdma::before {
+  background: linear-gradient(90deg, var(--mdma-primary), var(--mdma-secondary));
+}
+
+.substance-card.psilocybin::before {
+  background: linear-gradient(90deg, var(--psilocybin-primary), var(--psilocybin-secondary));
+}
+
+.substance-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  margin-bottom: var(--space-24);
+}
+
+.substance-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+}
+
+.substance-card.mdma .substance-icon {
+  background: linear-gradient(135deg, var(--mdma-primary), var(--mdma-secondary));
+}
+
+.substance-card.psilocybin .substance-icon {
+  background: linear-gradient(135deg, var(--psilocybin-primary), var(--psilocybin-secondary));
+}
+
+.substance-name {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.substance-detail {
+  margin-bottom: var(--space-16);
+  padding: var(--space-12);
+  border-radius: var(--radius-base);
+  background: var(--color-bg-1);
+}
+
+.substance-detail strong {
+  display: block;
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-4);
+  color: var(--color-text);
+}
+
+.substance-detail span {
+  color: var(--color-text-secondary);
+}
+
+/* Benefits Grid */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-24);
+  margin-bottom: var(--space-48);
+}
+
+.benefit-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+  box-shadow: var(--shadow-sm);
+  border-left: 4px solid var(--benefit-green);
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+.benefit-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.benefit-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  margin-bottom: var(--space-16);
+}
+
+.benefit-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--benefit-green);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: var(--font-size-lg);
+}
+
+.benefit-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.benefit-stat {
+  background: var(--color-bg-3);
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-base);
+  font-weight: var(--font-weight-medium);
+  margin: var(--space-8) 0;
+  font-size: var(--font-size-sm);
+}
+
+/* Experience Cards */
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-32);
+}
+
+.experience-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: var(--space-32);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.experience-card.mdma {
+  border-top: 4px solid var(--mdma-primary);
+}
+
+.experience-card.psilocybin {
+  border-top: 4px solid var(--psilocybin-primary);
+}
+
+.experience-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  margin-bottom: var(--space-24);
+}
+
+.experience-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+}
+
+.experience-card.mdma .experience-icon {
+  background: var(--mdma-primary);
+}
+
+.experience-card.psilocybin .experience-icon {
+  background: var(--psilocybin-primary);
+}
+
+.experience-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.experience-list {
+  list-style: none;
+}
+
+.experience-list li {
+  padding: var(--space-8) 0;
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+  padding-left: var(--space-24);
+}
+
+.experience-list li:last-child {
+  border-bottom: none;
+}
+
+.experience-list li::before {
+  content: '✨';
+  position: absolute;
+  left: 0;
+  top: var(--space-8);
+}
+
+/* Timeline Styles */
+.timeline {
+  position: relative;
+  margin: var(--space-48) 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  background: linear-gradient(180deg, var(--mdma-primary), var(--psilocybin-primary));
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: var(--space-48);
+  display: flex;
+  align-items: center;
+}
+
+.timeline-item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.timeline-content {
+  flex: 1;
+  background: var(--color-surface);
+  padding: var(--space-24);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin: 0 var(--space-32);
+  position: relative;
+}
+
+.timeline-content::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+}
+
+.timeline-item:nth-child(odd) .timeline-content::before {
+  right: -20px;
+  border-left-color: var(--color-surface);
+}
+
+.timeline-item:nth-child(even) .timeline-content::before {
+  left: -20px;
+  border-right-color: var(--color-surface);
+}
+
+.timeline-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  position: relative;
+  z-index: 2;
+  border: 3px solid var(--color-background);
+}
+
+.phase-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-12);
+}
+
+.phase-duration {
+  background: var(--color-bg-2);
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  display: inline-block;
+  margin-bottom: var(--space-12);
+}
+
+/* Risk Cards */
+.risk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-24);
+}
+
+.risk-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+  box-shadow: var(--shadow-sm);
+  border-left: 4px solid var(--risk-red);
+}
+
+.risk-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  margin-bottom: var(--space-16);
+}
+
+.risk-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--risk-red);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: var(--font-size-lg);
+}
+
+.risk-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.risk-list {
+  list-style: none;
+}
+
+.risk-list li {
+  padding: var(--space-4) 0;
+  position: relative;
+  padding-left: var(--space-20);
+  font-size: var(--font-size-sm);
+}
+
+.risk-list li::before {
+  content: '⚠️';
+  position: absolute;
+  left: 0;
+  top: var(--space-4);
+}
+
+/* Contraindications */
+.contraindications {
+  background: rgba(var(--color-error-rgb), 0.05);
+  border: 1px solid rgba(var(--color-error-rgb), 0.2);
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+  margin-top: var(--space-32);
+}
+
+.contraindications h4 {
+  color: var(--risk-red);
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  margin-bottom: var(--space-16);
+}
+
+.contraindications ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-8);
+}
+
+.contraindications li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-size: var(--font-size-sm);
+}
+
+.contraindications li::before {
+  content: '❌';
+  flex-shrink: 0;
+}
+
+/* Social Media Section */
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-24);
+}
+
+.social-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.social-icon {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto var(--space-16);
+  background: linear-gradient(135deg, #1DA1F2, #E1306C);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+}
+
+.social-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-12);
+}
+
+/* Stats Section */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-32);
+  text-align: center;
+}
+
+.stat-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: var(--space-32);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--benefit-green), var(--color-primary));
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-8);
+}
+
+.stat-label {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-12);
+}
+
+.stat-description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* Important Reminders */
+.important-box {
+  background: rgba(var(--color-warning-rgb), 0.1);
+  border: 2px solid var(--warning-yellow);
+  border-radius: var(--radius-lg);
+  padding: var(--space-32);
+  margin: var(--space-48) 0;
+}
+
+.important-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  margin-bottom: var(--space-24);
+  color: var(--warning-yellow);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.important-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-12);
+}
+
+.important-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-12);
+  padding: var(--space-8);
+}
+
+.important-list li::before {
+  content: '⚠️';
+  flex-shrink: 0;
+  margin-top: var(--space-2);
+}
+
+/* Footer */
+.footer {
+  background: var(--color-charcoal-800);
+  color: var(--color-gray-200);
+  text-align: center;
+  padding: var(--space-48) 0;
+}
+
+.footer p {
+  margin-bottom: var(--space-12);
+}
+
+.footer-disclaimer {
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-icons {
+    flex-direction: column;
+    gap: var(--space-24);
+  }
+  
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .timeline::before {
+    left: var(--space-24);
+  }
+  
+  .timeline-item {
+    flex-direction: row !important;
+  }
+  
+  .timeline-content {
+    margin-left: var(--space-48);
+    margin-right: 0;
+  }
+  
+  .timeline-content::before {
+    left: -20px !important;
+    border-left-color: transparent !important;
+    border-right-color: var(--color-surface) !important;
+  }
+  
+  .timeline-icon {
+    position: absolute;
+    left: 0;
+  }
+}
+
+/* Scroll animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>MDMA &amp; Psilocybin</h1>
+                <p>A Beginner's Guide to Understanding Psychedelic Therapy - Benefits, Experiences, Risks &amp; What People Are Saying</p>
+                <div class="hero-icons">
+                    <div class="hero-icon">
+                        <i class="fas fa-atom"></i>
+                        <span>MDMA</span>
+                    </div>
+                    <div class="hero-icon">
+                        <i class="fas fa-seedling"></i>
+                        <span>Psilocybin</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Are They Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What Are They?</h2>
+                <p class="section-subtitle">Understanding the basic science and properties of these compounds</p>
+            </div>
+            
+            <div class="comparison-grid">
+                <div class="substance-card mdma fade-in">
+                    <div class="substance-header">
+                        <div class="substance-icon">
+                            <i class="fas fa-atom"></i>
+                        </div>
+                        <h3 class="substance-name">MDMA</h3>
+                    </div>
+                    
+                    <div class="substance-detail">
+                        <strong>Chemical Name:</strong>
+                        <span>3,4-methylenedioxymethamphetamine</span>
+                    </div>
+                    
+                    <div class="substance-detail">
+                        <strong>Common Names:</strong>
+                        <span>Ecstasy, Molly, E</span>
+                    </div>
+                    
+                    <div class="substance-detail">
+                        <strong>How It Works:</strong>
+                        <span>Increases serotonin, dopamine, norepinephrine, and oxytocin</span>
+                    </div>
+                    
+                    <div class="substance-detail">
+                        <strong>Duration:</strong>
+                        <span>4-6 hours</span>
+                    </div>
+                </div>
+                
+                <div class="substance-card psilocybin fade-in">
+                    <div class="substance-header">
+                        <div class="substance-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3 class="substance-name">Psilocybin</h3>
+                    </div>
+                    
+                    <div class="substance-detail">
+                        <strong>Chemical Name:</strong>
+                        <span>Psilocybin (converts to psilocin in body)</span>
+                    </div>
+                    
+                    <div class="substance-detail">
+                        <strong>Common Names:</strong>
+                        <span>Magic mushrooms, Shrooms, Mushies</span>
+                    </div>
+                    
+                    <div class="substance-detail">
+                        <strong>How It Works:</strong>
+                        <span>Activates serotonin 5-HT2A receptors in the brain</span>
+                    </div>
+                    
+                    <div class="substance-detail">
+                        <strong>Duration:</strong>
+                        <span>4-6 hours (onset: 20-40 minutes)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Health Benefits Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Health Benefits</h2>
+                <p class="section-subtitle">Evidence-based therapeutic applications and clinical research findings</p>
+            </div>
+            
+            <h3 style="text-align: center; margin-bottom: 2rem; color: #E67E22;">MDMA Benefits</h3>
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4 class="benefit-title">PTSD Treatment</h4>
+                    </div>
+                    <div class="benefit-stat">71.2% no longer met PTSD criteria (vs 47.6% placebo)</div>
+                    <div class="benefit-stat">Effect size: d=0.91 (very large)</div>
+                    <div class="benefit-stat">FDA Breakthrough Therapy designation</div>
+                </div>
+                
+                <div class="benefit-card fade-in">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4 class="benefit-title">Depression</h4>
+                    </div>
+                    <p>Significant reduction in depressive symptoms in clinical trials</p>
+                </div>
+                
+                <div class="benefit-card fade-in">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4 class="benefit-title">Social Anxiety</h4>
+                    </div>
+                    <p>Under investigation - enhances social bonding and reduces social fear</p>
+                </div>
+                
+                <div class="benefit-card fade-in">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4 class="benefit-title">Trauma Processing</h4>
+                    </div>
+                    <p>Reduces fear response and increases empathy during therapy</p>
+                </div>
+            </div>
+            
+            <h3 style="text-align: center; margin: 3rem 0 2rem; color: #8E44AD;">Psilocybin Benefits</h3>
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4 class="benefit-title">Treatment-Resistant Depression</h4>
+                    </div>
+                    <div class="benefit-stat">FDA Breakthrough Therapy designation</div>
+                    <p>Significant improvements where traditional antidepressants failed</p>
+                </div>
+                
+                <div class="benefit-card fade-in">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4 class="benefit-title">Anxiety &amp; PTSD</h4>
+                    </div>
+                    <p>Reduces anxiety, especially in terminal illness. Emerging evidence for trauma processing</p>
+                </div>
+                
+                <div class="benefit-card fade-in">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">            
+                            <i class="fas fa-ban"></i>
+                        </div>
+                        <h4 class="benefit-title">Addiction Treatment</h4>
+                    </div>
+                    <p>Shows promise for alcohol and tobacco addiction treatment</p>
+                </div>
+                
+                <div class="benefit-card fade-in">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">
+                            <i class="fas fa-head-side-brain"></i>
+                        </div>
+                        <h4 class="benefit-title">OCD &amp; Cluster Headaches</h4>
+                    </div>
+                    <p>Under investigation for OCD. Potential relief for cluster headaches</p>
+                </div>
+                
+                <div class="benefit-card fade-in">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <h4 class="benefit-title">Parkinson's Disease</h4>
+                    </div>
+                    <p>Improvements in mood, cognition, and motor function</p>
+                </div>
+                
+                <div class="benefit-card fade-in">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">
+                            <i class="fas fa-dna"></i>
+                        </div>
+                        <h4 class="benefit-title">Anti-Aging</h4>
+                    </div>
+                    <div class="benefit-stat">May extend cellular lifespan up to 57%</div>
+                    <p>Preserves telomere length in preliminary studies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What to Expect</h2>
+                <p class="section-subtitle">Understanding the subjective experiences during therapeutic sessions</p>
+            </div>
+            
+            <div class="experience-grid">
+                <div class="experience-card mdma fade-in">
+                    <div class="experience-header">
+                        <div class="experience-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="experience-title">MDMA Experience</h3>
+                    </div>
+                    <ul class="experience-list">
+                        <li>Enhanced empathy and emotional openness</li>
+                        <li>Feelings of love, peace, and safety</li>
+                        <li>Increased desire to connect with others</li>
+                        <li>Reduced anxiety and fear</li>
+                        <li>Elevated mood and energy</li>
+                        <li>Enhanced sensory perception</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-card psilocybin fade-in">
+                    <div class="experience-header">
+                        <div class="experience-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3 class="experience-title">Psilocybin Experience</h3>
+                    </div>
+                    <ul class="experience-list">
+                        <li>Visual and auditory hallucinations</li>
+                        <li>Altered sense of time and space</li>
+                        <li>Ego dissolution and mystical experiences</li>
+                        <li>Sense of unity and interconnectedness</li>
+                        <li>Emotional release and introspection</li>
+                        <li>Enhanced creativity and perception</li>
+                        <li>Euphoria and wellbeing</li>
+                        <li>Synesthesia (mixing of senses)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Therapy Protocols Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Therapy Protocols &amp; Ceremonies</h2>
+                <p class="section-subtitle">How these substances are administered in therapeutic and ceremonial settings</p>
+            </div>
+            
+            <h3 style="text-align: center; margin-bottom: 2rem; color: #E67E22;">MDMA Therapy Protocol (16-18 weeks total)</h3>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h4 class="phase-title">Phase 1: Preparation</h4>
+                        <div class="phase-duration">3 sessions (90 mins each)</div>
+                        <p>Build trust with therapists, educate about the process, set clear intentions for healing</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h4 class="phase-title">Phase 2: Dosing Session</h4>
+                        <div class="phase-duration">8 hours supervised</div>
+                        <p>Initial dose 80-120mg + 40mg supplemental. Two therapists present in comfortable setting with music</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h4 class="phase-title">Phase 3: Integration</h4>
+                        <div class="phase-duration">3 sessions after each dosing</div>
+                        <p>Process insights and experiences, integrate learnings into daily life with therapist support</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 style="text-align: center; margin: 3rem 0 2rem; color: #8E44AD;">Psilocybin Ceremony (3-5 day retreat format)</h3>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h4 class="phase-title">Phase 1: Preparation</h4>
+                        <div class="phase-duration">1 month before ceremony</div>
+                        <p>Dietary restrictions, intention setting, mental preparation, and education about the process</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h4 class="phase-title">Phase 2: Ceremony</h4>
+                        <div class="phase-duration">3-5 days retreat</div>
+                        <p>Guided experience in safe setting with comfortable room, eye shades, calming music, and trained facilitators present</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h4 class="phase-title">Phase 3: Integration</h4>
+                        <div class="phase-duration">3-5 weeks ongoing support</div>
+                        <p>Community support and guidance to process insights and incorporate them into daily life</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Risks Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Risks &amp; Cons</h2>
+                <p class="section-subtitle">Important safety considerations and potential adverse effects</p>
+            </div>
+            
+            <div class="risk-grid">
+                <div class="risk-card fade-in">
+                    <div class="risk-header">
+                        <div class="risk-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h4 class="risk-title">MDMA Risks</h4>
+                    </div>
+                    <ul class="risk-list">
+                        <li>Increased heart rate and blood pressure</li>
+                        <li>Jaw clenching (bruxism)</li>
+                        <li>Nausea, headache, anxiety</li>
+                        <li>Potential neurotoxicity with chronic recreational use</li>
+                        <li>Risk of serotonin syndrome if combined with SSRIs</li>
+                        <li>Potential for overheating and dehydration</li>
+                        <li>Memory and cognitive issues with heavy recreational use</li>
+                    </ul>
+                </div>
+                
+                <div class="risk-card fade-in">
+                    <div class="risk-header">
+                        <div class="risk-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h4 class="risk-title">Psilocybin Risks</h4>
+                    </div>
+                    <ul class="risk-list">
+                        <li>Bad trips - intense fear, anxiety, paranoia</li>
+                        <li>Nausea, vomiting, stomach discomfort</li>
+                        <li>Increased heart rate and blood pressure</li>
+                        <li>Confusion and disorientation</li>
+                        <li>Risk of prolonged psychosis (rare)</li>
+                        <li>Flashbacks in some cases</li>
+                        <li>Risk of toxic mushroom poisoning if misidentified</li>
+                        <li>Impaired judgment during trip</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <div class="contraindications fade-in">
+                    <h4><i class="fas fa-times-circle"></i> MDMA Contraindications</h4>
+                    <ul>
+                        <li>Cardiovascular disease</li>
+                        <li>Uncontrolled hypertension</li>
+                        <li>Taking SSRI or MAO-I antidepressants</li>
+                        <li>History of seizures</li>
+                    </ul>
+                </div>
+                
+                <div class="contraindications fade-in">
+                    <h4><i class="fas fa-times-circle"></i> Psilocybin Contraindications</h4>
+                    <ul>
+                        <li>Schizophrenia or family history</li>
+                        <li>Bipolar I disorder</li>
+                        <li>History of psychosis</li>
+                        <li>Cardiovascular disease (relative)</li>
+                        <li>Pregnancy and breastfeeding</li>
+                        <li>Unresolved trauma without coping skills</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What People Are Saying Online</h2>
+                <p class="section-subtitle">Social media trends and public sentiment around psychedelic therapy</p>
+            </div>
+            
+            <div class="social-grid">
+                <div class="social-card fade-in">
+                    <div class="social-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4 class="social-title">Overall Sentiment</h4>
+                    <p>Increasingly positive, especially around therapeutic uses. Growing acceptance of research-backed benefits.</p>
+                </div>
+                
+                <div class="social-card fade-in">
+                    <div class="social-icon">
+                        <i class="fab fa-reddit"></i>
+                    </div>
+                    <h4 class="social-title">Reddit Trends</h4>
+                    <p>Active communities sharing experiences and integration support. Emphasis on 'set and setting' importance. Users with personal experience view more positively.</p>
+                </div>
+                
+                <div class="social-card fade-in">
+                    <div class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h4 class="social-title">Instagram &amp; TikTok</h4>
+                    <p>Influencers promoting microdosing. 'Cali Sober' trend - replacing alcohol with psychedelics. Use increased from 8.6% (2015) to 16.1% (2021).</p>
+                </div>
+                
+                <div class="social-card fade-in">
+                    <div class="social-icon">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <h4 class="social-title">Concerns</h4>
+                    <p>Influencer marketing of illegal products. Promotion without medical supervision. Unregulated dosing and product quality. May encourage uninformed recreational use.</p>
+                </div>
+                
+                <div class="social-card fade-in">
+                    <div class="social-icon">
+                        <i class="fas fa-thumbs-up"></i>
+                    </div>
+                    <h4 class="social-title">Positive Aspects</h4>
+                    <p>Destigmatization of mental health treatment. Community support for integration. Growing acceptance of research. Education about proper use and safety.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Key Statistics</h2>
+                <p class="section-subtitle">Clinical trial results and safety data from current research</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card fade-in">
+                    <div class="stat-number">86.5%</div>
+                    <div class="stat-label">MDMA PTSD Study</div>
+                    <div class="stat-description">Had clinically meaningful improvement in symptoms</div>
+                </div>
+                
+                <div class="stat-card fade-in">
+                    <div class="stat-number">71.2%</div>
+                    <div class="stat-label">Lost PTSD Diagnosis</div>
+                    <div class="stat-description">No longer met PTSD criteria after MDMA therapy (vs 47.6% placebo)</div>
+                </div>
+                
+                <div class="stat-card fade-in">
+                    <div class="stat-number">46.2%</div>
+                    <div class="stat-label">Full Remission</div>
+                    <div class="stat-description">Achieved complete remission from PTSD symptoms</div>
+                </div>
+                
+                <div class="stat-card fade-in">
+                    <div class="stat-number">1:1000</div>
+                    <div class="stat-label">Psilocybin Safety</div>
+                    <div class="stat-description">Large therapeutic index - lethal dose nearly unattainable</div>
+                </div>
+                
+                <div class="stat-card fade-in">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Serious Adverse Events</div>
+                    <div class="stat-description">No serious adverse events in controlled clinical trials</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Important Reminders Section -->
+    <section class="section">
+        <div class="container">
+            <div class="important-box fade-in">
+                <div class="important-header">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Important Reminders</span>
+                </div>
+                <ul class="important-list">
+                    <li>These substances are Schedule I in most countries</li>
+                    <li>Clinical use requires medical supervision</li>
+                    <li>Recreational use carries significant risks</li>
+                    <li>Always in controlled, therapeutic settings with trained professionals</li>
+                    <li>Integration and preparation are crucial for success</li>
+                    <li>Not a "one dose cure" - requires ongoing therapy work</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p><strong>This is for educational purposes only</strong></p>
+            <p>Always consult healthcare professionals before considering any treatment</p>
+            <div class="footer-disclaimer">
+                <p>Based on current clinical research as of 2024-2025. Information compiled from peer-reviewed studies, FDA communications, and clinical trial data. This infographic does not constitute medical advice.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        // Smooth scroll for any anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add hover effects to cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.benefit-card, .experience-card, .risk-card, .social-card, .stat-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-5px)';
+                    card.style.transition = 'transform 0.3s ease';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
