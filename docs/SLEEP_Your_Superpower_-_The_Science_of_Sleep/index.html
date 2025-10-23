@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLEEP: Your Superpower - The Science of Sleep</title>
+    <style>
+        :root {
+  /* Primitive Color Tokens */
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-300: rgba(167, 169, 169, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-brown-600: rgba(94, 82, 64, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-400: rgba(45, 166, 178, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-teal-700: rgba(26, 104, 115, 1);
+  --color-teal-800: rgba(41, 150, 161, 1);
+  --color-red-400: rgba(255, 84, 89, 1);
+  --color-red-500: rgba(192, 21, 47, 1);
+  --color-orange-400: rgba(230, 129, 97, 1);
+  --color-orange-500: rgba(168, 75, 47, 1);
+
+  /* RGB versions for opacity control */
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
+  --color-slate-500-rgb: 98, 108, 113;
+  --color-red-500-rgb: 192, 21, 47;
+  --color-red-400-rgb: 255, 84, 89;
+  --color-orange-500-rgb: 168, 75, 47;
+  --color-orange-400-rgb: 230, 129, 97;
+
+  /* Background color tokens (Light Mode) */
+  --color-bg-1: rgba(59, 130, 246, 0.08); /* Light blue */
+  --color-bg-2: rgba(245, 158, 11, 0.08); /* Light yellow */
+  --color-bg-3: rgba(34, 197, 94, 0.08); /* Light green */
+  --color-bg-4: rgba(239, 68, 68, 0.08); /* Light red */
+  --color-bg-5: rgba(147, 51, 234, 0.08); /* Light purple */
+  --color-bg-6: rgba(249, 115, 22, 0.08); /* Light orange */
+  --color-bg-7: rgba(236, 72, 153, 0.08); /* Light pink */
+  --color-bg-8: rgba(6, 182, 212, 0.08); /* Light cyan */
+
+  /* Semantic Color Tokens (Light Mode) */
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-error: var(--color-red-500);
+  --color-success: var(--color-teal-500);
+  --color-warning: var(--color-orange-500);
+  --color-info: var(--color-slate-500);
+  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+  --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+
+  /* Common style patterns */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+  /* RGB versions for opacity control */
+  --color-success-rgb: 33, 128, 141;
+  --color-error-rgb: 192, 21, 47;
+  --color-warning-rgb: 168, 75, 47;
+  --color-info-rgb: 98, 108, 113;
+
+  /* Typography */
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 600;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --letter-spacing-tight: -0.01em;
+
+  /* Spacing */
+  --space-0: 0;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
+    0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
+    0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+  /* Animation */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+}
+
+/* Infographic-specific variables */
+:root {
+  /* Infographic color palette */
+  --color-brain-cyan: #32B8C6;
+  --color-warning-coral: #E68161;
+  --color-action-yellow: #F4D03F;
+  --color-positive-green: #52C41A;
+  --color-navy-dark: #1a1f3a;
+  --color-purple-dark: #2d1b3d;
+  --color-glow-light: rgba(50, 184, 198, 0.3);
+}
+
+@font-face {
+  font-family: 'FKGroteskNeue';
+  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2')
+    format('woff2');
+}
+
+/* Base styles */
+html {
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-normal);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(180deg, var(--color-navy-dark) 0%, var(--color-purple-dark) 100%);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Progress indicator */
+.progress-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 4px;
+  background: var(--color-brain-cyan);
+  z-index: 1000;
+  transition: width 0.1s ease;
+  box-shadow: 0 0 10px var(--color-glow-light);
+}
+
+/* Container */
+.infographic-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 var(--space-20);
+}
+
+/* Header Section */
+.header-section {
+  text-align: center;
+  padding: 60px 0 80px;
+  position: relative;
+}
+
+.date-line {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: var(--space-32);
+}
+
+.main-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: var(--font-weight-bold);
+  background: linear-gradient(45deg, var(--color-brain-cyan), var(--color-action-yellow));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px var(--color-glow-light);
+  margin-bottom: var(--space-16);
+  letter-spacing: -2px;
+}
+
+.subtitle {
+  font-size: var(--font-size-2xl);
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: var(--space-32);
+}
+
+.speakers {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-32);
+  flex-wrap: wrap;
+  margin-top: var(--space-32);
+}
+
+.speaker-badge {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-lg);
+  padding: var(--space-16) var(--space-24);
+  text-align: center;
+}
+
+.speaker-name {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+  color: var(--color-brain-cyan);
+}
+
+.speaker-talk {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: var(--space-4);
+}
+
+/* Section Styles */
+.section {
+  margin: 80px 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+  margin-bottom: var(--space-32);
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--color-brain-cyan);
+  margin: var(--space-16) auto 0;
+  border-radius: var(--radius-full);
+}
+
+/* Shocking Stats Section */
+.warning-section .section-title {
+  color: var(--color-warning-coral);
+}
+
+.warning-section .section-title::after {
+  background: var(--color-warning-coral);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-24);
+  margin-top: var(--space-32);
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--color-warning-coral);
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(230, 129, 97, 0.3);
+}
+
+.stat-icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-16);
+}
+
+.stat-main {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-warning-coral);
+  margin-bottom: var(--space-8);
+}
+
+.stat-detail {
+  font-size: var(--font-size-lg);
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: var(--space-8);
+}
+
+.stat-impact {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Sleep Functions Timeline */
+.sleep-functions {
+  margin: 60px 0;
+}
+
+.timeline {
+  position: relative;
+  padding: var(--space-32) 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--color-brain-cyan);
+  transform: translateX(-50%);
+}
+
+.sleep-phase {
+  margin-bottom: var(--space-32);
+}
+
+.phase-title {
+  text-align: center;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-brain-cyan);
+  margin-bottom: var(--space-24);
+}
+
+.functions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-32);
+  margin-top: var(--space-24);
+}
+
+.function-card {
+  background: rgba(50, 184, 198, 0.1);
+  border: 1px solid var(--color-brain-cyan);
+  border-radius: var(--radius-lg);
+  padding: var(--space-20);
+  position: relative;
+}
+
+.function-card::before {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--color-brain-cyan);
+  border-radius: 50%;
+  top: 20px;
+  left: -6px;
+}
+
+.function-icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-12);
+}
+
+.function-name {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-8);
+}
+
+.function-benefit {
+  color: var(--color-positive-green);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-4);
+}
+
+.function-detail {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Health Impacts Grid */
+.health-impacts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-24);
+  margin-top: var(--space-32);
+}
+
+.impact-category {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+  text-align: center;
+  border: 2px solid;
+  transition: transform 0.3s ease;
+}
+
+.impact-category:nth-child(1) {
+  border-color: var(--color-brain-cyan);
+}
+
+.impact-category:nth-child(2) {
+  border-color: var(--color-warning-coral);
+}
+
+.impact-category:nth-child(3) {
+  border-color: var(--color-error);
+}
+
+.impact-category:nth-child(4) {
+  border-color: var(--color-action-yellow);
+}
+
+.impact-category:hover {
+  transform: translateY(-5px);
+}
+
+.category-icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-16);
+}
+
+.category-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-16);
+}
+
+.category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-list li {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: var(--space-8);
+  padding-left: var(--space-16);
+  position: relative;
+}
+
+.category-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--color-warning-coral);
+}
+
+/* Randy Gardner Case Study */
+.case-study {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-lg);
+  padding: var(--space-32);
+  margin: var(--space-32) 0;
+  border: 2px solid var(--color-warning-coral);
+}
+
+.case-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+  margin-bottom: var(--space-8);
+  color: var(--color-warning-coral);
+}
+
+.case-subtitle {
+  text-align: center;
+  font-size: var(--font-size-lg);
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: var(--space-32);
+}
+
+.timeline-vertical {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--space-24);
+  position: relative;
+}
+
+.timeline-day {
+  background: var(--color-warning-coral);
+  color: white;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-bold);
+  flex-shrink: 0;
+  margin-right: var(--space-20);
+  font-size: var(--font-size-sm);
+}
+
+.timeline-content {
+  background: rgba(255, 255, 255, 0.1);
+  padding: var(--space-16);
+  border-radius: var(--radius-base);
+  flex-grow: 1;
+}
+
+/* Three Keys Section */
+.keys-section {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-lg);
+  padding: var(--space-32);
+  margin: var(--space-32) 0;
+}
+
+.keys-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-32);
+  margin-top: var(--space-32);
+}
+
+.key-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.key-card:hover {
+  transform: translateY(-5px);
+}
+
+.key-number {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-action-yellow);
+  color: var(--color-navy-dark);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-sm);
+}
+
+.key-icon {
+  font-size: 3rem;
+  margin: var(--space-16) 0;
+  color: var(--color-action-yellow);
+}
+
+.key-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-16);
+  color: var(--color-action-yellow);
+}
+
+.key-actions {
+  list-style: none;
+  padding: 0;
+  margin-bottom: var(--space-16);
+}
+
+.key-actions li {
+  margin-bottom: var(--space-8);
+  padding: var(--space-8) var(--space-12);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-sm);
+}
+
+.key-science {
+  background: rgba(50, 184, 198, 0.2);
+  border-left: 4px solid var(--color-brain-cyan);
+  padding: var(--space-12);
+  border-radius: 0 var(--radius-base) var(--radius-base) 0;
+  font-size: var(--font-size-sm);
+  font-style: italic;
+  color: var(--color-brain-cyan);
+}
+
+/* Optimal Formula */
+.formula-section {
+  background: linear-gradient(45deg, rgba(50, 184, 198, 0.2), rgba(244, 208, 63, 0.2));
+  border: 2px solid var(--color-positive-green);
+  border-radius: var(--radius-lg);
+  padding: var(--space-32);
+  text-align: center;
+  margin: var(--space-32) 0;
+}
+
+.formula {
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-weight: var(--font-weight-bold);
+  margin: var(--space-24) 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-16);
+}
+
+.formula-part {
+  background: rgba(255, 255, 255, 0.1);
+  padding: var(--space-12) var(--space-16);
+  border-radius: var(--radius-base);
+  color: var(--color-positive-green);
+}
+
+.formula-operator {
+  color: white;
+  font-size: 1.5em;
+}
+
+/* Quotes Section */
+.quotes-section {
+  margin: 60px 0;
+}
+
+.quotes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: var(--space-32);
+  margin-top: var(--space-32);
+}
+
+.quote-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 4px solid var(--color-brain-cyan);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: var(--space-24);
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.quote-card:hover {
+  transform: translateX(5px);
+}
+
+.quote-mark {
+  font-size: 3rem;
+  color: var(--color-brain-cyan);
+  opacity: 0.3;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+}
+
+.quote-text {
+  font-size: var(--font-size-lg);
+  font-style: italic;
+  line-height: 1.6;
+  margin-left: var(--space-32);
+  margin-top: var(--space-16);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: var(--space-32) 0 var(--space-24);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 60px;
+}
+
+.footer-text {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-8);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .infographic-container {
+    padding: 0 var(--space-16);
+  }
+  
+  .functions-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .timeline::before {
+    left: 20px;
+  }
+  
+  .function-card::before {
+    left: -26px;
+  }
+  
+  .quotes-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .formula {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .timeline-item {
+    margin-left: var(--space-16);
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .health-impacts {
+    grid-template-columns: 1fr;
+  }
+  
+  .keys-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Scroll animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: fadeInUp 0.8s ease forwards;
+}
+    </style>
+</head>
+<body>
+    <!-- Progress Indicator -->
+    <div class="progress-indicator" id="progressBar"></div>
+
+    <div class="infographic-container">
+        <!-- Header Section -->
+        <header class="header-section">
+            <div class="date-line">📅 Based on TED Talks - October 2024</div>
+            <h1 class="main-title">🌙 SLEEP: Your Superpower</h1>
+            <p class="subtitle">The Science of Sleep from Two Leading Experts</p>
+            <div class="speakers">
+                <div class="speaker-badge">
+                    <div class="speaker-name">Dr. Michelle Olaithe</div>
+                    <div class="speaker-talk">TEDxMandurah - Science of Sleep</div>
+                </div>
+                <div class="speaker-badge">
+                    <div class="speaker-name">Matt Walker</div>
+                    <div class="speaker-talk">TED - Sleep Is Your Superpower</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Shocking Wake-Up Call Section -->
+        <section class="section warning-section">
+            <h2 class="section-title">⚠️ SHOCKING WAKE-UP CALL</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🍺</div>
+                    <div class="stat-main">15-19 hours</div>
+                    <div class="stat-detail">without sleep</div>
+                    <div class="stat-impact">= 0.05 BAC (legally drunk)<br>50% slower reactions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🧠</div>
+                    <div class="stat-main">40% deficit</div>
+                    <div class="stat-detail">in memory formation</div>
+                    <div class="stat-impact">Difference between acing vs failing an exam</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🛡️</div>
+                    <div class="stat-main">70% drop</div>
+                    <div class="stat-detail">in immune cells</div>
+                    <div class="stat-impact">After just ONE 4-hour night</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">❤️</div>
+                    <div class="stat-main">24% increase</div>
+                    <div class="stat-detail">in heart attacks</div>
+                    <div class="stat-impact">DST spring (lose 1 hour)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What Happens During Sleep -->
+        <section class="section sleep-functions">
+            <h2 class="section-title">🧠 WHAT HAPPENS DURING SLEEP</h2>
+            
+            <div class="sleep-phase">
+                <h3 class="phase-title">🌊 DEEP SLEEP</h3>
+                <div class="functions-grid">
+                    <div class="function-card">
+                        <div class="function-icon">🧹</div>
+                        <div class="function-name">Glymphatic System Activation</div>
+                        <div class="function-benefit">Brain waste clearance</div>
+                        <div class="function-detail">Glial cells wash out metabolites</div>
+                    </div>
+                    <div class="function-card">
+                        <div class="function-icon">💾</div>
+                        <div class="function-name">Memory Consolidation</div>
+                        <div class="function-benefit">Sleep spindles transfer memories</div>
+                        <div class="function-detail">Short-term → long-term storage</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sleep-phase">
+                <h3 class="phase-title">👁️ REM/DREAM SLEEP</h3>
+                <div class="functions-grid">
+                    <div class="function-card">
+                        <div class="function-icon">🔗</div>
+                        <div class="function-name">Synaptic Processing</div>
+                        <div class="function-benefit">Creates proteins, forms memories</div>
+                        <div class="function-detail">Processes hundreds of thousands of events</div>
+                    </div>
+                    <div class="function-card">
+                        <div class="function-icon">✂️</div>
+                        <div class="function-name">Synaptic Pruning</div>
+                        <div class="function-benefit">Brain efficiency</div>
+                        <div class="function-detail">Removes unused connections</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Health Impacts Section -->
+        <section class="section">
+            <h2 class="section-title">💀 THE COST OF SLEEP DEPRIVATION</h2>
+            <div class="health-impacts">
+                <div class="impact-category">
+                    <div class="category-icon">🧠</div>
+                    <h3 class="category-title">BRAIN</h3>
+                    <ul class="category-list">
+                        <li>40% worse memory formation</li>
+                        <li>Hippocampus dysfunction</li>
+                        <li>7-27% higher dementia risk</li>
+                        <li>Alzheimer's disease risk</li>
+                    </ul>
+                </div>
+                <div class="impact-category">
+                    <div class="category-icon">🧘</div>
+                    <h3 class="category-title">MENTAL HEALTH</h3>
+                    <ul class="category-list">
+                        <li>Neurotransmitter disruption</li>
+                        <li>Stress hormone havoc</li>
+                        <li>Higher suicide risk (nighttime)</li>
+                        <li>Mood impairment</li>
+                    </ul>
+                </div>
+                <div class="impact-category">
+                    <div class="category-icon">❤️</div>
+                    <h3 class="category-title">PHYSICAL HEALTH</h3>
+                    <ul class="category-list">
+                        <li>Cardiovascular disease</li>
+                        <li>Diabetes</li>
+                        <li>Cancer (bowel, prostate, breast)</li>
+                        <li>Higher all-cause mortality</li>
+                        <li>Reproductive health decline</li>
+                    </ul>
+                </div>
+                <div class="impact-category">
+                    <div class="category-icon">🛡️</div>
+                    <h3 class="category-title">IMMUNE SYSTEM</h3>
+                    <ul class="category-list">
+                        <li>70% drop in natural killer cells</li>
+                        <li>711 genes distorted (1 week of 6h sleep)</li>
+                        <li>Immune deficiency</li>
+                        <li>WHO: shift work = probable carcinogen</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Randy Gardner Case Study -->
+        <section class="section">
+            <h2 class="section-title">⚠️ RANDY GARDNER CASE STUDY</h2>
+            <div class="case-study">
+                <div class="case-title">The 11-Day Sleep Deprivation Experiment</div>
+                <div class="case-subtitle">1964 - World Record: 11 days 25 minutes without sleep</div>
+                
+                <div class="timeline-vertical">
+                    <div class="timeline-item">
+                        <div class="timeline-day">Day 2</div>
+                        <div class="timeline-content">
+                            Eyes won't stay open, speech problems
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-day">Day 3</div>
+                        <div class="timeline-content">
+                            Uncoordinated, moody
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-day">Day 5</div>
+                        <div class="timeline-content">
+                            Hallucinating
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-day">Day 11</div>
+                        <div class="timeline-content">
+                            Rushed to Navy hospital
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-day">Recovery</div>
+                        <div class="timeline-content">
+                            14 hours sleep (mostly deep &amp; REM)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Three Keys Section -->
+        <section class="section keys-section">
+            <h2 class="section-title">🔑 THREE KEYS TO UNLOCK BETTER SLEEP</h2>
+            
+            <div class="keys-grid">
+                <div class="key-card">
+                    <div class="key-number">1</div>
+                    <div class="key-icon">🔄</div>
+                    <h3 class="key-title">Clean Your Routine</h3>
+                    <ul class="key-actions">
+                        <li>⭐ Same wake time EVERY DAY (±30 min) - MOST CRITICAL</li>
+                        <li>🍽️ Light satisfying meal</li>
+                        <li>🚿 Shower/bath (drops core temp)</li>
+                        <li>🌙 Dark, cool (18-19°C / 65°F), quiet room</li>
+                        <li>👶 Treat yourself like a baby</li>
+                    </ul>
+                    <div class="key-science">
+                        💡 Science: Body learns melatonin at night, cortisol in morning
+                    </div>
+                </div>
+
+                <div class="key-card">
+                    <div class="key-number">2</div>
+                    <div class="key-icon">🧘</div>
+                    <h3 class="key-title">Put Your Thinking to Bed</h3>
+                    <ul class="key-actions">
+                        <li>🧘 Meditate/mindfulness 15 min/day</li>
+                        <li>🎯 Develop meta-awareness</li>
+                        <li>🚫 Don't trust nighttime thinking</li>
+                    </ul>
+                    <div class="key-science">
+                        💡 Science: Executive functions OFF, default mode network ON at night
+                    </div>
+                </div>
+
+                <div class="key-card">
+                    <div class="key-number">3</div>
+                    <div class="key-icon">📱</div>
+                    <h3 class="key-title">Put Tech Down</h3>
+                    <ul class="key-actions">
+                        <li>📵 No devices 2 hours before bed</li>
+                        <li>📧 No emails after 6pm</li>
+                        <li>⛔ Set work boundaries</li>
+                        <li>👨‍👩‍👧‍👦 Kids: no free device reign</li>
+                    </ul>
+                    <div class="key-science">
+                        💡 Science: Blue light + cortisol = circadian disruption
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Optimal Sleep Formula -->
+        <section class="section formula-section">
+            <h2 class="section-title">🎯 OPTIMAL SLEEP FORMULA</h2>
+            <div class="formula">
+                <span class="formula-part">7-9 HOURS</span>
+                <span class="formula-operator">+</span>
+                <span class="formula-part">REGULARITY</span>
+                <span class="formula-operator">+</span>
+                <span class="formula-part">COOL TEMP (18°C/65°F)</span>
+                <span class="formula-operator">=</span>
+                <span class="formula-part" style="background: linear-gradient(45deg, var(--color-positive-green), var(--color-action-yellow)); color: var(--color-navy-dark);">⚡ SUPERPOWER</span>
+            </div>
+        </section>
+
+        <!-- Powerful Quotes -->
+        <section class="section quotes-section">
+            <h2 class="section-title">💬 POWERFUL QUOTES</h2>
+            <div class="quotes-grid">
+                <div class="quote-card">
+                    <div class="quote-mark">"</div>
+                    <div class="quote-text">
+                        We are not going to work ourselves to death. We're going to wake ourselves to death.
+                    </div>
+                </div>
+                <div class="quote-card">
+                    <div class="quote-mark">"</div>
+                    <div class="quote-text">
+                        Sleep is not an optional lifestyle luxury. It's a non-negotiable biological necessity.
+                    </div>
+                </div>
+                <div class="quote-card">
+                    <div class="quote-mark">"</div>
+                    <div class="quote-text">
+                        The shorter your sleep, the shorter your life.
+                    </div>
+                </div>
+                <div class="quote-card">
+                    <div class="quote-mark">"</div>
+                    <div class="quote-text">
+                        Sleep is Mother Nature's best effort yet at immortality.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-text">
+                📚 Based on TED Talks by Dr. Michelle Olaithe &amp; Matt Walker
+            </div>
+            <div class="footer-text">
+                ⚠️ WHO Classification: Shift work = probable carcinogen
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scroll animations and progress tracking
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressBar = document.getElementById('progressBar');
+            const sections = document.querySelectorAll('.section');
+
+            // Update progress bar on scroll
+            function updateProgressBar() {
+                const scrollTop = window.pageYOffset;
+                const docHeight = document.body.offsetHeight - window.innerHeight;
+                const scrollPercent = (scrollTop / docHeight) * 100;
+                progressBar.style.width = scrollPercent + '%';
+            }
+
+            // Animate sections when they come into view
+            function animateOnScroll() {
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight * 0.8;
+                    
+                    if (isVisible && !section.classList.contains('visible')) {
+                        section.classList.add('visible');
+                    }
+                });
+            }
+
+            // Add hover effects to stat cards
+            const statCards = document.querySelectorAll('.stat-card, .impact-category, .key-card');
+            statCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(-5px) scale(1)';
+                });
+            });
+
+            // Scroll event listeners
+            window.addEventListener('scroll', () => {
+                updateProgressBar();
+                animateOnScroll();
+            });
+
+            // Initial calls
+            updateProgressBar();
+            animateOnScroll();
+
+            // Add some interactive elements to timeline items
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach((item, index) => {
+                item.style.animationDelay = (index * 0.2) + 's';
+            });
+
+            // Add glow effect to main title
+            const mainTitle = document.querySelector('.main-title');
+            setInterval(() => {
+                mainTitle.style.textShadow = `0 0 ${20 + Math.random() * 10}px var(--color-glow-light)`;
+            }, 2000);
+
+            // Add particle effect (simple) to header
+            function createParticle() {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    width: 2px;
+                    height: 2px;
+                    background: var(--color-brain-cyan);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    opacity: 0.7;
+                    animation: float 6s infinite ease-in-out;
+                `;
+                
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                
+                const headerSection = document.querySelector('.header-section');
+                headerSection.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 6000);
+            }
+
+            // Create floating particles periodically
+            setInterval(createParticle, 3000);
+
+            // Add CSS for floating animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes float {
+                    0%, 100% { 
+                        transform: translateY(0) rotate(0deg);
+                        opacity: 0;
+                    }
+                    10% {
+                        opacity: 0.7;
+                    }
+                    90% {
+                        opacity: 0.7;
+                    }
+                    50% { 
+                        transform: translateY(-100px) rotate(180deg);
+                        opacity: 1;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
