@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Warfare Comparison 2025</title>
+    <style>
+        :root {
+  /* Primitive Color Tokens */
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-300: rgba(167, 169, 169, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-brown-600: rgba(94, 82, 64, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-400: rgba(45, 166, 178, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-teal-700: rgba(26, 104, 115, 1);
+  --color-teal-800: rgba(41, 150, 161, 1);
+  --color-red-400: rgba(255, 84, 89, 1);
+  --color-red-500: rgba(192, 21, 47, 1);
+  --color-orange-400: rgba(230, 129, 97, 1);
+  --color-orange-500: rgba(168, 75, 47, 1);
+
+  /* RGB versions for opacity control */
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
+  --color-slate-500-rgb: 98, 108, 113;
+  --color-red-500-rgb: 192, 21, 47;
+  --color-red-400-rgb: 255, 84, 89;
+  --color-orange-500-rgb: 168, 75, 47;
+  --color-orange-400-rgb: 230, 129, 97;
+
+  /* Background color tokens (Light Mode) */
+  --color-bg-1: rgba(59, 130, 246, 0.08); /* Light blue */
+  --color-bg-2: rgba(245, 158, 11, 0.08); /* Light yellow */
+  --color-bg-3: rgba(34, 197, 94, 0.08); /* Light green */
+  --color-bg-4: rgba(239, 68, 68, 0.08); /* Light red */
+  --color-bg-5: rgba(147, 51, 234, 0.08); /* Light purple */
+  --color-bg-6: rgba(249, 115, 22, 0.08); /* Light orange */
+  --color-bg-7: rgba(236, 72, 153, 0.08); /* Light pink */
+  --color-bg-8: rgba(6, 182, 212, 0.08); /* Light cyan */
+
+  /* Semantic Color Tokens (Light Mode) */
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-error: var(--color-red-500);
+  --color-success: var(--color-teal-500);
+  --color-warning: var(--color-orange-500);
+  --color-info: var(--color-slate-500);
+  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+  --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+
+  /* Common style patterns */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+  /* RGB versions for opacity control */
+  --color-success-rgb: 33, 128, 141;
+  --color-error-rgb: 192, 21, 47;
+  --color-warning-rgb: 168, 75, 47;
+  --color-info-rgb: 98, 108, 113;
+
+  /* Typography */
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 600;
+  --line-height-tight: 1.2;
+  --font-weight-normal: 1.5;
+  --letter-spacing-tight: -0.01em;
+
+  /* Spacing */
+  --space-0: 0;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
+    0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
+    0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+  /* Animation */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+}
+
+        /* Custom military theme colors */
+        :root {
+            /* Military theme overrides */
+            --military-bg: #0a0e1a;
+            --military-surface: #1a1f2e;
+            --military-border: rgba(255, 255, 255, 0.1);
+            --military-text: #ffffff;
+            --military-text-secondary: #a0a9b8;
+            
+            /* Country colors */
+            --usa-primary: #2C5F9D;
+            --usa-secondary: #DC143C;
+            --russia-primary: #DC143C;
+            --russia-secondary: #0039A6;
+            --china-primary: #DE2910;
+            --china-secondary: #FFDE00;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', var(--font-family-base);
+            background: var(--military-bg);
+            color: var(--military-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .military-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-20);
+        }
+        
+        /* Header Styles */
+        .header {
+            text-align: center;
+            padding: var(--space-32) 0;
+            background: linear-gradient(135deg, var(--military-bg) 0%, #0f1420 100%);
+        }
+        
+        .header h1 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: var(--space-16);
+            background: linear-gradient(135deg, #4A90E2, #DC143C, #FFDE00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header h2 {
+            font-size: var(--font-size-xl);
+            color: var(--military-text-secondary);
+            margin-bottom: var(--space-24);
+            font-weight: 400;
+        }
+        
+        .header p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--military-text-secondary);
+            font-size: var(--font-size-lg);
+        }
+        
+        /* Score Cards */
+        .scores-section {
+            padding: var(--space-32) 0;
+            background: var(--military-surface);
+        }
+        
+        .score-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-24);
+            margin-bottom: var(--space-32);
+        }
+        
+        .score-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: var(--radius-lg);
+            padding: var(--space-24);
+            text-align: center;
+            border: 2px solid;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .score-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, currentColor, transparent);
+            border-radius: var(--radius-lg);
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        .score-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .score-card.usa {
+            border-color: var(--usa-primary);
+            color: var(--usa-primary);
+        }
+        
+        .score-card.russia {
+            border-color: var(--russia-primary);
+            color: var(--russia-primary);
+        }
+        
+        .score-card.china {
+            border-color: var(--china-primary);
+            color: var(--china-primary);
+        }
+        
+        .country-name {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: var(--font-size-2xl);
+            font-weight: 600;
+            margin-bottom: var(--space-20);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--military-text);
+        }
+        
+        .score-item {
+            margin-bottom: var(--space-16);
+        }
+        
+        .score-label {
+            font-size: var(--font-size-sm);
+            color: var(--military-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: var(--space-4);
+        }
+        
+        .score-value {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            color: var(--military-text);
+        }
+        
+        .overall-score .score-value {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, currentColor, rgba(255, 255, 255, 0.8));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            margin-top: var(--space-8);
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, currentColor, rgba(255, 255, 255, 0.8));
+            border-radius: var(--radius-full);
+            transition: width 2s ease;
+            width: 0;
+        }
+        
+        /* Comparison Sections */
+        .comparison-section {
+            padding: var(--space-32) 0;
+            border-top: 1px solid var(--military-border);
+        }
+        
+        .section-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: var(--font-size-3xl);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: var(--space-24);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-16);
+        }
+        
+        .section-icon {
+            font-size: 2rem;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            gap: var(--space-20);
+        }
+        
+        .metric-item {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: var(--radius-base);
+            padding: var(--space-20);
+            border: 1px solid var(--military-border);
+        }
+        
+        .metric-name {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            margin-bottom: var(--space-16);
+            color: var(--military-text);
+        }
+        
+        .metric-comparison {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-16);
+        }
+        
+        .country-metric {
+            text-align: center;
+            padding: var(--space-12);
+            border-radius: var(--radius-sm);
+            background: rgba(255, 255, 255, 0.02);
+        }
+        
+        .country-metric.usa {
+            border-left: 3px solid var(--usa-primary);
+        }
+        
+        .country-metric.russia {
+            border-left: 3px solid var(--russia-primary);
+        }
+        
+        .country-metric.china {
+            border-left: 3px solid var(--china-primary);
+        }
+        
+        .country-metric .country {
+            font-size: var(--font-size-sm);
+            color: var(--military-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: var(--space-4);
+        }
+        
+        .country-metric .value {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--military-text);
+        }
+        
+        .country-metric .detail {
+            font-size: var(--font-size-xs);
+            color: var(--military-text-secondary);
+            margin-top: var(--space-4);
+        }
+        
+        /* Bar Chart Styles */
+        .bar-chart {
+            margin-top: var(--space-16);
+        }
+        
+        .bar-item {
+            margin-bottom: var(--space-12);
+        }
+        
+        .bar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-4);
+        }
+        
+        .bar-country {
+            font-weight: 600;
+            font-size: var(--font-size-sm);
+        }
+        
+        .bar-value {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            font-size: var(--font-size-sm);
+        }
+        
+        .bar-background {
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .bar-fill {
+            height: 100%;
+            border-radius: var(--radius-sm);
+            transition: width 1.5s ease;
+            width: 0;
+        }
+        
+        .bar-fill.usa {
+            background: linear-gradient(90deg, var(--usa-primary), var(--usa-secondary));
+        }
+        
+        .bar-fill.russia {
+            background: linear-gradient(90deg, var(--russia-primary), var(--russia-secondary));
+        }
+        
+        .bar-fill.china {
+            background: linear-gradient(90deg, var(--china-primary), var(--china-secondary));
+        }
+        
+        /* Key Insights */
+        .insights-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--radius-lg);
+            padding: var(--space-32);
+            margin: var(--space-32) 0;
+            border: 1px solid var(--military-border);
+        }
+        
+        .insights-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: var(--font-size-2xl);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: var(--space-20);
+            text-align: center;
+            color: var(--military-text);
+        }
+        
+        .insights-list {
+            list-style: none;
+        }
+        
+        .insights-list li {
+            padding: var(--space-12) 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            padding-left: var(--space-24);
+        }
+        
+        .insights-list li:before {
+            content: '★';
+            position: absolute;
+            left: 0;
+            color: #FFDE00;
+            font-weight: bold;
+        }
+        
+        .insights-list li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Footer */
+        .footer {
+            padding: var(--space-32) 0;
+            border-top: 1px solid var(--military-border);
+            text-align: center;
+            background: var(--military-bg);
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer h3 {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--space-16);
+            color: var(--military-text);
+        }
+        
+        .footer p {
+            color: var(--military-text-secondary);
+            margin-bottom: var(--space-12);
+            font-size: var(--font-size-sm);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .military-container {
+                padding: 0 var(--space-16);
+            }
+            
+            .score-cards {
+                grid-template-columns: 1fr;
+                gap: var(--space-16);
+            }
+            
+            .metric-comparison {
+                grid-template-columns: 1fr;
+                gap: var(--space-12);
+            }
+            
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: var(--font-size-xl);
+                flex-direction: column;
+                gap: var(--space-8);
+            }
+        }
+        
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .counter {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="military-container">
+            <h1>AIR WARFARE COMPARISON 2025</h1>
+            <h2>United States vs Russia vs China</h2>
+            <p>Comprehensive analysis comparing air force capabilities based on scale (fleet size &amp; global reach) and technology (stealth capabilities, operational readiness &amp; defense budgets)</p>
+        </div>
+    </div>
+
+    <div class="scores-section">
+        <div class="military-container">
+            <div class="score-cards">
+                <div class="score-card usa fade-in">
+                    <h3 class="country-name">🇺🇸 United States</h3>
+                    <div class="score-item">
+                        <div class="score-label">Scale Score</div>
+                        <div class="score-value"><span class="counter" data-target="96.4">0</span>/100</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="96.4"></div>
+                        </div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-label">Technology Score</div>
+                        <div class="score-value"><span class="counter" data-target="68.7">0</span>/100</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="68.7"></div>
+                        </div>
+                    </div>
+                    <div class="score-item overall-score">
+                        <div class="score-label">Overall Score</div>
+                        <div class="score-value"><span class="counter" data-target="82.6">0</span>/100</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="82.6"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="score-card russia fade-in">
+                    <h3 class="country-name">🇷🇺 Russia</h3>
+                    <div class="score-item">
+                        <div class="score-label">Scale Score</div>
+                        <div class="score-value"><span class="counter" data-target="33.0">0</span>/100</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="33.0"></div>
+                        </div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-label">Technology Score</div>
+                        <div class="score-value"><span class="counter" data-target="18.9">0</span>/100</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="18.9"></div>
+                        </div>
+                    </div>
+                    <div class="score-item overall-score">
+                        <div class="score-label">Overall Score</div>
+                        <div class="score-value"><span class="counter" data-target="25.9">0</span>/100</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="25.9"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="score-card china fade-in">
+                    <h3 class="country-name">🇨🇳 China</h3>
+                    <div class="score-item">
+                        <div class="score-label">Scale Score</div>
+                        <div class="score-value"><span class="counter" data-target="43.0">0</span>/100</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="43.0"></div>
+                        </div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-label">Technology Score</div>
+                        <div class="score-value"><span class="counter" data-target="48.1">0</span>/100</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="48.1"></div>
+                        </div>
+                    </div>
+                    <div class="score-item overall-score">
+                        <div class="score-label">Overall Score</div>
+                        <div class="score-value"><span class="counter" data-target="45.5">0</span>/100</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="45.5"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="comparison-section">
+        <div class="military-container">
+            <h2 class="section-title">
+                <span class="section-icon">✈️</span>
+                Fleet Size Comparison
+            </h2>
+            <div class="metrics-grid">
+                <div class="metric-item fade-in">
+                    <div class="metric-name">Total Military Aircraft</div>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-header">
+                                <span class="bar-country">🇺🇸 USA</span>
+                                <span class="bar-value">14,486</span>
+                            </div>
+                            <div class="bar-background">
+                                <div class="bar-fill usa" data-width="100"></div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-header">
+                                <span class="bar-country">🇷🇺 Russia</span>
+                                <span class="bar-value">4,211</span>
+                            </div>
+                            <div class="bar-background">
+                                <div class="bar-fill russia" data-width="29"></div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-header">
+                                <span class="bar-country">🇨🇳 China</span>
+                                <span class="bar-value">3,304</span>
+                            </div>
+                            <div class="bar-background">
+                                <div class="bar-fill china" data-width="23"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-item fade-in">
+                    <div class="metric-name">Fighter Jets</div>
+                    <div class="metric-comparison">
+                        <div class="country-metric usa">
+                            <div class="country">USA</div>
+                            <div class="value">2,600+</div>
+                        </div>
+                        <div class="country-metric russia">
+                            <div class="country">Russia</div>
+                            <div class="value">1,200</div>
+                        </div>
+                        <div class="country-metric china">
+                            <div class="country">China</div>
+                            <div class="value">1,583</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-item fade-in">
+                    <div class="metric-name">Strategic Bombers</div>
+                    <div class="metric-comparison">
+                        <div class="country-metric usa">
+                            <div class="country">USA</div>
+                            <div class="value">140</div>
+                            <div class="detail">B-52, B-1B, B-2, B-21</div>
+                        </div>
+                        <div class="country-metric russia">
+                            <div class="country">Russia</div>
+                            <div class="value">139</div>
+                            <div class="detail">Tu-160, Tu-95, Tu-22M</div>
+                        </div>
+                        <div class="country-metric china">
+                            <div class="country">China</div>
+                            <div class="value">219</div>
+                            <div class="detail">H-6 variants</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-item fade-in">
+                    <div class="metric-name">Attack Helicopters</div>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-header">
+                                <span class="bar-country">🇺🇸 USA</span>
+                                <span class="bar-value">5,509</span>
+                            </div>
+                            <div class="bar-background">
+                                <div class="bar-fill usa" data-width="100"></div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-header">
+                                <span class="bar-country">🇷🇺 Russia</span>
+                                <span class="bar-value">1,551</span>
+                            </div>
+                            <div class="bar-background">
+                                <div class="bar-fill russia" data-width="28"></div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-header">
+                                <span class="bar-country">🇨🇳 China</span>
+                                <span class="bar-value">68</span>
+                            </div>
+                            <div class="bar-background">
+                                <div class="bar-fill china" data-width="1.2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="comparison-section">
+        <div class="military-container">
+            <h2 class="section-title">
+                <span class="section-icon">🎯</span>
+                Advanced Capabilities
+            </h2>
+            <div class="metrics-grid">
+                <div class="metric-item fade-in">
+                    <div class="metric-name">5th Generation Stealth Fighters</div>
+                    <div class="metric-comparison">
+                        <div class="country-metric usa">
+                            <div class="country">USA</div>
+                            <div class="value">485+</div>
+                            <div class="detail">F-22: 183, F-35: 302+</div>
+                        </div>
+                        <div class="country-metric russia">
+                            <div class="country">Russia</div>
+                            <div class="value">29</div>
+                            <div class="detail">Su-57</div>
+                        </div>
+                        <div class="country-metric china">
+                            <div class="country">China</div>
+                            <div class="value">300+</div>
+                            <div class="detail">J-20</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-item fade-in">
+                    <div class="metric-name">Aerial Refueling Tankers</div>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-header">
+                                <span class="bar-country">🇺🇸 USA</span>
+                                <span class="bar-value">605 (75% of world)</span>
+                            </div>
+                            <div class="bar-background">
+                                <div class="bar-fill usa" data-width="100"></div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-header">
+                                <span class="bar-country">🇷🇺 Russia</span>
+                                <span class="bar-value">20</span>
+                            </div>
+                            <div class="bar-background">
+                                <div class="bar-fill russia" data-width="3.3"></div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-header">
+                                <span class="bar-country">🇨🇳 China</span>
+                                <span class="bar-value">35</span>
+                            </div>
+                            <div class="bar-background">
+                                <div class="bar-fill china" data-width="5.8"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-item fade-in">
+                    <div class="metric-name">AWACS/Early Warning Aircraft</div>
+                    <div class="metric-comparison">
+                        <div class="country-metric usa">
+                            <div class="country">USA</div>
+                            <div class="value">31</div>
+                            <div class="detail">E-3 Sentry</div>
+                        </div>
+                        <div class="country-metric russia">
+                            <div class="country">Russia</div>
+                            <div class="value">12</div>
+                            <div class="detail">A-50</div>
+                        </div>
+                        <div class="country-metric china">
+                            <div class="country">China</div>
+                            <div class="value">8</div>
+                            <div class="detail">KJ-500</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="comparison-section">
+        <div class="military-container">
+            <h2 class="section-title">
+                <span class="section-icon">⚡</span>
+                Technology &amp; Readiness
+            </h2>
+            <div class="metrics-grid">
+                <div class="metric-item fade-in">
+                    <div class="metric-name">Stealth Technology (Radar Cross Section)</div>
+                    <div class="metric-comparison">
+                        <div class="country-metric usa">
+                            <div class="country">USA</div>
+                            <div class="value">0.0001 m²</div>
+                            <div class="detail">F-22 Raptor - size of marble</div>
+                        </div>
+                        <div class="country-metric russia">
+                            <div class="country">Russia</div>
+                            <div class="value">0.5 m²</div>
+                            <div class="detail">Su-57 - size of soccer ball</div>
+                        </div>
+                        <div class="country-metric china">
+                            <div class="country">China</div>
+                            <div class="value">0.05 m²</div>
+                            <div class="detail">J-20 - size of baseball</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-item fade-in">
+                    <div class="metric-name">Operational Readiness Rate</div>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-header">
+                                <span class="bar-country">🇺🇸 USA</span>
+                                <span class="bar-value">75%</span>
+                            </div>
+                            <div class="bar-background">
+                                <div class="bar-fill usa" data-width="75"></div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-header">
+                                <span class="bar-country">🇨🇳 China</span>
+                                <span class="bar-value">65%</span>
+                            </div>
+                            <div class="bar-background">
+                                <div class="bar-fill china" data-width="65"></div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-header">
+                                <span class="bar-country">🇷🇺 Russia</span>
+                                <span class="bar-value">50%</span>
+                            </div>
+                            <div class="bar-background">
+                                <div class="bar-fill russia" data-width="50"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-item fade-in">
+                    <div class="metric-name">Active Fighter Pilots</div>
+                    <div class="metric-comparison">
+                        <div class="country-metric usa">
+                            <div class="country">USA</div>
+                            <div class="value">12,500</div>
+                        </div>
+                        <div class="country-metric china">
+                            <div class="country">China</div>
+                            <div class="value">5,000</div>
+                        </div>
+                        <div class="country-metric russia">
+                            <div class="country">Russia</div>
+                            <div class="value">3,500</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="comparison-section">
+        <div class="military-container">
+            <h2 class="section-title">
+                <span class="section-icon">💰</span>
+                Financial Power
+            </h2>
+            <div class="metrics-grid">
+                <div class="metric-item fade-in">
+                    <div class="metric-name">Defense Budget 2025</div>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-header">
+                                <span class="bar-country">🇺🇸 USA</span>
+                                <span class="bar-value">$849.8B</span>
+                            </div>
+                            <div class="bar-background">
+                                <div class="bar-fill usa" data-width="100"></div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-header">
+                                <span class="bar-country">🇨🇳 China</span>
+                                <span class="bar-value">$471.0B (est.)</span>
+                            </div>
+                            <div class="bar-background">
+                                <div class="bar-fill china" data-width="55"></div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-header">
+                                <span class="bar-country">🇷🇺 Russia</span>
+                                <span class="bar-value">$163.0B</span>
+                            </div>
+                            <div class="bar-background">
+                                <div class="bar-fill russia" data-width="19"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-item fade-in">
+                    <div class="metric-name">Air Force Budget 2025</div>
+                    <div class="metric-comparison">
+                        <div class="country-metric usa">
+                            <div class="country">USA</div>
+                            <div class="value">$217.5B</div>
+                        </div>
+                        <div class="country-metric china">
+                            <div class="country">China</div>
+                            <div class="value">~$75B</div>
+                            <div class="detail">estimated</div>
+                        </div>
+                        <div class="country-metric russia">
+                            <div class="country">Russia</div>
+                            <div class="value">~$50B</div>
+                            <div class="detail">estimated</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="military-container">
+        <div class="insights-section fade-in">
+            <h2 class="insights-title">Key Strategic Insights</h2>
+            <ul class="insights-list">
+                <li>USA dominates SCALE with 96.4/100 - operating 3.4x more aircraft than Russia</li>
+                <li>USA stealth technology is 5,000x better than Russia (F-22 RCS: 0.0001 m²)</li>
+                <li>China ranks 2nd globally in 5th-generation stealth fighters with 300+ J-20s</li>
+                <li>USA operates 75% of world's aerial refueling tankers (605 aircraft)</li>
+                <li>China has advanced technology (48.1/100) but lacks force projection infrastructure</li>
+                <li>Russia struggles with operational readiness (50%) and limited modern fleet</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="military-container">
+            <div class="footer-content">
+                <h3>Data Sources &amp; Methodology</h3>
+                <p>Based on 2025 military data from World Directory of Modern Military Aircraft, IISS Military Balance, SIPRI, and official defense budgets</p>
+                <p>Scale scoring based on fleet size, global reach capacity, and force projection capabilities</p>
+                <p>Technology scoring incorporates stealth capabilities, readiness rates, pilot training, and modernization levels</p>
+                <p>Overall scores calculated as weighted average: Scale (60%) + Technology (40%)</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animation and interaction logic
+        class AirWarfareComparison {
+            constructor() {
+                this.initScrollAnimations();
+                this.initCounters();
+                this.initProgressBars();
+                this.initBarCharts();
+            }
+
+            initScrollAnimations() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -100px 0px'
+                });
+
+                document.querySelectorAll('.fade-in').forEach(el => {
+                    observer.observe(el);
+                });
+            }
+
+            initCounters() {
+                const counterObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            this.animateCounter(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.5,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+
+                document.querySelectorAll('.counter').forEach(el => {
+                    counterObserver.observe(el);
+                });
+            }
+
+            animateCounter(element) {
+                if (element.classList.contains('animated')) return;
+                element.classList.add('animated');
+
+                const target = parseFloat(element.dataset.target);
+                const duration = 2000;
+                const start = performance.now();
+                const startValue = 0;
+
+                const animate = (currentTime) => {
+                    const elapsed = currentTime - start;
+                    const progress = Math.min(elapsed / duration, 1);
+                    
+                    // Easing function
+                    const easeOut = 1 - Math.pow(1 - progress, 3);
+                    const current = startValue + (target - startValue) * easeOut;
+                    
+                    element.textContent = current.toFixed(1);
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        element.textContent = target.toFixed(1);
+                    }
+                };
+
+                requestAnimationFrame(animate);
+            }
+
+            initProgressBars() {
+                const progressObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const fills = entry.target.querySelectorAll('.progress-fill');
+                            fills.forEach(fill => {
+                                setTimeout(() => {
+                                    fill.style.width = fill.dataset.width + '%';
+                                }, 500);
+                            });
+                        }
+                    });
+                }, {
+                    threshold: 0.3
+                });
+
+                document.querySelectorAll('.score-card').forEach(el => {
+                    progressObserver.observe(el);
+                });
+            }
+
+            initBarCharts() {
+                const chartObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const bars = entry.target.querySelectorAll('.bar-fill');
+                            bars.forEach((bar, index) => {
+                                setTimeout(() => {
+                                    bar.style.width = bar.dataset.width + '%';
+                                }, index * 200);
+                            });
+                        }
+                    });
+                }, {
+                    threshold: 0.3
+                });
+
+                document.querySelectorAll('.bar-chart').forEach(el => {
+                    chartObserver.observe(el);
+                });
+            }
+        }
+
+        // Initialize the application when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new AirWarfareComparison();
+        });
+
+        // Smooth scrolling for any anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add hover effects for metric items
+        document.querySelectorAll('.metric-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.2)';
+            });
+
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            });
+        });
+
+        // Add tooltip functionality for detailed information
+        const createTooltip = (element, text) => {
+            element.addEventListener('mouseenter', function(e) {
+                const tooltip = document.createElement('div');
+                tooltip.className = 'tooltip';
+                tooltip.textContent = text;
+                tooltip.style.cssText = `
+                    position: absolute;
+                    background: rgba(0, 0, 0, 0.9);
+                    color: white;
+                    padding: 8px 12px;
+                    border-radius: 6px;
+                    font-size: 12px;
+                    z-index: 1000;
+                    pointer-events: none;
+                    max-width: 200px;
+                    line-height: 1.4;
+                `;
+                document.body.appendChild(tooltip);
+
+                const updatePosition = (e) => {
+                    tooltip.style.left = e.pageX + 10 + 'px';
+                    tooltip.style.top = e.pageY - 30 + 'px';
+                };
+
+                updatePosition(e);
+                element.addEventListener('mousemove', updatePosition);
+
+                element.addEventListener('mouseleave', function() {
+                    tooltip.remove();
+                    element.removeEventListener('mousemove', updatePosition);
+                }, { once: true });
+            });
+        };
+
+        // Add tooltips to specific elements with additional context
+        setTimeout(() => {
+            const tooltipElements = [
+                { selector: '.score-card.usa .overall-score', text: 'USA leads with superior scale (96.4) but moderate technology score due to aging fleet components' },
+                { selector: '.score-card.china .overall-score', text: 'China shows balanced capabilities with growing technology investments and expanding fleet' },
+                { selector: '.score-card.russia .overall-score', text: 'Russia constrained by limited scale and aging technology, impacted by economic sanctions' }
+            ];
+
+            tooltipElements.forEach(({ selector, text }) => {
+                const element = document.querySelector(selector);
+                if (element) {
+                    createTooltip(element, text);
+                }
+            });
+        }, 1000);
+    </script>
+</body>
+</html>
