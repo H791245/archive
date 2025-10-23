@@ -1,0 +1,208 @@
+{
+  "header": {
+    "title": "How Jensen Huang Works",
+    "subtitle": "20 Leadership Principles from Nvidia's CEO",
+    "context": "From co-founding Nvidia in 1993 to building a $3+ trillion AI empire",
+    "bio_snippet": "Born Taiwan 1963 \u2022 Immigrant to US age 9 \u2022 Founded Nvidia age 30 \u2022 Longest-serving tech CEO"
+  },
+  "timeline": {
+    "1993": "Founded Nvidia at Denny's restaurant",
+    "1995-1997": "Nearly bankrupt (30 days from going out of business)",
+    "1999": "IPO and GeForce 256 launch",
+    "2006": "Launched CUDA - 20-year AI bet begins",
+    "2012": "AI researchers discover GPUs for deep learning",
+    "2024": "Nvidia becomes most valuable company ($3.3T)"
+  },
+  "core_philosophies": [
+    {
+      "category": "Culture & Character",
+      "principles": [
+        {
+          "id": 1,
+          "name": "Professor Jensen",
+          "icon": "\ud83d\udc68\u200d\ud83c\udfeb",
+          "key": "Teach 90% of the time"
+        },
+        {
+          "id": 3,
+          "name": "Complacency Kills",
+          "icon": "\u26a0\ufe0f",
+          "key": "30 days from bankruptcy mindset"
+        },
+        {
+          "id": 6,
+          "name": "Tortured into Greatness",
+          "icon": "\ud83d\udcaa",
+          "key": "Excellence = capacity to take pain"
+        },
+        {
+          "id": 20,
+          "name": "No Rearview Mirror",
+          "icon": "\ud83d\ude80",
+          "key": "Do great things, then do more"
+        }
+      ]
+    },
+    {
+      "category": "Communication & Transparency",
+      "principles": [
+        {
+          "id": 2,
+          "name": "Whiteboard Only",
+          "icon": "\ud83d\udcdd",
+          "key": "No PowerPoints, no hiding"
+        },
+        {
+          "id": 5,
+          "name": "Public Criticism",
+          "icon": "\ud83d\udd0a",
+          "key": "Everyone learns from mistakes"
+        },
+        {
+          "id": 10,
+          "name": "Blunt & Direct",
+          "icon": "\ud83d\udcac",
+          "key": "Short, clear, memorable"
+        },
+        {
+          "id": 11,
+          "name": "LUAA",
+          "icon": "\ud83c\udfaf",
+          "key": "Listen-Understand-Answer-Answer"
+        }
+      ]
+    },
+    {
+      "category": "Organization & Structure",
+      "principles": [
+        {
+          "id": 4,
+          "name": "Flat Organization",
+          "icon": "\ud83c\udfd7\ufe0f",
+          "key": "60 direct reports, no 1:1s"
+        },
+        {
+          "id": 9,
+          "name": "Top Five Emails",
+          "icon": "\ud83d\udce7",
+          "key": "Reads 100+ daily snapshots"
+        },
+        {
+          "id": 12,
+          "name": "Mission is Boss",
+          "icon": "\ud83c\udf96\ufe0f",
+          "key": "Pilot in Command owns it"
+        },
+        {
+          "id": 15,
+          "name": "Go to School on Everyone",
+          "icon": "\ud83d\udcda",
+          "key": "CEO shows up to learn"
+        }
+      ]
+    },
+    {
+      "category": "Execution & Speed",
+      "principles": [
+        {
+          "id": 7,
+          "name": "Speed of Light",
+          "icon": "\u26a1",
+          "key": "Benchmark: physically possible"
+        },
+        {
+          "id": 8,
+          "name": "Unapologetically Extreme",
+          "icon": "\ud83d\udd25",
+          "key": "No one outworks me"
+        },
+        {
+          "id": 13,
+          "name": "Strategy is Action",
+          "icon": "\u2694\ufe0f",
+          "key": "No 5-year plans, continuous"
+        },
+        {
+          "id": 18,
+          "name": "Highest Priority First",
+          "icon": "\ud83e\udd47",
+          "key": "Day succeeds before work starts"
+        }
+      ]
+    },
+    {
+      "category": "Strategy & Innovation",
+      "principles": [
+        {
+          "id": 14,
+          "name": "Ship the Whole Cow",
+          "icon": "\ud83d\udc04",
+          "key": "Use every part, block low-end"
+        },
+        {
+          "id": 16,
+          "name": "Create Markets",
+          "icon": "\ud83c\udf1f",
+          "key": "Zero billion $ markets"
+        },
+        {
+          "id": 17,
+          "name": "Choke with Gold",
+          "icon": "\ud83d\udcb0",
+          "key": "Reward greatness immediately"
+        },
+        {
+          "id": 19,
+          "name": "Swarm Greatest Opportunity",
+          "icon": "\ud83c\udf0a",
+          "key": "20-year CUDA bet paid off"
+        }
+      ]
+    }
+  ],
+  "key_stats": {
+    "60+": "Direct reports to CEO",
+    "100+": "Top-Five emails read daily",
+    "0": "Five-year plans",
+    "$3.3T": "Peak market value 2024",
+    "92%": "Desktop/laptop GPU market share",
+    "80%": "AI training GPU market share",
+    "31": "Years as CEO (longest in tech)"
+  },
+  "verified_facts": [
+    "Born in Tainan, Taiwan in 1963",
+    "Sent to Kentucky reform school at age 10 (thought to be boarding school)",
+    "Worked at Denny's as busboy/dishwasher in Oregon",
+    "Co-founded Nvidia April 5, 1993 at Denny's in San Jose",
+    "First two chips (NV1, NV2) were failures",
+    "Company had '30 days of money left' multiple times in 1990s",
+    "Laid off 60% of employees in 1996 (100\u219240 people)",
+    "RIVA 128 (1997) saved company - sold 1M units in 4 months",
+    "IPO January 22, 1999",
+    "Launched CUDA in 2006 despite skepticism",
+    "CUDA investment dropped margins from 45% to 35%",
+    "Invested in AI/deep learning years before it was profitable",
+    "Nvidia became most valuable S&P 500 company June 2024"
+  ],
+  "memorable_quotes": [
+    "If you're not spending 90% of your time teaching, you're not doing your job",
+    "We're 30 days from going out of business (repeated for decades)",
+    "I look in the mirror every morning and say you suck",
+    "Second place is the first loser",
+    "No one will outwork me",
+    "Strategy is not words. Strategy is actions",
+    "I hope suffering happens to you (to Stanford students)",
+    "Greatness comes from character. Character is formed from people who suffered",
+    "I wish upon you ample doses of pain and suffering",
+    "We're optimizing for the company learning, not for not embarrassing somebody",
+    "No task is beneath me",
+    "Deep learning is going to be really big. We should go all in"
+  ],
+  "influences": {
+    "Andy Grove (Intel)": "Only the Paranoid Survive",
+    "Steve Jobs (Apple)": "No rearview mirror mentality",
+    "Michael Dell (Dell)": "Constant reinvention required",
+    "Jim Senegal (Costco)": "90% teaching philosophy",
+    "Larry Ellison (Oracle)": "Extreme focus and endurance"
+  }
+}
