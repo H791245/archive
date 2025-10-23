@@ -1,0 +1,131 @@
+{
+  "two_process_model": {
+    "process_s": {
+      "name": "Sleep Homeostasis (Sleep Pressure)",
+      "description": "Builds up the longer you're awake",
+      "mechanism": "Adenosine accumulates in the brain during waking hours",
+      "duration": "Increases over ~16 hours awake, decreases during ~8 hours sleep",
+      "function": "Creates sleep pressure/drive - makes you feel sleepy"
+    },
+    "process_c": {
+      "name": "Circadian Rhythm (Body Clock)",
+      "description": "Your internal 24-hour biological clock",
+      "mechanism": "Controlled by suprachiasmatic nucleus (SCN) in brain, regulated by light",
+      "duration": "~24 hour cycle",
+      "function": "Regulates when you feel alert vs. sleepy throughout the day"
+    }
+  },
+  "key_chemicals": {
+    "adenosine": {
+      "role": "Sleep pressure builder",
+      "how_it_works": "Accumulates during wakefulness, increases sleep drive",
+      "cleared_by": "Sleep - broken down during sleep",
+      "blocked_by": "Caffeine"
+    },
+    "melatonin": {
+      "role": "Sleep signal hormone",
+      "how_it_works": "Produced when it gets dark, signals body it's time to sleep",
+      "peak": "Around 2-4 AM",
+      "suppressed_by": "Light exposure (especially blue light)"
+    },
+    "cortisol": {
+      "role": "Wake-up hormone",
+      "peak": "Upon waking in the morning",
+      "pattern": "High in morning, decreases throughout day"
+    }
+  },
+  "sleep_stages": {
+    "n1": {
+      "name": "Stage 1 (Light Sleep)",
+      "percentage": "5%",
+      "duration": "1-7 minutes",
+      "characteristics": "Transition from wake to sleep"
+    },
+    "n2": {
+      "name": "Stage 2 (Light Sleep)",
+      "percentage": "50%",
+      "characteristics": "Heart rate slows, body temperature drops"
+    },
+    "n3": {
+      "name": "Stage 3 (Deep Sleep)",
+      "percentage": "20-25%",
+      "characteristics": "Most restorative, tissue repair, immune system boost",
+      "ideal_amount": "1.5-2 hours per night"
+    },
+    "rem": {
+      "name": "REM Sleep",
+      "percentage": "20-25%",
+      "characteristics": "Dreaming, memory consolidation, brain active",
+      "pattern": "Increases in later cycles"
+    }
+  },
+  "sleep_cycle": {
+    "duration": "90-120 minutes per cycle",
+    "cycles_per_night": "4-6 cycles recommended",
+    "total_sleep": "7-9 hours for adults",
+    "pattern": "NREM (N1\u2192N2\u2192N3) then REM, repeats"
+  },
+  "best_sleep_practices": [
+    {
+      "category": "Timing",
+      "tips": [
+        "Go to bed and wake up at the same time daily (even weekends)",
+        "Aim for 10-11 PM bedtime (aligned with natural melatonin rise)",
+        "Get 7-9 hours of sleep",
+        "Complete 4-6 full sleep cycles"
+      ]
+    },
+    {
+      "category": "Light Exposure",
+      "tips": [
+        "Get bright light in first 30-60 min after waking (advances circadian rhythm)",
+        "Avoid bright/blue light 1-2 hours before bed (delays rhythm)",
+        "Keep bedroom completely dark",
+        "Morning light advances sleep phase, evening light delays it"
+      ]
+    },
+    {
+      "category": "Environment",
+      "tips": [
+        "Keep bedroom cool (65\u00b0F / 18\u00b0C)",
+        "Make room dark and quiet",
+        "Use comfortable mattress and pillows",
+        "Consider blackout curtains"
+      ]
+    },
+    {
+      "category": "Behaviors",
+      "tips": [
+        "Avoid caffeine 8-10 hours before bed",
+        "Limit alcohol (disrupts sleep architecture)",
+        "Exercise during day (not close to bedtime)",
+        "Create relaxing pre-sleep routine (reading, bath, meditation)"
+      ]
+    },
+    {
+      "category": "Napping",
+      "tips": [
+        "Keep naps short (20-30 min)",
+        "Nap in early afternoon only",
+        "Long/late naps reduce nighttime sleep pressure"
+      ]
+    }
+  ],
+  "how_processes_work_together": {
+    "optimal_sleep_timing": "When Process S (high sleep pressure after 16 hrs awake) meets Process C (circadian low point around 10 PM-7 AM)",
+    "morning": "Process S is low (just slept), Process C promotes wakefulness",
+    "midday": "Process S building, Process C still promoting alertness",
+    "evening": "Process S high, Process C begins promoting sleep",
+    "night": "Both processes aligned to promote deep, consolidated sleep"
+  },
+  "what_disrupts_sleep": [
+    "Irregular sleep schedule (confuses circadian rhythm)",
+    "Light at night (suppresses melatonin, delays sleep phase)",
+    "Caffeine late in day (blocks adenosine)",
+    "Alcohol (fragments sleep, reduces REM)",
+    "Stress and anxiety",
+    "Late meals (digestive activity)",
+    "Screen time before bed (blue light)",
+    "Napping too long or too late"
+  ]
+}
