@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Mega Shift: China-Russia-India Economic Integration</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+:root {
+  /* Primitive Color Tokens */
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-300: rgba(167, 169, 169, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-brown-600: rgba(94, 82, 64, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-400: rgba(45, 166, 178, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-teal-700: rgba(26, 104, 115, 1);
+  --color-teal-800: rgba(41, 150, 161, 1);
+  --color-red-400: rgba(255, 84, 89, 1);
+  --color-red-500: rgba(192, 21, 47, 1);
+  --color-orange-400: rgba(230, 129, 97, 1);
+  --color-orange-500: rgba(168, 75, 47, 1);
+
+  /* RGB versions for opacity control */
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
+  --color-slate-500-rgb: 98, 108, 113;
+  --color-red-500-rgb: 192, 21, 47;
+  --color-red-400-rgb: 255, 84, 89;
+  --color-orange-500-rgb: 168, 75, 47;
+  --color-orange-400-rgb: 230, 129, 97;
+
+  /* Background color tokens (Light Mode) */
+  --color-bg-1: rgba(59, 130, 246, 0.08);
+  --color-bg-2: rgba(245, 158, 11, 0.08);
+  --color-bg-3: rgba(34, 197, 94, 0.08);
+  --color-bg-4: rgba(239, 68, 68, 0.08);
+  --color-bg-5: rgba(147, 51, 234, 0.08);
+  --color-bg-6: rgba(249, 115, 22, 0.08);
+  --color-bg-7: rgba(236, 72, 153, 0.08);
+  --color-bg-8: rgba(6, 182, 212, 0.08);
+
+  /* Semantic Color Tokens (Light Mode) */
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-error: var(--color-red-500);
+  --color-success: var(--color-teal-500);
+  --color-warning: var(--color-orange-500);
+  --color-info: var(--color-slate-500);
+  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+  --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+
+  /* Common style patterns */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+
+  /* RGB versions for opacity control */
+  --color-success-rgb: 33, 128, 141;
+  --color-error-rgb: 192, 21, 47;
+  --color-warning-rgb: 168, 75, 47;
+  --color-info-rgb: 98, 108, 113;
+
+  /* Typography */
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 600;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --letter-spacing-tight: -0.01em;
+
+  /* Spacing */
+  --space-0: 0;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
+    0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
+    0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+  /* Animation */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+
+  /* Custom Infographic Colors */
+  --infographic-navy: #0A1F44;
+  --infographic-orange: #FF6B35;
+  --infographic-green: #2ECC71;
+  --infographic-red: #E74C3C;
+  --infographic-yellow: #F1C40F;
+  --infographic-blue: #3498DB;
+}
+
+/* Dark mode colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-gray-400-rgb: 119, 124, 124;
+    --color-teal-300-rgb: 50, 184, 198;
+    --color-gray-300-rgb: 167, 169, 169;
+    --color-gray-200-rgb: 245, 245, 245;
+
+    --color-bg-1: rgba(29, 78, 216, 0.15);
+    --color-bg-2: rgba(180, 83, 9, 0.15);
+    --color-bg-3: rgba(21, 128, 61, 0.15);
+    --color-bg-4: rgba(185, 28, 28, 0.15);
+    --color-bg-5: rgba(107, 33, 168, 0.15);
+    --color-bg-6: rgba(194, 65, 12, 0.15);
+    --color-bg-7: rgba(190, 24, 93, 0.15);
+    --color-bg-8: rgba(8, 145, 178, 0.15);
+
+    --color-background: var(--color-charcoal-700);
+    --color-surface: var(--color-charcoal-800);
+    --color-text: var(--color-gray-200);
+    --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+    --color-primary: var(--color-teal-300);
+    --color-primary-hover: var(--color-teal-400);
+    --color-primary-active: var(--color-teal-800);
+    --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+    --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+    --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-error: var(--color-red-400);
+    --color-success: var(--color-teal-300);
+    --color-warning: var(--color-orange-400);
+    --color-info: var(--color-gray-300);
+    --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+    --color-btn-primary-text: var(--color-slate-900);
+    --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+    --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+
+    --color-success-rgb: var(--color-teal-300-rgb);
+    --color-error-rgb: var(--color-red-400-rgb);
+    --color-warning-rgb: var(--color-orange-400-rgb);
+    --color-info-rgb: var(--color-gray-300-rgb);
+  }
+}
+
+/* Base styles */
+html {
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* Infographic Specific Styles */
+.infographic {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--color-background);
+}
+
+/* Header Section */
+.header-section {
+  background: linear-gradient(135deg, var(--infographic-navy) 0%, var(--infographic-blue) 100%);
+  color: white;
+  padding: 48px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>') repeat;
+  opacity: 0.1;
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+}
+
+.main-title {
+  font-size: 48px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 16px;
+  line-height: 1.1;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+  font-size: 20px;
+  opacity: 0.9;
+  margin-bottom: 8px;
+  font-weight: var(--font-weight-medium);
+}
+
+.date {
+  font-size: 16px;
+  opacity: 0.7;
+  font-weight: var(--font-weight-normal);
+}
+
+.action-buttons {
+  margin-top: 32px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radius-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-standard);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: var(--infographic-orange);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #e55a2b;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* Executive Summary */
+.executive-summary {
+  background: var(--infographic-green);
+  color: white;
+  padding: 48px 24px;
+  margin: 0;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.summary-content {
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Timeline Section */
+.timeline-section {
+  padding: 64px 24px;
+  background: var(--color-background);
+}
+
+.timeline {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--infographic-blue);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  display: flex;
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+  flex-direction: row-reverse;
+}
+
+.timeline-content {
+  background: white;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  width: 45%;
+  position: relative;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+  margin-right: 10%;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+  margin-left: 10%;
+}
+
+.timeline-icon {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--infographic-orange);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.timeline-period {
+  font-weight: var(--font-weight-bold);
+  color: var(--infographic-navy);
+  margin-bottom: 8px;
+}
+
+.timeline-event {
+  font-size: 16px;
+  color: var(--color-text);
+}
+
+/* Economic Triangle */
+.economic-triangle {
+  padding: 64px 24px;
+  background: var(--infographic-navy);
+  color: white;
+  text-align: center;
+}
+
+.triangle-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  height: 500px;
+}
+
+.triangle-point {
+  position: absolute;
+  background: rgba(255,255,255,0.1);
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  border: 3px solid;
+  width: 250px;
+  text-align: center;
+}
+
+.triangle-russia {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-color: var(--infographic-red);
+  background: rgba(231,76,60,0.1);
+}
+
+.triangle-china {
+  bottom: 0;
+  left: 0;
+  border-color: var(--infographic-yellow);
+  background: rgba(241,196,15,0.1);
+}
+
+.triangle-india {
+  bottom: 0;
+  right: 0;
+  border-color: var(--infographic-orange);
+  background: rgba(255,107,53,0.1);
+}
+
+.triangle-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--infographic-green);
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+  box-shadow: var(--shadow-lg);
+}
+
+.country-name {
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 12px;
+}
+
+.country-advantage {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* Key Decisions */
+.key-decisions {
+  padding: 64px 24px;
+  background: var(--color-background);
+}
+
+.decisions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.decision-card {
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--duration-normal) var(--ease-standard);
+}
+
+.decision-card:hover {
+  transform: translateY(-4px);
+}
+
+.decision-card.pipeline {
+  background: var(--infographic-navy);
+}
+
+.decision-card.summit {
+  background: var(--infographic-red);
+}
+
+.decision-card.compromise {
+  background: var(--infographic-orange);
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 16px;
+}
+
+.card-description {
+  font-size: 16px;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.card-stats {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.card-stats li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  font-size: 14px;
+}
+
+.card-impact {
+  font-weight: var(--font-weight-bold);
+  background: rgba(255,255,255,0.1);
+  padding: 16px;
+  border-radius: var(--radius-base);
+  margin-top: 16px;
+}
+
+/* Energy Shift */
+.energy-shift {
+  padding: 64px 24px;
+  background: var(--color-surface);
+}
+
+.shift-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-bottom: 48px;
+}
+
+.shift-panel {
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  position: relative;
+}
+
+.shift-past {
+  background: var(--infographic-orange);
+  color: white;
+}
+
+.shift-future {
+  background: var(--infographic-blue);
+  color: white;
+}
+
+.shift-title {
+  font-size: 28px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 24px;
+}
+
+.shift-points {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.shift-points li {
+  padding: 8px 0;
+  font-size: 16px;
+  position: relative;
+  padding-left: 24px;
+}
+
+.shift-points li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: rgba(255,255,255,0.8);
+}
+
+.ai-implication {
+  background: var(--infographic-green);
+  color: white;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+/* Market Cap Section */
+.market-cap {
+  padding: 64px 24px;
+  background: var(--infographic-navy);
+  color: white;
+}
+
+.market-chart-container {
+  max-width: 600px;
+  margin: 0 auto;
+  height: 400px;
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.market-message {
+  text-align: center;
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  background: rgba(255,255,255,0.1);
+  padding: 24px;
+  border-radius: var(--radius-lg);
+}
+
+/* Competitive Landscape */
+.competitive-landscape {
+  padding: 64px 24px;
+  background: var(--color-background);
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.comparison-card {
+  background: white;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border-left: 6px solid var(--infographic-green);
+}
+
+.comparison-title {
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 24px;
+  color: var(--infographic-navy);
+}
+
+.vs-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.company-info {
+  padding: 20px;
+  border-radius: var(--radius-base);
+  border: 2px solid;
+}
+
+.byd-info {
+  border-color: var(--infographic-green);
+  background: rgba(46,204,113,0.1);
+}
+
+.tesla-info {
+  border-color: var(--infographic-red);
+  background: rgba(231,76,60,0.1);
+}
+
+.huawei-info {
+  border-color: var(--infographic-green);
+  background: rgba(46,204,113,0.1);
+}
+
+.apple-info {
+  border-color: var(--infographic-red);
+  background: rgba(231,76,60,0.1);
+}
+
+.company-name {
+  font-weight: var(--font-weight-bold);
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.company-specs {
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+}
+
+.company-specs li {
+  padding: 4px 0;
+}
+
+.verdict {
+  background: var(--infographic-green);
+  color: white;
+  padding: 16px;
+  border-radius: var(--radius-base);
+  text-align: center;
+  font-weight: var(--font-weight-bold);
+}
+
+/* AI Section */
+.ai-section {
+  padding: 64px 24px;
+  background: var(--infographic-red);
+  color: white;
+}
+
+.ai-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.main-quote {
+  font-size: 36px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 32px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.ai-points {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  margin: 48px 0;
+}
+
+.ai-point {
+  background: rgba(255,255,255,0.1);
+  padding: 24px;
+  border-radius: var(--radius-lg);
+}
+
+.point-title {
+  font-size: 18px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 16px;
+}
+
+.point-content {
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+/* Protectionism Warning */
+.protectionism-warning {
+  padding: 64px 24px;
+  background: var(--infographic-yellow);
+  color: var(--infographic-navy);
+}
+
+.warning-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.warning-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  margin: 32px 0;
+}
+
+.warning-box {
+  background: rgba(10,31,68,0.1);
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--infographic-navy);
+}
+
+.warning-title {
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 16px;
+}
+
+.solution {
+  background: var(--infographic-red);
+  color: white;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+  margin-top: 32px;
+}
+
+/* Statistics Dashboard */
+.statistics {
+  padding: 64px 24px;
+  background: var(--color-surface);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stat-card {
+  background: white;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  border-top: 4px solid var(--infographic-blue);
+  transition: transform var(--duration-normal) var(--ease-standard);
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+}
+
+.stat-card:nth-child(even) {
+  border-top-color: var(--infographic-orange);
+}
+
+.stat-card:nth-child(3n) {
+  border-top-color: var(--infographic-green);
+}
+
+.stat-value {
+  font-size: 48px;
+  font-weight: var(--font-weight-bold);
+  color: var(--infographic-navy);
+  margin-bottom: 8px;
+}
+
+.stat-category {
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.stat-description {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+/* Powerful Quotes */
+.powerful-quotes {
+  padding: 64px 24px;
+  background: var(--infographic-navy);
+  color: white;
+}
+
+.quotes-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.quote-item {
+  background: rgba(255,255,255,0.1);
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  margin-bottom: 32px;
+  border-left: 6px solid var(--infographic-orange);
+}
+
+.quote-text {
+  font-size: 24px;
+  font-style: italic;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.quote-context {
+  font-size: 16px;
+  opacity: 0.7;
+  font-weight: var(--font-weight-medium);
+}
+
+/* Conclusion */
+.conclusion {
+  padding: 64px 24px;
+  background: var(--infographic-green);
+  color: white;
+}
+
+.conclusion-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.takeaways-list {
+  list-style: none;
+  padding: 0;
+}
+
+.takeaways-list li {
+  padding: 16px 0;
+  font-size: 18px;
+  position: relative;
+  padding-left: 32px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.takeaways-list li::before {
+  content: '★';
+  position: absolute;
+  left: 0;
+  color: var(--infographic-yellow);
+  font-size: 20px;
+}
+
+/* Pipeline Map Section */
+.pipeline-map {
+  padding: 64px 24px;
+  background: var(--color-background);
+}
+
+.map-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pipeline-image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 24px;
+}
+
+.map-caption {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 36px;
+  }
+  
+  .shift-comparison {
+    grid-template-columns: 1fr;
+  }
+  
+  .triangle-container {
+    height: auto;
+    padding: 24px 0;
+  }
+  
+  .triangle-point {
+    position: relative;
+    margin: 24px auto;
+    width: 280px;
+  }
+  
+  .triangle-russia {
+    top: auto;
+    left: auto;
+    transform: none;
+  }
+  
+  .triangle-china {
+    bottom: auto;
+    left: auto;
+  }
+  
+  .triangle-india {
+    bottom: auto;
+    right: auto;
+  }
+  
+  .triangle-center {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: 24px auto;
+    width: fit-content;
+  }
+  
+  .timeline::before {
+    left: 24px;
+  }
+  
+  .timeline-item {
+    flex-direction: column;
+    padding-left: 60px;
+  }
+  
+  .timeline-item:nth-child(odd) {
+    flex-direction: column;
+  }
+  
+  .timeline-content {
+    width: 100%;
+    margin: 0;
+  }
+  
+  .timeline-item:nth-child(odd) .timeline-content {
+    margin: 0;
+  }
+  
+  .timeline-item:nth-child(even) .timeline-content {
+    margin: 0;
+  }
+  
+  .timeline-icon {
+    left: 24px;
+    transform: none;
+  }
+  
+  .vs-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-section {
+    padding: 32px 16px;
+  }
+  
+  .main-title {
+    font-size: 28px;
+  }
+  
+  .section-title {
+    font-size: 28px;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .decisions-grid,
+  .comparison-grid,
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .triangle-point {
+    width: 100%;
+    padding: 24px 16px;
+  }
+}
+
+@font-face {
+  font-family: 'FKGroteskNeue';
+  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2')
+    format('woff2');
+}
+</style>
+</head>
+<body>
+    <div class="infographic">
+        <!-- Header Section -->
+        <header class="header-section">
+            <div class="header-content">
+                <h1 class="main-title">The Mega Shift: China-Russia-India Economic Integration &amp; The New Global Order</h1>
+                <p class="subtitle">Analysis of the Transformational Geopolitical Realignment</p>
+                <p class="date">October 2025</p>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="shareInfographic()">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <button class="btn btn-secondary" onclick="downloadInfographic()">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Executive Summary -->
+        <section class="executive-summary">
+            <div class="container">
+                <h2 class="section-title">Executive Summary</h2>
+                <div class="summary-content">
+                    The past month has witnessed a seismic shift in global power dynamics. The Shanghai Summit brought together Xi Jinping, Vladimir Putin, and Narendra Modi in an unprecedented display of unity, directly challenging US dominance. China's announcement of the Power of Siberia 2 pipeline - directly defying US sanctions - marks a turning point. Chinese stocks are rallying, the trade war is ending, and a new economic order centered on the integration of Russian commodities, Chinese capital and manufacturing, and Indian labor is emerging.
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section class="timeline-section">
+            <div class="container">
+                <h2 class="section-title">Timeline of the Mega Shift</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🔍</div>
+                        <div class="timeline-content">
+                            <div class="timeline-period">Past 15 Years</div>
+                            <div class="timeline-event">Putin lobbies China for Power of Siberia 2 pipeline</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">⚠️</div>
+                        <div class="timeline-content">
+                            <div class="timeline-period">1 Month Ago</div>
+                            <div class="timeline-event">US threatens sanctions on countries buying Russian energy</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🤝</div>
+                        <div class="timeline-content">
+                            <div class="timeline-period">10 Days Later</div>
+                            <div class="timeline-event">Xi, Putin, Modi summit in Shanghai - unprecedented unity display</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">✍️</div>
+                        <div class="timeline-content">
+                            <div class="timeline-period">September 2025</div>
+                            <div class="timeline-event">China signs legally binding memorandum for Power of Siberia 2</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🏳️</div>
+                        <div class="timeline-content">
+                            <div class="timeline-period">Recent Weeks</div>
+                            <div class="timeline-event">US backs down on rare earth restrictions, signals compromise</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">📈</div>
+                        <div class="timeline-content">
+                            <div class="timeline-period">Present</div>
+                            <div class="timeline-event">Chinese stocks 'ripping' as trade war ends</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Economic Triangle -->
+        <section class="economic-triangle">
+            <div class="container">
+                <h2 class="section-title">The Big Macro Trend: Economic Integration Triangle</h2>
+                <div class="triangle-container">
+                    <div class="triangle-point triangle-russia">
+                        <div class="country-name">🇷🇺 RUSSIA</div>
+                        <div class="country-advantage">Cheapest Commodities Worldwide<br>Natural gas, oil, rare earths, metals</div>
+                    </div>
+                    <div class="triangle-point triangle-china">
+                        <div class="country-name">🇨🇳 CHINA</div>
+                        <div class="country-advantage">Cheapest Capital Goods + Lowest Cost of Capital + Biggest Consumer Goods Producer</div>
+                    </div>
+                    <div class="triangle-point triangle-india">
+                        <div class="country-name">🇮🇳 INDIA</div>
+                        <div class="country-advantage">Cheapest Labor Force Globally<br>1.4B population, growing workforce</div>
+                    </div>
+                    <div class="triangle-center">
+                        = BOOM OF EPIC PROPORTIONS
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pipeline Map -->
+        <section class="pipeline-map">
+            <div class="container">
+                <h2 class="section-title">Power of Siberia Pipeline Network</h2>
+                <div class="map-container">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1755265642/pplx_project_search_images/9a1100b0d950cf051666c1e5adc07bf3bac8a647.png" alt="Power of Siberia Pipeline Map" class="pipeline-image">
+                    <p class="map-caption">Map showing Power of Siberia pipeline and its connections between Russia and China, including production centers and proposed expansions. The Power of Siberia 2 pipeline will significantly expand this network.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Decisions -->
+        <section class="key-decisions">
+            <div class="container">
+                <h2 class="section-title">Key Decisions That Changed Everything</h2>
+                <div class="decisions-grid">
+                    <div class="decision-card pipeline">
+                        <h3 class="card-title">🔥 DEFYING US SANCTIONS: Power of Siberia 2</h3>
+                        <p class="card-description">China announces construction of pipeline to buy 3x more Russian energy</p>
+                        <ul class="card-stats">
+                            <li>50 billion cubic meters per year</li>
+                            <li>30-year contract</li>
+                            <li>Payment: 50% rubles, 50% yuan</li>
+                        </ul>
+                        <div class="card-impact">
+                            <strong>Impact:</strong> China secures cheapest energy costs globally for next 30+ years
+                        </div>
+                    </div>
+                    
+                    <div class="decision-card summit">
+                        <h3 class="card-title">🤝 The Shanghai Power Display</h3>
+                        <p class="card-description">Xi, Putin, Modi meet in Shanghai - "French kissing on stage"</p>
+                        <ul class="card-stats">
+                            <li>Visual rebuke of US pressure</li>
+                            <li>Public display of solidarity</li>
+                            <li>Over 20 non-Western leaders attended</li>
+                        </ul>
+                        <div class="card-impact">
+                            <strong>Impact:</strong> Signals end of US-China trade war, new multipolar order
+                        </div>
+                    </div>
+                    
+                    <div class="decision-card compromise">
+                        <h3 class="card-title">🏳️ US De-escalation Strategy</h3>
+                        <p class="card-description">Despite threats, TikTok deal signals compromise approach</p>
+                        <ul class="card-stats">
+                            <li>Backed down on rare earth restrictions</li>
+                            <li>Geneva deal completed</li>
+                            <li>Tariff threats softened</li>
+                        </ul>
+                        <div class="card-impact">
+                            <strong>Impact:</strong> Chinese stocks rally, tensions ease dramatically
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Energy Shift -->
+        <section class="energy-shift">
+            <div class="container">
+                <h2 class="section-title">The Great Energy Shift</h2>
+                <div class="shift-comparison">
+                    <div class="shift-panel shift-past">
+                        <h3 class="shift-title">PAST: US Dominance</h3>
+                        <ul class="shift-points">
+                            <li>US had cheapest energy globally</li>
+                            <li>Shale revolution advantage</li>
+                            <li>Major growth driver for 15 years</li>
+                        </ul>
+                    </div>
+                    <div class="shift-panel shift-future">
+                        <h3 class="shift-title">FUTURE: China Advantage</h3>
+                        <ul class="shift-points">
+                            <li>China produces 2x electricity of US already</li>
+                            <li>Cheapest energy through Russian gas pipeline</li>
+                            <li>Industrial power: $0.088-0.111/kWh</li>
+                            <li>Payment in own currency (renminbi)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="ai-implication">
+                    <strong>AI IMPLICATION:</strong> If AI constraint is ENERGY (not computing power), China already won the race
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Cap Analysis -->
+        <section class="market-cap">
+            <div class="container">
+                <h2 class="section-title">Market Cap Reality Check</h2>
+                <div class="market-chart-container">
+                    <canvas id="marketCapChart"></canvas>
+                </div>
+                <div class="market-message">
+                    <strong>Key Insight:</strong> Very few Western giants positioned to benefit from the China-Russia-India integration boom
+                </div>
+            </div>
+        </section>
+
+        <!-- Competitive Landscape -->
+        <section class="competitive-landscape">
+            <div class="container">
+                <h2 class="section-title">The Leapfrog: Competitive Landscape</h2>
+                <div class="comparison-grid">
+                    <div class="comparison-card">
+                        <h3 class="comparison-title">🚗 Tesla vs BYD: The Automotive Revolution</h3>
+                        <div class="vs-section">
+                            <div class="company-info byd-info">
+                                <div class="company-name">BYD Seagull</div>
+                                <ul class="company-specs">
+                                    <li>500km range</li>
+                                    <li>Full self-drive</li>
+                                    <li><strong>Price: $8,300</strong></li>
+                                    <li>Q3 2025: 582,500 units (+31.4%)</li>
+                                    <li>Europe July: 13,503 units (+225%)</li>
+                                </ul>
+                            </div>
+                            <div class="company-info tesla-info">
+                                <div class="company-name">Tesla Equivalent</div>
+                                <ul class="company-specs">
+                                    <li><strong>Price: 4x BYD equivalent</strong></li>
+                                    <li>Q3 2025: 497,100 units (+7.4%)</li>
+                                    <li>Europe July: 8,837 units (-40%)</li>
+                                    <li>Same product as 5 years ago</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="verdict">BYD Superior - "Not even close, by a long shot" | 388,000 unit lead through Q3 2025</div>
+                    </div>
+                    
+                    <div class="comparison-card">
+                        <h3 class="comparison-title">📱 iPhone vs Huawei: Mobile Technology</h3>
+                        <div class="vs-section">
+                            <div class="company-info huawei-info">
+                                <div class="company-name">Huawei</div>
+                                <ul class="company-specs">
+                                    <li>Better cameras</li>
+                                    <li>Better battery life</li>
+                                    <li>Better features overall</li>
+                                    <li>Advanced AI integration</li>
+                                </ul>
+                            </div>
+                            <div class="company-info apple-info">
+                                <div class="company-name">iPhone</div>
+                                <ul class="company-specs">
+                                    <li>Losing market share in China</li>
+                                    <li>Higher prices</li>
+                                    <li>Less innovation</li>
+                                    <li>Struggling to compete</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="verdict">Huawei has leapfrogged Apple in key technological areas</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Section -->
+        <section class="ai-section">
+            <div class="container">
+                <div class="ai-content">
+                    <h2 class="section-title">AI Profitability Reality</h2>
+                    <div class="main-quote">"When China enters a room, profits walk out"</div>
+                    <p style="font-size: 18px; opacity: 0.9; margin-bottom: 32px;">30 years of living in China taught me this lesson</p>
+                    
+                    <div class="ai-points">
+                        <div class="ai-point">
+                            <div class="point-title">DeepSeek Impact</div>
+                            <div class="point-content">
+                                • China entered AI room with open-source models<br>
+                                • DeepSeek disrupts with cost-effective training<br>
+                                • Over 700 community models based on DeepSeek
+                            </div>
+                        </div>
+                        <div class="ai-point">
+                            <div class="point-title">The Irony</div>
+                            <div class="point-content">
+                                <strong>US models:</strong> Closed-ended systems (ironic for open society)<br>
+                                <strong>China models:</strong> Open-ended systems (forced by chip restrictions)
+                            </div>
+                        </div>
+                        <div class="ai-point">
+                            <div class="point-title">Conclusion</div>
+                            <div class="point-content">
+                                <strong>NO PROFITS IN AI</strong> due to Chinese competition disrupting the entire industry
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Protectionism Warning -->
+        <section class="protectionism-warning">
+            <div class="container">
+                <h2 class="section-title">⚠️ Protectionism Warning</h2>
+                <div class="warning-content">
+                    <div class="warning-grid">
+                        <div class="warning-box">
+                            <h3 class="warning-title">Western Response</h3>
+                            <ul>
+                                <li>Tariff barriers</li>
+                                <li>Product blocking</li>
+                                <li>Embrace protectionism</li>
+                            </ul>
+                        </div>
+                        <div class="warning-box">
+                            <h3 class="warning-title">Historical Parallels</h3>
+                            <ul>
+                                <li>Brazil's decline</li>
+                                <li>Argentina's stagnation</li>
+                                <li>Path to mediocrity</li>
+                            </ul>
+                        </div>
+                        <div class="warning-box">
+                            <h3 class="warning-title">Consequence</h3>
+                            <p>"Protectionism encourages domestic producers to remain mediocre"</p>
+                            <p><strong>West stays mediocre while China continues improving</strong></p>
+                        </div>
+                    </div>
+                    <div class="solution">
+                        ONLY WAY TO COMPETE IS BY COMPETING AND GETTING BETTER
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Dashboard -->
+        <section class="statistics">
+            <div class="container">
+                <h2 class="section-title">Key Statistics Dashboard</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">2x</div>
+                        <div class="stat-category">China Energy Production</div>
+                        <div class="stat-description">China produces twice the electricity of United States</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">50 bcm</div>
+                        <div class="stat-category">Pipeline Capacity</div>
+                        <div class="stat-description">Power of Siberia 2 annual capacity for 30 years</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">388K</div>
+                        <div class="stat-category">BYD Lead</div>
+                        <div class="stat-description">Unit advantage over Tesla through Q3 2025</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">+225%</div>
+                        <div class="stat-category">Europe Market Shift</div>
+                        <div class="stat-description">BYD growth vs Tesla -40% decline (July 2025)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">15.7%</div>
+                        <div class="stat-category">Market Share</div>
+                        <div class="stat-description">BYD projected global EV market share 2025</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">$0.09</div>
+                        <div class="stat-category">Energy Cost</div>
+                        <div class="stat-description">China industrial electricity rate per kWh</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Powerful Quotes -->
+        <section class="powerful-quotes">
+            <div class="container">
+                <h2 class="section-title">Powerful Insights</h2>
+                <div class="quotes-container">
+                    <div class="quote-item">
+                        <div class="quote-text">"It's almost like Xi said 'suck on that' - talk about defying a direct US order"</div>
+                        <div class="quote-context">On China's Power of Siberia 2 announcement</div>
+                    </div>
+                    <div class="quote-item">
+                        <div class="quote-text">"30 years of living in China taught me: if you're competing with China, you've taken a wrong turn"</div>
+                        <div class="quote-context">On competitive dynamics</div>
+                    </div>
+                    <div class="quote-item">
+                        <div class="quote-text">"We've been leapfrogged - it's time we shift our mindset"</div>
+                        <div class="quote-context">On Chinese technological advancement</div>
+                    </div>
+                    <div class="quote-item">
+                        <div class="quote-text">"Chinese products used to be cheap cheap products made cheaply - this is NOT the case anymore"</div>
+                        <div class="quote-context">On quality transformation</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="conclusion">
+            <div class="container">
+                <div class="conclusion-content">
+                    <h2 class="section-title">Key Takeaways</h2>
+                    <ul class="takeaways-list">
+                        <li>The US-China trade war is OVER - Chinese stocks confirm it</li>
+                        <li>Economic integration of Russia-China-India creates new global power center</li>
+                        <li>Energy advantage shifts from US to China via pipeline deal</li>
+                        <li>Chinese products (EVs, phones, etc) now SUPERIOR in many categories</li>
+                        <li>Protectionism leads to mediocrity, not competitiveness</li>
+                        <li>AI profitability threatened by Chinese open-source competition</li>
+                        <li>Very few top Western companies positioned for new order</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Market Cap Chart
+        function initMarketCapChart() {
+            const ctx = document.getElementById('marketCapChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['US Companies (24)', 'Chinese Companies (2)', 'Other Countries (4)'],
+                    datasets: [{
+                        data: [24, 2, 4],
+                        backgroundColor: ['#FF6B35', '#2ECC71', '#E74C3C'],
+                        borderWidth: 3,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                }
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Top 30 Global Market Cap Companies',
+                            font: {
+                                size: 18,
+                                weight: 'bold'
+                            },
+                            padding: 20
+                        }
+                    }
+                }
+            });
+        }
+
+        // Share functionality
+        function shareInfographic() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'The Mega Shift: China-Russia-India Economic Integration',
+                    text: 'Analysis of the transformational geopolitical realignment',
+                    url: window.location.href
+                });
+            } else {
+                // Fallback for browsers without native sharing
+                const text = 'Check out this analysis: The Mega Shift: China-Russia-India Economic Integration ' + window.location.href;
+                navigator.clipboard.writeText(text).then(() => {
+                    alert('Link copied to clipboard!');
+                });
+            }
+        }
+
+        // Download functionality (simplified)
+        function downloadInfographic() {
+            alert('Download functionality would generate a PDF version of this infographic.');
+        }
+
+        // Smooth scrolling for internal links
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize chart
+            initMarketCapChart();
+            
+            // Add scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all major sections
+            document.querySelectorAll('section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+        });
+
+        // Add hover effects for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.decision-card, .stat-card, .comparison-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                    this.style.boxShadow = '0 20px 40px rgba(0,0,0,0.1)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
