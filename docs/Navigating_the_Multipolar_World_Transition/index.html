@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigating the Multipolar World Transition</title>
+    <style>
+        :root {
+            /* Design System Colors */
+            --color-white: rgba(255, 255, 255, 1);
+            --color-black: rgba(0, 0, 0, 1);
+            --color-cream-50: rgba(252, 252, 249, 1);
+            --color-cream-100: rgba(255, 255, 253, 1);
+            --color-gray-200: rgba(245, 245, 245, 1);
+            --color-gray-300: rgba(167, 169, 169, 1);
+            --color-gray-400: rgba(119, 124, 124, 1);
+            --color-slate-500: rgba(98, 108, 113, 1);
+            --color-brown-600: rgba(94, 82, 64, 1);
+            --color-charcoal-700: rgba(31, 33, 33, 1);
+            --color-charcoal-800: rgba(38, 40, 40, 1);
+            --color-slate-900: rgba(19, 52, 59, 1);
+            --color-teal-300: rgba(50, 184, 198, 1);
+            --color-teal-400: rgba(45, 166, 178, 1);
+            --color-teal-500: rgba(33, 128, 141, 1);
+            --color-teal-600: rgba(29, 116, 128, 1);
+            --color-teal-700: rgba(26, 104, 115, 1);
+            --color-red-400: rgba(255, 84, 89, 1);
+            --color-red-500: rgba(192, 21, 47, 1);
+            --color-orange-400: rgba(230, 129, 97, 1);
+            --color-orange-500: rgba(168, 75, 47, 1);
+            
+            /* Custom infographic colors */
+            --primary-navy: #1a2b4a;
+            --accent-gold: #f4a261;
+            --light-bg: #f8f9fa;
+            --text-primary: var(--color-slate-900);
+            --text-secondary: var(--color-slate-500);
+            
+            /* Design system variables */
+            --color-background: var(--light-bg);
+            --color-surface: var(--color-white);
+            --color-text: var(--text-primary);
+            --color-text-secondary: var(--text-secondary);
+            --color-primary: var(--primary-navy);
+            --color-primary-hover: var(--accent-gold);
+            --color-border: var(--color-gray-300);
+            
+            /* Typography */
+            --font-family-base: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-size-xs: 11px;
+            --font-size-sm: 14px;
+            --font-size-base: 16px;
+            --font-size-lg: 18px;
+            --font-size-xl: 20px;
+            --font-size-2xl: 24px;
+            --font-size-3xl: 32px;
+            --font-size-4xl: 36px;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            
+            /* Spacing */
+            --space-4: 4px;
+            --space-8: 8px;
+            --space-12: 12px;
+            --space-16: 16px;
+            --space-20: 20px;
+            --space-24: 24px;
+            --space-32: 32px;
+            --space-48: 48px;
+            --space-64: 64px;
+            
+            /* Border radius */
+            --radius-base: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            
+            /* Animation */
+            --duration-fast: 0.15s;
+            --duration-normal: 0.3s;
+            --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: var(--font-family-base);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        
+        .infographic {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-20);
+        }
+        
+        .section {
+            margin-bottom: var(--space-64);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity var(--duration-normal) var(--ease-standard),
+                        transform var(--duration-normal) var(--ease-standard);
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .card {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            padding: var(--space-32);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--color-border);
+            transition: transform var(--duration-fast) var(--ease-standard),
+                        box-shadow var(--duration-fast) var(--ease-standard);
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: var(--space-64);
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--color-teal-600) 100%);
+            color: white;
+            padding: var(--space-48) var(--space-32);
+            border-radius: var(--radius-xl);
+        }
+        
+        .header h1 {
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-16);
+        }
+        
+        .header .subtitle {
+            font-size: var(--font-size-xl);
+            opacity: 0.9;
+        }
+        
+        .icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto var(--space-16);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .section-title {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--primary-navy);
+            margin-bottom: var(--space-32);
+            text-align: center;
+        }
+        
+        .grid {
+            display: grid;
+            gap: var(--space-24);
+        }
+        
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+        
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        }
+        
+        .point-card {
+            text-align: center;
+            padding: var(--space-24);
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            border: 2px solid transparent;
+            transition: border-color var(--duration-fast) var(--ease-standard);
+        }
+        
+        .point-card:hover {
+            border-color: var(--accent-gold);
+        }
+        
+        .point-card h3 {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-12);
+            color: var(--primary-navy);
+        }
+        
+        .quote-box {
+            background: linear-gradient(135deg, var(--accent-gold), #e76f51);
+            color: white;
+            padding: var(--space-32);
+            border-radius: var(--radius-lg);
+            margin: var(--space-32) 0;
+            text-align: center;
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-medium);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: var(--space-32) 0;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--primary-navy), var(--accent-gold), var(--color-gray-400));
+            z-index: 1;
+        }
+        
+        .timeline-item {
+            background: var(--color-surface);
+            border: 3px solid var(--primary-navy);
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .timeline-item.present {
+            border-color: var(--accent-gold);
+        }
+        
+        .timeline-item.future {
+            border-color: var(--color-gray-400);
+        }
+        
+        .action-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-16);
+        }
+        
+        .action-item {
+            display: flex;
+            align-items: center;
+            padding: var(--space-16);
+            background: var(--color-surface);
+            border-radius: var(--radius-base);
+            border-left: 4px solid var(--accent-gold);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .action-item::before {
+            content: '✓';
+            margin-right: var(--space-12);
+            color: var(--accent-gold);
+            font-weight: var(--font-weight-bold);
+        }
+        
+        .debate-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-24);
+            margin: var(--space-32) 0;
+        }
+        
+        .debate-side {
+            padding: var(--space-24);
+            border-radius: var(--radius-lg);
+            text-align: center;
+        }
+        
+        .debate-side.temporary {
+            background: linear-gradient(135deg, var(--color-gray-200), var(--color-gray-300));
+            opacity: 0.7;
+        }
+        
+        .debate-side.structural {
+            background: linear-gradient(135deg, var(--primary-navy), var(--color-teal-600));
+            color: white;
+        }
+        
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-24);
+        }
+        
+        .pillar {
+            text-align: center;
+            padding: var(--space-32);
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            border-top: 4px solid var(--accent-gold);
+        }
+        
+        .game-theory-section {
+            background: linear-gradient(135deg, var(--primary-navy), var(--color-teal-700));
+            color: white;
+            padding: var(--space-48);
+            border-radius: var(--radius-xl);
+            margin: var(--space-64) 0;
+        }
+        
+        .financial-moves {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-20);
+            margin-top: var(--space-32);
+        }
+        
+        .move-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-lg);
+            padding: var(--space-24);
+            backdrop-filter: blur(10px);
+        }
+        
+        .move-number {
+            background: var(--accent-gold);
+            color: var(--primary-navy);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-12);
+        }
+        
+        @media (max-width: 768px) {
+            .infographic {
+                padding: var(--space-16);
+            }
+            
+            .header h1 {
+                font-size: var(--font-size-3xl);
+            }
+            
+            .section-title {
+                font-size: var(--font-size-2xl);
+            }
+            
+            .debate-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline {
+                flex-direction: column;
+                gap: var(--space-16);
+            }
+            
+            .timeline::before {
+                display: none;
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic">
+        <!-- Header Section -->
+        <div class="section visible">
+            <div class="header">
+                <div class="icon">🌐</div>
+                <h1>Navigating the Multipolar World Transition</h1>
+                <div class="subtitle">From US-Led Order to Global Uncertainty</div>
+            </div>
+        </div>
+
+        <!-- Main Context Section -->
+        <div class="section">
+            <div class="card">
+                <h2 class="section-title">The Great Transition</h2>
+                <div class="grid grid-3">
+                    <div class="point-card">
+                        <div class="icon">🏛️</div>
+                        <h3>Post-American Order</h3>
+                        <p>America stepping back from its role as global insurer</p>
+                    </div>
+                    <div class="point-card">
+                        <div class="icon">🔗</div>
+                        <h3>Multi-polar World</h3>
+                        <p>No single country able or willing to fill the vacuum</p>
+                    </div>
+                    <div class="point-card">
+                        <div class="icon">⚠️</div>
+                        <h3>Messy &amp; Unpredictable</h3>
+                        <p>Brace ourselves for more turbulence ahead</p>
+                    </div>
+                </div>
+                <div class="quote-box">
+                    "Old rules do not apply anymore, but new ones have not been written"
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline Section -->
+        <div class="section">
+            <div class="card">
+                <h2 class="section-title">Current Reality</h2>
+                <div class="timeline">
+                    <div class="timeline-item past">
+                        <span>🇺🇸</span>
+                        <div style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); margin-top: 8px; text-align: center; font-weight: 600;">Past<br><small>US Global Insurer</small></div>
+                    </div>
+                    <div class="timeline-item present">
+                        <span>⭕</span>
+                        <div style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); margin-top: 8px; text-align: center; font-weight: 600;">Present<br><small>Power Vacuum</small></div>
+                    </div>
+                    <div class="timeline-item future">
+                        <span>❓</span>
+                        <div style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); margin-top: 8px; text-align: center; font-weight: 600;">Future<br><small>Uncertain</small></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Strategic Actions Section -->
+        <div class="section">
+            <div class="card">
+                <h2 class="section-title">Strategic Actions Required</h2>
+                <p style="text-align: center; margin-bottom: 32px; font-size: 18px; color: var(--color-text-secondary);">What We Must Do Now</p>
+                <div class="action-list">
+                    <div class="action-item">Cannot afford to wait or hope things fall into place</div>
+                    <div class="action-item">Plan now and start taking actions</div>
+                    <div class="action-item">Invest together in tackling global commons problems</div>
+                    <div class="action-item">Build new trade connections</div>
+                    <div class="action-item">Keep momentum of trade liberalization</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Singapore Approach -->
+        <div class="section">
+            <div class="card">
+                <h2 class="section-title">Singapore's Leadership</h2>
+                <div style="text-align: center;">
+                    <div class="icon">🤝</div>
+                    <h3 style="font-size: 24px; margin-bottom: 16px;">Working with like-minded countries</h3>
+                    <p style="font-size: 18px; margin-bottom: 16px;">"Can't do it alone - pressing ahead with or without US"</p>
+                    <p style="color: var(--color-text-secondary);">Goal: Lay foundations of new multilateral architecture</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Debate Section -->
+        <div class="section">
+            <div class="card">
+                <h2 class="section-title">Passing Phenomenon vs Structural Change</h2>
+                <div class="debate-container">
+                    <div class="debate-side temporary">
+                        <div class="icon">🕐</div>
+                        <h3>Temporary Phenomenon</h3>
+                        <p>Next few years will pass</p>
+                    </div>
+                    <div class="debate-side structural">
+                        <div class="icon" style="background: var(--accent-gold);">⛓️‍💥</div>
+                        <h3>Structural Change ✓</h3>
+                        <p>Deep changes in world order</p>
+                        <ul style="text-align: left; margin-top: 16px; padding-left: 20px;">
+                            <li>Broader change in political culture</li>
+                            <li>Changes in American society itself</li>
+                            <li>America feels it hasn't benefited from current order</li>
+                            <li>Not prepared to do heavy lifting</li>
+                            <li>Goes beyond current administration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Valid Concerns -->
+        <div class="section">
+            <div class="card">
+                <h2 class="section-title">Are the Concerns Justified?</h2>
+                <div style="text-align: center; margin-bottom: 32px;">
+                    <div class="icon">⚖️</div>
+                    <h3 style="font-size: 24px; margin-bottom: 16px;">Some merit exists</h3>
+                </div>
+                <div class="grid grid-3">
+                    <div class="point-card">
+                        <h3>Free Riders</h3>
+                        <p>Countries have been free riding on US security &amp; economic guarantees</p>
+                    </div>
+                    <div class="point-card">
+                        <h3>Shared Responsibility</h3>
+                        <p>Countries need to do more to maintain global stability</p>
+                    </div>
+                    <div class="point-card">
+                        <h3>Self-Reliance</h3>
+                        <p>Invest in own economic security and stability</p>
+                    </div>
+                </div>
+                <div style="background: var(--accent-gold); color: white; padding: 16px; border-radius: 8px; margin-top: 32px; text-align: center; font-weight: 600;">
+                    Singapore's Position: "We have never taken it for granted"
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Theory Financial Moves -->
+        <div class="section">
+            <div class="game-theory-section">
+                <h2 style="text-align: center; margin-bottom: 16px; font-size: 32px;">Game Theory Financial Strategy</h2>
+                <p style="text-align: center; margin-bottom: 32px; font-size: 18px; opacity: 0.9;">Five Strategic Financial Moves for the Multipolar Transition</p>
+                
+                <div class="financial-moves">
+                    <div class="move-card">
+                        <div class="move-number">1</div>
+                        <h3 style="margin-bottom: 12px;">Diversify Currency Holdings</h3>
+                        <p>Reduce USD dependency by building reserves in CNY, EUR, and emerging market currencies. Create currency baskets aligned with trade partners.</p>
+                    </div>
+                    
+                    <div class="move-card">
+                        <div class="move-number">2</div>
+                        <h3 style="margin-bottom: 12px;">Hedge Against Fragmentation</h3>
+                        <p>Invest in multiple regional trade blocs (RCEP, CPTPP, USMCA) to maintain optionality as economic blocs potentially decouple.</p>
+                    </div>
+                    
+                    <div class="move-card">
+                        <div class="move-number">3</div>
+                        <h3 style="margin-bottom: 12px;">Strategic Resource Security</h3>
+                        <p>Build strategic reserves in critical materials (semiconductors, rare earth elements, energy) and diversify supply chains away from single points of failure.</p>
+                    </div>
+                    
+                    <div class="move-card">
+                        <div class="move-number">4</div>
+                        <h3 style="margin-bottom: 12px;">Coalition Investment Strategy</h3>
+                        <p>Pool resources with like-minded nations for infrastructure projects, creating parallel institutions to traditional US-led financial architecture.</p>
+                    </div>
+                    
+                    <div class="move-card">
+                        <div class="move-number">5</div>
+                        <h3 style="margin-bottom: 12px;">Adaptive Portfolio Positioning</h3>
+                        <p>Maintain flexible asset allocation that can pivot quickly between cooperation and competition scenarios, with emphasis on domestic resilience investments.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Path Forward -->
+        <div class="section">
+            <div class="card">
+                <h2 class="section-title">The Path Forward</h2>
+                <div class="pillars">
+                    <div class="pillar">
+                        <div class="icon">🏗️</div>
+                        <h3>New Multilateral Architecture</h3>
+                        <p>Build new frameworks for cooperation that don't rely solely on US leadership</p>
+                    </div>
+                    <div class="pillar">
+                        <div class="icon">🗺️</div>
+                        <h3>Proactive Planning</h3>
+                        <p>Take action now, don't wait for others to define the new order</p>
+                    </div>
+                    <div class="pillar">
+                        <div class="icon">🌐</div>
+                        <h3>Strategic Partnerships</h3>
+                        <p>Work with like-minded nations to create stability in an uncertain world</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -10% 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Add hover effects for enhanced interactivity
+        document.querySelectorAll('.point-card, .pillar, .move-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-4px)';
+                this.style.transition = 'transform 0.2s ease';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Add click interactions for expandable content
+        document.querySelectorAll('.action-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Toggle expanded state
+                this.classList.toggle('expanded');
+                
+                // Add visual feedback
+                this.style.backgroundColor = this.classList.contains('expanded') 
+                    ? 'rgba(244, 162, 97, 0.1)' 
+                    : 'var(--color-surface)';
+            });
+        });
+
+        // Smooth reveal animations on load
+        window.addEventListener('load', () => {
+            const elements = document.querySelectorAll('.icon, .timeline-item');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('fade-in');
+                }, index * 100);
+            });
+        });
+
+        // Dynamic color changes for timeline items
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        timelineItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1)';
+                this.style.transition = 'transform 0.2s ease';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
