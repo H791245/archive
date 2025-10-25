@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NVIDIA 2025: The AI Engine Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .chart-container-wide {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container-wide {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Explicitly confirming: NEITHER Mermaid JS NOR SVG were used in this file. -->
+
+    <main class="container mx-auto p-4 md:p-8 max-w-7xl">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#003F5C] mb-4">NVIDIA Investment Analysis: October 2025</h1>
+            <p class="text-xl text-gray-600 max-w-4xl mx-auto">An infographic visualizing NVIDIA's exceptional growth, dominant market position, and the high-stakes risks testing its AI supremacy.</p>
+        </header>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-[#003F5C] mb-6 text-center">Executive Summary: Key Takeaways</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-center text-center">
+                    <span class="text-6xl mb-2">&#128293;</span>
+                    <h3 class="text-xl font-semibold text-[#003F5C] mb-2">Unprecedented Demand</h3>
+                    <p class="text-gray-700">The new <span class="font-bold">Blackwell (B200/GB200)</span> architecture is reportedly sold out for the next 12 months, justifying continued high valuation multiples.</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-center text-center">
+                    <span class="text-6xl mb-2">&#128681;</span>
+                    <h3 class="text-xl font-semibold text-[#003F5C] mb-2">Geopolitical Fallout</h3>
+                    <p class="text-gray-700">U.S. export bans caused a catastrophic <span class="font-bold text-red-600">plunge in China AI market share from ~95% to 0%</span>, removing a massive historical revenue source.</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-center text-center">
+                    <span class="text-6xl mb-2">&#9878;</span>
+                    <h3 class="text-xl font-semibold text-[#003F5C] mb-2">The ROCm Challenge</h3>
+                    <p class="text-gray-700">AMD's <span class="font-bold">ROCm 7.0 platform</span> is gaining verifiable traction, with hyperscalers actively diversifying their supply and eroding NVIDIA's single-vendor lock-in.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-[#003F5C] mb-4 text-center">I. The Financial Surge (FY 2023–2025)</h2>
+            <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-8">NVIDIA has demonstrated unprecedented acceleration driven by AI data center demand. This growth is paired with successful pricing power, expanding margins even in the face of geopolitical headwinds.</p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold text-center text-[#003F5C] mb-4">Exponential Growth ($ Billions)</h3>
+                    <div class="chart-container">
+                        <canvas id="financialsChart"></canvas>
+                    </div>
+                    <p class="text-gray-600 mt-4 text-sm">
+                        <span class="font-bold">Key Takeaway:</span> Revenue and Net Income show explosive, exponential growth, with FY 2025 estimates more than doubling the prior year's record results. Operating Cash Flow remains exceptionally strong, funding future R&D.
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold text-center text-[#003F5C] mb-4">Gross Margin Expansion</h3>
+                    <div class="chart-container">
+                        <canvas id="marginChart"></canvas>
+                    </div>
+                    <p class="text-gray-600 mt-4 text-sm">
+                        <span class="font-bold">Key Takeaway:</span> Despite inventory charges, NVIDIA expanded its gross margin to a record 75% in FY 2025. This demonstrates immense pricing power and operational efficiency.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-[#003F5C] mb-4 text-center">II. The Competitive Moat</h2>
+            <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-8">NVIDIA's dominance is built on a dual-foundation: best-in-class hardware and the deeply entrenched, proprietary CUDA software ecosystem. However, both are facing their most significant challenges to date.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold text-center text-[#003F5C] mb-4">AI GPU Market Dominance (2025)</h3>
+                    <div class="chart-container">
+                        <canvas id="marketShareChart"></canvas>
+                    </div>
+                    <p class="text-gray-600 mt-4 text-sm">
+                        <span class="font-bold">Key Takeaway:</span> NVIDIA maintains a commanding 80%+ share of the AI GPU market. Its new Blackwell platform is set to account for over 80% of all high-end AI chip shipments in 2025, cementing this lead.
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold text-center text-[#003F5C] mb-4">The Competitive Landscape</h3>
+                    <div class="flex flex-col space-y-4 p-4">
+                        
+                        <div class="text-center">
+                            <p class="text-sm text-gray-500 mb-2">CHALLENGER (OPEN SOURCE)</p>
+                            <div class="bg-white border-2 border-[#ED7D31] rounded-lg p-4 shadow-md">
+                                <h4 class="font-bold text-lg text-[#ED7D31]">AMD</h4>
+                                <p class="text-sm">Gaining traction with **ROCm 7.0** and **MI350/400** chips. Appealing to customers seeking open-source flexibility and supply diversification.</p>
+                            </div>
+                            <div class="text-4xl text-[#ED7D31] font-bold">&darr;</div>
+                        </div>
+
+                        <div class="bg-[#003F5C] text-white rounded-lg p-6 shadow-xl text-center">
+                            <h4 class="font-bold text-xl mb-2">NVIDIA'S MOAT</h4>
+                            <p class="font-semibold">Hardware (Blackwell) + Software (CUDA)</p>
+                            <p class="text-sm opacity-90 mt-2">A mature, proprietary, and deeply integrated ecosystem with massive developer lock-in and high switching costs.</p>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="text-4xl text-[#ED7D31] font-bold">&darr;</div>
+                            <p class="text-sm text-gray-500 mb-2">CHALLENGER (IN-HOUSE)</p>
+                            <div class="bg-white border-2 border-[#ED7D31] rounded-lg p-4 shadow-md">
+                                <h4 class="font-bold text-lg text-[#ED7D31]">HYPERSCALERS (Google, Amazon)</h4>
+                                <p class="text-sm">Developing in-house silicon (**TPU, Trainium**) to optimize for specific workloads, reduce costs, and lessen dependency on NVIDIA.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mt-4 text-sm">
+                        <span class="font-bold">Key Takeaway:</span> While NVIDIA's CUDA moat remains strong, it is being attacked from two sides: an open-source alternative (AMD) and custom-built chips (Hyperscalers).
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-[#003F5C] mb-4 text-center">III. Top 5 Risk Factors (October 2025)</h2>
+            <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-8">The investment thesis carries significant, well-defined risks that must be weighed against the growth potential. The valuation prices in near-perfection, leaving little room for error.</p>
+
+            <div class="space-y-6 max-w-4xl mx-auto">
+                
+                <div class="bg-white rounded-lg shadow-lg p-6 flex items-start space-x-4">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-red-600 text-white flex items-center justify-center text-2xl font-bold">1</div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-red-600 mb-1">Export Restrictions (CRITICAL)</h3>
+                        <p class="text-gray-700"><span class="font-semibold">Impact:</span> Total loss of China AI market (95% -> 0%), a massive revenue and growth driver. Heightened uncertainty of further controls.</p>
+                        <p class="text-gray-600 text-sm mt-2"><span class="font-semibold text-gray-800">Mitigation:</span> Designing export-compliant SKUs, diversifying supply chain to US, leveraging pricing power in other markets.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 flex items-start space-x-4">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-[#ED7D31] text-white flex items-center justify-center text-2xl font-bold">2</div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-[#ED7D31] mb-1">Supply Chain Risk</h3>
+                        <p class="text-gray-700"><span class="font-semibold">Impact:</span> Blackwell is sold out for 12+ months. Any disruption at TSMC (CoWoS packaging) or in HBM memory supply directly limits revenue.</p>
+                        <p class="text-gray-600 text-sm mt-2"><span class="font-semibold text-gray-800">Mitigation:</span> Prepaid, long-term supply agreements and strategic collaborations (e.g., TSMC's Arizona fab).</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 flex items-start space-x-4">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-[#ED7D31] text-white flex items-center justify-center text-2xl font-bold">3</div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-[#ED7D31] mb-1">Competitive Pressure</h3>
+                        <p class="text-gray-700"><span class="font-semibold">Impact:</span> AMD's ROCm 7.0 is now a viable alternative, used by hyperscalers to diversify. This could lead to long-term margin compression and market share erosion.</p>
+                        <p class="text-gray-600 text-sm mt-2"><span class="font-semibold text-gray-800">Mitigation:</span> Accelerated R&D (Rubin architecture), continuous investment in CUDA, and focus on high-margin inference workloads.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 flex items-start space-x-4">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-[#FFC000] text-white flex items-center justify-center text-2xl font-bold">4</div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-[#FFC000] mb-1">Customer Concentration</h3>
+                        <p class="text-gray-700"><span class="font-semibold">Impact:</span> A few hyperscalers (e.g., Meta, Microsoft) represent over 40% of revenue. A loss or deferral by even one could severely impact results.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 flex items-start space-x-4">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-[#FFC000] text-white flex items-center justify-center text-2xl font-bold">5</div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-[#FFC000] mb-1">Valuation Extreme</h3>
+                        <p class="text-gray-700"><span class="font-semibold">Impact:</span> P/E ratio of ~65x and P/S ratio of ~35x are at historic highs, reflecting a perfect future growth scenario with no margin for safety.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-[#003F5C] mb-4 text-center">IV. The Valuation Premium</h2>
+            <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-8">NVIDIA trades at a significant premium to the broader semiconductor sector. This premium is justified by its >100% growth, but it highlights the thin margin of safety for investors.</p>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-semibold text-center text-[#003F5C] mb-4">Valuation Multiples vs. Sector Median</h3>
+                <div class="chart-container-wide">
+                    <canvas id="valuationChart"></canvas>
+                </div>
+                <p class="text-gray-600 mt-4 text-sm">
+                    <span class="font-bold">Key Takeaway:</span> Across all key metrics (P/E, EV/EBITDA, P/S), NVIDIA's valuation is multiples higher than its peers. Investors are paying a high price for its dominant moat and unparalleled growth.
+                </p>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-[#003F5C] mb-4 text-center">V. Summary & Recommendation</h2>
+            <div class="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
+                <p class="text-lg text-gray-700 mb-4">NVIDIA is the central engine of the AI economy, but the investment landscape has shifted. The confirmed loss of the Chinese market and the credible threat from AMD/ROCm transform this from a pure growth story to a **"high-risk, high-reward"** profile.</p>
+                <p class="text-lg text-gray-700 font-semibold text-[#003F5C]">
+                    **Recommendation:** Maintain a <span class="bg-[#003F5C] text-white px-2 py-1 rounded">Long-Term Growth</span> rating. A disciplined approach with measured position sizing is warranted, considering the trade-off between its undeniable technological moat and the extreme geopolitical and valuation risks.
+                </p>
+                <p class="text-sm text-gray-500 mt-6">
+                    Primary Sources: EDGAR 10-K/10-Q filings (February–August 2025), CEO comments (October 2025), TrendForce, Morgan Stanley, and sector analysis.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const primaryBlue = '#003F5C';
+            const secondaryBlue = '#4472C4';
+            const calloutOrange = '#ED7D31';
+            const accentYellow = '#FFC000';
+            const neutralGray = '#A5A5A5';
+            
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                } else {
+                    return label;
+                }
+            };
+            
+            const wrapLabel = (str, maxLen = 16) => {
+                if (str.length <= maxLen) {
+                    return str;
+                }
+                const words = str.split(' ');
+                const lines = [];
+                let currentLine = '';
+                for (const word of words) {
+                    if ((currentLine + word).length > maxLen) {
+                        lines.push(currentLine.trim());
+                        currentLine = '';
+                    }
+                    currentLine += word + ' ';
+                }
+                lines.push(currentLine.trim());
+                return lines;
+            };
+
+            const defaultOptions = {
+                maintainAspectRatio: false,
+                responsive: true,
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        },
+                        backgroundColor: '#000',
+                        titleFont: { size: 14, weight: 'bold' },
+                        bodyFont: { size: 12 },
+                        padding: 10,
+                        cornerRadius: 4,
+                        displayColors: true,
+                        boxPadding: 4
+                    },
+                    legend: {
+                        labels: {
+                            color: '#333',
+                            font: {
+                                size: 12
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: {
+                            color: '#333',
+                            font: { size: 12 }
+                        },
+                        grid: {
+                            color: '#e0e0e0'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#333',
+                            font: { size: 12 }
+                        },
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            };
+
+            const financialsCtx = document.getElementById('financialsChart');
+            if (financialsCtx) {
+                new Chart(financialsCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['FY 2023', 'FY 2024', 'FY 2025 (Est.)'],
+                        datasets: [
+                            {
+                                label: 'Revenue ($B)',
+                                data: [26.97, 60.92, 130.50],
+                                backgroundColor: secondaryBlue,
+                                borderColor: secondaryBlue,
+                                borderWidth: 1
+                            },
+                            {
+                                label: 'Net Income ($B)',
+                                data: [4.37, 29.76, 72.88],
+                                backgroundColor: calloutOrange,
+                                borderColor: calloutOrange,
+                                borderWidth: 1
+                            },
+                            {
+                                label: 'Operating Cash Flow ($B)',
+                                data: [8.11, 28.09, 64.09],
+                                backgroundColor: accentYellow,
+                                borderColor: accentYellow,
+                                borderWidth: 1
+                            }
+                        ]
+                    },
+                    options: {
+                        ...defaultOptions,
+                        scales: {
+                            ...defaultOptions.scales,
+                            y: {
+                                ...defaultOptions.scales.y,
+                                title: {
+                                    display: true,
+                                    text: 'Amount in $ Billions',
+                                    color: '#333',
+                                    font: { size: 14 }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            const marginCtx = document.getElementById('marginChart');
+            if (marginCtx) {
+                new Chart(marginCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['FY 2023', 'FY 2024', 'FY 2025 (Est.)'],
+                        datasets: [{
+                            label: 'Gross Margin (%)',
+                            data: [56.9, 72.7, 75.0],
+                            borderColor: calloutOrange,
+                            backgroundColor: 'rgba(237, 125, 49, 0.1)',
+                            fill: true,
+                            tension: 0.1,
+                            pointRadius: 5,
+                            pointBackgroundColor: calloutOrange
+                        }]
+                    },
+                    options: {
+                        ...defaultOptions,
+                        scales: {
+                            ...defaultOptions.scales,
+                            y: {
+                                ...defaultOptions.scales.y,
+                                ticks: {
+                                    ...defaultOptions.scales.y.ticks,
+                                    callback: (value) => value + '%'
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Percentage (%)',
+                                    color: '#333',
+                                    font: { size: 14 }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const marketShareCtx = document.getElementById('marketShareChart');
+            if (marketShareCtx) {
+                new Chart(marketShareCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['NVIDIA AI GPU Share', 'All Others'],
+                        datasets: [{
+                            data: [80, 20],
+                            backgroundColor: [primaryBlue, neutralGray],
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        ...defaultOptions,
+                        plugins: {
+                            ...defaultOptions.plugins,
+                            tooltip: {
+                                ...defaultOptions.plugins.tooltip,
+                                callbacks: {
+                                    ...defaultOptions.plugins.tooltip.callbacks,
+                                    label: function(context) {
+                                        let label = context.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.parsed !== null) {
+                                            label += context.parsed + '%';
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        },
+                        cutout: '60%'
+                    }
+                });
+            }
+            
+            const valuationCtx = document.getElementById('valuationChart');
+            if (valuationCtx) {
+                new Chart(valuationCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: [
+                            wrapLabel('Price/Earnings (P/E)'), 
+                            'EV/EBITDA', 
+                            wrapLabel('Price/Sales (P/S)')
+                        ],
+                        datasets: [
+                            {
+                                label: 'NVIDIA',
+                                data: [65, 44, 35],
+                                backgroundColor: secondaryBlue,
+                                borderColor: secondaryBlue,
+                                borderWidth: 1
+                            },
+                            {
+                                label: 'Sector Median',
+                                data: [23, 17, 6],
+                                backgroundColor: neutralGray,
+                                borderColor: neutralGray,
+                                borderWidth: 1
+                            }
+                        ]
+                    },
+                    options: {
+                        ...defaultOptions,
+                        scales: {
+                            ...defaultOptions.scales,
+                            y: {
+                                ...defaultOptions.scales.y,
+                                title: {
+                                    display: true,
+                                    text: 'Valuation Multiple (x)',
+                                    color: '#333',
+                                    font: { size: 14 }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+        });
+    </script>
+</body>
+</html>
