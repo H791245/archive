@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMD Next-Gen GPU Technology Breakthrough</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark-1: #1a1a2e;
+            --bg-dark-2: #16213e;
+            --bg-dark-3: #0f172a;
+            --text-white: #ffffff;
+            --text-gray: #cbd5e1;
+            --cyan: #00d4ff;
+            --amd-red: #ed1c24;
+            --bright-yellow: #ffd700;
+            --green: #00ff41;
+            --card-bg: rgba(30, 41, 59, 0.8);
+            --card-hover: rgba(51, 65, 85, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark-1) 0%, var(--bg-dark-2) 50%, var(--bg-dark-3) 100%);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 212, 255, 0.03) 2px, rgba(0, 212, 255, 0.03) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0, 212, 255, 0.03) 2px, rgba(0, 212, 255, 0.03) 4px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: linear-gradient(180deg, rgba(237, 28, 36, 0.1) 0%, transparent 100%);
+            border-bottom: 2px solid var(--amd-red);
+            margin-bottom: 60px;
+        }
+
+        .header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--text-white);
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(237, 28, 36, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .header .subtitle {
+            font-size: 28px;
+            color: var(--cyan);
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: var(--amd-red);
+            color: var(--text-white);
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(237, 28, 36, 0.4);
+        }
+
+        .presenters {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .presenter {
+            text-align: center;
+        }
+
+        .presenter-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .presenter-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--bright-yellow);
+            margin-bottom: 5px;
+        }
+
+        .presenter-title {
+            font-size: 14px;
+            color: var(--text-gray);
+            max-width: 250px;
+        }
+
+        .presenter-company {
+            font-size: 16px;
+            color: var(--cyan);
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        /* Introduction Panel */
+        .intro-panel {
+            background: var(--card-bg);
+            border: 2px solid var(--cyan);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.2);
+        }
+
+        .intro-panel h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            color: var(--cyan);
+            margin-bottom: 20px;
+        }
+
+        .intro-panel p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .platform-tags {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .platform-tag {
+            background: rgba(0, 212, 255, 0.2);
+            border: 1px solid var(--cyan);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--cyan);
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: rgba(255, 215, 0, 0.2);
+            border: 2px solid var(--bright-yellow);
+            color: var(--bright-yellow);
+            padding: 10px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 36px;
+            text-align: center;
+            margin: 80px 0 40px;
+            color: var(--text-white);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* Technology Cards */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .tech-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 35px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent-color);
+        }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            border-color: var(--accent-color);
+        }
+
+        .tech-card.radiance::before { background: var(--amd-red); }
+        .tech-card.neural::before { background: var(--cyan); }
+        .tech-card.compression::before { background: var(--green); }
+
+        .tech-card.radiance { --accent-color: var(--amd-red); }
+        .tech-card.neural { --accent-color: var(--cyan); }
+        .tech-card.compression { --accent-color: var(--green); }
+
+        .tech-icon {
+            font-size: 64px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .tech-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .tech-purpose {
+            text-align: center;
+            font-size: 16px;
+            color: var(--text-gray);
+            margin-bottom: 25px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tech-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .tech-card.expanded .tech-details {
+            max-height: 2000px;
+        }
+
+        .tech-section {
+            margin-bottom: 25px;
+        }
+
+        .tech-section h4 {
+            font-size: 18px;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .tech-section p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-gray);
+        }
+
+        .benefits-list {
+            list-style: none;
+        }
+
+        .benefits-list li {
+            padding: 8px 0;
+            font-size: 15px;
+            color: var(--text-gray);
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .benefits-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .impact-box {
+            background: rgba(0, 0, 0, 0.4);
+            border-left: 4px solid var(--accent-color);
+            padding: 15px 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        .impact-box strong {
+            color: var(--accent-color);
+            font-size: 16px;
+        }
+
+        .comparison-text {
+            background: rgba(0, 255, 65, 0.1);
+            border: 1px solid var(--green);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-size: 14px;
+            text-align: center;
+            color: var(--green);
+            font-weight: 600;
+        }
+
+        .expand-hint {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 14px;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .tech-card:not(.expanded) .expand-hint::after {
+            content: ' ▼';
+        }
+
+        .tech-card.expanded .expand-hint::after {
+            content: ' ▲';
+        }
+
+        /* RDNA 4 Context */
+        .rdna4-panel {
+            background: var(--card-bg);
+            border: 2px solid var(--bright-yellow);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+        }
+
+        .rdna4-panel h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            color: var(--bright-yellow);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid var(--bright-yellow);
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--bright-yellow);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin: 60px 0;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--amd-red), var(--cyan), var(--green));
+            transform: translateY(-50%);
+        }
+
+        .timeline-events {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            position: relative;
+            flex-wrap: wrap;
+        }
+
+        .timeline-event {
+            flex: 1;
+            min-width: 250px;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid var(--cyan);
+            position: relative;
+            text-align: center;
+        }
+
+        .timeline-event::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--cyan);
+            border: 4px solid var(--bg-dark-1);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--cyan);
+        }
+
+        .timeline-date {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--cyan);
+            margin-bottom: 10px;
+        }
+
+        .timeline-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-white);
+            margin-bottom: 8px;
+        }
+
+        .timeline-desc {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        /* Quotes Section */
+        .quotes-section {
+            margin: 60px 0;
+        }
+
+        .quote-box {
+            background: var(--card-bg);
+            border-left: 5px solid var(--amd-red);
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 80px;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            color: rgba(237, 28, 36, 0.2);
+            font-family: Georgia, serif;
+        }
+
+        .quote-text {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-speaker {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--cyan);
+            text-align: right;
+        }
+
+        /* Comparison Section */
+        .comparison-section {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 60px 0;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .comparison-column {
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid;
+        }
+
+        .comparison-column.old {
+            background: rgba(255, 84, 89, 0.1);
+            border-color: #ff5459;
+        }
+
+        .comparison-column.new {
+            background: rgba(0, 255, 65, 0.1);
+            border-color: var(--green);
+        }
+
+        .comparison-column h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .comparison-column.old h4 { color: #ff5459; }
+        .comparison-column.new h4 { color: var(--green); }
+
+        .comparison-list {
+            list-style: none;
+        }
+
+        .comparison-list li {
+            padding: 10px 0;
+            font-size: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .comparison-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Images */
+        .tech-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .tech-image-box {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid var(--cyan);
+        }
+
+        .tech-image-box img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .tech-image-caption {
+            padding: 20px;
+            font-size: 14px;
+            color: var(--text-gray);
+            text-align: center;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.5);
+            border-top: 2px solid var(--cyan);
+            padding: 40px 20px;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .platform-icons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .platform-icon {
+            font-size: 48px;
+        }
+
+        .footer-source {
+            font-size: 18px;
+            color: var(--cyan);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .footer-note {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .header .subtitle {
+                font-size: 20px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .presenters {
+                gap: 30px;
+            }
+
+            .timeline::before {
+                display: none;
+            }
+
+            .timeline-event::before {
+                left: 20px;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header fade-in">
+            <h1>AMD Next-Gen GPU Technology Breakthrough</h1>
+            <div class="subtitle">Project Amethyst: The Future of Gaming Graphics</div>
+            <div class="date-badge">October 2025 Announcement</div>
+            
+            <div class="presenters">
+                <div class="presenter">
+                    <div class="presenter-icon">👤</div>
+                    <div class="presenter-name">Jack Huynh</div>
+                    <div class="presenter-title">Senior VP &amp; GM, Computing and Graphics</div>
+                    <div class="presenter-company">AMD</div>
+                </div>
+                <div class="presenter">
+                    <div class="presenter-icon">👤</div>
+                    <div class="presenter-name">Mark Cerny</div>
+                    <div class="presenter-title">PS5 Lead Architect</div>
+                    <div class="presenter-company">Sony Interactive Entertainment</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Introduction -->
+        <section class="intro-panel fade-in">
+            <h2>🚀 Revolutionary Partnership</h2>
+            <p>AMD and Sony reveal three revolutionary technologies that could help AMD leapfrog NVIDIA in graphics performance</p>
+            
+            <div class="platform-tags">
+                <span class="platform-tag">PlayStation 6 (primary target)</span>
+                <span class="platform-tag">Future AMD discrete GPUs</span>
+                <span class="platform-tag">Next-gen Xbox (variant)</span>
+                <span class="platform-tag">Potential PlayStation handheld</span>
+            </div>
+            
+            <div class="status-badge">⚙️ In Simulation (as of Oct 2025)</div>
+        </section>
+
+        <h2 class="section-title fade-in">Three Core Technologies</h2>
+
+        <!-- Technology Cards -->
+        <div class="tech-grid">
+            <!-- Radiance Cores -->
+            <div class="tech-card radiance fade-in" onclick="toggleCard(this)" role="button" tabindex="0" aria-label="Expand Radiance Cores details">
+                <div class="tech-icon">⚡</div>
+                <h3 class="tech-name">Radiance Cores</h3>
+                <div class="tech-purpose">Dedicated Ray Tracing Hardware</div>
+                
+                <div class="tech-details">
+                    <div class="tech-section">
+                        <h4>How It Works</h4>
+                        <p>New dedicated hardware block that takes full control of ray traversal - the most compute-heavy part of ray tracing. Operates independently from shader cores, similar to NVIDIA's RT cores.</p>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <h4>Key Benefits</h4>
+                        <ul class="benefits-list">
+                            <li>Real-time ray &amp; path tracing</li>
+                            <li>Frees CPU for geometry &amp; simulation</li>
+                            <li>GPU focuses on shading &amp; lighting</li>
+                            <li>Significant speed boost from hardware traversal</li>
+                            <li>Over 2x RT throughput per CU vs RDNA 3</li>
+                            <li>Cleaner, faster, more efficient pipeline</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="impact-box">
+                        <strong>Impact:</strong> AMD finally catches up to NVIDIA in ray tracing
+                    </div>
+                </div>
+                
+                <div class="expand-hint">Click to expand</div>
+            </div>
+
+            <!-- Neural Arrays -->
+            <div class="tech-card neural fade-in" onclick="toggleCard(this)" role="button" tabindex="0" aria-label="Expand Neural Arrays details">
+                <div class="tech-icon">🔗</div>
+                <h3 class="tech-name">Neural Arrays</h3>
+                <div class="tech-purpose">Infinity Fabric for AI Processing</div>
+                
+                <div class="tech-details">
+                    <div class="tech-section">
+                        <h4>How It Works</h4>
+                        <p>Interconnect system connecting every compute unit together, allowing direct communication without cache. Allows CUs to process large chunks of screen in one go, like a 'single focused AI engine'.</p>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <h4>Key Benefits</h4>
+                        <ul class="benefits-list">
+                            <li>Connects entire compute unit architecture</li>
+                            <li>Direct CU-to-CU communication</li>
+                            <li>Whole new level of ML performance</li>
+                            <li>Enhanced AI upscaling (FSR, PSSR)</li>
+                            <li>Better denoising for ray tracing</li>
+                            <li>Superior ML scalability</li>
+                            <li>Bigger ML models with less overhead</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="impact-box">
+                        <strong>Impact:</strong> Revolutionary AI rendering capabilities
+                    </div>
+                </div>
+                
+                <div class="expand-hint">Click to expand</div>
+            </div>
+
+            <!-- Universal Compression -->
+            <div class="tech-card compression fade-in" onclick="toggleCard(this)" role="button" tabindex="0" aria-label="Expand Universal Compression details">
+                <div class="tech-icon">📦</div>
+                <h3 class="tech-name">Universal Compression</h3>
+                <div class="tech-purpose">All-Data Compression System</div>
+                
+                <div class="tech-details">
+                    <div class="tech-section">
+                        <h4>How It Works</h4>
+                        <p>Evaluates and compresses ALL GPU data types (not just textures like current systems). Only essential bytes sent to memory, dramatically reducing bandwidth usage.</p>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <h4>Key Benefits</h4>
+                        <ul class="benefits-list">
+                            <li>Compresses all GPU data types</li>
+                            <li>~25% reduction in bandwidth usage</li>
+                            <li>Higher frame rates possible</li>
+                            <li>Lower power consumption</li>
+                            <li>Enables detailed 4K+ environments</li>
+                            <li>Greater overall efficiency</li>
+                            <li>More detail without bandwidth increase</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="comparison-text">
+                        Current: Only textures &amp; render targets → New: ALL GPU data types
+                    </div>
+                    
+                    <div class="impact-box">
+                        <strong>Impact:</strong> Game-changing memory efficiency
+                    </div>
+                </div>
+                
+                <div class="expand-hint">Click to expand</div>
+            </div>
+        </div>
+
+        <!-- Technical Images -->
+        <div class="tech-images fade-in">
+            <div class="tech-image-box">
+                <img src="https://pplx-res.cloudinary.com/image/upload/v1760199072/pplx_project_search_images/f6e5c59d923aaf8de54a0074db1145f0e83d557d.png" alt="AMD GPU Architecture Diagram">
+                <div class="tech-image-caption">AMD GPU architecture showing shader engines, compute units, and Infinity Fabric interconnects</div>
+            </div>
+            <div class="tech-image-box">
+                <img src="https://pplx-res.cloudinary.com/image/upload/v1756620957/pplx_project_search_images/d99b92d90e7c3a01016a43a53e9d7cde448a5b3d.png" alt="Neural Network Diagram">
+                <div class="tech-image-caption">Neural network architecture demonstrating interconnected processing units for AI tasks</div>
+            </div>
+            <div class="tech-image-box">
+                <img src="https://pplx-res.cloudinary.com/image/upload/v1754687915/pplx_project_search_images/7b8f98a7bd41ce2746b9e94a4d350c2c401291c9.png" alt="Artificial Neural Network">
+                <div class="tech-image-caption">AI neural network showing data flow from input to output layers</div>
+            </div>
+        </div>
+
+        <!-- Comparison Section -->
+        <section class="comparison-section fade-in">
+            <h2 class="section-title" style="margin-top: 0;">Current vs Future Technology</h2>
+            <div class="comparison-grid">
+                <div class="comparison-column old">
+                    <h4>Current Gen (RDNA 3/4)</h4>
+                    <ul class="comparison-list">
+                        <li>❌ Ray tracing in shader cores</li>
+                        <li>❌ Limited AI interconnect</li>
+                        <li>❌ Texture-only compression</li>
+                        <li>❌ Cache-dependent communication</li>
+                        <li>❌ Higher memory bandwidth usage</li>
+                    </ul>
+                </div>
+                <div class="comparison-column new">
+                    <h4>Future Gen (RDNA 5 with new tech)</h4>
+                    <ul class="comparison-list">
+                        <li>✅ Dedicated Radiance Cores</li>
+                        <li>✅ Neural Arrays interconnect</li>
+                        <li>✅ Universal compression (all data)</li>
+                        <li>✅ Direct CU-to-CU communication</li>
+                        <li>✅ 25% less bandwidth needed</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- RDNA 4 Context -->
+        <section class="rdna4-panel fade-in">
+            <h3>Building on RDNA 4's Foundation</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-label">Performance/CU</div>
+                    <div class="stat-value">Up to 40% higher</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Ray Tracing</div>
+                    <div class="stat-value">2x vs RDNA 3</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">AI Performance</div>
+                    <div class="stat-value">8x INT8 improvement</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">New Features</div>
+                    <div class="stat-value">FP8, structured sparsity</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline -->
+        <h2 class="section-title fade-in">Technology Timeline</h2>
+        <div class="timeline fade-in">
+            <div class="timeline-events">
+                <div class="timeline-event">
+                    <div class="timeline-date">October 2025</div>
+                    <div class="timeline-label">Announcement</div>
+                    <div class="timeline-desc">Technologies revealed (simulation only)</div>
+                </div>
+                <div class="timeline-event">
+                    <div class="timeline-date">June 2025</div>
+                    <div class="timeline-label">RDNA 4 Launch</div>
+                    <div class="timeline-desc">RX 9060 XT available</div>
+                </div>
+                <div class="timeline-event">
+                    <div class="timeline-date">2027-2028</div>
+                    <div class="timeline-label">RDNA 5 &amp; PS6</div>
+                    <div class="timeline-desc">New technologies deployed</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quotes -->
+        <h2 class="section-title fade-in">Key Insights from Leadership</h2>
+        <section class="quotes-section">
+            <div class="quote-box fade-in">
+                <div class="quote-text">Universal Compression delivers new levels of performance with greater efficiency</div>
+                <div class="quote-speaker">— Jack Huynh, AMD SVP</div>
+            </div>
+            <div class="quote-box fade-in">
+                <div class="quote-text">There's a significant speed boost from putting traversal logic in hardware</div>
+                <div class="quote-speaker">— Mark Cerny, Sony PS5 Architect</div>
+            </div>
+            <div class="quote-box fade-in">
+                <div class="quote-text">Trying to brute force ray tracing with raw power alone just doesn't scale</div>
+                <div class="quote-speaker">— Jack Huynh, AMD SVP</div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="platform-icons">
+                <span class="platform-icon" title="PlayStation 6">🎮</span>
+                <span class="platform-icon" title="AMD Radeon">💻</span>
+                <span class="platform-icon" title="Xbox">🎯</span>
+            </div>
+            <div class="footer-source">Project Amethyst - AMD &amp; Sony Partnership</div>
+            <div class="footer-note">Technologies expected in RDNA 5 / UDNA architecture</div>
+        </footer>
+    </div>
+
+    <script>
+        // Toggle card expansion
+        function toggleCard(card) {
+            card.classList.toggle('expanded');
+        }
+
+        // Keyboard support for cards
+        document.querySelectorAll('.tech-card').forEach(card => {
+            card.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleCard(this);
+                }
+            });
+        });
+
+        // Scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Auto-expand first card as example
+        setTimeout(() => {
+            const firstCard = document.querySelector('.tech-card');
+            if (firstCard && window.innerWidth > 768) {
+                firstCard.classList.add('expanded');
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
