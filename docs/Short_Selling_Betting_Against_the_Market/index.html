@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Short Selling: Betting Against the Market</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Short Selling: Betting Against the Market</h1>
+                <p class="subtitle">How Traders Profit When Prices Fall</p>
+                <p class="intro-text">
+                    Imagine making billions when everyone else is losing money. Short selling is a strategy where investors profit from declining prices. 
+                    While most people buy low and sell high, short sellers do the opposite—they sell high first, then buy low later. 
+                    Let's explore how legendary traders like Scott Bessent used this strategy to make fortunes.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- What is Short Selling Section -->
+    <section class="explanation-section">
+        <div class="container">
+            <h2>What is Short Selling?</h2>
+            <p class="section-intro">A simple strategy explained in 6 steps</p>
+            
+            <div class="process-flow">
+                <div class="process-step" data-step="1">
+                    <div class="step-icon">📥</div>
+                    <div class="step-number">1</div>
+                    <h3>Borrow</h3>
+                    <p>Borrow shares from a broker or lender</p>
+                </div>
+                
+                <div class="arrow">→</div>
+                
+                <div class="process-step" data-step="2">
+                    <div class="step-icon">💰</div>
+                    <div class="step-number">2</div>
+                    <h3>Sell</h3>
+                    <p>Immediately sell borrowed shares at current high price</p>
+                </div>
+                
+                <div class="arrow">→</div>
+                
+                <div class="process-step" data-step="3">
+                    <div class="step-icon">⏱️</div>
+                    <div class="step-number">3</div>
+                    <h3>Wait</h3>
+                    <p>Wait for price to fall (the bet)</p>
+                </div>
+                
+                <div class="arrow">→</div>
+                
+                <div class="process-step" data-step="4">
+                    <div class="step-icon">🛒</div>
+                    <div class="step-number">4</div>
+                    <h3>Buy Back</h3>
+                    <p>Buy shares back at lower price</p>
+                </div>
+                
+                <div class="arrow">→</div>
+                
+                <div class="process-step" data-step="5">
+                    <div class="step-icon">📤</div>
+                    <div class="step-number">5</div>
+                    <h3>Return</h3>
+                    <p>Return borrowed shares to lender</p>
+                </div>
+                
+                <div class="arrow">→</div>
+                
+                <div class="process-step" data-step="6">
+                    <div class="step-icon">✅</div>
+                    <div class="step-number">6</div>
+                    <h3>Profit</h3>
+                    <p>Keep the difference as profit</p>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h4>Simple Example:</h4>
+                <div class="example-content">
+                    <div class="example-step">
+                        <span class="example-label">You borrow and sell shares at:</span>
+                        <span class="example-value">$100</span>
+                    </div>
+                    <div class="example-step">
+                        <span class="example-label">Price falls to:</span>
+                        <span class="example-value">$70</span>
+                    </div>
+                    <div class="example-step">
+                        <span class="example-label">You buy back at:</span>
+                        <span class="example-value">$70</span>
+                    </div>
+                    <div class="example-step profit-highlight">
+                        <span class="example-label">Your profit:</span>
+                        <span class="example-value">$30 per share</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Historical Success Stories Timeline -->
+    <section class="timeline-section">
+        <div class="container">
+            <h2>Legendary Short Selling Successes</h2>
+            <p class="section-intro">Historical examples of traders who made fortunes betting against the market</p>
+            
+            <div class="timeline">
+                <div class="timeline-item" data-market="stocks">
+                    <div class="timeline-marker">📈</div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1929</div>
+                        <h3>Jesse Livermore</h3>
+                        <div class="profit-badge clickable" data-details="livermore">$100 million</div>
+                        <div class="market-tag">Stock Market</div>
+                        <p>Predicted and shorted the stock market before the Great Depression crash</p>
+                        <div class="details-popup" id="details-livermore">
+                            <strong>The Trade:</strong> Livermore recognized signs of market weakness in 1929 and built massive short positions. When the market crashed in October, his positions generated approximately $100 million in profits (equivalent to over $1.5 billion today).
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-market="currency">
+                    <div class="timeline-marker">💷</div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1992</div>
+                        <h3>George Soros &amp; Scott Bessent</h3>
+                        <div class="profit-badge clickable" data-details="soros">$1+ billion</div>
+                        <div class="market-tag">Currency</div>
+                        <p>Shorted British Pound on 'Black Wednesday', forcing UK out of European Exchange Rate Mechanism</p>
+                        <div class="details-popup" id="details-soros">
+                            <strong>The Trade:</strong> Soros and Bessent bet that the British government couldn't maintain the pound's value within required limits. They borrowed and sold £10 billion worth of pounds. When the UK was forced to exit the exchange rate mechanism, the pound plummeted, generating over $1 billion in profit.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-market="housing">
+                    <div class="timeline-marker">🏠</div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2008</div>
+                        <h3>Michael Burry</h3>
+                        <div class="profit-badge clickable" data-details="burry">$700+ million</div>
+                        <div class="market-tag">Housing/Mortgages</div>
+                        <p>Shorted subprime mortgage bonds using credit default swaps before housing crisis</p>
+                        <div class="details-popup" id="details-burry">
+                            <strong>The Trade:</strong> Burry spent years analyzing mortgage data and discovered that subprime mortgages were likely to default. He used credit default swaps to bet against mortgage-backed securities, generating $700+ million when the housing market collapsed.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-market="housing">
+                    <div class="timeline-marker">🏚️</div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2008</div>
+                        <h3>John Paulson</h3>
+                        <div class="profit-badge clickable" data-details="paulson">$15+ billion</div>
+                        <div class="market-tag">Housing/Mortgages</div>
+                        <p>Massive bet against housing market and mortgage-backed securities</p>
+                        <div class="details-popup" id="details-paulson">
+                            <strong>The Trade:</strong> Paulson's hedge fund made one of history's greatest trades by betting against the housing bubble. His fund personally earned $4 billion, while investors gained $15+ billion total from shorting mortgage securities.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scott Bessent Spotlight -->
+    <section class="bessent-section">
+        <div class="container">
+            <h2>Scott Bessent: A Closer Look</h2>
+            <p class="section-intro">From Breaking the Bank of England to US Treasury Secretary Nominee</p>
+            
+            <div class="bessent-grid">
+                <div class="bessent-card highlight-card">
+                    <div class="card-icon">⭐</div>
+                    <h3>1992: Breaking the Bank of England</h3>
+                    <p><strong>Role:</strong> Key strategist in George Soros's legendary British Pound trade</p>
+                    <p><strong>Contribution:</strong> As head of Soros Fund Management's London office, Bessent analyzed the British housing market and discovered its exposure to interest rate changes due to variable-rate mortgages. This insight helped convince Soros to make the massive bet.</p>
+                    <p><strong>Result:</strong> $1+ billion profit when the pound collapsed</p>
+                </div>
+
+                <div class="bessent-card">
+                    <div class="card-icon">💴</div>
+                    <h3>Japanese Yen Short (2013)</h3>
+                    <p>Anticipated Japan's aggressive monetary easing policy and shorted the yen</p>
+                    <p><strong>Profit:</strong> $1 billion</p>
+                </div>
+
+                <div class="bessent-card">
+                    <div class="card-icon">🇬🇧</div>
+                    <h3>Brexit Pound Decline (2016)</h3>
+                    <p>Successfully predicted the pound's decline following the Brexit referendum</p>
+                    <p><strong>Result:</strong> Significant gains</p>
+                </div>
+
+                <div class="bessent-card">
+                    <div class="card-icon">🗳️</div>
+                    <h3>Election Market Moves</h3>
+                    <p>Correctly predicted market rallies following the 2016 and 2024 US elections</p>
+                    <p><strong>Strategy:</strong> Positioned for growth across various asset classes</p>
+                </div>
+
+                <div class="bessent-card current-role">
+                    <div class="card-icon">🏛️</div>
+                    <h3>Current Role (2025)</h3>
+                    <p><strong>US Treasury Secretary Nominee</strong></p>
+                    <p>From legendary trader to top government economic position, Bessent brings decades of market expertise to public service</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Principles Section -->
+    <section class="principles-section">
+        <div class="container">
+            <h2>Key Principles of Successful Short Selling</h2>
+            <p class="section-intro">What separates successful short sellers from the rest</p>
+            
+            <div class="principles-grid">
+                <div class="principle-card">
+                    <div class="principle-icon">⏰</div>
+                    <h3>Market Timing</h3>
+                    <p>Enter positions when markets are overvalued or facing known risks. The best short sellers identify bubbles before they burst.</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-icon">🛡️</div>
+                    <h3>Risk Management</h3>
+                    <p>Never risk more than you can afford to lose. Short selling has unlimited potential losses if prices rise instead of fall.</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-icon">🔍</div>
+                    <h3>Deep Research</h3>
+                    <p>Conduct thorough analysis of market fundamentals and vulnerabilities. Scott Bessent studied British mortgage data for months.</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-icon">⌛</div>
+                    <h3>Patience</h3>
+                    <p>Wait for the right opportunities, don't force trades. Michael Burry waited years for his housing bet to pay off.</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-icon">💪</div>
+                    <h3>Conviction</h3>
+                    <p>Have strong belief in your analysis to withstand volatility. Markets can remain irrational longer than you can remain solvent.</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <div class="warning-icon">⚠️</div>
+                <div class="warning-content">
+                    <h4>Important Note:</h4>
+                    <p>Short selling is extremely risky and not suitable for most investors. When you buy a stock, the most you can lose is 100% of your investment. When you short a stock, potential losses are unlimited because prices can theoretically rise infinitely. The traders featured here are professionals with decades of experience and substantial resources.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>This infographic is for educational purposes only and does not constitute financial advice.</p>
+            <p>© 2025 Short Selling Infographic</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
