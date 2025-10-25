@@ -1,0 +1,129 @@
+{
+  "title": "AMD Next-Gen GPU Technology Breakthrough",
+  "subtitle": "Project Amethyst: AMD & Sony Partnership for Future Graphics",
+  "announcement_details": {
+    "presenters": [
+      {
+        "name": "Jack Huynh",
+        "title": "Senior VP & GM of Computing and Graphics, AMD"
+      },
+      {
+        "name": "Mark Cerny",
+        "title": "PS5 Lead Architect, Sony"
+      }
+    ],
+    "date": "October 2025",
+    "partnership": "Project Amethyst - AMD & Sony collaboration"
+  },
+  "three_core_technologies": [
+    {
+      "name": "1. Radiance Cores",
+      "icon": "\u26a1",
+      "purpose": "Dedicated Ray Tracing Hardware",
+      "description": "New dedicated hardware block specifically for ray traversal - the most computationally expensive part of ray tracing pipeline",
+      "benefits": [
+        "Real-time ray tracing & path tracing",
+        "Frees up CPU for geometry & simulation",
+        "GPU focuses on shading & lighting",
+        "Similar to NVIDIA's RT cores",
+        "Significant speed boost from hardware traversal logic",
+        "Over 2x RT throughput per compute unit vs RDNA 3"
+      ],
+      "impact": "AMD catching up to NVIDIA in ray tracing performance",
+      "technical_note": "Takes full control of ray traversal independently from shader cores"
+    },
+    {
+      "name": "2. Neural Arrays",
+      "icon": "\ud83d\udd17",
+      "purpose": "Interconnect for AI Processing",
+      "description": "Infinity Fabric-like interconnect connecting every compute unit together, allowing direct communication without using cache",
+      "benefits": [
+        "Connects entirety of compute units together",
+        "Allows CUs to talk to each other directly",
+        "Processes large chunks of screen in one go",
+        "Enhanced AI upscaling performance",
+        "Better machine learning scalability",
+        "Improved denoising for ray tracing",
+        "Whole new level of ML performance"
+      ],
+      "impact": "Revolutionary AI rendering capabilities",
+      "technical_note": "Not just AI portions - connects entire compute unit architecture"
+    },
+    {
+      "name": "3. Universal Compression",
+      "icon": "\ud83d\udce6",
+      "purpose": "All-Data Compression System",
+      "description": "Evaluates and compresses ALL available data within GPU to dramatically reduce memory bandwidth usage",
+      "benefits": [
+        "Compresses all GPU data types (not just textures)",
+        "Dramatically reduces memory bandwidth usage",
+        "Higher frame rates possible",
+        "Greater efficiency & lower power consumption",
+        "Enables 4K+ textures & detailed environments",
+        "~25% reduction in fabric bandwidth usage",
+        "Only essential bytes sent to memory"
+      ],
+      "impact": "Game-changing memory bandwidth efficiency",
+      "technical_note": "Goes far beyond current Delta Color Compression used by AMD/Sony/NVIDIA",
+      "comparison": "Current: Only textures & render targets | New: ALL GPU data types"
+    }
+  ],
+  "context_and_significance": {
+    "current_gen": "RDNA 4 (RX 9000 Series)",
+    "future_gen": "RDNA 5 / UDNA - where these technologies will debut",
+    "platforms": [
+      "PlayStation 6 (primary target)",
+      "Future AMD discrete GPUs",
+      "Next-gen Xbox (likely variant)",
+      "Potential PlayStation handheld"
+    ],
+    "competitive_position": "Could help AMD leapfrog NVIDIA in all areas"
+  },
+  "rdna4_baseline": {
+    "improvements": [
+      "Up to 40% higher performance per compute unit",
+      "3rd generation ray tracing accelerators",
+      "2nd generation AI accelerators",
+      "Out-of-order memory access",
+      "Dynamic register allocation",
+      "FP8 & structured sparsity support",
+      "Up to 8x INT8 AI performance vs RDNA 3"
+    ]
+  },
+  "timeline": {
+    "current_status": "Only exists in simulation (October 2025)",
+    "rdna4_launch": "RX 9060 XT launching June 2025",
+    "future_deployment": "RDNA 5 / UDNA for PS6 & future GPUs",
+    "ps6_timeframe": "Expected 2027-2028"
+  },
+  "key_quotes": [
+    {
+      "speaker": "Jack Huynh",
+      "quote": "Current GPU memory bandwidth limitations hinder the seamless adoption of next-gen rendering techniques"
+    },
+    {
+      "speaker": "Mark Cerny",
+      "quote": "There's a significant speed boost that comes from putting the traversal logic in hardware"
+    },
+    {
+      "speaker": "Jack Huynh",
+      "quote": "Universal Compression delivers new levels of performance with greater efficiency"
+    }
+  ],
+  "visual_elements": {
+    "color_scheme": [
+      "#ED1C24",
+      "#000000",
+      "#FFFFFF",
+      "#00A3E0"
+    ],
+    "icons_needed": [
+      "ray tracing",
+      "neural network",
+      "compression",
+      "GPU",
+      "PlayStation",
+      "performance chart"
+    ]
+  }
+}
