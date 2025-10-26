@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Founder Market Fit vs. Founder Ethos Fit</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0f0f1e;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Section */
+        .header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
+            top: -100px;
+            right: -100px;
+            border-radius: 50%;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 107, 157, 0.1) 0%, transparent 70%);
+            bottom: -50px;
+            left: -50px;
+            border-radius: 50%;
+        }
+
+        .header-icon {
+            font-size: 100px;
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d9ff 0%, #ff6b9d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .subtitle {
+            font-size: 1.5rem;
+            color: #ffd700;
+            font-weight: 400;
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Section Base Styles */
+        section {
+            padding: 80px 0;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #00d9ff;
+        }
+
+        .section-icon {
+            font-size: 60px;
+            text-align: center;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        /* Two Fits Comparison */
+        .two-fits {
+            background: #1a1a2e;
+        }
+
+        .fits-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .fit-card {
+            background: #252541;
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .fit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .fit-card.market-fit {
+            border-color: #00d9ff;
+        }
+
+        .fit-card.ethos-fit {
+            border-color: #ff6b9d;
+        }
+
+        .fit-card-icon {
+            font-size: 80px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .fit-card h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .market-fit h3 {
+            color: #00d9ff;
+        }
+
+        .ethos-fit h3 {
+            color: #ff6b9d;
+        }
+
+        .fit-card .definition {
+            font-size: 1.2rem;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ffd700;
+            line-height: 1.5;
+        }
+
+        .fit-card ul {
+            list-style: none;
+        }
+
+        .fit-card li {
+            margin-bottom: 15px;
+            padding-left: 40px;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .fit-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .market-fit li::before {
+            color: #00d9ff;
+        }
+
+        .ethos-fit li::before {
+            color: #ff6b9d;
+        }
+
+        /* Case Study Timeline */
+        .case-study {
+            background: #0f0f1e;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 60px auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(180deg, #00d9ff 0%, #ff6b9d 50%, #ffd700 100%);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: calc(50% - 40px);
+            background: #252541;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: auto;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: #252541;
+            border-radius: 50%;
+            border: 4px solid #00d9ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            z-index: 2;
+        }
+
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #00d9ff;
+            margin-bottom: 15px;
+        }
+
+        .timeline-stats {
+            list-style: none;
+        }
+
+        .timeline-stats li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        .timeline-stats li::before {
+            content: '▪';
+            position: absolute;
+            left: 0;
+            color: #ff6b9d;
+            font-size: 1.2rem;
+        }
+
+        /* Viral Growth Strategy */
+        .viral-strategy {
+            background: #1a1a2e;
+        }
+
+        .strategy-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .strategy-step {
+            background: #252541;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .strategy-step:hover {
+            border-color: #7b68ee;
+            transform: scale(1.05);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #00d9ff, #7b68ee);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .step-icon {
+            font-size: 50px;
+            margin: 20px 0;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #00d9ff;
+            margin-bottom: 10px;
+        }
+
+        .step-description {
+            font-size: 1rem;
+            color: #ffffff;
+            opacity: 0.9;
+        }
+
+        /* Revenue Model */
+        .revenue-model {
+            background: #0f0f1e;
+        }
+
+        .revenue-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .revenue-card {
+            background: #252541;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid;
+        }
+
+        .revenue-card:nth-child(1) { border-color: #00d9ff; }
+        .revenue-card:nth-child(2) { border-color: #ffd700; }
+        .revenue-card:nth-child(3) { border-color: #ff4757; }
+
+        .revenue-card-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .revenue-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #00d9ff;
+        }
+
+        .revenue-card p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .revenue-highlight {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        /* Ethos Fit Dilemma */
+        .ethos-dilemma {
+            background: #1a1a2e;
+        }
+
+        .dilemma-container {
+            max-width: 1000px;
+            margin: 60px auto;
+            background: #252541;
+            padding: 50px;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .dilemma-question {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #ffd700;
+            margin-bottom: 50px;
+            padding: 30px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 15px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .branches {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .branch {
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .branch.yes {
+            background: rgba(0, 255, 136, 0.1);
+            border: 2px solid #00ff88;
+        }
+
+        .branch.no {
+            background: rgba(255, 71, 87, 0.1);
+            border: 2px solid #ff4757;
+        }
+
+        .branch-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .branch h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .branch.yes h3 { color: #00ff88; }
+        .branch.no h3 { color: #ff4757; }
+
+        .branch ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .branch li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .branch.yes li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .branch.no li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: #ff4757;
+            font-weight: bold;
+        }
+
+        .dilemma-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.3rem;
+            color: #7b68ee;
+            font-weight: 600;
+        }
+
+        /* Key Statistics */
+        .key-stats {
+            background: #0f0f1e;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #252541 0%, #1a1a2e 100%);
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            border-color: #00d9ff;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d9ff 0%, #ff6b9d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .stat-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #ffffff;
+            opacity: 0.9;
+        }
+
+        /* Broader Context */
+        .broader-context {
+            background: #1a1a2e;
+        }
+
+        .context-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .context-card {
+            background: #252541;
+            padding: 30px;
+            border-radius: 15px;
+            border-top: 4px solid;
+        }
+
+        .context-card:nth-child(1) { border-color: #ff6b9d; }
+        .context-card:nth-child(2) { border-color: #ffd700; }
+        .context-card:nth-child(3) { border-color: #7b68ee; }
+
+        .context-card-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .context-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #00d9ff;
+        }
+
+        .context-card ul {
+            list-style: none;
+        }
+
+        .context-card li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .context-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #ff6b9d;
+            font-size: 1.5rem;
+        }
+
+        /* Key Takeaways */
+        .key-takeaways {
+            background: #0f0f1e;
+        }
+
+        .takeaways-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .takeaway-card {
+            background: #252541;
+            padding: 30px;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .takeaway-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .takeaway-number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: rgba(0, 217, 255, 0.2);
+            position: absolute;
+            top: -10px;
+            right: 10px;
+        }
+
+        .takeaway-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #00d9ff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .takeaway-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-summary {
+            font-size: 1.8rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #00d9ff 0%, #ff6b9d 50%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .footer-date {
+            color: #7b68ee;
+            font-size: 1rem;
+            margin-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                flex-direction: row !important;
+            }
+
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: auto !important;
+            }
+
+            .timeline-marker {
+                left: 30px;
+                transform: translateX(0);
+            }
+
+            .fits-container,
+            .strategy-steps,
+            .revenue-grid,
+            .stats-grid,
+            .context-grid,
+            .takeaways-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dilemma-container {
+                padding: 30px 20px;
+            }
+
+            .dilemma-question {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-20px) translateX(-50%); }
+            60% { transform: translateY(-10px) translateX(-50%); }
+        }
+
+        .scroll-indicator span {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-icon">💡</div>
+        <h1>Founder Market Fit vs. Founder Ethos Fit</h1>
+        <p class="subtitle">Understanding What It Really Takes to Build a Startup</p>
+        <div class="scroll-indicator">
+            <span>⬇</span>
+        </div>
+    </header>
+
+    <!-- Section 1: The Two Fits -->
+    <section class="two-fits">
+        <div class="container">
+            <span class="section-icon">⚖️</span>
+            <h2 class="section-title">The Two Types of Fit</h2>
+            <div class="fits-container">
+                <div class="fit-card market-fit">
+                    <div class="fit-card-icon">🎯</div>
+                    <h3>Founder Market Fit</h3>
+                    <p class="definition">"Do you deeply understand the user and the problem?"</p>
+                    <ul>
+                        <li>Deep knowledge of target market</li>
+                        <li>Understanding customer pain points</li>
+                        <li>Domain expertise and experience</li>
+                        <li>Ability to anticipate market needs</li>
+                    </ul>
+                </div>
+                <div class="fit-card ethos-fit">
+                    <div class="fit-card-icon">❤️</div>
+                    <h3>Founder Ethos Fit</h3>
+                    <p class="definition">"Can you live with what it takes to win here?"</p>
+                    <ul>
+                        <li>Personal values alignment</li>
+                        <li>Moral boundaries you won't cross</li>
+                        <li>Long-term peace of mind</li>
+                        <li>Personality fit with tactics required</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Case Study - Nikita Bier -->
+    <section class="case-study">
+        <div class="container">
+            <span class="section-icon">🚀</span>
+            <h2 class="section-title">The Master of Viral Growth: Nikita Bier's Story</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">📱</div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2017 - TBH App Launch</div>
+                        <h3 class="timeline-title">The First Viral Hit</h3>
+                        <ul class="timeline-stats">
+                            <li>5 million downloads in 2 months</li>
+                            <li>6.4 million total users</li>
+                            <li>Acquired by Facebook for $30M+</li>
+                            <li>Pre-revenue at acquisition</li>
+                            <li>Shut down in 9 months due to low usage</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">🏢</div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2017-2021 - Facebook Years</div>
+                        <h3 class="timeline-title">Learning &amp; Planning</h3>
+                        <ul class="timeline-stats">
+                            <li>Required non-compete period</li>
+                            <li>3-4 years at Facebook</li>
+                            <li>Preparing for the next launch</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">⛽</div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2022 - Gas App Launch</div>
+                        <h3 class="timeline-title">Lightning Strikes Twice</h3>
+                        <ul class="timeline-stats">
+                            <li>Replicated TBH strategy</li>
+                            <li>10 million downloads in 3 months</li>
+                            <li>$7 million revenue in 5 months</li>
+                            <li>1 in 3 US teens installed it</li>
+                            <li>Acquired by Discord (January 2023)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: The Viral Growth Strategy -->
+    <section class="viral-strategy">
+        <div class="container">
+            <span class="section-icon">🧠</span>
+            <h2 class="section-title">The 'Psychological Trick' That Worked Twice</h2>
+            <div class="strategy-steps">
+                <div class="strategy-step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">🎯</div>
+                    <h3 class="step-title">TARGET</h3>
+                    <p class="step-description">Identify high school students on Instagram who list school name in bio</p>
+                </div>
+                <div class="strategy-step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">🔒</div>
+                    <h3 class="step-title">CREATE MYSTERY</h3>
+                    <p class="step-description">Create private Instagram account for each school with mysterious bio: "You've been invited..."</p>
+                </div>
+                <div class="strategy-step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">👥</div>
+                    <h3 class="step-title">FOLLOW EVERYONE</h3>
+                    <p class="step-description">Follow all students with school name listed</p>
+                </div>
+                <div class="strategy-step">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">⏰</div>
+                    <h3 class="step-title">BUILD ANTICIPATION</h3>
+                    <p class="step-description">Wait 24 hours for follow-back requests and curiosity to build</p>
+                </div>
+                <div class="strategy-step">
+                    <div class="step-number">5</div>
+                    <div class="step-icon">⚡</div>
+                    <h3 class="step-title">GOLDEN LAUNCH HOUR</h3>
+                    <p class="step-description">Reveal app at 4 PM when students leave school. Add app store URL, make account public</p>
+                </div>
+                <div class="strategy-step">
+                    <div class="step-number">6</div>
+                    <div class="step-icon">📈</div>
+                    <h3 class="step-title">VIRAL SPREAD</h3>
+                    <p class="step-description">Word spreads through school quickly. FOMO drives more downloads. Repeat for next school.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: The Revenue Model -->
+    <section class="revenue-model">
+        <div class="container">
+            <span class="section-icon">💰</span>
+            <h2 class="section-title">How Gas Made $7M in 5 Months</h2>
+            <div class="revenue-grid">
+                <div class="revenue-card">
+                    <div class="revenue-card-icon">💬</div>
+                    <h3>The App Concept</h3>
+                    <p>Anonymous compliment polls about classmates</p>
+                    <p>Questions like "Who has the best smile?"</p>
+                    <p>Winners get anonymous "flame" notifications</p>
+                    <p>From vague sources: "boy in 10th grade"</p>
+                </div>
+                <div class="revenue-card">
+                    <div class="revenue-card-icon">🔓</div>
+                    <h3>The Monetization</h3>
+                    <p><strong>"God Mode" subscription</strong></p>
+                    <p>💵 $6.99/month or $39.99/year</p>
+                    <p><strong>Feature:</strong> Hints about who complimented you</p>
+                    <div class="revenue-highlight">
+                        <strong>Psychology:</strong> Exploiting teen curiosity and vulnerability
+                    </div>
+                </div>
+                <div class="revenue-card">
+                    <div class="revenue-card-icon">⚖️</div>
+                    <h3>The Ethics Question</h3>
+                    <p>⚠️ Preying on adolescent insecurities</p>
+                    <p>⚠️ Monetizing need to know "who said what"</p>
+                    <p>⚠️ FOMO manipulation targeting vulnerable age group</p>
+                    <p>⚠️ Mental health concerns with Gen Z</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: The Ethos Fit Dilemma -->
+    <section class="ethos-dilemma">
+        <div class="container">
+            <span class="section-icon">🚦</span>
+            <h2 class="section-title">Where Founder Ethos Fit Becomes Critical</h2>
+            <div class="dilemma-container">
+                <div class="dilemma-question">
+                    "Could you sleep at night using this revenue tactic?"
+                </div>
+                <div class="branches">
+                    <div class="branch yes">
+                        <div class="branch-icon">✅</div>
+                        <h3>YES</h3>
+                        <ul>
+                            <li>This aligns with your values</li>
+                            <li>You can scale with clear conscience</li>
+                            <li>Long-term sustainable for YOU</li>
+                            <li>Many founders are fine with this</li>
+                        </ul>
+                    </div>
+                    <div class="branch no">
+                        <div class="branch-icon">❌</div>
+                        <h3>NO</h3>
+                        <ul>
+                            <li>Crosses your moral boundaries</li>
+                            <li>Would keep you up at night</li>
+                            <li>Not personally sustainable</li>
+                            <li>Need different approach even if it works</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="dilemma-footer">
+                    Both answers are valid - it's about YOUR personal ethos
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Key Statistics -->
+    <section class="key-stats">
+        <div class="container">
+            <span class="section-icon">📊</span>
+            <h2 class="section-title">The Numbers Behind the Story</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-number">5M</div>
+                    <div class="stat-label">Downloads in 2 months (TBH)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💵</div>
+                    <div class="stat-number">$30M</div>
+                    <div class="stat-label">Facebook acquisition price</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-number">$7M</div>
+                    <div class="stat-label">Gas revenue in 5 months</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-number">1 in 3</div>
+                    <div class="stat-label">US teens used Gas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⏰</div>
+                    <div class="stat-number">4PM</div>
+                    <div class="stat-label">The "Golden Launch Hour"</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🚫</div>
+                    <div class="stat-number">$0</div>
+                    <div class="stat-label">Marketing budget spent</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Broader Context -->
+    <section class="broader-context">
+        <div class="container">
+            <span class="section-icon">🧠❤️</span>
+            <h2 class="section-title">The Mental Health Context</h2>
+            <div class="context-grid">
+                <div class="context-card">
+                    <div class="context-card-icon">📱</div>
+                    <h3>Gen Z &amp; Social Media</h3>
+                    <ul>
+                        <li>3 in 10 teens report poor mental health</li>
+                        <li>1 in 5 contemplated suicide (2021)</li>
+                        <li>91% experienced anxiety symptoms</li>
+                        <li>Higher FOMO in Gen Z vs other generations</li>
+                        <li>2h 43min daily on social media</li>
+                    </ul>
+                </div>
+                <div class="context-card">
+                    <div class="context-card-icon">⚠️</div>
+                    <h3>Ethical Growth Concerns</h3>
+                    <ul>
+                        <li>Exploiting cognitive biases</li>
+                        <li>FOMO-based manipulation</li>
+                        <li>Privacy concerns with teen data</li>
+                        <li>Long-term trust erosion</li>
+                        <li>Impact on vulnerable age groups</li>
+                    </ul>
+                </div>
+                <div class="context-card">
+                    <div class="context-card-icon">📋</div>
+                    <h3>Viral Marketing Ethics</h3>
+                    <ul>
+                        <li>Transparency vs. manipulation</li>
+                        <li>Short-term gains vs. long-term trust</li>
+                        <li>Legal compliance vs. ethical practice</li>
+                        <li>Consumer autonomy vs. persuasion</li>
+                        <li>Responsibility to vulnerable users</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Key Takeaways -->
+    <section class="key-takeaways">
+        <div class="container">
+            <span class="section-icon">🎓</span>
+            <h2 class="section-title">What Can We Learn?</h2>
+            <div class="takeaways-grid">
+                <div class="takeaway-card">
+                    <div class="takeaway-number">1</div>
+                    <h3>Market Fit Isn't Enough</h3>
+                    <p>Having founder-market fit (understanding the user) is necessary but not sufficient for long-term success and personal fulfillment.</p>
+                </div>
+                <div class="takeaway-card">
+                    <div class="takeaway-number">2</div>
+                    <h3>Know Your Boundaries</h3>
+                    <p>Every founder has different ethical boundaries. What works for one person may be morally impossible for another.</p>
+                </div>
+                <div class="takeaway-card">
+                    <div class="takeaway-number">3</div>
+                    <h3>Success Has Many Paths</h3>
+                    <p>Nikita Bier proved viral growth is possible - but his methods require a specific personality type to execute.</p>
+                </div>
+                <div class="takeaway-card">
+                    <div class="takeaway-number">4</div>
+                    <h3>Ethos Fit Prevents Burnout</h3>
+                    <p>Working against your values leads to burnout, even if the business succeeds financially.</p>
+                </div>
+                <div class="takeaway-card">
+                    <div class="takeaway-number">5</div>
+                    <h3>Ask Before Building</h3>
+                    <p>Before choosing a business model, ask: "Can I live with what it takes to win here?"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-summary">
+                Build the startup that fits both your market understanding AND your personal values
+            </div>
+            <p>Success without personal alignment is unsustainable.</p>
+            <div class="footer-date">Educational Infographic • October 2025</div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Smooth scroll for better UX
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add hover effect to cards
+        const cards = document.querySelectorAll('.fit-card, .stat-card, .takeaway-card, .context-card, .revenue-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transition = 'all 0.3s ease';
+            });
+        });
+
+        // Counter animation for stats
+        function animateCounter(element, target) {
+            const duration = 2000;
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.dataset.animated) {
+                    entry.target.dataset.animated = 'true';
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const text = stat.textContent;
+                        // Keep original text with formatting
+                        stat.style.opacity = '0';
+                        setTimeout(() => {
+                            stat.style.opacity = '1';
+                            stat.style.transition = 'opacity 0.5s ease';
+                        }, 300);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.key-stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Add parallax effect to header
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const header = document.querySelector('.header');
+            if (header && scrolled < window.innerHeight) {
+                header.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Timeline animation
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateX(0)';
+                    }, index * 200);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.timeline-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = index % 2 === 0 ? 'translateX(-50px)' : 'translateX(50px)';
+            item.style.transition = 'all 0.6s ease';
+            timelineObserver.observe(item);
+        });
+
+        // Strategy steps animation
+        const stepsObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.strategy-step').forEach(step => {
+            step.style.opacity = '0';
+            step.style.transform = 'translateY(30px)';
+            step.style.transition = 'all 0.5s ease';
+            stepsObserver.observe(step);
+        });
+    </script>
+</body>
+</html>
