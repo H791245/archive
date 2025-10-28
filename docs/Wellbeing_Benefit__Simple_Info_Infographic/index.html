@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Wellbeing Benefit — Simple Info Infographic</title>
+<style>
+  :root{
+    --bg:#f4fbff;
+    --card:#ffffff;
+    --accent:#0ea5e9;
+    --accent2:#7dd3fc;
+    --muted:#475569;
+    --good:#16a34a;
+    --warning:#f59e0b;
+    --glass: rgba(14,165,233,0.08);
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  * {box-sizing: border-box}
+  body{margin:0;background:linear-gradient(180deg,#eaf8ff, #f4fbff);color:#072b40}
+  .wrap{max-width:980px;margin:28px auto;padding:20px;}
+  header{display:flex;gap:16px;align-items:center}
+  .logo{width:68px;height:68px;border-radius:14px;background:linear-gradient(180deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:34px;color:white;box-shadow:0 6px 18px rgba(14,165,233,0.18)}
+  h1{margin:0;font-size:22px}
+  p.lead{margin:6px 0 0;color:var(--muted)}
+  .grid{display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:18px}
+  .card{background:var(--card);border-radius:12px;padding:14px;box-shadow:0 8px 30px rgba(7,43,64,0.06);border:1px solid rgba(2,6,23,0.03)}
+  .big{font-size:18px;font-weight:700;color:#023047}
+  .step{display:flex;gap:12px;align-items:flex-start}
+  .step .num{width:44px;height:44px;border-radius:10px;background:var(--glass);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--accent)}
+  .step p{margin:0;color:var(--muted);line-height:1.45}
+  .examples{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+  .pill{background:linear-gradient(90deg,#e6f9ff,#f2fcff);padding:10px;border-radius:10px;border:1px solid rgba(14,165,233,0.08);display:flex;justify-content:space-between;align-items:center}
+  .pill .left{display:flex;gap:10px;align-items:center}
+  .icon{width:48px;height:48px;border-radius:10px;background:linear-gradient(180deg,#fff,#f7feff);display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 5px 14px rgba(2,6,23,0.04)}
+  .btn{background:var(--accent);color:white;padding:8px 12px;border-radius:8px;border:none;cursor:pointer;font-weight:700}
+  .small{font-size:13px;color:var(--muted)}
+  .right-column{display:flex;flex-direction:column;gap:12px}
+  .faq .q{cursor:pointer;padding:10px;border-radius:8px;border:1px dashed rgba(7,43,64,0.06);display:flex;justify-content:space-between;align-items:center}
+  .hidden{display:none}
+  .badge{font-size:12px;padding:6px 8px;border-radius:999px;background:rgba(16,185,129,0.12);color:var(--good);font-weight:700}
+  .warning{background:rgba(245,158,11,0.10);color:var(--warning);padding:8px;border-radius:8px;font-weight:700}
+  .example-visual{display:flex;gap:10px;align-items:center}
+  .coin{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#2b2b2b;background:linear-gradient(180deg,#ffd48a,#ffb84d);box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+  .footer{margin-top:16px;color:var(--muted);font-size:13px}
+  .learnmore{display:flex;flex-direction:column;gap:8px}
+  .usage-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+  .usage-item{background:linear-gradient(180deg,#fbfeff,#f8feff);padding:8px;border-radius:8px;border:1px solid rgba(2,6,23,0.03);display:flex;gap:8px;align-items:center}
+  .sparkle{font-size:18px;color:var(--accent)}
+  @media(max-width:920px){
+    .grid{grid-template-columns:1fr}
+    .right-column{order:2}
+  }
+  /* small animations */
+  .pop {transform: translateY(-6px); transition: transform .25s ease}
+  .pulse {animation: pulse 1.8s infinite}
+  @keyframes pulse {
+    0%{transform:scale(1)}
+    50%{transform:scale(1.03)}
+    100%{transform:scale(1)}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">💚</div>
+      <div>
+        <h1>Wellbeing Fiscal Arrangement — How to use it (Super simple)</h1>
+        <p class="lead">Short, friendly guide that explains what the benefit is, how to use it, and what good things (and things to watch) happen. </p>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- left main content -->
+      <div class="card">
+        <div class="big">What is this? (Imagine it like a helpful swap)</div>
+        <p class="small" style="margin-top:8px">Instead of paying taxes on some of your salary and then buying a gym membership or a bike with the rest, you tell the company: "Please use some of my salary to pay the gym for me before tax." The company does that and you pay less tax — so you save money.</p>
+
+        <hr style="margin:12px 0;border:none;border-top:1px solid rgba(7,43,64,0.04)">
+
+        <div class="big">How to use it — 4 easy steps</div>
+        <div style="margin-top:10px">
+          <div class="step"><div class="num">1</div><p>Go to <strong>MyBenefits</strong> (the company site where you pick benefits).</p></div>
+          <div class="step" style="margin-top:8px"><div class="num">2</div><p>Pick a wellbeing thing you want (example: sports, bike, desk chair, health check).</p></div>
+          <div class="step" style="margin-top:8px"><div class="num">3</div><p>Choose to <strong>pay using the Wellbeing Fiscal Arrangement</strong> — that means part of your gross salary or extra holiday days will be used.</p></div>
+          <div class="step" style="margin-top:8px"><div class="num">4</div><p>Company gives you that item or pays the provider, and your taxes are lower — you keep more money overall.</p></div>
+        </div>
+
+        <div style="margin-top:12px" class="big">Kid-friendly example (cookie monster 🍪)</div>
+        <div style="margin-top:8px" class="pill">
+          <div class="left">
+            <div class="icon">🧸</div>
+            <div>
+              <div style="font-weight:700">Allowance example</div>
+              <div class="small">You have €3 allowance. Cookie monster (tax) eats 20%.</div>
+            </div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-weight:800">Result:</div>
+            <div class="small">Swap €1 before the cookie — cookie eats less — you keep more to buy your toy.</div>
+          </div>
+        </div>
+
+        <hr style="margin:12px 0;border:none;border-top:1px solid rgba(7,43,64,0.04)">
+
+        <div class="big">What you can use it for</div>
+        <div class="usage-list">
+          <div class="usage-item"><div class="icon">🏋️</div><div>Sports & gym memberships</div></div>
+          <div class="usage-item"><div class="icon">🚴</div><div>Bicycles & e-bikes</div></div>
+          <div class="usage-item"><div class="icon">🪑</div><div>Home office furniture</div></div>
+          <div class="usage-item"><div class="icon">📱</div><div>Phones, laptops (communication devices)</div></div>
+          <div class="usage-item"><div class="icon">🩺</div><div>Health checks</div></div>
+          <div class="usage-item"><div class="icon">👶</div><div>Family care / nanny services</div></div>
+          <div class="usage-item"><div class="icon">💬</div><div>Career coaching</div></div>
+          <div class="usage-item"><div class="icon">💰</div><div>Financial check (advice)</div></div>
+        </div>
+
+        <hr style="margin:12px 0;border:none;border-top:1px solid rgba(7,43,64,0.04)">
+
+        <div class="big">Why it's good (simple)</div>
+        <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
+          <div class="pill" style="flex:1">
+            <div class="left"><div class="icon">💸</div><div><strong>Save money</strong><div class="small">You pay less tax on the part used for wellbeing.</div></div></div>
+          </div>
+          <div class="pill" style="flex:1">
+            <div class="left"><div class="icon">😌</div><div><strong>Feel better</strong><div class="small">You can pay for things that help your health and happiness.</div></div></div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px" class="big">Watch out — things to know (important)</div>
+        <div style="margin-top:8px" class="warning">Using it reduces the salary that taxes are paid on. This can make some future government benefits (like sickness pay or other allowances) smaller — because those are sometimes based on your taxed salary.</div>
+
+        <div style="margin-top:12px" class="small">Tip: If you're unsure, ask Colleague Services or check MyBenefits before you confirm — they can check how it affects your situation.</div>
+      </div>
+
+      <!-- right column: quick actions and FAQ -->
+      <div class="right-column">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-weight:800">Quick visual example</div>
+              <div class="small">See how money moves — short & sweet</div>
+            </div>
+            <div class="badge">Simple</div>
+          </div>
+
+          <div style="margin-top:12px" class="example-visual">
+            <div style="flex:1">
+              <div style="font-weight:800">Before (normal)</div>
+              <div class="small">You earn → taxes eat → buy the gym.</div>
+              <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
+                <div class="coin">€</div>
+                <div class="coin">€</div>
+                <div class="coin">€</div>
+                <div style="font-size:13px;color:var(--muted)">Cookie eats some</div>
+              </div>
+            </div>
+            <div style="flex:1">
+              <div style="font-weight:800">After (arrangement)</div>
+              <div class="small">Swap part of salary first → pay less tax → company covers gym.</div>
+              <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
+                <div class="coin pulse">€</div>
+                <div class="coin">€</div>
+                <div style="font-size:13px;color:var(--muted)">You keep more</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <button class="btn" onclick="showSteps()">Show step-by-step (simple)</button>
+          </div>
+        </div>
+
+        <div class="card faq">
+          <div style="font-weight:800;margin-bottom:8px">FAQ — short and clear</div>
+
+          <div class="q" onclick="toggleFAQ(0)">
+            <div><strong>Is this free?</strong><div class="small">You still pay, but you pay less tax.</div></div>
+            <div>➤</div>
+          </div>
+          <div id="a0" class="hidden small" style="margin-top:8px">Not exactly free. You use part of your salary or holidays to pay for the item, but because it is handled before tax you pay less overall. That saves you money compared to buying it after taxes.</div>
+
+          <div style="height:8px"></div>
+
+          <div class="q" onclick="toggleFAQ(1)">
+            <div><strong>Can I use it for everything?</strong><div class="small">Only for certain wellbeing items listed by the company.</div></div>
+            <div>➤</div>
+          </div>
+          <div id="a1" class="hidden small" style="margin-top:8px">You can use it only for things in the MyBenefits list (sports, bikes, health checks, etc.). Check "Benefits at a Glance" in the guide or MyBenefits portal.</div>
+
+          <div style="height:8px"></div>
+
+          <div class="q" onclick="toggleFAQ(2)">
+            <div><strong>What happens if I don't use it?</strong><div class="small">Unused yearly budget expires.</div></div>
+            <div>➤</div>
+          </div>
+          <div id="a2" class="hidden small" style="margin-top:8px">Each year the company sets a limit for how much you can use. If you don't use the whole amount, it does <strong>not</strong> carry over — it disappears at year end.</div>
+
+          <div style="height:8px"></div>
+
+          <div class="q" onclick="toggleFAQ(3)">
+            <div><strong>Can I change my mind?</strong><div class="small">Usually not after you confirm — unless something big changes.</div></div>
+            <div>➤</div>
+          </div>
+          <div id="a3" class="hidden small" style="margin-top:8px">You usually can't change your choice after the enrollment period except if you have a qualifying status change (like moving, having a baby, etc.).</div>
+
+        </div>
+
+        <div class="card learnmore">
+          <div style="font-weight:800">Want to know more?</div>
+          <div class="small">Ask Colleague Service Center or open MyBenefits to see exact amounts and the yearly budget your company set.</div>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button class="btn smallbtn" onclick="openMyBenefits()">Open MyBenefits (example)</button>
+            <button class="btn smallbtn" onclick="downloadPoster()">Download Poster</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer">
+      <div style="font-weight:800">Bottom line</div>
+      <div class="small" style="margin-top:6px">This arrangement helps you pay less tax when buying health & wellbeing things via the company. It can save you money, but think about how it affects other things like future benefits based on your taxed salary.</div>
+    </div>
+  </div>
+
+<script>
+  // small interactive behavior
+  function toggleFAQ(i){
+    const a = document.getElementById('a'+i);
+    if(!a) return;
+    a.classList.toggle('hidden');
+  }
+
+  function showSteps(){
+    alert('Steps:\n1) Go to MyBenefits\n2) Pick an eligible wellbeing item\n3) Choose "Use Wellbeing Fiscal Arrangement"\n4) Confirm (read the consequences) and enjoy the benefit!');
+  }
+
+  function openMyBenefits(){
+    alert('This is a demo infographic. To use the real program, open the MyBenefits portal via Colleague Service Center.');
+  }
+
+  function downloadPoster(){
+    // create a simple printable poster from content (very basic)
+    const content = `
+Wellbeing Fiscal Arrangement — Quick Poster
+
+What: Use part of salary BEFORE tax to pay for wellbeing items (gym, bike, desk).
+Why: You pay less tax and keep more money.
+How: Go to MyBenefits → choose item → choose "Use Wellbeing Fiscal Arrangement" → confirm.
+Watch out: This can lower some future government benefits that depend on taxed salary.
+Ask Colleague Service Center if unsure.
+`;
+    const blob = new Blob([content], {type: 'text/plain'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'wellbeing-poster.txt';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  // playful little entrance animations
+  document.querySelectorAll('.pill').forEach((el,i)=>{
+    setTimeout(()=> el.classList.add('pop'), 120*i);
+  });
+
+</script>
+</body>
+</html>
