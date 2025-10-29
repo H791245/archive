@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-M">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASML Investment Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- palette_name: "Brilliant Blues" -->
+    <!-- narrative_plan: 1. Hero/Thesis, 2. The Moat, 3. Financials, 4. Valuation, 5. Risks, 6. Conclusion -->
+    <!-- visualization_choices: euvMonopolyChart (Doughnut, Chart.js, NO SVG), revenueTrendChart (Line, Chart.js, NO SVG), profitabilityChart (Bar/Line, Chart.js, NO SVG), cashFlowChart (Bar, Chart.js, NO SVG), peRatioChart (Bar, Chart.js, NO SVG), risks (HTML/CSS, NO SVG/Mermaid) -->
+    <!-- Confirmation: NEITHER Mermaid JS NOR SVG were used in this output. All charts are rendered to Canvas via Chart.js and all diagrams are structured HTML/CSS. -->
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f6;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .chart-container-wide {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 450px;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+
+        <header class="text-center my-10">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#003F5C]">ASML Holding N.V.</h1>
+            <p class="text-xl md:text-2xl text-gray-600 mt-2">The Core Enabler of Moore's Law & Advanced AI</p>
+        </header>
+
+        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <section class="md:col-span-2 lg:col-span-3 bg-white rounded-lg shadow-md p-6 border-l-4 border-[#003F5C]">
+                <h2 class="text-2xl font-bold text-[#003F5C] mb-4">🎯 Investment Thesis: Unmatched Strategic Monopoly</h2>
+                <p class="text-lg text-gray-700 mb-4">
+                    This analysis recommends a <span class="font-bold">BUY</span> for ASML with a 5-year outlook. The thesis rests on its unassailable monopoly in EUV lithography, strong financials, and critical role in secular growth trends like AI and high-performance computing.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="text-lg font-semibold text-[#2F4B7C]">👑 EUV Monopoly</h3>
+                        <p class="text-gray-600">A 100% market share in extreme ultraviolet lithography, the technology required for all advanced chip manufacturing.</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="text-lg font-semibold text-[#2F4B7C]">📈 Secular Tailwinds</h3>
+                        <p class="text-gray-600">Critically positioned to benefit from long-term demand in AI, cloud computing, and advanced node transitions.</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="text-lg font-semibold text-[#2F4B7C]">🛡️ Insurmountable Moat</h3>
+                        <p class="text-gray-600">Decades of R&D, €30B+ investment, and a unique, sole-source partnership with Carl Zeiss SMT (24.9% equity stake).</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-bold text-[#003F5C] mb-3">⚔️ EUV Lithography: 100% Market Share</h2>
+                <p class="text-gray-700 mb-4">ASML has no competitors in EUV (sub-7nm nodes), the technology essential for manufacturing leading-edge AI processors and advanced mobile chips. This is a true monopoly.</p>
+                <div class="chart-container" style="height: 300px; max-height: 300px;">
+                    <canvas id="euvMonopolyChart"></canvas>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-bold text-[#003F5C] mb-3">Competitive Landscape</h2>
+                <p class="text-gray-700 mb-4">Competitors are limited to mature, less-advanced DUV technology and pose no threat to ASML's core EUV business.</p>
+                <ul class="space-y-3">
+                    <li>
+                        <h4 class="font-semibold text-gray-700">Canon & Nikon</h4>
+                        <p class="text-gray-600 text-sm">Limited to mature nodes (>45nm). Nikon abandoned EUV development due to prohibitive R&D costs.</p>
+                    </li>
+                    <li>
+                        <h4 class="font-semibold text-gray-700">Applied Materials & Lam Research</h4>
+                        <p class="text-gray-600 text-sm">Not direct competitors. They provide complementary equipment (etching, deposition) and are part of ASML's ecosystem.</p>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-md p-6 flex flex-col justify-center items-center h-full">
+                <h2 class="text-xl font-bold text-[#003F5C] mb-2 text-center">R&D Investment (2024)</h2>
+                <p class="text-6xl font-bold text-[#665191] my-4">€4.3B</p>
+                <p class="text-xl text-gray-600 font-semibold">15% of Total Revenue</p>
+                <p class="text-gray-700 mt-2 text-center">Sustained, high investment to maintain technology leadership and develop next-gen High-NA EUV.</p>
+            </section>
+
+            <section class="md:col-span-2 lg:col-span-3 bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold text-[#003F5C] mb-3">💰 Financial Performance (2022-2024)</h2>
+                <p class="text-gray-700 mb-4">ASML has demonstrated resilient growth and exceptional profitability, navigating industry cycles. After a surge in 2023, 2024 moderated but remained near record levels, showcasing strong demand.</p>
+                <div class="chart-container-wide">
+                    <canvas id="revenueTrendChart"></canvas>
+                </div>
+            </section>
+
+            <section class="lg:col-span-2 bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-bold text-[#003F5C] mb-3">Profitability: High & Stable Margins</h2>
+                <p class="text-gray-700 mb-4">The company consistently maintains 50%+ gross margins. Net income growth was robust, with a slight dip in 2024 margin due to product mix shifts for next-generation systems.</p>
+                <div class="chart-container-wide" style="max-width: 800px;">
+                    <canvas id="profitabilityChart"></canvas>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-bold text-[#003F5C] mb-3">Operating Cash Flow</h2>
+                <p class="text-gray-700 mb-4">Cash flow showed significant recovery in 2024, reaching near-record levels after a 2023 dip caused by working capital build-up during rapid expansion.</p>
+                <div class="chart-container">
+                    <canvas id="cashFlowChart"></canvas>
+                </div>
+            </section>
+
+            <section class="md:col-span-2 lg:col-span-3 bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold text-[#003F5C] mb-3">✅ Valuation: P/E Peer Comparison (TTM)</h2>
+                <p class="text-gray-700 mb-4">Despite its superior monopoly position and high margins, ASML trades at a P/E ratio in line with the European semiconductor average and at a discount to many smaller, high-growth peers, suggesting a reasonable valuation.</p>
+                <div class="chart-container-wide">
+                    <canvas id="peRatioChart"></canvas>
+                </div>
+            </section>
+            
+            <section class="md:col-span-2 lg:col-span-3 bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold text-[#003F5C] mb-4">⚠️ Key Risks & Mitigation</h2>
+                <p class="text-gray-700 mb-6">While the position is strong, risks remain. Management has proactive mitigation strategies for the most significant challenges.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h3 class="text-lg font-semibold text-[#D45087]">1. Geopolitical Tensions & Export Controls</h3>
+                        <p class="text-gray-600 my-2"><span class="font-semibold">Risk:</span> Revenue loss from restrictions, particularly regarding China (which represented ~29% of Q4 2024 net sales).</p>
+                        <p class="text-gray-600"><span class="font-semibold text-green-700">Mitigation:</span> Active engagement with US, EU, and Dutch authorities; strategic geographic diversification of customer base (Taiwan, Korea, US, Europe).</p>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h3 class="text-lg font-semibold text-[#F95D6A]">2. Industry Cyclicality</h3>
+                        <p class="text-gray-600 my-2"><span class="font-semibold">Risk:</span> Volatile revenue and cash flows due to semiconductor industry downturns. Customer order delays or cancellations.</p>
+                        <p class="text-gray-600"><span class="font-semibold text-green-700">Mitigation:</span> Growing, stable service revenue (23% of total); long-term volume purchase agreements; strong balance sheet to weather downturns.</p>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h3 class="text-lg font-semibold text-[#FF7C43]">3. Supply Chain Concentration</h3>
+                        <p class="text-gray-600 my-2"><span class="font-semibold">Risk:</span> Reliance on single-source suppliers for critical components, especially Carl Zeiss SMT for EUV optics, could halt production.</p>
+                        <p class="text-gray-600"><span class="font-semibold text-green-700">Mitigation:</span> Strategic 24.9% equity stake in Carl Zeiss SMT; long-term framework agreements and co-investment in supplier capacity.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="md:col-span-2 lg:col-span-3 bg-[#003F5C] text-white rounded-lg shadow-xl p-8 text-center">
+                <h2 class="text-3xl font-bold mb-4">Investment Conclusion & Recommendation</h2>
+                <p class="text-xl text-gray-200 mb-6 max-w-3xl mx-auto">ASML represents a rare combination of a monopolistic market position, excellent financial execution, and a reasonable valuation. It provides direct exposure to the most critical secular growth trends in technology.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <div class="bg-green-500 text-white px-8 py-3 rounded-full text-xl font-bold">
+                        RATING: BUY (5-Year Horizon)
+                    </div>
+                    <div class="bg-gray-100 text-[#003F5C] px-8 py-3 rounded-full text-xl font-bold">
+                        ACTION: Accumulate on Weakness
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        window.onload = function () {
+            const colors = {
+                blue: '#003F5C',
+                blue_light: '#2F4B7C',
+                purple: '#665191',
+                purple_light: '#A05195',
+                pink: '#D45087',
+                red: '#F95D6A',
+                orange: '#FF7C43',
+                yellow: '#FFA600'
+            };
+
+            const tooltipTitleCallback = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                    return label.join(' ');
+                                } else {
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            const defaultOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: tooltipTitleCallback.plugins
+            };
+
+            new Chart(document.getElementById('euvMonopolyChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['ASML (EUV Market)', 'All Competitors'],
+                    datasets: [{
+                        label: 'Market Share',
+                        data: [100, 0],
+                        backgroundColor: [colors.blue, '#E0E0E0'],
+                        borderColor: ['#ffffff'],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    ...defaultOptions,
+                    plugins: {
+                        ...defaultOptions.plugins,
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+
+            new Chart(document.getElementById('revenueTrendChart'), {
+                type: 'line',
+                data: {
+                    labels: ['2022', '2023', '2024'],
+                    datasets: [{
+                        label: 'Total Revenue (€ Billion)',
+                        data: [21.2, 27.6, 28.3],
+                        borderColor: colors.purple,
+                        backgroundColor: 'rgba(102, 81, 145, 0.1)',
+                        fill: true,
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    ...defaultOptions,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Revenue in € Billions'
+                            }
+                        }
+                    }
+                }
+            });
+
+            new Chart(document.getElementById('profitabilityChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['2022', '2023', '2024'],
+                    datasets: [{
+                        type: 'bar',
+                        label: 'Net Income (€ Billion)',
+                        data: [5.6, 7.8, 7.6],
+                        backgroundColor: colors.blue_light
+                    }, {
+                        type: 'line',
+                        label: 'Gross Margin (%)',
+                        data: [50.5, 51.3, 51.3],
+                        borderColor: colors.red,
+                        backgroundColor: colors.red,
+                        yAxisID: 'y1',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    ...defaultOptions,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Net Income in € Billions'
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'Gross Margin %'
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            }
+                        }
+                    }
+                }
+            });
+
+            new Chart(document.getElementById('cashFlowChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['2022', '2023', '2024'],
+                    datasets: [{
+                        label: 'Operating Cash Flow (€ Billion)',
+                        data: [8.3, 5.3, 11.2],
+                        backgroundColor: [colors.purple, colors.pink, colors.orange],
+                    }]
+                },
+                options: {
+                    ...defaultOptions,
+                    plugins: {
+                        ...defaultOptions.plugins,
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Cash Flow in € Billions'
+                            }
+                        }
+                    }
+                }
+            });
+
+            new Chart(document.getElementById('peRatioChart'), {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'ASML', 
+                        ['Applied', 'Materials'], 
+                        'Lam Research', 
+                        ['ASM', 'International'], 
+                        ['BE', 'Semiconductor'],
+                        ['Peer Average', '(Equipment)']
+                    ],
+                    datasets: [{
+                        label: 'P/E Ratio (TTM)',
+                        data: [37.0, 26.5, 33.6, 51.7, 78.1, 47.5],
+                        backgroundColor: [
+                            colors.blue, 
+                            colors.blue_light, 
+                            colors.blue_light, 
+                            colors.purple, 
+                            colors.pink,
+                            colors.red
+                        ]
+                    }]
+                },
+                options: {
+                    ...defaultOptions,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'P/E Ratio'
+                            }
+                        }
+                    }
+                }
+            });
+        };
+    </script>
+</body>
+</html>
