@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOR Infographic: The Dutch Small Business Scheme</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+        
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 250px;
+            max-height: 300px;
+        }
+        @media (min-width: 640px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+        
+        .kpi-number {
+            font-weight: 900;
+            color: #1E90FF;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-100" style="background-color: #F0F8FF;">
+    <div class="container mx-auto p-4 md:p-8 max-w-6xl">
+
+        <header class="text-center my-8 md:my-12 p-6 bg-white rounded-lg shadow-xl">
+            <h1 class="text-3xl md:text-5xl font-bold mb-4" style="color: #192A51;">The Dutch Small Business Scheme (KOR)</h1>
+            <p class="text-xl md:text-2xl" style="color: #1E90FF;">Is your annual turnover under</p>
+            <div class="kpi-number text-6xl md:text-8xl my-4">€20,000?</div>
+            <p class="text-lg text-gray-700 max-w-2xl mx-auto">The KOR is a voluntary VAT exemption. It simplifies your business administration by letting you opt-out of the VAT system entirely.</p>
+        </header>
+
+        <main class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+
+            <section class="md:col-span-2 bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold text-center mb-6" style="color: #192A51;">The Three Core Rules of KOR</h2>
+                <p class="text-center text-gray-600 mb-6">Participating in the KOR means a fundamental shift in your VAT handling. It's a simple trade-off: you gain administrative simplicity but lose the ability to reclaim VAT.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="border-4 rounded-lg p-6" style="border-color: #87CEFA; background-color: #F0F8FF;">
+                        <h3 class="text-2xl font-bold mb-4 flex items-center" style="color: #192A51;"><span class="text-3xl mr-3">✔</span> What You DO</span></h3>
+                        <ul class="list-none space-y-3">
+                            <li class="flex items-start">
+                                <span class="text-lg font-bold mr-2" style="color: #1E90FF;">►</span>
+                                <span class="text-gray-800">Charge **NO VAT** to your clients.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-lg font-bold mr-2" style="color: #1E90FF;">►</span>
+                                <span class="text-gray-800">Add the exemption note to invoices: <br><i class="text-sm">"Vrijgesteld van OB o.g.v. artikel 25 Wet OB"</i></span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-lg font-bold mr-2" style="color: #1E90FF;">►</span>
+                                <span class="text-gray-800">Pay the **full price** (including VAT) on all your business expenses.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="border-4 rounded-lg p-6" style="border-color: #FFA07A; background-color: #FFF5F0;">
+                        <h3 class="text-2xl font-bold mb-4 flex items-center" style="color: #D22B2B;"><span class="text-3xl mr-3">✖</span> What You DON'T Do</span></h3>
+                        <ul class="list-none space-y-3">
+                            <li class="flex items-start">
+                                <span class="text-lg font-bold mr-2" style="color: #D22B2B;">►</span>
+                                <span class="text-gray-800">File **NO quarterly VAT returns** (in most cases).</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-lg font-bold mr-2" style="color: #D22B2B;">►</span>
+                                <span class="text-gray-800">Reclaim **NO VAT** on any business purchases, software, or investments.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-lg font-bold mr-2" style="color: #D22B2B;">►</span>
+                                <span class="text-gray-800">Worry about complex VAT administration.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold text-center mb-4" style="color: #192A51;">The Benefits: Simplicity</h2>
+                <p class="text-center text-gray-600 mb-6">The primary gains are administrative peace of mind and more attractive pricing for private customers (B2C).</p>
+                <div class="chart-container">
+                    <canvas id="benefitsChart"></canvas>
+                </div>
+                <p class="text-center text-gray-700 mt-4"><strong>Key Takeaway:</strong> You trade financial deductions for a significant reduction in administrative workload and complexity.</p>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold text-center mb-4" style="color: #192A51;">The Costs: No Deductions</h2>
+                <p class="text-center text-gray-600 mb-6">The main drawback is financial: you cannot reclaim any VAT, making all your business purchases effectively more expensive.</p>
+                <div class="chart-container">
+                    <canvas id="costsChart"></canvas>
+                </div>
+                <p class="text-center text-gray-700 mt-4"><strong>Key Takeaway:</strong> If your business has high expenses or invests in costly equipment, this inability to reclaim VAT can be a significant cost.</p>
+            </section>
+            
+            <section class="md:col-span-2 bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold text-center mb-6" style="color: #192A51;">Is KOR Right for You?</h2>
+                <p class="text-center text-gray-600 mb-6">The KOR is not a one-size-fits-all solution. It is highly beneficial for some business models and disadvantageous for others. Your client base and expense structure are the most important factors.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="border-4 rounded-lg p-6" style="border-color: #90EE90; background-color: #F0FFF0;">
+                        <h3 class="text-2xl font-bold mb-4 text-center" style="color: #006400;">👍 KOR is IDEAL if...</h3>
+                        <ul class="list-none space-y-3">
+                            <li class="flex items-start">
+                                <span class="text-lg font-bold mr-2" style="color: #006400;">•</span>
+                                <span class="text-gray-800">Your clients are mainly **individuals (B2C)** who cannot reclaim VAT anyway.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-lg font-bold mr-2" style="color: #006400;">•</span>
+                                <span class="text-gray-800">Your business has **minimal expenses** (e.g., service-based like coaching, tutoring, freelance writing).</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-lg font-bold mr-2" style="color: #006400;">•</span>
+                                <span class="text-gray-800">You are running a **side-hustle** and value simplicity above all.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="border-4 rounded-lg p-6" style="border-color: #FFA07A; background-color: #FFF5F0;">
+                        <h3 class="text-2xl font-bold mb-4 text-center" style="color: #D22B2B;">👎 KOR is NOT for you if...</h3>
+                        <ul class="list-none space-y-3">
+                            <li class="flex items-start">
+                                <span class="text-lg font-bold mr-2" style="color: #D22B2B;">•</span>
+                                <span class="text-gray-800">Your clients are primarily **other businesses (B2B)** who expect to reclaim VAT.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-lg font-bold mr-2" style="color: #D22B2B;">•</span>
+                                <span class="text-gray-800">You have **high business expenses** (e.g., materials, inventory, expensive equipment) and need to reclaim VAT.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-lg font-bold mr-2" style="color: #D22B2B;">•</span>
+                                <span class="text-gray-800">Your turnover is likely to **exceed €20,000** in the near future.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="md:col-span-2 bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold text-center mb-4" style="color: #192A51;">The 2025 Rules: More Flexibility</h2>
+                <p class="text-center text-gray-600 mb-6">As of January 1, 2025, the KOR scheme has become significantly more flexible, removing the old 3-year minimum commitment and long re-entry waiting periods.</p>
+                <div class="chart-container" style="max-width: 800px; height: 350px;">
+                    <canvas id="changesChart"></canvas>
+                </div>
+                <p class="text-center text-gray-700 mt-4"><strong>Key Takeaway:</strong> The new rules make the KOR a much lower-risk choice. You are no longer "locked in" and can adapt to your business's growth more easily.</p>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold text-center mb-4" style="color: #192A51;">Who Can Use KOR?</h2>
+                <p class="text-center text-gray-600 mb-6">Eligibility is broad and not based on hours worked. If you are an entrepreneur with turnover under the limit, you likely qualify.</p>
+                <div class="text-center p-4 rounded-lg" style="background-color: #F0F8FF;">
+                    <ul class="list-none space-y-2 text-lg text-gray-800">
+                        <li>✔ Freelancers & ZZP'ers</li>
+                        <li>✔ Full-Time Employees with Side-Hustles</li>
+                        <li>✔ Partnerships (VOFs)</li>
+                        <li>✔ Foundations & Associations</li>
+                    </ul>
+                </div>
+                <p class="text-center text-gray-700 mt-4"><strong>Critical Point:</strong> The 1,225-hour requirement is for income tax deductions, not KOR eligibility. Hours are irrelevant for this VAT scheme.</p>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-md p-6 text-center">
+                <h2 class="text-2xl font-bold mb-4" style="color: #192A51;">New: The EU-KOR</h2>
+                <p class="text-lg text-gray-700 mb-4">Also new in 2025, you can apply for a VAT exemption in other EU countries, subject to a combined EU turnover limit of:</p>
+                <div class="kpi-number text-6xl md:text-7xl my-4">€100,000</div>
+                <p class="text-gray-700">This allows for easier cross-border sales to consumers (B2C) within the EU, but requires quarterly reporting of your EU sales.</p>
+            </section>
+
+        </main>
+
+        <footer class="text-center my-8 md:my-12 p-6 bg-white rounded-lg shadow-xl">
+            <h2 class="text-3xl font-bold mb-4" style="color: #192A51;">How to Apply or Exit</h2>
+            <p class="text-lg text-gray-700 mb-6">All applications and deregistrations for the KOR are now handled online. You must have the proper credentials to log in.</p>
+            <a href="https://www.belastingdienst.nl/wps/wcm/connect/nl/inloggen/inloggen-voor-ondernemers" target="_blank" rel="noopener noreferrer" class="inline-block text-white font-bold py-3 px-8 rounded-lg text-xl transition-transform transform hover:scale-105" style="background-color: #1E90FF;">
+                Apply via Mijn Belastingdienst Zakelijk
+            </a>
+        </footer>
+
+    </div>
+
+    <script>
+        function getChartLabel(label) {
+            if (label.length <= 16) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).trim().length > 16) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            }
+            if (currentLine) {
+                lines.push(currentLine);
+            }
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        };
+
+        const defaultChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            }
+        };
+        
+        const benefitsCtx = document.getElementById('benefitsChart').getContext('2d');
+        new Chart(benefitsCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Administrative Simplicity', 'Lower Client Prices (B2C)'],
+                datasets: [{
+                    label: 'Benefits',
+                    data: [65, 35],
+                    backgroundColor: ['#1E90FF', '#87CEFA'],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 3
+                }]
+            },
+            options: defaultChartOptions
+        });
+
+        const costsCtx = document.getElementById('costsChart').getContext('2d');
+        new Chart(costsCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['No VAT Reclamation', 'Higher Expense Prices'],
+                datasets: [{
+                    label: 'Costs',
+                    data: [70, 30],
+                    backgroundColor: ['#D22B2B', '#FFA07A'],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 3
+                }]
+            },
+            options: defaultChartOptions
+        });
+
+        const changesCtx = document.getElementById('changesChart').getContext('2d');
+        new Chart(changesCtx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    getChartLabel('Mandatory Term (Months)'), 
+                    getChartLabel('Re-entry Period (Months)')
+                ],
+                datasets: [
+                    {
+                        label: 'Before 2025 Rules',
+                        data: [36, 36],
+                        backgroundColor: '#FFA07A',
+                        borderColor: '#D22B2B',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Current 2025 Rules',
+                        data: [0, 18],
+                        backgroundColor: '#87CEFA',
+                        borderColor: '#1E90FF',
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Time in Months'
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            font: {
+                                size: 14
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: (tooltipItems) => {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                    return label.join(' ');
+                                } else {
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
