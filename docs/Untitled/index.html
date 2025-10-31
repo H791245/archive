@@ -1,0 +1,103 @@
+const ctxStack = document.getElementById('strategyStackChart').getContext('2d');
+        new Chart(ctxStack, {
+            type: 'bar',
+            data: {
+                labels: [['Gross Profit'], ['Profit After', 'Allowances'], ['Final Taxable', 'Income']],
+                datasets: [{
+                    label: 'Profit (€)',
+                    data: [profitData.grossProfit, profitAfterAllowances, finalTaxableIncome],
+                    backgroundColor: [
+                        '#045B83',
+                        '#11B5E4',
+                        '#F6A219'
+                    ],
+                    borderColor: [
+                        '#045B83',
+                        '#11B5E4',
+                        '#F6A219'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...sharedChartOptions,
+                indexAxis: 'y',
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Amount in Euros (€)'
+                        }
+                    }
+                },
+                plugins: {
+                    ...sharedChartOptions.plugins,
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Impact of Deductions on €80,000 Gross Profit'
+                    }
+                }
+            }
+        });
+
+        const singleZzpDeductions = (profitData.zelfstandigenaftrek + profitData.startersaftrek) + mkbExemptionAmount;
+        
+        const p1Profit = 40000;
+        const p1Allowances = profitData.zelfstandigenaftrek + profitData.startersaftrek;
+        const p1ProfitAfter = p1Profit - p1Allowances;
+        const p1Mkb = p1ProfitAfter * profitData.mkbRate;
+        const p1TotalDeductions = p1Allowances + p1Mkb;
+        
+        const dualZzpDeductions = p1TotalDeductions * 2; 
+
+        const ctxDual = document.getElementById('dualZzpChart').getContext('2d');
+        new Chart(ctxDual, {
+            type: 'bar',
+            data: {
+                labels: ['Single ZZP (1x €80k Profit)', 'Dual ZZP (2x €40k Profit)'],
+                datasets: [{
+                    label: 'Total Non-Taxable Amount (€)',
+                    data: [singleZzpDeductions, dualZzpDeductions],
+                    backgroundColor: [
+                        '#00A1E4',
+                        '#F17F29'
+                    ],
+                    borderColor: [
+                        '#00A1E4',
+                        '#F17F29'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...sharedChartOptions,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Total Deductions + Exemptions (€)'
+                        }
+                    }
+                },
+                plugins: {
+                    ...sharedChartOptions.plugins,
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Total Household Non-Taxable Income (Hypothetical)'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
