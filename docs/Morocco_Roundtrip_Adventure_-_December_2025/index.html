@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morocco Roundtrip Adventure - December 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --morocco-blue: #1B4F72;
+            --morocco-teal: #148F9D;
+            --morocco-terracotta: #D35400;
+            --morocco-gold: #F39C12;
+            --morocco-cream: #FDF5E6;
+            --morocco-brown: #6E4C3E;
+            --morocco-red: #C0392B;
+            --morocco-sand: #F4E7D7;
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+            --white: #FFFFFF;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--morocco-cream) 0%, var(--morocco-sand) 100%);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, var(--morocco-blue) 0%, var(--morocco-teal) 100%);
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg"><path d="M20 0 L40 20 L20 40 L0 20 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: 40px 40px;
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .header .dates {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .header .trip-summary {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .trip-summary-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .trip-summary-item .icon {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        .trip-summary-item .label {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .trip-summary-item .value {
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+
+        /* Navigation */
+        .nav {
+            background: var(--white);
+            box-shadow: 0 2px 10px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav a:hover {
+            background: var(--morocco-teal);
+            color: var(--white);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: var(--morocco-blue);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--morocco-gold);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Timeline/Journey Map */
+        .journey-map {
+            position: relative;
+            padding: 40px 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .journey-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--morocco-teal) 0%, var(--morocco-terracotta) 100%);
+            transform: translateX(-50%);
+        }
+
+        .journey-stop {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .journey-stop:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .journey-marker {
+            width: 50px;
+            height: 50px;
+            background: var(--white);
+            border: 4px solid var(--morocco-teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2em;
+            color: var(--morocco-teal);
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 4px 10px var(--shadow);
+        }
+
+        .journey-content {
+            flex: 1;
+            padding: 20px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px var(--shadow);
+            margin: 0 30px;
+            max-width: 400px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .journey-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .journey-content h3 {
+            color: var(--morocco-blue);
+            margin-bottom: 8px;
+            font-size: 1.5em;
+        }
+
+        .journey-content .city-dates {
+            color: var(--morocco-terracotta);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .journey-content .nights {
+            background: var(--morocco-gold);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* City Cards */
+        .city-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .city-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px var(--shadow);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .city-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .city-card-header {
+            padding: 25px;
+            background: linear-gradient(135deg, var(--morocco-blue) 0%, var(--morocco-teal) 100%);
+            color: var(--white);
+        }
+
+        .city-card-header h3 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+
+        .city-card-header .dates {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        .city-card-body {
+            padding: 25px;
+        }
+
+        .city-card-body .nights-badge {
+            background: var(--morocco-gold);
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .highlights-list {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        .highlights-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .highlights-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--morocco-terracotta);
+            font-weight: bold;
+        }
+
+        .city-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid var(--morocco-sand);
+        }
+
+        .info-item {
+            font-size: 0.9em;
+        }
+
+        .info-label {
+            color: var(--text-light);
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: var(--morocco-blue);
+        }
+
+        /* Desert Tour Section */
+        .desert-section {
+            background: linear-gradient(135deg, var(--morocco-terracotta) 0%, var(--morocco-red) 100%);
+            color: var(--white);
+            padding: 60px 20px;
+            margin: 40px 0;
+        }
+
+        .desert-section .section-title {
+            color: var(--white);
+        }
+
+        .desert-section .section-title::after {
+            background: var(--morocco-gold);
+        }
+
+        .desert-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .desert-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .desert-highlight {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+        }
+
+        .desert-highlight .icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .warning-box {
+            background: rgba(255, 255, 255, 0.2);
+            border-left: 4px solid var(--morocco-gold);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .warning-box h4 {
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        /* Statistics Dashboard */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 15px var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--morocco-teal);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 1em;
+        }
+
+        /* Packing Checklist */
+        .packing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .packing-category {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        .packing-category h3 {
+            color: var(--morocco-blue);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--morocco-gold);
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            cursor: pointer;
+            transition: background 0.2s;
+            border-radius: 6px;
+            padding-left: 10px;
+        }
+
+        .checklist-item:hover {
+            background: var(--morocco-sand);
+        }
+
+        .checklist-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            cursor: pointer;
+            accent-color: var(--morocco-teal);
+        }
+
+        .checklist-item.checked label {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        /* Budget Section */
+        .budget-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .chart-container {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px var(--shadow);
+            margin-bottom: 30px;
+            height: 400px;
+        }
+
+        .budget-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .budget-item {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        .budget-item .amount {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--morocco-teal);
+            margin-bottom: 5px;
+        }
+
+        .budget-item .label {
+            color: var(--text-light);
+            font-size: 0.95em;
+        }
+
+        /* Flight Info */
+        .flight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .flight-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        .flight-card h3 {
+            color: var(--morocco-blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .flight-route {
+            font-size: 1.5em;
+            color: var(--morocco-teal);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .flight-details {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .flight-detail {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--morocco-sand);
+        }
+
+        .flight-detail:last-child {
+            border-bottom: none;
+        }
+
+        /* Food Highlights */
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .food-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .food-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .food-card h3 {
+            color: var(--morocco-terracotta);
+            margin-bottom: 15px;
+        }
+
+        .food-item {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--morocco-sand);
+        }
+
+        .food-item:last-child {
+            border-bottom: none;
+        }
+
+        .food-item strong {
+            color: var(--morocco-blue);
+        }
+
+        /* Pro Tips */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .tip-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px var(--shadow);
+            border-left: 4px solid var(--morocco-gold);
+            transition: all 0.3s;
+        }
+
+        .tip-card:hover {
+            border-left-color: var(--morocco-teal);
+            transform: translateX(5px);
+        }
+
+        .tip-card::before {
+            content: '💡';
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        /* Map Section */
+        .map-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        .map-svg {
+            width: 100%;
+            height: 500px;
+            border-radius: 12px;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .section-title {
+                font-size: 2em;
+            }
+
+            .journey-line {
+                left: 25px;
+            }
+
+            .journey-stop {
+                flex-direction: column !important;
+                align-items: flex-start;
+                padding-left: 60px;
+            }
+
+            .journey-marker {
+                position: absolute;
+                left: 0;
+            }
+
+            .journey-content {
+                margin: 10px 0;
+                max-width: 100%;
+            }
+
+            .nav-container {
+                gap: 10px;
+            }
+
+            .nav a {
+                font-size: 0.9em;
+                padding: 6px 12px;
+            }
+        }
+
+        /* Scroll Behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1>🌙 Morocco Roundtrip Adventure</h1>
+            <p class="dates">December 13 - 27, 2025</p>
+            <div class="trip-summary">
+                <div class="trip-summary-item">
+                    <div class="icon">📅</div>
+                    <div class="label">Duration</div>
+                    <div class="value">14 Days</div>
+                </div>
+                <div class="trip-summary-item">
+                    <div class="icon">🏙️</div>
+                    <div class="label">Cities</div>
+                    <div class="value">6 Cities</div>
+                </div>
+                <div class="trip-summary-item">
+                    <div class="icon">💰</div>
+                    <div class="label">Total Budget</div>
+                    <div class="value">€2,130</div>
+                </div>
+                <div class="trip-summary-item">
+                    <div class="icon">🛏️</div>
+                    <div class="label">Avg/Night</div>
+                    <div class="value">€95</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#journey">Journey</a>
+            <a href="#cities">Cities</a>
+            <a href="#desert">Desert Tour</a>
+            <a href="#stats">Statistics</a>
+            <a href="#packing">Packing</a>
+            <a href="#budget">Budget</a>
+            <a href="#flights">Flights</a>
+            <a href="#food">Food</a>
+            <a href="#tips">Pro Tips</a>
+        </div>
+    </nav>
+
+    <!-- Journey Map Section -->
+    <section id="journey">
+        <div class="container">
+            <h2 class="section-title">Your Journey Through Morocco</h2>
+            <div class="journey-map">
+                <div class="journey-line"></div>
+                
+                <div class="journey-stop">
+                    <div class="journey-marker">1</div>
+                    <div class="journey-content">
+                        <h3>🏰 Tangier</h3>
+                        <p class="city-dates">Dec 13-15</p>
+                        <span class="nights">2 Nights</span>
+                        <p>Gateway to Morocco - coastal charm, medina exploration, and fresh seafood.</p>
+                    </div>
+                </div>
+
+                <div class="journey-stop">
+                    <div class="journey-marker">2</div>
+                    <div class="journey-content">
+                        <h3>💙 Chefchaouen</h3>
+                        <p class="city-dates">Dec 15-17</p>
+                        <span class="nights">2 Nights</span>
+                        <p>The iconic blue city - photogenic alleys, waterfalls, and mountain views.</p>
+                    </div>
+                </div>
+
+                <div class="journey-stop">
+                    <div class="journey-marker">3</div>
+                    <div class="journey-content">
+                        <h3>🏛️ Meknès</h3>
+                        <p class="city-dates">Dec 17-19</p>
+                        <span class="nights">2 Nights</span>
+                        <p>Imperial city - grand architecture, Roman ruins, and historical treasures.</p>
+                    </div>
+                </div>
+
+                <div class="journey-stop">
+                    <div class="journey-marker">4</div>
+                    <div class="journey-content">
+                        <h3>🕌 Fès</h3>
+                        <p class="city-dates">Dec 19-21</p>
+                        <span class="nights">2 Nights</span>
+                        <p>Medieval medina maze - leather tanneries, spice markets, and ancient traditions.</p>
+                    </div>
+                </div>
+
+                <div class="journey-stop">
+                    <div class="journey-marker">5</div>
+                    <div class="journey-content">
+                        <h3>🏜️ Merzouga Desert</h3>
+                        <p class="city-dates">Dec 21-23</p>
+                        <span class="nights">2 Nights</span>
+                        <p>Sahara adventure - camel trek, desert camp, starlit nights, and stunning gorges.</p>
+                    </div>
+                </div>
+
+                <div class="journey-stop">
+                    <div class="journey-marker">6</div>
+                    <div class="journey-content">
+                        <h3>❤️ Marrakech</h3>
+                        <p class="city-dates">Dec 23-27</p>
+                        <span class="nights">4 Nights</span>
+                        <p>The red city finale - vibrant souks, Jemaa el-Fna square, and garden paradise.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- City Details Section -->
+    <section id="cities" style="background: var(--white);">
+        <div class="container">
+            <h2 class="section-title">Detailed City Breakdown</h2>
+            <div class="city-grid">
+                <!-- Tangier -->
+                <div class="city-card">
+                    <div class="city-card-header">
+                        <h3>🏰 Tangier</h3>
+                        <p class="dates">December 13-15, 2025</p>
+                    </div>
+                    <div class="city-card-body">
+                        <span class="nights-badge">2 Nights</span>
+                        <ul class="highlights-list">
+                            <li>Rue de la Liberté shopping</li>
+                            <li>Harbor seafood lunch</li>
+                            <li>American Legation Museum</li>
+                            <li>Beach promenade sunset</li>
+                        </ul>
+                        <div class="city-info">
+                            <div class="info-item">
+                                <span class="info-label">Budget/Night</span>
+                                <span class="info-value">€90-120</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">To Next City</span>
+                                <span class="info-value">1h 45m</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Must Try</span>
+                                <span class="info-value">Grilled sardines</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Character</span>
+                                <span class="info-value">Coastal gateway</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chefchaouen -->
+                <div class="city-card">
+                    <div class="city-card-header">
+                        <h3>💙 Chefchaouen</h3>
+                        <p class="dates">December 15-17, 2025</p>
+                    </div>
+                    <div class="city-card-body">
+                        <span class="nights-badge">2 Nights</span>
+                        <ul class="highlights-list">
+                            <li>Blue medina alleys</li>
+                            <li>Akchour Waterfalls hike</li>
+                            <li>Alcazaba fortress</li>
+                            <li>White Mosque</li>
+                        </ul>
+                        <div class="city-info">
+                            <div class="info-item">
+                                <span class="info-label">Budget/Night</span>
+                                <span class="info-value">€70-100</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">To Next City</span>
+                                <span class="info-value">3 hours</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Must Try</span>
+                                <span class="info-value">Berber tagine</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Character</span>
+                                <span class="info-value">Blue city</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Meknès -->
+                <div class="city-card">
+                    <div class="city-card-header">
+                        <h3>🏛️ Meknès</h3>
+                        <p class="dates">December 17-19, 2025</p>
+                    </div>
+                    <div class="city-card-body">
+                        <span class="nights-badge">2 Nights</span>
+                        <ul class="highlights-list">
+                            <li>Mausoleum of Moulay Ismaïl</li>
+                            <li>Bou Inania Medersa</li>
+                            <li>Volubilis Roman ruins</li>
+                            <li>Imperial city walls</li>
+                        </ul>
+                        <div class="city-info">
+                            <div class="info-item">
+                                <span class="info-label">Budget/Night</span>
+                                <span class="info-value">€90-130</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">To Next City</span>
+                                <span class="info-value">2.5 hours</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Must Try</span>
+                                <span class="info-value">Brochettes</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Character</span>
+                                <span class="info-value">Imperial city</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fès -->
+                <div class="city-card">
+                    <div class="city-card-header">
+                        <h3>🕌 Fès</h3>
+                        <p class="dates">December 19-21, 2025</p>
+                    </div>
+                    <div class="city-card-body">
+                        <span class="nights-badge">2 Nights</span>
+                        <ul class="highlights-list">
+                            <li>Fès el-Bali medina maze</li>
+                            <li>Leather tanneries</li>
+                            <li>Café Clock breakfast</li>
+                            <li>Spice markets</li>
+                        </ul>
+                        <div class="city-info">
+                            <div class="info-item">
+                                <span class="info-label">Budget/Night</span>
+                                <span class="info-value">€100-150</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">To Next City</span>
+                                <span class="info-value">6 hours</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Must Try</span>
+                                <span class="info-value">Harira soup</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Character</span>
+                                <span class="info-value">Medieval maze</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marrakech -->
+                <div class="city-card">
+                    <div class="city-card-header">
+                        <h3>❤️ Marrakech</h3>
+                        <p class="dates">December 23-27, 2025</p>
+                    </div>
+                    <div class="city-card-body">
+                        <span class="nights-badge">4 Nights</span>
+                        <ul class="highlights-list">
+                            <li>Jemaa el-Fna square</li>
+                            <li>Majorelle Garden</li>
+                            <li>Ben Youssef Medersa</li>
+                            <li>Cascades d'Ouzoud trip</li>
+                        </ul>
+                        <div class="city-info">
+                            <div class="info-item">
+                                <span class="info-label">Budget/Night</span>
+                                <span class="info-value">€100-150</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">To Airport</span>
+                                <span class="info-value">20 mins</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Must Try</span>
+                                <span class="info-value">Street food</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Character</span>
+                                <span class="info-value">Red city</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Desert Tour Section -->
+    <section id="desert" class="desert-section">
+        <div class="container">
+            <h2 class="section-title">🏜️ Sahara Desert Experience</h2>
+            <div class="desert-content">
+                <h3 style="font-size: 1.8em; margin-bottom: 20px; text-align: center;">Merzouga 3-Day Desert Tour</h3>
+                <p style="text-align: center; font-size: 1.2em; margin-bottom: 30px; opacity: 0.95;">December 21-23 | 2 Nights in Desert Camp</p>
+                
+                <div class="desert-highlights">
+                    <div class="desert-highlight">
+                        <div class="icon">🌅</div>
+                        <h4>Sunrise Trek</h4>
+                        <p>Watch the desert come alive at dawn</p>
+                    </div>
+                    <div class="desert-highlight">
+                        <div class="icon">🐪</div>
+                        <h4>Camel Ride</h4>
+                        <p>Traditional desert transport experience</p>
+                    </div>
+                    <div class="desert-highlight">
+                        <div class="icon">⛰️</div>
+                        <h4>Todra Gorge</h4>
+                        <p>Dramatic canyon hiking</p>
+                    </div>
+                    <div class="desert-highlight">
+                        <div class="icon">🏰</div>
+                        <h4>Aït Benhaddou</h4>
+                        <p>UNESCO World Heritage kasbah</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <h4>❄️ Important: Desert Temperature Warning</h4>
+                    <p><strong>Night temperatures: 0-4°C (32-39°F)</strong></p>
+                    <p style="margin-top: 10px;">Pack thermal layers, warm jacket, and verify heating at your desert camp. December nights are extremely cold!</p>
+                </div>
+
+                <div style="margin-top: 25px; background: rgba(255,255,255,0.15); padding: 20px; border-radius: 8px;">
+                    <h4 style="margin-bottom: 15px;">What to Pack for Desert:</h4>
+                    <ul style="list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+                        <li>✓ Warm jacket (essential)</li>
+                        <li>✓ Thermal underwear</li>
+                        <li>✓ Hat for wind protection</li>
+                        <li>✓ Extra warm layers</li>
+                        <li>✓ Sturdy walking shoes</li>
+                        <li>✓ Sunscreen &amp; sunglasses</li>
+                    </ul>
+                </div>
+
+                <p style="text-align: center; margin-top: 25px; font-size: 1.1em;"><strong>Budget: €35-50 per night</strong> | Meals included in tour</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section id="stats" style="background: var(--morocco-cream);">
+        <div class="container">
+            <h2 class="section-title">📊 Trip Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🏙️</div>
+                    <div class="stat-value" data-target="6">0</div>
+                    <div class="stat-label">Cities Visited</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🌙</div>
+                    <div class="stat-value" data-target="14">0</div>
+                    <div class="stat-label">Total Nights</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-value" data-target="14">0</div>
+                    <div class="stat-label">Total Days</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏨</div>
+                    <div class="stat-value" data-target="6">0</div>
+                    <div class="stat-label">Accommodations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💶</div>
+                    <div class="stat-value">€95</div>
+                    <div class="stat-label">Avg Per Night</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-value">€2,130</div>
+                    <div class="stat-label">Total Budget</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packing Checklist Section -->
+    <section id="packing">
+        <div class="container">
+            <h2 class="section-title">🎒 Packing Checklist</h2>
+            <div class="packing-grid">
+                <div class="packing-category">
+                    <h3>👕 Clothing</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item1">
+                        <label for="item1">Thick jacket/sweater</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item2">
+                        <label for="item2">Thermal layers</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item3">
+                        <label for="item3">Long pants</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item4">
+                        <label for="item4">Light shirts</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item5">
+                        <label for="item5">Walking shoes</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item6">
+                        <label for="item6">Light scarf</label>
+                    </div>
+                </div>
+
+                <div class="packing-category">
+                    <h3>🔋 Essentials</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item7">
+                        <label for="item7">Sunscreen</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item8">
+                        <label for="item8">Hat/sunglasses</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item9">
+                        <label for="item9">Power adapter (Type C)</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item10">
+                        <label for="item10">Phone charger</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item11">
+                        <label for="item11">Small backpack</label>
+                    </div>
+                </div>
+
+                <div class="packing-category">
+                    <h3>🏜️ Desert Specific</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item12">
+                        <label for="item12">Warm jacket</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item13">
+                        <label for="item13">Hat for wind</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item14">
+                        <label for="item14">Extra thermal layers</label>
+                    </div>
+                </div>
+
+                <div class="packing-category">
+                    <h3>📷 Optional</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item15">
+                        <label for="item15">Camera</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item16">
+                        <label for="item16">Notebook</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item17">
+                        <label for="item17">Water bottle</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget Breakdown Section -->
+    <section id="budget" style="background: var(--white);">
+        <div class="container">
+            <h2 class="section-title">💰 Budget Breakdown</h2>
+            <div class="budget-container">
+                <div class="chart-container">
+                    <canvas id="budgetChart"></canvas>
+                </div>
+                <div class="budget-details">
+                    <div class="budget-item">
+                        <div class="amount">€100</div>
+                        <div class="label">Flights</div>
+                    </div>
+                    <div class="budget-item">
+                        <div class="amount">€1,330</div>
+                        <div class="label">Accommodation</div>
+                    </div>
+                    <div class="budget-item">
+                        <div class="amount">€350</div>
+                        <div class="label">Food</div>
+                    </div>
+                    <div class="budget-item">
+                        <div class="amount">€200</div>
+                        <div class="label">Activities</div>
+                    </div>
+                    <div class="budget-item">
+                        <div class="amount">€150</div>
+                        <div class="label">Transport</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flight Information Section -->
+    <section id="flights" style="background: var(--morocco-sand);">
+        <div class="container">
+            <h2 class="section-title">✈️ Flight Information</h2>
+            <div class="flight-grid">
+                <div class="flight-card">
+                    <h3>🛫 Outbound Flight</h3>
+                    <div class="flight-route">Eindhoven → Tangier</div>
+                    <div class="flight-details">
+                        <div class="flight-detail">
+                            <span>Date:</span>
+                            <strong>December 13, 2025</strong>
+                        </div>
+                        <div class="flight-detail">
+                            <span>Airline:</span>
+                            <strong>Ryanair</strong>
+                        </div>
+                        <div class="flight-detail">
+                            <span>Time Options:</span>
+                            <strong>12:50 or 17:50</strong>
+                        </div>
+                        <div class="flight-detail">
+                            <span>Duration:</span>
+                            <strong>3 hours</strong>
+                        </div>
+                        <div class="flight-detail">
+                            <span>Cost:</span>
+                            <strong>€45-65</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flight-card">
+                    <h3>🛬 Return Flight</h3>
+                    <div class="flight-route">Marrakech → Eindhoven</div>
+                    <div class="flight-details">
+                        <div class="flight-detail">
+                            <span>Date:</span>
+                            <strong>December 27, 2025</strong>
+                        </div>
+                        <div class="flight-detail">
+                            <span>Airline:</span>
+                            <strong>Ryanair</strong>
+                        </div>
+                        <div class="flight-detail">
+                            <span>Time Options:</span>
+                            <strong>05:50 or 18:40</strong>
+                        </div>
+                        <div class="flight-detail">
+                            <span>Duration:</span>
+                            <strong>3.75 hours</strong>
+                        </div>
+                        <div class="flight-detail">
+                            <span>Cost:</span>
+                            <strong>€45-65</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Food Highlights Section -->
+    <section id="food">
+        <div class="container">
+            <h2 class="section-title">🍽️ Food Highlights</h2>
+            <div class="food-grid">
+                <div class="food-card">
+                    <h3>🏰 Tangier</h3>
+                    <div class="food-item">
+                        <strong>Street-grilled sardines</strong>
+                        <p>Fresh from the harbor, perfectly charred</p>
+                    </div>
+                    <div class="food-item">
+                        <strong>Darjeeling Café</strong>
+                        <p>Perfect breakfast spot</p>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <h3>💙 Chefchaouen</h3>
+                    <div class="food-item">
+                        <strong>Berber tagine</strong>
+                        <p>Traditional slow-cooked perfection</p>
+                    </div>
+                    <div class="food-item">
+                        <strong>Riad breakfast</strong>
+                        <p>Start your day right</p>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <h3>🏛️ Meknès</h3>
+                    <div class="food-item">
+                        <strong>Brochettes</strong>
+                        <p>Grilled meat skewers done right</p>
+                    </div>
+                    <div class="food-item">
+                        <strong>Fresh bread</strong>
+                        <p>From traditional ovens</p>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <h3>🕌 Fès</h3>
+                    <div class="food-item">
+                        <strong>Café Clock</strong>
+                        <p>Legendary breakfast spot</p>
+                    </div>
+                    <div class="food-item">
+                        <strong>Harira soup</strong>
+                        <p>Traditional Moroccan soup</p>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <h3>🏜️ Desert</h3>
+                    <div class="food-item">
+                        <strong>Camp-cooked meals</strong>
+                        <p>All meals included in tour</p>
+                    </div>
+                    <div class="food-item">
+                        <strong>Traditional dishes</strong>
+                        <p>Authentic desert cuisine</p>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <h3>❤️ Marrakech</h3>
+                    <div class="food-item">
+                        <strong>Jemaa el-Fna stalls</strong>
+                        <p>Street food paradise</p>
+                    </div>
+                    <div class="food-item">
+                        <strong>Kechmara restaurant</strong>
+                        <p>Modern Moroccan cuisine</p>
+                    </div>
+                    <div class="food-item">
+                        <strong>Fresh juice vendors</strong>
+                        <p>Orange juice heaven</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pro Tips Section -->
+    <section id="tips" style="background: var(--morocco-cream);">
+        <div class="container">
+            <h2 class="section-title">💡 Pro Tips for Your Journey</h2>
+            <div class="tips-grid">
+                <div class="tip-card">Pack layers - December sun 20°C but evening/shadow 10°C</div>
+                <div class="tip-card">Desert nights are cold (0-4°C) - verify heating at camp</div>
+                <div class="tip-card">Bargaining is expected in souks - enjoy the interaction</div>
+                <div class="tip-card">Riad breakfast is usually excellent - start well-fed</div>
+                <div class="tip-card">Book 3-day desert tour in advance through riad</div>
+                <div class="tip-card">Take sunset/sunrise photos from rooftops</div>
+                <div class="tip-card">Mint tea is everywhere - accept invitations</div>
+                <div class="tip-card">Medinas are maze-like - get lost on purpose</div>
+                <div class="tip-card">Eat street food confidently - popular stalls = fresh</div>
+                <div class="tip-card">Learn basic French/Arabic greetings - goes far</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--morocco-blue); color: var(--white); padding: 40px 20px; text-align: center;">
+        <h3 style="margin-bottom: 15px; font-size: 1.8em;">Ready for Your Moroccan Adventure?</h3>
+        <p style="font-size: 1.1em; opacity: 0.9; margin-bottom: 20px;">14 days of culture, cuisine, and unforgettable experiences await!</p>
+        <p style="opacity: 0.7; font-size: 0.9em;">December 13-27, 2025 | 6 Cities | €2,130 Total Budget</p>
+    </footer>
+
+    <script>
+        // Animated Counter for Statistics
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.3
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    
+                    // Animate counters when stats section is visible
+                    if (entry.target.id === 'stats') {
+                        const counters = entry.target.querySelectorAll('[data-target]');
+                        counters.forEach(counter => animateCounter(counter));
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Checklist functionality
+        const checklistItems = document.querySelectorAll('.checklist-item');
+        checklistItems.forEach(item => {
+            const checkbox = item.querySelector('input[type="checkbox"]');
+            checkbox.addEventListener('change', () => {
+                if (checkbox.checked) {
+                    item.classList.add('checked');
+                } else {
+                    item.classList.remove('checked');
+                }
+            });
+        });
+
+        // Budget Chart
+        const ctx = document.getElementById('budgetChart').getContext('2d');
+        const budgetChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Accommodation', 'Food', 'Activities', 'Transport', 'Flights'],
+                datasets: [{
+                    data: [1330, 350, 200, 150, 100],
+                    backgroundColor: [
+                        '#1FB8CD',
+                        '#FFC185',
+                        '#B4413C',
+                        '#5D878F',
+                        '#D2BA4C'
+                    ],
+                    borderWidth: 3,
+                    borderColor: '#FFFFFF'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            font: {
+                                size: 14,
+                                family: "'Inter', sans-serif"
+                            }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Total Budget: €2,130',
+                        font: {
+                            size: 20,
+                            weight: 'bold',
+                            family: "'Playfair Display', serif"
+                        },
+                        padding: 20
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                label += '€' + context.parsed;
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = ((context.parsed / total) * 100).toFixed(1);
+                                label += ' (' + percentage + '%)';
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
