@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is China's Debt Out of Control? | Interactive Infographic</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header Section -->
+    <header class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Is China's Debt Out of Control?</h1>
+                <p class="hero-subtitle">An evidence-based analysis of China's debt situation compared to global standards</p>
+                <div class="perspective-toggle">
+                    <button class="toggle-btn active" data-view="optimist">📈 Optimist View</button>
+                    <button class="toggle-btn" data-view="pessimist">⚠️ Pessimist View</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Key Metrics Comparison -->
+    <section class="section debt-comparison" id="comparison">
+        <div class="container">
+            <h2 class="section-title">Government Debt: Global Comparison</h2>
+            <p class="section-subtitle">Debt-to-GDP ratio comparison (2024-2025 data)</p>
+            <div class="comparison-grid">
+                <div class="comparison-card animate-on-scroll">
+                    <div class="country-flag">🇨🇳</div>
+                    <h3>China</h3>
+                    <div class="debt-bar-container">
+                        <div class="debt-bar" data-percentage="88" style="background: linear-gradient(135deg, #00D9FF, #00A8CC);"></div>
+                    </div>
+                    <div class="debt-percentage">88%</div>
+                    <p class="debt-source">Trading Economics 2024-2025</p>
+                </div>
+                <div class="comparison-card animate-on-scroll">
+                    <div class="country-flag">🇺🇸</div>
+                    <h3>USA</h3>
+                    <div class="debt-bar-container">
+                        <div class="debt-bar" data-percentage="124" style="background: linear-gradient(135deg, #FF6B35, #CC5529);"></div>
+                    </div>
+                    <div class="debt-percentage">124%</div>
+                    <p class="debt-source">2024 Data</p>
+                </div>
+                <div class="comparison-card animate-on-scroll">
+                    <div class="country-flag">🇯🇵</div>
+                    <h3>Japan</h3>
+                    <div class="debt-bar-container">
+                        <div class="debt-bar" data-percentage="256" style="background: linear-gradient(135deg, #FFD700, #CCA800);"></div>
+                    </div>
+                    <div class="debt-percentage">256%</div>
+                    <p class="debt-source">2024 Data</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Four Types of Debt -->
+    <section class="section debt-types" id="debt-types">
+        <div class="container">
+            <h2 class="section-title">China's Four Types of Debt</h2>
+            <p class="section-subtitle">Breaking down the components</p>
+            <div class="debt-grid">
+                <div class="debt-card animate-on-scroll" data-debt="total">
+                    <div class="debt-icon">📊</div>
+                    <h3>Total Debt</h3>
+                    <div class="debt-circle">
+                        <svg width="120" height="120">
+                            <circle cx="60" cy="60" r="50" class="circle-bg"></circle>
+                            <circle cx="60" cy="60" r="50" class="circle-progress" data-percentage="312"></circle>
+                        </svg>
+                        <div class="circle-text">312%</div>
+                    </div>
+                    <p class="debt-description">Includes public, private, local government debt. IMF estimate.</p>
+                    <button class="learn-more-btn" data-target="total">Learn More</button>
+                </div>
+                <div class="debt-card animate-on-scroll" data-debt="government">
+                    <div class="debt-icon">🏛️</div>
+                    <h3>Government Debt</h3>
+                    <div class="debt-circle">
+                        <svg width="120" height="120">
+                            <circle cx="60" cy="60" r="50" class="circle-bg"></circle>
+                            <circle cx="60" cy="60" r="50" class="circle-progress" data-percentage="88"></circle>
+                        </svg>
+                        <div class="circle-text">88%</div>
+                    </div>
+                    <p class="debt-description">Central government debt only. Much lower than US and Japan.</p>
+                    <button class="learn-more-btn" data-target="government">Learn More</button>
+                </div>
+                <div class="debt-card animate-on-scroll" data-debt="corporate">
+                    <div class="debt-icon">🏢</div>
+                    <h3>Corporate Debt</h3>
+                    <div class="debt-circle">
+                        <svg width="120" height="120">
+                            <circle cx="60" cy="60" r="50" class="circle-bg"></circle>
+                            <circle cx="60" cy="60" r="50" class="circle-progress" data-percentage="160"></circle>
+                        </svg>
+                        <div class="circle-text">160%</div>
+                    </div>
+                    <p class="debt-description">Mostly state-owned enterprise loans from state banks. Can be restructured.</p>
+                    <button class="learn-more-btn" data-target="corporate">Learn More</button>
+                </div>
+                <div class="debt-card animate-on-scroll" data-debt="household">
+                    <div class="debt-icon">👨‍👩‍👧‍👦</div>
+                    <h3>Household Debt</h3>
+                    <div class="debt-circle">
+                        <svg width="120" height="120">
+                            <circle cx="60" cy="60" r="50" class="circle-bg"></circle>
+                            <circle cx="60" cy="60" r="50" class="circle-progress" data-percentage="63"></circle>
+                        </svg>
+                        <div class="circle-text">63%</div>
+                    </div>
+                    <p class="debt-description">Very moderate. Households save more than spend ($66 trillion in savings).</p>
+                    <button class="learn-more-btn" data-target="household">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- China's Strengths -->
+    <section class="section strengths-section optimist-content" id="strengths">
+        <div class="container">
+            <h2 class="section-title">Key Strengths Supporting China's Position</h2>
+            <div class="strengths-grid">
+                <div class="strength-card animate-on-scroll">
+                    <div class="strength-icon">💰</div>
+                    <h3>Foreign Exchange Reserves</h3>
+                    <div class="strength-value">$3.34 trillion</div>
+                    <p>As of Sep 2025, highest since 2015</p>
+                </div>
+                <div class="strength-card animate-on-scroll">
+                    <div class="strength-icon">📈</div>
+                    <h3>GDP Growth</h3>
+                    <div class="strength-value">5.0%</div>
+                    <p>2024 actual, meeting targets</p>
+                </div>
+                <div class="strength-card animate-on-scroll">
+                    <div class="strength-icon">🔐</div>
+                    <h3>Domestic Debt</h3>
+                    <div class="strength-value">~95%</div>
+                    <p>Held internally, insulated from global shocks</p>
+                </div>
+                <div class="strength-card animate-on-scroll">
+                    <div class="strength-icon">🚄</div>
+                    <h3>Infrastructure ROI</h3>
+                    <div class="strength-value">8% avg return</div>
+                    <p>High-speed rail, roads generating returns</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Concerns Section -->
+    <section class="section concerns-section pessimist-content" id="concerns">
+        <div class="container">
+            <h2 class="section-title">Key Concerns &amp; Challenges</h2>
+            <div class="concerns-grid">
+                <div class="concern-card animate-on-scroll">
+                    <div class="concern-icon">⚠️</div>
+                    <h3>High Total Debt</h3>
+                    <div class="concern-value">312% GDP</div>
+                    <p>Among most indebted countries</p>
+                </div>
+                <div class="concern-card animate-on-scroll">
+                    <div class="concern-icon">🏢</div>
+                    <h3>Property Sector</h3>
+                    <div class="concern-value">Evergrande, Country Garden</div>
+                    <p>2 of tens of thousands collapsed</p>
+                </div>
+                <div class="concern-card animate-on-scroll">
+                    <div class="concern-icon">🔍</div>
+                    <h3>Transparency</h3>
+                    <div class="concern-value">Limited data</div>
+                    <p>Western economists cite opacity concerns</p>
+                </div>
+                <div class="concern-card animate-on-scroll">
+                    <div class="concern-icon">🗺️</div>
+                    <h3>Regional Disparity</h3>
+                    <div class="concern-value">Unequal distribution</div>
+                    <p>Low-income households carry high debt burden</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Greece vs China Comparison -->
+    <section class="section greece-comparison" id="greece">
+        <div class="container">
+            <h2 class="section-title">Historical Lesson: Greece 2010 vs China Today</h2>
+            <div class="comparison-boxes">
+                <div class="comparison-box greece animate-on-scroll">
+                    <h3>🇬🇷 Greece 2010</h3>
+                    <div class="metric">
+                        <span class="metric-label">Government Debt:</span>
+                        <span class="metric-value">127%</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Foreign Debt:</span>
+                        <span class="metric-value">70% held by foreigners</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Reserves:</span>
+                        <span class="metric-value negative">None</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Control:</span>
+                        <span class="metric-value">IMF/EU imposed austerity</span>
+                    </div>
+                    <div class="outcome negative">
+                        <strong>Outcome:</strong> 25% economy contraction, unemployment 25%+, youth unemployment 55%+
+                    </div>
+                </div>
+                <div class="comparison-box china animate-on-scroll">
+                    <h3>🇨🇳 China Today</h3>
+                    <div class="metric">
+                        <span class="metric-label">Government Debt:</span>
+                        <span class="metric-value">25-88%</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Foreign Debt:</span>
+                        <span class="metric-value">Majority domestic</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Reserves:</span>
+                        <span class="metric-value positive">$3.2+ trillion</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Control:</span>
+                        <span class="metric-value">Managed domestically</span>
+                    </div>
+                    <div class="outcome positive">
+                        <strong>Outcome:</strong> 5% growth, lifting poverty, infrastructure development
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Infrastructure Investment -->
+    <section class="section infrastructure-section" id="infrastructure">
+        <div class="container">
+            <h2 class="section-title">Infrastructure: Investment vs. Cost</h2>
+            <p class="section-subtitle">How China uses debt for long-term growth</p>
+            <div class="infrastructure-grid">
+                <div class="infrastructure-card animate-on-scroll">
+                    <div class="infra-icon">🏔️</div>
+                    <h3>Mountain Village Transformation</h3>
+                    <div class="infra-timeline">
+                        <div class="timeline-point">
+                            <span class="year">2012</span>
+                            <span class="stat">1,300 people</span>
+                            <span class="detail">Dirt road, poverty, youth leaving</span>
+                        </div>
+                        <div class="timeline-arrow">→</div>
+                        <div class="timeline-point">
+                            <span class="year">2024</span>
+                            <span class="stat">2,000+ people</span>
+                            <span class="detail">Highway, hotels, tourism, jobs</span>
+                        </div>
+                    </div>
+                    <p class="infra-result">Road cost millions but paid for itself in taxes and growth</p>
+                </div>
+                <div class="infrastructure-card animate-on-scroll">
+                    <div class="infra-icon">🚄</div>
+                    <h3>Beijing-Shanghai High-Speed Rail</h3>
+                    <div class="infra-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">12.77B ¥</span>
+                            <span class="stat-label">Profit 2024</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">52.02M</span>
+                            <span class="stat-label">Passengers</span>
+                        </div>
+                    </div>
+                    <p class="infra-result">Profitable and growing, connecting economic regions</p>
+                </div>
+                <div class="infrastructure-card animate-on-scroll">
+                    <div class="infra-icon">🎓</div>
+                    <h3>Education Infrastructure</h3>
+                    <div class="infra-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">34M</span>
+                            <span class="stat-label">Vocational students</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">1,434</span>
+                            <span class="stat-label">Majors offered</span>
+                        </div>
+                    </div>
+                    <p class="infra-result">87 undergraduate + 9,302 secondary vocational schools across all UN industrial sectors</p>
+                </div>
+                <div class="infrastructure-card animate-on-scroll">
+                    <div class="infra-icon">🏥</div>
+                    <h3>Healthcare System</h3>
+                    <div class="infra-detail">
+                        <p>Government-controlled, marginally profitable hospitals provide affordable care without draining resources like some Western systems.</p>
+                    </div>
+                    <p class="infra-result">Investment in health = healthier workforce = economic productivity</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Western Analysts Get It Wrong -->
+    <section class="section analysts-section" id="analysts">
+        <div class="container">
+            <h2 class="section-title">Different Lenses, Different Conclusions</h2>
+            <div class="analysts-comparison">
+                <div class="analyst-box western animate-on-scroll">
+                    <h3>🔍 Western Economic Lens</h3>
+                    <ul>
+                        <li>Apply Western metrics to Chinese system</li>
+                        <li>Focus on 5-year ROI and profitability</li>
+                        <li>View state control as risk factor</li>
+                        <li>Predict collapse based on debt ratios</li>
+                        <li>Cherry-pick failures (Evergrande, Country Garden)</li>
+                    </ul>
+                </div>
+                <div class="analyst-box chinese animate-on-scroll">
+                    <h3>🇨🇳 Chinese Economic Approach</h3>
+                    <ul>
+                        <li>Long-term strategic planning (5-year, 10-year, 20-year)</li>
+                        <li>Measure success in human capital development</li>
+                        <li>State control enables flexible debt management</li>
+                        <li>Focus on infrastructure as investment, not cost</li>
+                        <li>View debt in context of growth and reserves</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="key-insight animate-on-scroll">
+                <p>"The harder the Chinese government works, the luckier they get." - Political leadership includes world-class economists (Premier Li Qiang)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="section conclusion-section" id="conclusion">
+        <div class="container">
+            <div class="conclusion-content animate-on-scroll">
+                <h2 class="conclusion-title">Manageable Debt ≠ No Debt</h2>
+                <div class="key-takeaways">
+                    <div class="takeaway-item">
+                        <span class="takeaway-icon">✓</span>
+                        <span>China's government debt (88%) is lower than US (124%) and Japan (256%)</span>
+                    </div>
+                    <div class="takeaway-item">
+                        <span class="takeaway-icon">✓</span>
+                        <span>$3.34 trillion in foreign reserves provides strong buffer</span>
+                    </div>
+                    <div class="takeaway-item">
+                        <span class="takeaway-icon">✓</span>
+                        <span>95% of debt held domestically, reducing foreign shock risk</span>
+                    </div>
+                    <div class="takeaway-item">
+                        <span class="takeaway-icon">✓</span>
+                        <span>5% annual GDP growth means debt-to-GDP ratio declining</span>
+                    </div>
+                    <div class="takeaway-item">
+                        <span class="takeaway-icon">✓</span>
+                        <span>Debt used for infrastructure with long-term ROI, not consumption</span>
+                    </div>
+                    <div class="takeaway-item">
+                        <span class="takeaway-icon">✓</span>
+                        <span>State control allows restructuring and flexible management</span>
+                    </div>
+                </div>
+                <div class="final-verdict">
+                    <p><strong>The Verdict:</strong> China's debt is high but strategically managed. Unlike Greece 2010, China has reserves, growth, and domestic control. The real question isn't "Is debt out of control?" but "Is debt being used effectively?" Evidence suggests yes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sources -->
+    <footer class="sources-section">
+        <div class="container">
+            <h3>Data Sources &amp; Citations</h3>
+            <div class="sources-grid">
+                <div class="source-item">Trading Economics, World Bank, IMF Article IV Consultations 2024</div>
+                <div class="source-item">China State Administration of Foreign Exchange (SAFE)</div>
+                <div class="source-item">US Treasury Department</div>
+                <div class="source-item">Japan Ministry of Finance</div>
+                <div class="source-item">Greek government debt sources (Wikipedia, Debt Justice)</div>
+                <div class="source-item">China National Bureau of Statistics</div>
+            </div>
+            <p class="disclaimer">This infographic presents data from multiple sources and perspectives. Readers are encouraged to consult primary sources and form their own conclusions.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
