@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 10x 'Vibe Coding' Strategy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F5F5F5;
+            color: #333333;
+        }
+        
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        
+        .text-primary { color: #004FFF; }
+        .bg-primary { background-color: #004FFF; }
+        .border-primary { border-color: #004FFF; }
+        
+        .text-secondary { color: #89CFF0; }
+        .bg-secondary { background-color: #89CFF0; }
+        
+        .text-accent-yellow { color: #FFD700; }
+        .bg-accent-yellow { background-color: #FFD700; }
+
+        .text-accent-red { color: #FF5733; }
+        .bg-accent-red { background-color: #FF5733; }
+        
+        .step-arrow {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #004FFF;
+            line-height: 1;
+        }
+        
+        .step-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 79, 255, 0.1), 0 4px 6px -2px rgba(0, 79, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-primary text-white p-8 md:p-12 text-center shadow-lg">
+        <h1 class="text-3xl md:text-5xl font-bold mb-2">The 10x 'Vibe Coding' Strategy</h1>
+        <p class="text-lg md:text-xl font-light max-w-3xl mx-auto">A 5-step guide to using AI like a 10x engineer, inspired by a dev who built a social network in 6 weeks.</p>
+    </header>
+
+    <main class="max-w-7xl mx-auto p-4 md:p-8">
+
+        <section id="workflow-overview" class="mb-12">
+            <h2 class="text-3xl font-bold text-center text-primary mb-4">The 3-Phase Workflow</h2>
+            <p class="text-lg text-gray-700 text-center max-w-3xl mx-auto mb-8">This isn't just a list of tips; it's a repeatable, three-phase process for maintaining high-quality AI collaboration from setup to execution.</p>
+            
+            <div class="bg-white rounded-lg shadow-xl p-6 md:p-8">
+                <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-4">
+                    
+                    <div class="text-center p-4 rounded-lg border-l-4 border-primary bg-gray-50 flex-1 w-full md:w-auto">
+                        <h3 class="text-xl font-semibold text-primary">Phase 1</h3>
+                        <p class="font-medium">Foundational Setup</p>
+                    </div>
+                    
+                    <div class="step-arrow hidden md:block">→</div>
+                    <div class="step-arrow md:hidden">↓</div>
+                    
+                    <div class="text-center p-4 rounded-lg border-l-4 border-primary bg-gray-50 flex-1 w-full md:w-auto">
+                        <h3 class="text-xl font-semibold text-primary">Phase 2</h3>
+                        <p class="font-medium">Active Development</p>
+                    </div>
+
+                    <div class="step-arrow hidden md:block">→</div>
+                    <div class="step-arrow md:hidden">↓</div>
+
+                    <div class="text-center p-4 rounded-lg border-l-4 border-primary bg-gray-50 flex-1 w-full md:w-auto">
+                        <h3 class="text-xl font-semibold text-primary">Phase 3</h3>
+                        <p class="font-medium">Session Health</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            
+            <div class="lg:col-span-3">
+                <h2 class="text-3xl font-bold text-primary mb-6 border-b-2 border-primary pb-2">Phases 1 & 2: The 4 Core Actions</h2>
+                <p class="text-lg text-gray-700 mb-6">The first two phases are built on four discrete actions. The setup (Steps 1-2) is done once, while the workflow (Steps 3-4) is your active coding loop.</p>
+            </div>
+
+            <div class="step-card bg-white rounded-lg shadow-xl p-6">
+                <span class="text-5xl" title="File">📝</span>
+                <h3 class="text-2xl font-bold text-primary mt-4 mb-2">Step 1: Perfect Context</h3>
+                <p class="text-gray-700"><strong class="text-gray-900">Action:</strong> Add your project's core context to the top of your `claude.md` file.</p>
+                <p class="text-gray-700 mt-2"><strong class="text-gray-900">Why:</strong> Every new session starts with perfect context automatically. No more copy-pasting setup prompts.</p>
+            </div>
+
+            <div class="step-card bg-white rounded-lg shadow-xl p-6">
+                <span class="text-5xl" title="Question">❓</span>
+                <h3 class="text-2xl font-bold text-primary mt-4 mb-2">Step 2: Force Questions</h3>
+                <p class="text-gray-700"><strong class="text-gray-900">Action:</strong> Add the "clarifying questions" line to your `claude.md` file.</p>
+                <p class="text-gray-700 mt-2"><strong class="text-gray-900">Why:</strong> Catches your missed assumptions *before* code is written. It turns the AI into a true co-pilot.</p>
+            </div>
+            
+            <div class="step-card bg-white rounded-lg shadow-xl p-6">
+                <span class="text-5xl" title="Map">🗺️</span>
+                <h3 class="text-2xl font-bold text-primary mt-4 mb-2">Step 3: Plan Mode</h3>
+                <p class="text-gray-700"><strong class="text-gray-900">Action:</strong> Use "Planning Mode" for all new features and refactors.</p>
+                <p class="text-gray-700 mt-2"><strong class="text-gray-900">Why:</strong> The AI outlines every step, and thanks to Step 2, it will ask smart questions to ensure the plan is solid.</p>
+            </div>
+
+            <div class="step-card bg-white rounded-lg shadow-xl p-6">
+                <span class="text-5xl" title="Brain">🧠</span>
+                <h3 class="text-2xl font-bold text-primary mt-4 mb-2">Step 4: Ultra-Think</h3>
+                <p class="text-gray-700"><strong class="text-gray-900">Action:</strong> On hard problems, keep "Thinking Mode" on and use the "Ultra-think" prompt command.</p>
+                <p class="text-gray-700 mt-2"><strong class="text-gray-900">Why:</strong> Forces a deeper analysis (you'll see a 🌈) and delivers superior, non-surface-level results.</p>
+            </div>
+
+            <div class="md:col-span-2 lg:col-span-3 mt-8">
+                <h2 class="text-3xl font-bold text-primary mb-6 border-b-2 border-primary pb-2">Phase 3: Session Health & Maintenance</h2>
+                <p class="text-lg text-gray-700 mb-6">This is the most critical phase for maintaining long-term quality. How you manage your context window determines the AI's effectiveness. The goal is to be proactive, not reactive.</p>
+            </div>
+
+            <div class="step-card bg-white rounded-lg shadow-xl p-6 md:col-span-2 lg:col-span-1">
+                <span class="text-5xl" title="Recycle">♻️</span>
+                <h3 class="text-2xl font-bold text-primary mt-4 mb-2">Step 5: Be Proactive</h3>
+                <p class="text-gray-700"><strong class="text-gray-900">Proactive Action:</strong> Use the `clear` command *before* you hit the context limit.</p>
+                <p class="text-gray-700 mt-2"><strong class="text-gray-900">Why:</strong> It's a fresh start. It dumps legacy junk, saves tokens, and resets context, ensuring 100% quality.</p>
+                <hr class="my-4">
+                <p class="text-gray-700"><strong class="text-gray-900">Reactive "Compact":</strong> If the session auto-summarizes, be careful. The quality starts to degrade after 1-2 compacts.</p>
+            </div>
+
+            <div class="step-card bg-white rounded-lg shadow-xl p-6 md:col-span-2">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 text-center">Context Strategy Comparison</h3>
+                <p class="text-gray-700 mb-6 text-center">A "Proactive Clear" is always cheaper and higher quality than letting the session "Compact" and degrade.</p>
+                <div class="chart-container">
+                    <canvas id="sessionHealthChart"></canvas>
+                </div>
+            </div>
+
+            <div class="step-card bg-white rounded-lg shadow-xl p-6 md:col-span-2 lg:col-span-3">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 text-center">The "Compact" Trap: Quality Degradation</h3>
+                <p class="text-gray-700 mb-6 text-center">The "compact" command summarizes history, but details are lost. After 1-2 compacts, the AI's response quality drops off sharply.</p>
+                <div class="chart-container" style="max-width: 800px;">
+                    <canvas id="qualityChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="text-center p-8 mt-12 border-t border-gray-200">
+        <p class="text-gray-600">Infographic by Canvas Infographics. Strategy based on developer experience.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const createTooltipCallback = () => {
+                return {
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                title: function(tooltipItems) {
+                                    const item = tooltipItems[0];
+                                    let label = item.chart.data.labels[item.dataIndex];
+                                    if (Array.isArray(label)) {
+                                      return label.join(' ');
+                                    } else {
+                                      return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                };
+            };
+
+            const processLabels = (labels) => {
+                return labels.map(label => {
+                    if (typeof label === 'string' && label.length > 16) {
+                        let words = label.split(' ');
+                        let lines = [];
+                        let currentLine = '';
+                        words.forEach(word => {
+                            if ((currentLine + word).length > 16 && currentLine.length > 0) {
+                                lines.push(currentLine.trim());
+                                currentLine = word + ' ';
+                            } else {
+                                currentLine += word + ' ';
+                            }
+                        });
+                        lines.push(currentLine.trim());
+                        return lines;
+                    }
+                    return label;
+                });
+            };
+
+            const healthCtx = document.getElementById('sessionHealthChart');
+            if (healthCtx) {
+                new Chart(healthCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Est. Token Cost', 'Context Quality'],
+                        datasets: [
+                            {
+                                label: 'Proactive "Clear"',
+                                data: [10, 95],
+                                backgroundColor: '#89CFF0',
+                                barPercentage: 0.6,
+                            },
+                            {
+                                label: 'Reactive "Compact"',
+                                data: [60, 70],
+                                backgroundColor: '#FFD700',
+                                barPercentage: 0.6,
+                            }
+                        ]
+                    },
+                    options: {
+                        ...createTooltipCallback(),
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'x',
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value + '%';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const qualityCtx = document.getElementById('qualityChart');
+            if (qualityCtx) {
+                const rawLabels = [
+                    'Fresh Session (0 Compacts)', 
+                    '1st Compact in Session', 
+                    '2nd Compact in Session', 
+                    '3rd Compact in Session'
+                ];
+                
+                new Chart(qualityCtx, {
+                    type: 'line',
+                    data: {
+                        labels: processLabels(rawLabels),
+                        datasets: [{
+                            label: 'AI Response Quality',
+                            data: [100, 98, 70, 40],
+                            borderColor: '#FF5733',
+                            backgroundColor: 'rgba(255, 87, 51, 0.1)',
+                            fill: true,
+                            tension: 0.1,
+                            borderWidth: 3,
+                            pointRadius: 5,
+                            pointBackgroundColor: '#FF5733',
+                        }]
+                    },
+                    options: {
+                        ...createTooltipCallback(),
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                title: {
+                                    display: true,
+                                    text: 'Response Quality (%)'
+                                }
+                            },
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Session State'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
