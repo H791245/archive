@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrios Connect Tutorial - Interactive Infographic</title>
+    <style>
+        :root {
+  /* Primitive Color Tokens */
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-300: rgba(167, 169, 169, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-brown-600: rgba(94, 82, 64, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-400: rgba(45, 166, 178, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-teal-700: rgba(26, 104, 115, 1);
+  --color-teal-800: rgba(41, 150, 161, 1);
+  --color-red-400: rgba(255, 84, 89, 1);
+  --color-red-500: rgba(192, 21, 47, 1);
+  --color-orange-400: rgba(230, 129, 97, 1);
+  --color-orange-500: rgba(168, 75, 47, 1);
+
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
+  --color-slate-500-rgb: 98, 108, 113;
+  --color-red-500-rgb: 192, 21, 47;
+  --color-red-400-rgb: 255, 84, 89;
+  --color-orange-500-rgb: 168, 75, 47;
+  --color-orange-400-rgb: 230, 129, 97;
+
+  --color-bg-1: rgba(59, 130, 246, 0.08);
+  --color-bg-2: rgba(245, 158, 11, 0.08);
+  --color-bg-3: rgba(34, 197, 94, 0.08);
+  --color-bg-4: rgba(239, 68, 68, 0.08);
+  --color-bg-5: rgba(147, 51, 234, 0.08);
+  --color-bg-6: rgba(249, 115, 22, 0.08);
+  --color-bg-7: rgba(236, 72, 153, 0.08);
+  --color-bg-8: rgba(6, 182, 212, 0.08);
+
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-error: var(--color-red-500);
+  --color-success: var(--color-teal-500);
+  --color-warning: var(--color-orange-500);
+  --color-info: var(--color-slate-500);
+  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+  --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 600;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --letter-spacing-tight: -0.01em;
+
+  --space-0: 0;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-gray-400-rgb: 119, 124, 124;
+    --color-teal-300-rgb: 50, 184, 198;
+    --color-gray-300-rgb: 167, 169, 169;
+    --color-gray-200-rgb: 245, 245, 245;
+
+    --color-bg-1: rgba(29, 78, 216, 0.15);
+    --color-bg-2: rgba(180, 83, 9, 0.15);
+    --color-bg-3: rgba(21, 128, 61, 0.15);
+    --color-bg-4: rgba(185, 28, 28, 0.15);
+    --color-bg-5: rgba(107, 33, 168, 0.15);
+    --color-bg-6: rgba(194, 65, 12, 0.15);
+    --color-bg-7: rgba(190, 24, 93, 0.15);
+    --color-bg-8: rgba(8, 145, 178, 0.15);
+
+    --color-background: var(--color-charcoal-700);
+    --color-surface: var(--color-charcoal-800);
+    --color-text: var(--color-gray-200);
+    --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+    --color-primary: var(--color-teal-300);
+    --color-primary-hover: var(--color-teal-400);
+    --color-primary-active: var(--color-teal-800);
+    --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+    --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+    --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-error: var(--color-red-400);
+    --color-success: var(--color-teal-300);
+    --color-warning: var(--color-orange-400);
+    --color-info: var(--color-gray-300);
+    --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+    --color-btn-primary-text: var(--color-slate-900);
+    --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+    --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+  }
+}
+
+@font-face {
+  font-family: 'FKGroteskNeue';
+  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2') format('woff2');
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-base);
+  background: var(--color-background);
+  color: var(--color-text);
+  line-height: var(--line-height-normal);
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  padding: var(--space-24);
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  margin-bottom: var(--space-32);
+}
+
+.sidebar-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-8);
+}
+
+.sidebar-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.nav-list {
+  list-style: none;
+}
+
+.nav-item {
+  margin-bottom: var(--space-8);
+}
+
+.nav-button {
+  width: 100%;
+  padding: var(--space-12) var(--space-16);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-standard);
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  text-align: left;
+}
+
+.nav-button:hover {
+  background: var(--color-secondary);
+  border-color: var(--color-primary);
+}
+
+.nav-button.active {
+  background: var(--color-primary);
+  color: var(--color-btn-primary-text);
+  border-color: var(--color-primary);
+}
+
+.nav-number {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-bold);
+  flex-shrink: 0;
+}
+
+.nav-button.active .nav-number {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.main-content {
+  margin-left: 240px;
+  flex: 1;
+  padding: var(--space-32);
+  max-width: 1200px;
+}
+
+.section {
+  display: none;
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-standard);
+}
+
+.section.active {
+  display: block;
+  opacity: 1;
+}
+
+.section-header {
+  margin-bottom: var(--space-32);
+}
+
+.section-title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin-bottom: var(--space-8);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.section-subtitle {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-normal);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-20);
+  margin-bottom: var(--space-32);
+}
+
+.info-box {
+  background: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.info-box:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.info-box-icon {
+  font-size: 32px;
+  margin-bottom: var(--space-12);
+  display: block;
+}
+
+.info-box-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-6);
+}
+
+.info-box-value {
+  font-size: var(--font-size-lg);
+  color: var(--color-text);
+  font-weight: var(--font-weight-medium);
+}
+
+.problem-solution-container {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--space-24);
+  align-items: center;
+  margin-bottom: var(--space-32);
+}
+
+.problem-box,
+.solution-box {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+  box-shadow: var(--shadow-sm);
+}
+
+.problem-box {
+  border: 2px solid #dc2626;
+  background: var(--color-bg-4);
+}
+
+.solution-box {
+  border: 2px solid #22c55e;
+  background: var(--color-bg-3);
+}
+
+.box-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-16);
+}
+
+.problem-box .box-title {
+  color: #dc2626;
+}
+
+.solution-box .box-title {
+  color: #22c55e;
+}
+
+.item-list {
+  list-style: none;
+}
+
+.item-list li {
+  padding: var(--space-8) 0;
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+}
+
+.arrow-divider {
+  font-size: 48px;
+  color: var(--color-primary);
+  text-align: center;
+}
+
+.architecture-flow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  margin-bottom: var(--space-32);
+}
+
+.flow-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-20);
+  display: flex;
+  align-items: center;
+  gap: var(--space-20);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.flow-item::after {
+  content: '↓';
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  color: var(--color-primary);
+}
+
+.flow-item:last-child::after {
+  display: none;
+}
+
+.flow-icon {
+  font-size: 36px;
+  flex-shrink: 0;
+}
+
+.flow-content h3 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-6);
+  color: var(--color-text);
+}
+
+.flow-content p {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.workflow-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+  margin-bottom: var(--space-32);
+}
+
+.step-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+  box-shadow: var(--shadow-sm);
+  border-left: 4px solid;
+  transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.step-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateX(4px);
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  margin-bottom: var(--space-12);
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: white;
+  flex-shrink: 0;
+}
+
+.step-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+}
+
+.step-description {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.use-cases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-24);
+  margin-bottom: var(--space-32);
+}
+
+.use-case-card {
+  background: var(--color-surface);
+  border: 2px solid;
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.use-case-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.use-case-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  margin-bottom: var(--space-16);
+}
+
+.use-case-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.use-case-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+}
+
+.use-case-list {
+  list-style: none;
+}
+
+.use-case-list li {
+  padding: var(--space-8) 0;
+  padding-left: var(--space-20);
+  position: relative;
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+}
+
+.use-case-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  font-weight: var(--font-weight-bold);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-20);
+  margin-bottom: var(--space-32);
+}
+
+.feature-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-20);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--duration-fast) var(--ease-standard);
+  border-left: 4px solid;
+}
+
+.feature-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.feature-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  margin-bottom: var(--space-12);
+}
+
+.feature-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.feature-name {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+}
+
+.feature-description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-32);
+  padding-top: var(--space-24);
+  border-top: 1px solid var(--color-border);
+}
+
+.nav-btn {
+  padding: var(--space-12) var(--space-24);
+  background: var(--color-primary);
+  color: var(--color-btn-primary-text);
+  border: none;
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-standard);
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.nav-btn:hover {
+  background: var(--color-primary-hover);
+  transform: translateY(-1px);
+}
+
+.nav-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.note-box {
+  background: var(--color-bg-1);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-base);
+  padding: var(--space-16);
+  margin-top: var(--space-24);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.note-box strong {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+  
+  .main-content {
+    margin-left: 200px;
+    padding: var(--space-20);
+  }
+  
+  .section-title {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .problem-solution-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .arrow-divider {
+    transform: rotate(90deg);
+  }
+  
+  .use-cases-grid,
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="sidebar-title">Matrios Connect</h1>
+                <p class="sidebar-subtitle">Interactive Tutorial</p>
+            </div>
+            <nav>
+                <ul class="nav-list" id="navList"></ul>
+            </nav>
+        </aside>
+        
+        <main class="main-content" id="mainContent"></main>
+    </div>
+
+    <script>
+        const sections = [
+            {
+                id: 1,
+                title: "Matrios Connect",
+                subtitle: "Custom MES Solution for Intel",
+                type: "overview",
+                content: [
+                    { label: "What", value: "Custom Manufacturing Execution System (MES)", icon: "⚙️" },
+                    { label: "Who", value: "Built for Intel T1000 Users", icon: "👥" },
+                    { label: "Why", value: "Intel needs automated loading but lacks an MES", icon: "❓" }
+                ],
+                color: "teal"
+            },
+            {
+                id: 2,
+                title: "Why Matrios Connect?",
+                subtitle: "Problem &amp; Solution",
+                type: "problem-solution",
+                problem: {
+                    title: "The Challenge",
+                    items: [
+                        "✗ Intel has ECS (Equipment Control System)",
+                        "✗ Intel has Optus tool for sample prep",
+                        "✗ Intel lacks Manufacturing Execution System (MES)",
+                        "✗ Needs automated loading capability"
+                    ]
+                },
+                solution: {
+                    title: "The Solution",
+                    items: [
+                        "✓ Matrios Connect = Custom MES",
+                        "✓ Controls ECS like standard MES",
+                        "✓ Easy to test (same interface)",
+                        "✓ Compatible with existing tools"
+                    ]
+                },
+                color: "orange"
+            },
+            {
+                id: 3,
+                title: "System Architecture",
+                subtitle: "How Components Connect",
+                type: "architecture",
+                workflow_steps: [
+                    { component: "Optus Tool", description: "Creates samples from wafer", icon: "🔧" },
+                    { component: "Workflow File + Tray", description: "Generated automatically with tray ID", icon: "📄" },
+                    { component: "TEM Microscope", description: "Tray docked in tray station", icon: "🔬" },
+                    { component: "Matrios Connect", description: "Reads tray ID, loads workflow file", icon: "💻" },
+                    { component: "ECS System", description: "Controls robots and automation", icon: "🤖" }
+                ]
+            },
+            {
+                id: 4,
+                title: "Step-by-Step Workflow",
+                subtitle: "How the Process Works",
+                type: "workflow",
+                steps: [
+                    { step_num: 1, title: "Create Tray", description: "Operator uses Optus tool to create tray with samples. Workflow file generated automatically.", icon: "1️⃣", color: "#0066cc" },
+                    { step_num: 2, title: "Transport to TEM", description: "Operator physically moves tray to microscope and docks it in any tray station.", icon: "2️⃣", color: "#0891b2" },
+                    { step_num: 3, title: "Read Tray ID", description: "Matrios Connect automatically reads tray ID and retrieves workflow file from network drive.", icon: "3️⃣", color: "#06b6d4" },
+                    { step_num: 4, title: "Display Sites", description: "All sites from tray appear in UI with site ID, structure type, recipe, and metadata columns.", icon: "4️⃣", color: "#10b981" },
+                    { step_num: 5, title: "Execute", description: "Operator selects items, adds to queue, clicks Start. ECS loads sample and executes recipe.", icon: "5️⃣", color: "#059669" }
+                ]
+            },
+            {
+                id: 5,
+                title: "Three Core Use Cases",
+                subtitle: "Main Functions of Matrios Connect",
+                type: "use-cases",
+                use_cases: [
+                    { title: "SELECTION", icon: "✓", color: "#0066cc", items: ["Filter by site ID or column values", "Select specific items to process", "View all tray contents", "Override recipes before queuing"] },
+                    { title: "EXECUTION", icon: "▶", color: "#f59e0b", items: ["Click Start to begin processing", "Monitor progress in real-time", "Pause or Stop queue", "Skip current job to next"] },
+                    { title: "REVIEW", icon: "✔", color: "#22c55e", items: ["Check completion status", "View failure reasons", "Access job info logs", "Review detailed application logs"] }
+                ]
+            },
+            {
+                id: 6,
+                title: "Advanced Features",
+                subtitle: "Additional Capabilities",
+                type: "advanced",
+                features: [
+                    { name: "Structure Type Mapping", icon: "⚙", description: "Map sample types (DRAM, etc.) to specific recipes via settings", color: "#7c3aed" },
+                    { name: "Hot Lots", icon: "⭐", description: "Add urgent jobs to top of queue, interrupts current processing", color: "#dc2626" },
+                    { name: "Filtering &amp; Override", icon: "🔽", description: "Filter like Excel, override recipes for queued (not executing) jobs", color: "#0066cc" },
+                    { name: "Status Colors", icon: "🎨", description: "White=idle, Yellow=processing, Green=success, Red=failed", color: "#64748b" },
+                    { name: "Logging System", icon: "📋", description: "Job info logs, detailed app logs, SEX GEM system messages", color: "#0891b2" },
+                    { name: "Workflow File Details", icon: "📁", description: "Tray ID, LCC ID, Slot ID, Structure Type, Site ID tracking", color: "#78716c" }
+                ]
+            }
+        ];
+
+        let currentSection = 1;
+
+        function renderNav() {
+            const navList = document.getElementById('navList');
+            navList.innerHTML = sections.map(section => `
+                <li class="nav-item">
+                    <button class="nav-button ${section.id === currentSection ? 'active' : ''}" 
+                            onclick="navigateToSection(${section.id})">
+                        <span class="nav-number">${section.id}</span>
+                        <span>${section.title}</span>
+                    </button>
+                </li>
+            `).join('');
+        }
+
+        function renderSection(section) {
+            let content = '';
+            
+            if (section.type === 'overview') {
+                content = `
+                    <div class="section-header">
+                        <h2 class="section-title">${section.title}</h2>
+                        <p class="section-subtitle">${section.subtitle}</p>
+                    </div>
+                    <div class="info-grid">
+                        ${section.content.map(item => `
+                            <div class="info-box">
+                                <span class="info-box-icon">${item.icon}</span>
+                                <div class="info-box-label">${item.label}</div>
+                                <div class="info-box-value">${item.value}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            } else if (section.type === 'problem-solution') {
+                content = `
+                    <div class="section-header">
+                        <h2 class="section-title">${section.title}</h2>
+                        <p class="section-subtitle">${section.subtitle}</p>
+                    </div>
+                    <div class="problem-solution-container">
+                        <div class="problem-box">
+                            <h3 class="box-title">${section.problem.title}</h3>
+                            <ul class="item-list">
+                                ${section.problem.items.map(item => `<li>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="arrow-divider">→</div>
+                        <div class="solution-box">
+                            <h3 class="box-title">${section.solution.title}</h3>
+                            <ul class="item-list">
+                                ${section.solution.items.map(item => `<li>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            } else if (section.type === 'architecture') {
+                content = `
+                    <div class="section-header">
+                        <h2 class="section-title">${section.title}</h2>
+                        <p class="section-subtitle">${section.subtitle}</p>
+                    </div>
+                    <div class="architecture-flow">
+                        ${section.workflow_steps.map(step => `
+                            <div class="flow-item">
+                                <div class="flow-icon">${step.icon}</div>
+                                <div class="flow-content">
+                                    <h3>${step.component}</h3>
+                                    <p>${step.description}</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="note-box">
+                        <strong>Note:</strong> Matrios Connect uses the same interface as standard MES systems, making it easy to test and integrate.
+                    </div>
+                `;
+            } else if (section.type === 'workflow') {
+                content = `
+                    <div class="section-header">
+                        <h2 class="section-title">${section.title}</h2>
+                        <p class="section-subtitle">${section.subtitle}</p>
+                    </div>
+                    <div class="workflow-steps">
+                        ${section.steps.map(step => `
+                            <div class="step-card" style="border-left-color: ${step.color};">
+                                <div class="step-header">
+                                    <div class="step-number" style="background: ${step.color};">${step.step_num}</div>
+                                    <h3 class="step-title">${step.title}</h3>
+                                </div>
+                                <p class="step-description">${step.description}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            } else if (section.type === 'use-cases') {
+                content = `
+                    <div class="section-header">
+                        <h2 class="section-title">${section.title}</h2>
+                        <p class="section-subtitle">${section.subtitle}</p>
+                    </div>
+                    <div class="use-cases-grid">
+                        ${section.use_cases.map(useCase => `
+                            <div class="use-case-card" style="border-color: ${useCase.color};">
+                                <div class="use-case-header">
+                                    <div class="use-case-icon" style="background: ${useCase.color};">${useCase.icon}</div>
+                                    <h3 class="use-case-title">${useCase.title}</h3>
+                                </div>
+                                <ul class="use-case-list">
+                                    ${useCase.items.map(item => `<li>${item}</li>`).join('')}
+                                </ul>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            } else if (section.type === 'advanced') {
+                content = `
+                    <div class="section-header">
+                        <h2 class="section-title">${section.title}</h2>
+                        <p class="section-subtitle">${section.subtitle}</p>
+                    </div>
+                    <div class="features-grid">
+                        ${section.features.map(feature => `
+                            <div class="feature-card" style="border-left-color: ${feature.color};">
+                                <div class="feature-header">
+                                    <span class="feature-icon">${feature.icon}</span>
+                                    <h3 class="feature-name">${feature.name}</h3>
+                                </div>
+                                <p class="feature-description">${feature.description}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+
+            content += `
+                <div class="navigation-buttons">
+                    <button class="nav-btn" onclick="navigatePrev()" ${section.id === 1 ? 'disabled' : ''}>
+                        <span>←</span> Previous
+                    </button>
+                    <button class="nav-btn" onclick="navigateNext()" ${section.id === sections.length ? 'disabled' : ''}>
+                        Next <span>→</span>
+                    </button>
+                </div>
+            `;
+
+            return `<div class="section active" data-section="${section.id}">${content}</div>`;
+        }
+
+        function renderAllSections() {
+            const mainContent = document.getElementById('mainContent');
+            mainContent.innerHTML = sections.map(section => renderSection(section)).join('');
+            updateActiveSection();
+        }
+
+        function updateActiveSection() {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            const activeSection = document.querySelector(`[data-section="${currentSection}"]`);
+            if (activeSection) {
+                activeSection.classList.add('active');
+            }
+        }
+
+        function navigateToSection(sectionId) {
+            currentSection = sectionId;
+            renderNav();
+            updateActiveSection();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function navigateNext() {
+            if (currentSection < sections.length) {
+                navigateToSection(currentSection + 1);
+            }
+        }
+
+        function navigatePrev() {
+            if (currentSection > 1) {
+                navigateToSection(currentSection - 1);
+            }
+        }
+
+        renderNav();
+        renderAllSections();
+    </script>
+</body>
+</html>
