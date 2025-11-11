@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bread Machine + Dutch Oven Sourdough Workflow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5e6d3 0%, #e8d4c0 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #5a4a3a;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.1em;
+            color: #7a6a5a;
+            font-style: italic;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .phase {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .phase:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .phase-image {
+            flex: 0 0 35%;
+            overflow: hidden;
+            background: #f9f5f0;
+        }
+        
+        .phase-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .phase-content {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .phase-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #d4a574 0%, #c99156 100%);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .phase-title {
+            font-size: 1.8em;
+            color: #5a4a3a;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .phase-time {
+            color: #8b7355;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .phase-time::before {
+            content: "⏱";
+            font-size: 1.2em;
+        }
+        
+        .phase-description {
+            color: #6a5a4a;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .phase-steps {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .phase-steps li {
+            color: #6a5a4a;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .phase-steps li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #d4a574;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .highlights {
+            background: #fef5e7;
+            border-left: 4px solid #d4a574;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-size: 0.95em;
+            color: #5a4a3a;
+        }
+        
+        .timeline-connector {
+            text-align: center;
+            color: #d4a574;
+            font-size: 2em;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        
+        .timeline-overview {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-overview h2 {
+            color: #5a4a3a;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+        
+        .timeline-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .timeline-item {
+            background: linear-gradient(135deg, #f9f5f0 0%, #f0e8e0 100%);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #d4a574;
+            transition: transform 0.3s;
+        }
+        
+        .timeline-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .timeline-time {
+            font-weight: bold;
+            color: #d4a574;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        
+        .timeline-task {
+            color: #6a5a4a;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+        
+        .tips-section {
+            background: linear-gradient(135deg, #fff9f0 0%, #fef5e7 100%);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .tips-section h2 {
+            color: #5a4a3a;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .tip {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-top: 3px solid #d4a574;
+        }
+        
+        .tip-title {
+            font-weight: bold;
+            color: #5a4a3a;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+        
+        .tip-text {
+            color: #6a5a4a;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+        
+        .equipment-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .equipment-section h2 {
+            color: #5a4a3a;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        
+        .equipment-item {
+            text-align: center;
+            padding: 20px;
+            background: #f9f5f0;
+            border-radius: 8px;
+            border: 2px solid #e8dcc8;
+        }
+        
+        .equipment-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .equipment-name {
+            font-weight: bold;
+            color: #5a4a3a;
+            margin-bottom: 8px;
+        }
+        
+        .equipment-note {
+            color: #8b7355;
+            font-size: 0.9em;
+        }
+        
+        .recommendation {
+            background: linear-gradient(135deg, #d4a574 0%, #c99156 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        
+        .recommendation h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        
+        .recommendation p {
+            font-size: 1.05em;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .machine-model {
+            font-weight: bold;
+            font-size: 1.2em;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 15px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            color: #8b7355;
+            margin-top: 50px;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .phase {
+                flex-direction: column;
+            }
+            
+            .phase-image {
+                flex: 0 0 250px;
+                min-height: 250px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .phase-title {
+                font-size: 1.4em;
+            }
+            
+            .timeline-overview h2,
+            .tips-section h2,
+            .equipment-section h2 {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍞 Bread Machine + Dutch Oven Sourdough</h1>
+            <p class="subtitle">Complete visual workflow for authentic sourdough without the hassle</p>
+        </header>
+        
+        <!-- Equipment Section -->
+        <div class="equipment-section">
+            <h2>What You Need</h2>
+            <div class="equipment-grid">
+                <div class="equipment-item">
+                    <div class="equipment-icon">🔪</div>
+                    <div class="equipment-name">Bread Machine</div>
+                    <div class="equipment-note">Panasonic SD-YR2550 recommended (€199-227)</div>
+                </div>
+                <div class="equipment-item">
+                    <div class="equipment-icon">🍲</div>
+                    <div class="equipment-name">Dutch Oven</div>
+                    <div class="equipment-note">5-7 quart capacity, any brand works</div>
+                </div>
+                <div class="equipment-item">
+                    <div class="equipment-icon">📄</div>
+                    <div class="equipment-name">Parchment Paper</div>
+                    <div class="equipment-note">Prevents sticking and makes removal easy</div>
+                </div>
+                <div class="equipment-item">
+                    <div class="equipment-icon">🌾</div>
+                    <div class="equipment-name">Active Sourdough Starter</div>
+                    <div class="equipment-note">Fed and bubbly (4-8 hours post-feeding)</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Workflow -->
+        <div class="timeline">
+            <!-- Phase 1 -->
+            <div class="phase">
+                <div class="phase-image">
+                    <img src="https://images.unsplash.com/photo-1586985289688-cacf313cc330?w=500&h=500&fit=crop" alt="Ingredients and starter">
+                </div>
+                <div class="phase-content">
+                    <div class="phase-number">1</div>
+                    <div class="phase-title">Prepare Ingredients</div>
+                    <div class="phase-time">Before you start</div>
+                    <div class="phase-description">Gather your ingredients. Your sourdough starter must be active and bubbly (fed 4-8 hours prior).</div>
+                    <ul class="phase-steps">
+                        <li>Active sourdough starter (room temperature)</li>
+                        <li>Water (cold preferred, ~300ml)</li>
+                        <li>Bread flour (~500g)</li>
+                        <li>Salt (10g)</li>
+                        <li>Optional: olive oil, sugar for extend shelf life</li>
+                    </ul>
+                    <div class="highlights">
+                        💡 <strong>Pro tip:</strong> Cold water slows fermentation slightly, giving better flavor development.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-connector">↓</div>
+            
+            <!-- Phase 2 -->
+            <div class="phase">
+                <div class="phase-image">
+                    <img src="https://images.unsplash.com/photo-1578362996442-48f60103fc96?w=500&h=500&fit=crop" alt="Bread machine kneading">
+                </div>
+                <div class="phase-content">
+                    <div class="phase-number">2</div>
+                    <div class="phase-title">Machine Kneading Cycle</div>
+                    <div class="phase-time">50 minutes</div>
+                    <div class="phase-description">Add ingredients to the bread machine pan in order: starter, water, flour, salt. Select the dough cycle (Program 10 on Panasonic).</div>
+                    <ul class="phase-steps">
+                        <li>Add ingredients in order</li>
+                        <li>Start dough cycle only (NOT full bake)</li>
+                        <li>Walk away—machine handles all kneading</li>
+                        <li>After cycle ends: remove paddle, leave dough in machine</li>
+                    </ul>
+                    <div class="highlights">
+                        ⚙️ <strong>Machine does the hard work:</strong> Eliminates 30+ minutes of manual kneading while developing proper gluten structure.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-connector">↓</div>
+            
+            <!-- Phase 3 -->
+            <div class="phase">
+                <div class="phase-image">
+                    <img src="https://images.unsplash.com/photo-1587521177291-ce2e0cba0a33?w=500&h=500&fit=crop" alt="Fermentation">
+                </div>
+                <div class="phase-content">
+                    <div class="phase-number">3</div>
+                    <div class="phase-title">First Rise (Bulk Fermentation)</div>
+                    <div class="phase-time">2-6 hours (or overnight)</div>
+                    <div class="phase-description">This is your first major control point for flavor. Two paths available:</div>
+                    <ul class="phase-steps">
+                        <li><strong>Fast path:</strong> Room temp, 2-3 hours (good flavor)</li>
+                        <li><strong>Flavor path:</strong> Fridge overnight 6-24 hours (excellent tang)</li>
+                        <li>Keep machine lid closed during fermentation</li>
+                        <li>Dough should be noticeably puffier (doesn't need to double)</li>
+                    </ul>
+                    <div class="highlights">
+                        🌡️ <strong>Why cold fermentation wins:</strong> Overnight fridge fermentation develops complex sour flavor that 2-hour room temp can't match. This is where authentic taste comes from.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-connector">↓</div>
+            
+            <!-- Phase 4 -->
+            <div class="phase">
+                <div class="phase-image">
+                    <img src="https://images.unsplash.com/photo-1609434694742-4ae89523ffb0?w=500&h=500&fit=crop" alt="Shaping dough">
+                </div>
+                <div class="phase-content">
+                    <div class="phase-number">4</div>
+                    <div class="phase-title">Shape & Prep Dutch Oven</div>
+                    <div class="phase-time">10 minutes</div>
+                    <div class="phase-description">Gently remove dough and shape it into a round. Minimal handling preserves gas bubbles (they create the open crumb).</div>
+                    <ul class="phase-steps">
+                        <li>Remove dough from machine onto floured surface</li>
+                        <li>Gently pre-shape into a round (don't punch down)</li>
+                        <li>Line Dutch oven with parchment paper</li>
+                        <li>Place shaped dough in parchment-lined Dutch oven</li>
+                        <li>Optional: lightly score the top with a knife</li>
+                    </ul>
+                    <div class="highlights">
+                        ✂️ <strong>Scoring tip:</strong> A 1/4-inch deep slash creates the signature "ear" and controls where bread expands.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-connector">↓</div>
+            
+            <!-- Phase 5 -->
+            <div class="phase">
+                <div class="phase-image">
+                    <img src="https://images.unsplash.com/photo-1599599810694-b5ac4dd64e4a?w=500&h=500&fit=crop" alt="Dutch oven ready">
+                </div>
+                <div class="phase-content">
+                    <div class="phase-number">5</div>
+                    <div class="phase-title">Final Rise (Proofing)</div>
+                    <div class="phase-time">4 hours at room temp OR 6-12 hours cold</div>
+                    <div class="phase-description">Let shaped dough rise again inside the covered Dutch oven. Cold proofing overnight = maximum flavor.</div>
+                    <ul class="phase-steps">
+                        <li>Cover Dutch oven with its lid</li>
+                        <li>Room temp: Rise 4 hours until ~double size</li>
+                        <li>Cold: Place in fridge 6-12 hours overnight</li>
+                        <li>Check if dough springs back slowly when poked (means ready)</li>
+                    </ul>
+                    <div class="highlights">
+                        🌙 <strong>Overnight is optimal:</strong> Cold fermentation develops the complex tangy flavor that makes professional sourdough special.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-connector">↓</div>
+            
+            <!-- Phase 6 -->
+            <div class="phase">
+                <div class="phase-image">
+                    <img src="https://images.unsplash.com/photo-1571115764595-644467f3121c?w=500&h=500&fit=crop" alt="Baking in oven">
+                </div>
+                <div class="phase-content">
+                    <div class="phase-number">6</div>
+                    <div class="phase-title">Bake with Steam</div>
+                    <div class="phase-time">45 minutes total</div>
+                    <div class="phase-description">Steam is critical for crispy crust. The Dutch oven traps steam—this is why it works better than machine baking.</div>
+                    <ul class="phase-steps">
+                        <li>Preheat oven to 230°C (450°F) for 30-40 min</li>
+                        <li>Keep Dutch oven IN oven while preheating (gets hot)</li>
+                        <li><strong>25 minutes with lid on:</strong> Steam develops crust</li>
+                        <li><strong>20-25 minutes with lid off:</strong> Browning & coloring</li>
+                        <li>Don't open door during first 25 min (steam escape kills crust)</li>
+                    </ul>
+                    <div class="highlights">
+                        🔥 <strong>Why this beats bread machine:</strong> Machine bakes at 220°C without steam = pale, soft crust. Dutch oven at 450°F with steam = crispy, golden artisan crust.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-connector">↓</div>
+            
+            <!-- Phase 7 -->
+            <div class="phase">
+                <div class="phase-image">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=500&fit=crop" alt="Finished sourdough">
+                </div>
+                <div class="phase-content">
+                    <div class="phase-number">7</div>
+                    <div class="phase-title">Cool & Enjoy</div>
+                    <div class="phase-time">60 minutes minimum</div>
+                    <div class="phase-description">Patience here is critical. Cutting too early traps steam and creates gummy interior. The crust sets as it cools.</div>
+                    <ul class="phase-steps">
+                        <li>Remove bread from Dutch oven, place on wire rack</li>
+                        <li>Cool <strong>at least 1 hour</strong> before slicing</li>
+                        <li>Internal steam continues cooking the crumb—this is essential</li>
+                        <li>Slice and taste your artisan sourdough!</li>
+                    </ul>
+                    <div class="highlights">
+                        🎉 <strong>Result:</strong> Crispy crust, open crumb structure, complex tangy flavor. This is what €6/loaf artisan bakeries charge for.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Timeline Overview -->
+        <div class="timeline-overview">
+            <h2>Complete Timeline Example (Same-Day Bake)</h2>
+            <div class="timeline-items">
+                <div class="timeline-item">
+                    <div class="timeline-time">8:00 AM</div>
+                    <div class="timeline-task">Add ingredients, start dough cycle</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">8:50 AM</div>
+                    <div class="timeline-task">Dough cycle complete, remove paddle</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">10:50 AM</div>
+                    <div class="timeline-task">Remove dough, shape, place in Dutch oven</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">2:50 PM</div>
+                    <div class="timeline-task">Rise complete, preheat oven</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">3:30 PM</div>
+                    <div class="timeline-task">Bake 25 min with lid (steam phase)</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">3:55 PM</div>
+                    <div class="timeline-task">Bake 20 min without lid (browning)</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">4:15 PM</div>
+                    <div class="timeline-task">Bread done, cool on rack</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">5:15 PM</div>
+                    <div class="timeline-task">Slice and eat fresh sourdough</div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 20px; color: #6a5a4a;"><strong>Total active time:</strong> ~15 minutes | <strong>Passive time (machine + oven do the work):</strong> ~9 hours</p>
+        </div>
+        
+        <!-- Tips Section -->
+        <div class="tips-section">
+            <h2>Pro Tips for Success</h2>
+            <div class="tips-grid">
+                <div class="tip">
+                    <div class="tip-title">🌡️ Temperature Control</div>
+                    <div class="tip-text">Cold fermentation (overnight fridge) develops superior tang compared to room temperature. This is the secret to professional-tasting sourdough.</div>
+                </div>
+                <div class="tip">
+                    <div class="tip-title">💨 Steam is Essential</div>
+                    <div class="tip-text">Never open the oven during the first 25 minutes with the lid on. Steam escaping = soft crust. The trapped steam is what creates the crispy exterior.</div>
+                </div>
+                <div class="tip">
+                    <div class="tip-title">⏱️ Don't Rush Cooling</div>
+                    <div class="tip-text">Minimum 1 hour cooling. The internal steam continues cooking the crumb during this time. Cutting early creates a gummy interior.</div>
+                </div>
+                <div class="tip">
+                    <div class="tip-title">🎯 Starter Readiness</div>
+                    <div class="tip-text">Your starter must be active and bubbly (fed 4-8 hours prior). Dead starter = dense bread. A reliable indicator: it should double in size after feeding.</div>
+                </div>
+                <div class="tip">
+                    <div class="tip-title">📏 Dough Consistency</div>
+                    <div class="tip-text">After kneading, dough should be slightly sticky but hold its shape. If too dry, add 1 tbsp water. Too wet? Add 1 tbsp flour and restart cycle.</div>
+                </div>
+                <div class="tip">
+                    <div class="tip-title">🍞 Scoring Optional</div>
+                    <div class="tip-text">Scoring (slashing the top) is aesthetic and helps control expansion. Not required for taste, but it creates the signature "ear" and professional appearance.</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Why This Approach -->
+        <div class="recommendation">
+            <h3>Why Machine Kneading + Dutch Oven Baking?</h3>
+            <p>✅ <strong>Machine handles the hard work:</strong> 50 minutes of automatic kneading beats hand-mixing.</p>
+            <p>✅ <strong>You control fermentation:</strong> No preset timing—YOU decide when the bread reaches peak flavor.</p>
+            <p>✅ <strong>Dutch oven = professional results:</strong> The trapped steam creates crispy crust that bread machines cannot achieve at 220°C.</p>
+            <p>✅ <strong>Authentic sourdough flavor:</strong> Cold fermentation develops complex tang that matters.</p>
+            <p>✅ <strong>Actually practical:</strong> Total active time is just 15 minutes. Machine and oven do the rest.</p>
+            <p style="margin-top: 20px; font-size: 0.95em;">This is how professional bakers think about sourdough—the machine is a tool for the tedious kneading, not the final word on baking.</p>
+            <div class="machine-model">Recommended: Panasonic SD-YR2550 (€199-227)</div>
+        </div>
+        
+        <footer>
+            <p>🍞 This workflow combines the best of automation (kneading) with human control (fermentation & baking).</p>
+            <p>Start with this proven method, then adjust based on your starter strength and kitchen temperature.</p>
+        </footer>
+    </div>
+</body>
+</html>
