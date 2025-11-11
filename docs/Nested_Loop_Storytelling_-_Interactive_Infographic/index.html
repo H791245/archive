@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nested Loop Storytelling - Interactive Infographic</title>
+    <style>
+        /* Design System Variables */
+        :root {
+            --color-primary-bg: #1a1f3a;
+            --color-secondary-bg: #252b4a;
+            --color-accent-yellow: #FFD700;
+            --color-accent-cyan: #00CED1;
+            --color-accent-coral: #FF6B6B;
+            --color-accent-lime: #32CD32;
+            --color-accent-purple: #9D4EDD;
+            --color-text-light: #ffffff;
+            --color-text-muted: #b8bdd8;
+            --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --space-xs: 8px;
+            --space-sm: 16px;
+            --space-md: 24px;
+            --space-lg: 32px;
+            --space-xl: 48px;
+            --space-xxl: 64px;
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background: linear-gradient(135deg, #1a1f3a 0%, #0d1321 100%);
+            color: var(--color-text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-accent-cyan), var(--color-accent-lime));
+            z-index: 1000;
+            transition: width 0.2s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: var(--space-xl) 0;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: var(--space-md);
+            background: linear-gradient(135deg, var(--color-accent-yellow), var(--color-accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-lg);
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .problem-statement {
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 700;
+            margin-top: var(--space-xl);
+            padding: var(--space-lg);
+            background: rgba(255, 215, 0, 0.1);
+            border-left: 5px solid var(--color-accent-yellow);
+            border-radius: var(--radius-md);
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .highlight {
+            color: var(--color-accent-cyan);
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: var(--space-xxl) 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: var(--space-lg);
+            text-align: center;
+            background: linear-gradient(135deg, var(--color-accent-coral), var(--color-accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Russian Doll Section */
+        .russian-doll-section {
+            background: var(--color-secondary-bg);
+            padding: var(--space-xxl);
+            border-radius: var(--radius-lg);
+            margin: var(--space-xl) 0;
+        }
+
+        .doll-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-lg);
+            flex-wrap: wrap;
+            margin-top: var(--space-xl);
+        }
+
+        .doll-image {
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .doll-labels {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .doll-label {
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .doll-label:hover {
+            transform: translateX(10px);
+        }
+
+        .label-a { background: rgba(255, 107, 107, 0.2); border-left: 4px solid var(--color-accent-coral); }
+        .label-b { background: rgba(255, 215, 0, 0.2); border-left: 4px solid var(--color-accent-yellow); }
+        .label-c { background: rgba(0, 206, 209, 0.2); border-left: 4px solid var(--color-accent-cyan); }
+        .label-core { background: rgba(50, 205, 50, 0.2); border-left: 4px solid var(--color-accent-lime); }
+
+        /* Animated Flow Section */
+        .flow-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-xl);
+        }
+
+        .flow-step {
+            background: var(--color-secondary-bg);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .flow-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 206, 209, 0.3);
+            border-color: var(--color-accent-cyan);
+        }
+
+        .flow-step.active {
+            border-color: var(--color-accent-lime);
+            background: rgba(50, 205, 50, 0.1);
+        }
+
+        .step-number {
+            font-size: 3rem;
+            font-weight: 900;
+            opacity: 0.3;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+            color: var(--color-accent-cyan);
+        }
+
+        .step-description {
+            color: var(--color-text-muted);
+            font-size: 1rem;
+        }
+
+        /* Brain Science Section */
+        .brain-science {
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.1), rgba(0, 206, 209, 0.1));
+            padding: var(--space-xxl);
+            border-radius: var(--radius-lg);
+            margin: var(--space-xl) 0;
+        }
+
+        .brain-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+
+        .brain-fact {
+            background: var(--color-secondary-bg);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .brain-fact:hover {
+            transform: scale(1.05);
+        }
+
+        .fact-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .fact-stat {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--color-accent-yellow);
+            margin-bottom: var(--space-sm);
+        }
+
+        .fact-text {
+            color: var(--color-text-muted);
+            font-size: 1rem;
+        }
+
+        /* Interactive Example */
+        .example-container {
+            background: var(--color-secondary-bg);
+            padding: var(--space-xxl);
+            border-radius: var(--radius-lg);
+            margin: var(--space-xl) 0;
+        }
+
+        .nested-loops {
+            position: relative;
+            margin-top: var(--space-xl);
+        }
+
+        .loop {
+            border: 3px solid;
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin: var(--space-md);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .loop-a {
+            border-color: var(--color-accent-coral);
+            background: rgba(255, 107, 107, 0.05);
+        }
+
+        .loop-b {
+            border-color: var(--color-accent-yellow);
+            background: rgba(255, 215, 0, 0.05);
+        }
+
+        .loop-c {
+            border-color: var(--color-accent-cyan);
+            background: rgba(0, 206, 209, 0.05);
+        }
+
+        .loop-core {
+            border-color: var(--color-accent-lime);
+            background: rgba(50, 205, 50, 0.1);
+            text-align: center;
+            padding: var(--space-xl);
+        }
+
+        .loop-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-md);
+        }
+
+        .loop-label {
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-sm);
+        }
+
+        .label-story-a { background: var(--color-accent-coral); color: var(--color-primary-bg); }
+        .label-story-b { background: var(--color-accent-yellow); color: var(--color-primary-bg); }
+        .label-story-c { background: var(--color-accent-cyan); color: var(--color-primary-bg); }
+        .label-core-msg { background: var(--color-accent-lime); color: var(--color-primary-bg); }
+
+        .toggle-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .loop.collapsed .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .loop-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-text-light);
+            max-height: 1000px;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.4s ease;
+        }
+
+        .loop.collapsed .loop-content {
+            max-height: 0;
+            opacity: 0;
+        }
+
+        .core-message {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--color-accent-lime);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .loop-closing {
+            margin-top: var(--space-md);
+            padding-top: var(--space-md);
+            border-top: 2px dashed currentColor;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+
+        .benefit-card {
+            background: var(--color-secondary-bg);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .benefit-card:hover {
+            border-color: var(--color-accent-purple);
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .benefit-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Tips Section */
+        .tips-section {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 215, 0, 0.1));
+            padding: var(--space-xxl);
+            border-radius: var(--radius-lg);
+            margin: var(--space-xl) 0;
+        }
+
+        .tips-list {
+            list-style: none;
+            margin-top: var(--space-xl);
+        }
+
+        .tip-item {
+            background: var(--color-secondary-bg);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-md);
+            border-radius: var(--radius-md);
+            border-left: 5px solid var(--color-accent-lime);
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .tip-item:hover {
+            transform: translateX(10px);
+        }
+
+        .tip-number {
+            color: var(--color-accent-lime);
+            font-weight: 900;
+            font-size: 1.5rem;
+            margin-right: var(--space-sm);
+        }
+
+        /* Call to Action */
+        .cta-section {
+            text-align: center;
+            padding: var(--space-xxl) 0;
+        }
+
+        .cta-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: var(--space-lg);
+            color: var(--color-accent-cyan);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: var(--space-md) var(--space-xl);
+            background: linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-lime));
+            color: var(--color-primary-bg);
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 206, 209, 0.4);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.8s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .doll-container {
+                flex-direction: column;
+            }
+
+            .flow-container {
+                grid-template-columns: 1fr;
+            }
+
+            .loop {
+                margin: var(--space-sm);
+                padding: var(--space-md);
+            }
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .scroll-arrow {
+            font-size: 2rem;
+            color: var(--color-accent-cyan);
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Nested Loop Storytelling</h1>
+            <div class="hero-subtitle">Structure + Surprise = Unforgettable</div>
+            <div class="problem-statement">
+                Your brain craves both <span class="highlight">STRUCTURE</span> and <span class="highlight">SURPRISE</span>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow">↓</div>
+        </div>
+    </section>
+
+    <!-- The Problem -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">The Problem with Linear Presentations</h2>
+            <div class="brain-science">
+                <p style="font-size: 1.4rem; text-align: center; line-height: 1.8;">
+                    Linear presentations are <strong style="color: var(--color-accent-coral);">logical</strong>, 
+                    but they're <strong style="color: var(--color-accent-coral);">forgettable</strong>. 
+                    They don't engage the brain's natural storytelling machinery.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Russian Doll Metaphor -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">The Russian Doll Framework</h2>
+            <div class="russian-doll-section">
+                <p style="font-size: 1.3rem; text-align: center; margin-bottom: var(--space-xl);">
+                    Nested loops are like <strong style="color: var(--color-accent-yellow);">Russian dolls</strong>. 
+                    You're layering stories inside of stories.
+                </p>
+                <div class="doll-container">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1762902207/pplx_project_search_images/834e2afb09e4e28c05ceff9b4a0dd8ec9eb98fa1.png" 
+                         alt="Russian nesting dolls opened" 
+                         class="doll-image">
+                    <div class="doll-labels">
+                        <div class="doll-label label-a">📖 Story A (Outermost)</div>
+                        <div class="doll-label label-b">📖 Story B (Middle Layer)</div>
+                        <div class="doll-label label-c">📖 Story C (Inner Layer)</div>
+                        <div class="doll-label label-core">💎 Core Message (Center)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">How It Works: The Opening &amp; Closing Flow</h2>
+            <p style="font-size: 1.2rem; text-align: center; margin-bottom: var(--space-xl); color: var(--color-text-muted);">
+                Click on each step to see it in action
+            </p>
+            <div class="flow-container">
+                <div class="flow-step" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Open Story A</div>
+                    <div class="step-description">Begin with your outermost narrative frame</div>
+                </div>
+                <div class="flow-step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Open Story B</div>
+                    <div class="step-description">Nest a second story inside Story A</div>
+                </div>
+                <div class="flow-step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Open Story C</div>
+                    <div class="step-description">Add the innermost story layer</div>
+                </div>
+                <div class="flow-step" data-step="4">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Core Message</div>
+                    <div class="step-description">Deliver your most important insight at the center</div>
+                </div>
+                <div class="flow-step" data-step="5">
+                    <div class="step-number">5</div>
+                    <div class="step-title">Close Story C</div>
+                    <div class="step-description">Resolve the innermost story</div>
+                </div>
+                <div class="flow-step" data-step="6">
+                    <div class="step-number">6</div>
+                    <div class="step-title">Close Story B</div>
+                    <div class="step-description">Resolve the middle story</div>
+                </div>
+                <div class="flow-step" data-step="7">
+                    <div class="step-number">7</div>
+                    <div class="step-title">Close Story A</div>
+                    <div class="step-description">Complete the outermost narrative frame</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brain Science -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Why It Works: The Brain Science</h2>
+            <div class="brain-science">
+                <div class="brain-facts">
+                    <div class="brain-fact">
+                        <div class="fact-icon">🧠</div>
+                        <div class="fact-stat">20x</div>
+                        <div class="fact-text">Stories are 20 times more memorable than facts alone</div>
+                    </div>
+                    <div class="brain-fact">
+                        <div class="fact-icon">🎯</div>
+                        <div class="fact-stat">Multiple</div>
+                        <div class="fact-text">Narratives activate multiple brain networks simultaneously</div>
+                    </div>
+                    <div class="brain-fact">
+                        <div class="fact-icon">⚡</div>
+                        <div class="fact-stat">Lower</div>
+                        <div class="fact-text">Stories reduce cognitive load while increasing engagement</div>
+                    </div>
+                    <div class="brain-fact">
+                        <div class="fact-icon">💥</div>
+                        <div class="fact-stat">Harder</div>
+                        <div class="fact-text">The journey to the center makes the message hit harder</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Concrete Example -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Concrete Example: Budget Pitch</h2>
+            <div class="example-container">
+                <p style="font-size: 1.3rem; text-align: center; margin-bottom: var(--space-xl);">
+                    Click on each layer to expand or collapse. Notice how stories nest within each other.
+                </p>
+                
+                <div class="nested-loops">
+                    <!-- Story A -->
+                    <div class="loop loop-a" id="loopA">
+                        <div class="loop-header">
+                            <span class="loop-label label-story-a">Story A: The Context</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="loop-content">
+                            <p><strong>Opening:</strong> Five years ago, our support team was 3 people handling 50 tickets a day. We were scrappy—that was our identity.</p>
+                            
+                            <!-- Story B -->
+                            <div class="loop loop-b" id="loopB">
+                                <div class="loop-header">
+                                    <span class="loop-label label-story-b">Story B: The Crisis</span>
+                                    <span class="toggle-icon">▼</span>
+                                </div>
+                                <div class="loop-content">
+                                    <p><strong>Opening:</strong> Two months ago, we almost lost a $500,000 deal because it took us 6 days to respond to a technical question.</p>
+                                    
+                                    <!-- Story C -->
+                                    <div class="loop loop-c" id="loopC">
+                                        <div class="loop-header">
+                                            <span class="loop-label label-story-c">Story C: The Wisdom</span>
+                                            <span class="toggle-icon">▼</span>
+                                        </div>
+                                        <div class="loop-content">
+                                            <p><strong>Opening:</strong> My first manager once told me: "The day we start losing deals because we can't keep up, we're not scrappy anymore—we're just slow."</p>
+                                            
+                                            <!-- Core Message -->
+                                            <div class="loop loop-core">
+                                                <span class="loop-label label-core-msg">Core Message</span>
+                                                <div class="loop-content" style="margin-top: var(--space-lg);">
+                                                    <div class="core-message">Being Understaffed = LIABILITY</div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="loop-closing">
+                                                <strong>Closing Story C:</strong> That warning was 5 years early, but she was very right.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="loop-closing">
+                                        <strong>Closing Story B:</strong> We saved that deal, but barely. Next time we definitely will not be lucky.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="loop-closing">
+                                <strong>Closing Story A:</strong> We can't be scrappy with 3 people anymore. We're handling 400 tickets a day. We need to double our support team this quarter.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Benefits -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Key Benefits</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎭</div>
+                    <div class="benefit-text">Creates deeper emotional engagement</div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💭</div>
+                    <div class="benefit-text">Makes messages more memorable</div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚖️</div>
+                    <div class="benefit-text">Adds emotional weight to your core point</div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🗺️</div>
+                    <div class="benefit-text">Guides audience on a journey</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Tips -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Quick Tips for Using Nested Loops</h2>
+            <div class="tips-section">
+                <ul class="tips-list">
+                    <li class="tip-item">
+                        <span class="tip-number">1.</span>
+                        Start with 2-3 layers—don't overcomplicate
+                    </li>
+                    <li class="tip-item">
+                        <span class="tip-number">2.</span>
+                        Place your most important message at the center
+                    </li>
+                    <li class="tip-item">
+                        <span class="tip-number">3.</span>
+                        Ensure each story connects logically to the next
+                    </li>
+                    <li class="tip-item">
+                        <span class="tip-number">4.</span>
+                        Always close loops in reverse order—first opened, last closed
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-text">Ready to transform your presentations?</div>
+            <button class="cta-button" onclick="scrollToTop()">Start from the Top ↑</button>
+        </div>
+    </section>
+
+    <script>
+        // Progress Bar
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
+        // Flow Steps Interaction
+        const flowSteps = document.querySelectorAll('.flow-step');
+        flowSteps.forEach(step => {
+            step.addEventListener('click', () => {
+                flowSteps.forEach(s => s.classList.remove('active'));
+                step.classList.add('active');
+                
+                // Add pulse animation
+                step.style.animation = 'pulse 0.5s ease';
+                setTimeout(() => {
+                    step.style.animation = '';
+                }, 500);
+            });
+        });
+
+        // Nested Loop Toggle
+        const loops = document.querySelectorAll('.loop');
+        loops.forEach(loop => {
+            // Skip the core message loop
+            if (loop.classList.contains('loop-core')) return;
+            
+            const header = loop.querySelector('.loop-header');
+            header.addEventListener('click', (e) => {
+                e.stopPropagation();
+                loop.classList.toggle('collapsed');
+            });
+        });
+
+        // Scroll to Top Function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Observe brain facts
+        document.querySelectorAll('.brain-fact').forEach(fact => {
+            observer.observe(fact);
+        });
+
+        // Observe benefit cards
+        document.querySelectorAll('.benefit-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Observe tips
+        document.querySelectorAll('.tip-item').forEach(tip => {
+            observer.observe(tip);
+        });
+    </script>
+</body>
+</html>
