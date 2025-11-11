@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Enshittification Pattern - Interactive Infographic</title>
+    <style>
+        :root {
+            /* Primitive Color Tokens */
+            --color-white: rgba(255, 255, 255, 1);
+            --color-black: rgba(0, 0, 0, 1);
+            --color-cream-50: rgba(252, 252, 249, 1);
+            --color-cream-100: rgba(255, 255, 253, 1);
+            --color-gray-200: rgba(245, 245, 245, 1);
+            --color-gray-300: rgba(167, 169, 169, 1);
+            --color-gray-400: rgba(119, 124, 124, 1);
+            --color-slate-500: rgba(98, 108, 113, 1);
+            --color-brown-600: rgba(94, 82, 64, 1);
+            --color-charcoal-700: rgba(31, 33, 33, 1);
+            --color-charcoal-800: rgba(38, 40, 40, 1);
+            --color-slate-900: rgba(19, 52, 59, 1);
+            --color-teal-300: rgba(50, 184, 198, 1);
+            --color-teal-400: rgba(45, 166, 178, 1);
+            --color-teal-500: rgba(33, 128, 141, 1);
+            --color-teal-600: rgba(29, 116, 128, 1);
+            --color-teal-700: rgba(26, 104, 115, 1);
+            --color-teal-800: rgba(41, 150, 161, 1);
+            --color-red-400: rgba(255, 84, 89, 1);
+            --color-red-500: rgba(192, 21, 47, 1);
+            --color-orange-400: rgba(230, 129, 97, 1);
+            --color-orange-500: rgba(168, 75, 47, 1);
+
+            --color-brown-600-rgb: 94, 82, 64;
+            --color-teal-500-rgb: 33, 128, 141;
+            --color-slate-900-rgb: 19, 52, 59;
+            --color-slate-500-rgb: 98, 108, 113;
+            --color-red-500-rgb: 192, 21, 47;
+            --color-red-400-rgb: 255, 84, 89;
+            --color-orange-500-rgb: 168, 75, 47;
+            --color-orange-400-rgb: 230, 129, 97;
+
+            --color-bg-1: rgba(59, 130, 246, 0.08);
+            --color-bg-2: rgba(245, 158, 11, 0.08);
+            --color-bg-3: rgba(34, 197, 94, 0.08);
+            --color-bg-4: rgba(239, 68, 68, 0.08);
+            --color-bg-5: rgba(147, 51, 234, 0.08);
+            --color-bg-6: rgba(249, 115, 22, 0.08);
+            --color-bg-7: rgba(236, 72, 153, 0.08);
+            --color-bg-8: rgba(6, 182, 212, 0.08);
+
+            --color-background: var(--color-cream-50);
+            --color-surface: var(--color-cream-100);
+            --color-text: var(--color-slate-900);
+            --color-text-secondary: var(--color-slate-500);
+            --color-primary: var(--color-teal-500);
+            --color-primary-hover: var(--color-teal-600);
+            --color-primary-active: var(--color-teal-700);
+
+            --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-size-base: 14px;
+            --font-size-lg: 16px;
+            --font-size-xl: 18px;
+            --font-size-2xl: 20px;
+            --font-size-3xl: 24px;
+            --font-size-4xl: 30px;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 550;
+            --font-weight-bold: 600;
+            --line-height-tight: 1.2;
+            --line-height-normal: 1.5;
+
+            --space-8: 8px;
+            --space-12: 12px;
+            --space-16: 16px;
+            --space-20: 20px;
+            --space-24: 24px;
+            --space-32: 32px;
+            --space-40: 40px;
+            --space-48: 48px;
+
+            --radius-base: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+
+            /* Custom colors for stages */
+            --stage-1-color: #2ecc71;
+            --stage-1-bg: rgba(46, 204, 113, 0.1);
+            --stage-2-color: #f39c12;
+            --stage-2-bg: rgba(243, 156, 18, 0.1);
+            --stage-3-color: #e74c3c;
+            --stage-3-bg: rgba(231, 76, 60, 0.1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-background: var(--color-charcoal-700);
+                --color-surface: var(--color-charcoal-800);
+                --color-text: var(--color-gray-200);
+                --color-text-secondary: rgba(167, 169, 169, 0.7);
+                --color-primary: var(--color-teal-300);
+                --color-primary-hover: var(--color-teal-400);
+            }
+        }
+
+        @font-face {
+            font-family: 'FKGroteskNeue';
+            src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2') format('woff2');
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: var(--line-height-normal);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--space-32);
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: var(--space-48) var(--space-24);
+            margin-bottom: var(--space-48);
+        }
+
+        .header h1 {
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-16);
+            color: var(--color-text);
+        }
+
+        .header .subtitle {
+            font-size: var(--font-size-xl);
+            color: var(--color-text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .author-credit {
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            margin-top: var(--space-12);
+            font-style: italic;
+        }
+
+        /* Stage Diagram */
+        .stages-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-24);
+            margin-bottom: var(--space-48);
+        }
+
+        .stage-card {
+            background: var(--color-surface);
+            border-radius: var(--radius-xl);
+            padding: var(--space-32);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 3px solid;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stage-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stage-card.stage-1 {
+            border-color: var(--stage-1-color);
+        }
+
+        .stage-card.stage-2 {
+            border-color: var(--stage-2-color);
+        }
+
+        .stage-card.stage-3 {
+            border-color: var(--stage-3-color);
+        }
+
+        .stage-number {
+            position: absolute;
+            top: var(--space-16);
+            right: var(--space-16);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            color: white;
+        }
+
+        .stage-1 .stage-number {
+            background-color: var(--stage-1-color);
+        }
+
+        .stage-2 .stage-number {
+            background-color: var(--stage-2-color);
+        }
+
+        .stage-3 .stage-number {
+            background-color: var(--stage-3-color);
+        }
+
+        .stage-icon {
+            font-size: 48px;
+            margin-bottom: var(--space-16);
+        }
+
+        .stage-card h3 {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-12);
+            color: var(--color-text);
+        }
+
+        .stage-card p {
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* Case Study Selector */
+        .case-selector {
+            text-align: center;
+            margin-bottom: var(--space-40);
+        }
+
+        .case-selector h2 {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-24);
+            color: var(--color-text);
+        }
+
+        .case-buttons {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-16);
+            flex-wrap: wrap;
+        }
+
+        .case-btn {
+            padding: var(--space-12) var(--space-32);
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-medium);
+            border: 2px solid var(--color-primary);
+            background: transparent;
+            color: var(--color-text);
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .case-btn:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .case-btn.active {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        /* Case Study Content */
+        .case-content {
+            display: none;
+        }
+
+        .case-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .case-title {
+            text-align: center;
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-40);
+            color: var(--color-text);
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-32);
+            margin-bottom: var(--space-48);
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 16.66%;
+            right: 16.66%;
+            height: 4px;
+            background: linear-gradient(to right, var(--stage-1-color), var(--stage-2-color), var(--stage-3-color));
+            z-index: 0;
+        }
+
+        .timeline-item {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            padding: var(--space-24);
+            box-shadow: var(--shadow-md);
+            position: relative;
+            z-index: 1;
+            border: 2px solid;
+        }
+
+        .timeline-item.stage-1 {
+            border-color: var(--stage-1-color);
+            background: var(--stage-1-bg);
+        }
+
+        .timeline-item.stage-2 {
+            border-color: var(--stage-2-color);
+            background: var(--stage-2-bg);
+        }
+
+        .timeline-item.stage-3 {
+            border-color: var(--stage-3-color);
+            background: var(--stage-3-bg);
+        }
+
+        .timeline-year {
+            display: inline-block;
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-bold);
+            padding: var(--space-8) var(--space-16);
+            border-radius: var(--radius-base);
+            margin-bottom: var(--space-16);
+            color: white;
+        }
+
+        .stage-1 .timeline-year {
+            background: var(--stage-1-color);
+        }
+
+        .stage-2 .timeline-year {
+            background: var(--stage-2-color);
+        }
+
+        .stage-3 .timeline-year {
+            background: var(--stage-3-color);
+        }
+
+        .timeline-item h4 {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-16);
+            color: var(--color-text);
+        }
+
+        .timeline-item ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .timeline-item li {
+            font-size: var(--font-size-base);
+            color: var(--color-text);
+            margin-bottom: var(--space-8);
+            padding-left: var(--space-24);
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .timeline-item li::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            font-weight: var(--font-weight-bold);
+        }
+
+        .stage-1 li::before {
+            color: var(--stage-1-color);
+        }
+
+        .stage-2 li::before {
+            color: var(--stage-2-color);
+        }
+
+        .stage-3 li::before {
+            color: var(--stage-3-color);
+        }
+
+        /* Key Statistics */
+        .key-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-24);
+            margin-bottom: var(--space-48);
+        }
+
+        .stat-card {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            padding: var(--space-32);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            border: 2px solid var(--stage-3-color);
+        }
+
+        .stat-icon {
+            font-size: 48px;
+            margin-bottom: var(--space-16);
+        }
+
+        .stat-label {
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-12);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-value {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--stage-3-color);
+            margin-bottom: var(--space-8);
+        }
+
+        .stat-change {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            padding: var(--space-32);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--space-48);
+        }
+
+        .chart-container h3 {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-24);
+            text-align: center;
+            color: var(--color-text);
+        }
+
+        .chart-wrapper {
+            height: 300px;
+            position: relative;
+        }
+
+        /* Key Takeaways */
+        .takeaways {
+            background: var(--color-surface);
+            border-radius: var(--radius-xl);
+            padding: var(--space-40);
+            box-shadow: var(--shadow-lg);
+            border: 3px solid var(--color-primary);
+        }
+
+        .takeaways h2 {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-32);
+            text-align: center;
+            color: var(--color-text);
+        }
+
+        .takeaway-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-24);
+        }
+
+        .takeaway-item {
+            padding: var(--space-24);
+            border-radius: var(--radius-lg);
+            background: var(--color-bg-1);
+        }
+
+        .takeaway-item h4 {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-12);
+            color: var(--color-text);
+            display: flex;
+            align-items: center;
+            gap: var(--space-12);
+        }
+
+        .takeaway-item p {
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .stages-container {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                display: none;
+            }
+
+            .case-buttons {
+                flex-direction: column;
+            }
+
+            .case-btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: var(--space-16);
+            }
+
+            .header h1 {
+                font-size: var(--font-size-2xl);
+            }
+
+            .header .subtitle {
+                font-size: var(--font-size-base);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>The Enshittification Pattern</h1>
+            <p class="subtitle">How tech platforms degrade over time: From user value to monopoly extraction</p>
+            <p class="author-credit">Concept by Cory Doctorow</p>
+        </header>
+
+        <!-- Three Stages Overview -->
+        <div class="stages-container">
+            <div class="stage-card stage-1">
+                <div class="stage-number">1</div>
+                <div class="stage-icon">👥</div>
+                <h3>Winning Users' Trust</h3>
+                <p>Companies attract users by solving key problems with superior value, convenience, and low prices.</p>
+            </div>
+
+            <div class="stage-card stage-2">
+                <div class="stage-number">2</div>
+                <div class="stage-icon">🔒</div>
+                <h3>Locking in Ecosystem</h3>
+                <p>Once users are locked in, companies attract suppliers and partners with generous incentives and benefits.</p>
+            </div>
+
+            <div class="stage-card stage-3">
+                <div class="stage-number">3</div>
+                <div class="stage-icon">💰</div>
+                <h3>Extracting Maximum Value</h3>
+                <p>With monopoly power established, shareholders demand maximum profits through price increases and degraded service.</p>
+            </div>
+        </div>
+
+        <!-- Case Study Selector -->
+        <div class="case-selector">
+            <h2>Explore Real-World Examples</h2>
+            <div class="case-buttons">
+                <button class="case-btn active" data-case="uber">🚗 Uber</button>
+                <button class="case-btn" data-case="netflix">🎬 Netflix</button>
+                <button class="case-btn" data-case="amazon">📺 Amazon Prime Video</button>
+            </div>
+        </div>
+
+        <!-- Uber Case Study -->
+        <div class="case-content active" id="uber-content">
+            <h2 class="case-title">Uber: The Ride-Sharing Giant</h2>
+
+            <div class="timeline">
+                <div class="timeline-item stage-1">
+                    <span class="timeline-year">2009-2011</span>
+                    <h4>Stage 1: Revolutionary Service</h4>
+                    <ul>
+                        <li>50% cheaper than traditional taxis</li>
+                        <li>Convenient app-based booking</li>
+                        <li>Friendly drivers, clean cars</li>
+                        <li>Taxis find you, not vice versa</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item stage-2">
+                    <span class="timeline-year">2012-2014</span>
+                    <h4>Stage 2: Driver Incentives</h4>
+                    <ul>
+                        <li>Sign-on bonuses for new drivers</li>
+                        <li>80% payment rate to drivers</li>
+                        <li>Cash back on fuel expenses</li>
+                        <li>Surge pricing: 2-3x earnings</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item stage-3">
+                    <span class="timeline-year">2015-Present</span>
+                    <h4>Stage 3: Tiering &amp; Extraction</h4>
+                    <ul>
+                        <li>Multiple tiers: X, Comfort, Exec, Lux</li>
+                        <li>5x surge pricing (£100 for 15-min)</li>
+                        <li>Long wait times on basic tier</li>
+                        <li>Driver quality segregation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3>Uber Service Quality Over Time</h3>
+                <div class="chart-wrapper">
+                    <canvas id="uberChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Netflix Case Study -->
+        <div class="case-content" id="netflix-content">
+            <h2 class="case-title">Netflix: The Streaming Revolution</h2>
+
+            <div class="timeline">
+                <div class="timeline-item stage-1">
+                    <span class="timeline-year">2007-2015</span>
+                    <h4>Stage 1: Game Changer</h4>
+                    <ul>
+                        <li>£5.99/month unlimited access</li>
+                        <li>Revolutionary streaming service</li>
+                        <li>Ad-free experience promised</li>
+                        <li>Cheaper than movie tickets</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item stage-2">
+                    <span class="timeline-year">2016-2021</span>
+                    <h4>Stage 2: Feature Expansion</h4>
+                    <ul>
+                        <li>HD content as premium feature</li>
+                        <li>Multi-profile support added</li>
+                        <li>4K quality introduced</li>
+                        <li>Original content production</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item stage-3">
+                    <span class="timeline-year">2022-Present</span>
+                    <h4>Stage 3: Price Escalation</h4>
+                    <ul>
+                        <li>Ad-supported tier: £7.99/month</li>
+                        <li>Standard tier: £17.99/month (200% up)</li>
+                        <li>Premium tier: £24.99/month</li>
+                        <li>94M users on ad-supported tier</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3>Netflix Pricing Evolution</h3>
+                <div class="chart-wrapper">
+                    <canvas id="netflixChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Amazon Prime Video Case Study -->
+        <div class="case-content" id="amazon-content">
+            <h2 class="case-title">Amazon Prime Video: The E-Commerce Expansion</h2>
+
+            <div class="timeline">
+                <div class="timeline-item stage-1">
+                    <span class="timeline-year">2015-2023</span>
+                    <h4>Stage 1: Value Addition</h4>
+                    <ul>
+                        <li>Ad-free streaming included</li>
+                        <li>Part of Prime membership</li>
+                        <li>Affordable content library</li>
+                        <li>Free shipping bundled</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item stage-2">
+                    <span class="timeline-year">2023-2024</span>
+                    <h4>Stage 2: Content Growth</h4>
+                    <ul>
+                        <li>Expansion of content library</li>
+                        <li>Growing subscriber base</li>
+                        <li>Original series investment</li>
+                        <li>Sports streaming added</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item stage-3">
+                    <span class="timeline-year">2024-Present</span>
+                    <h4>Stage 3: Ad Insertion</h4>
+                    <ul>
+                        <li>Ads added to standard tier</li>
+                        <li>$2.99/month for ad-free upgrade</li>
+                        <li>160M users auto-enrolled in ads</li>
+                        <li>Only 20% upgraded to premium</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3>Amazon Prime Video User Distribution</h3>
+                <div class="chart-wrapper">
+                    <canvas id="amazonChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Statistics -->
+        <div class="key-stats">
+            <div class="stat-card">
+                <div class="stat-icon">📈</div>
+                <div class="stat-label">Netflix Price Increase</div>
+                <div class="stat-value">+200%</div>
+                <div class="stat-change">£5.99 → £17.99/month</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🚨</div>
+                <div class="stat-label">Uber Surge Pricing</div>
+                <div class="stat-value">5x</div>
+                <div class="stat-change">£100 for 15-minute ride</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-label">Amazon Auto-Enrolled</div>
+                <div class="stat-value">160M</div>
+                <div class="stat-change">80% stayed on ad tier</div>
+            </div>
+        </div>
+
+        <!-- Key Takeaways -->
+        <div class="takeaways">
+            <h2>Key Takeaways: Why This Happens</h2>
+            <div class="takeaway-grid">
+                <div class="takeaway-item">
+                    <h4><span>📊</span> Shareholder Pressure</h4>
+                    <p>Public companies prioritize short-term profits over long-term user satisfaction. Shareholders want quick returns, not sustainable growth.</p>
+                </div>
+
+                <div class="takeaway-item">
+                    <h4><span>🔐</span> Lock-In Effect</h4>
+                    <p>Once users and suppliers are locked into the platform, switching costs become too high. The network effect keeps everyone trapped.</p>
+                </div>
+
+                <div class="takeaway-item">
+                    <h4><span>⚖️</span> Market Concentration</h4>
+                    <p>Weakened antitrust enforcement allows monopolies to form. Without competition, companies can extract maximum value without consequences.</p>
+                </div>
+
+                <div class="takeaway-item">
+                    <h4><span>💡</span> Pattern Recognition</h4>
+                    <p>Understanding this pattern helps predict future behavior. New "disruptive" companies often follow the same playbook once they gain market power.</p>
+                </div>
+
+                <div class="takeaway-item">
+                    <h4><span>⚠️</span> Tiering Strategy</h4>
+                    <p>Tiering isn't about providing better service—it's about price discrimination. Basic tiers are degraded to push users toward premium options.</p>
+                </div>
+
+                <div class="takeaway-item">
+                    <h4><span>🎯</span> What You Can Do</h4>
+                    <p>Support alternatives, advocate for stronger regulations, and be wary of platforms offering "too good to be true" deals—they're setting the trap.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Case study switcher
+        const caseButtons = document.querySelectorAll('.case-btn');
+        const caseContents = document.querySelectorAll('.case-content');
+
+        caseButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const caseId = button.getAttribute('data-case');
+
+                // Update active button
+                caseButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // Update active content
+                caseContents.forEach(content => content.classList.remove('active'));
+                document.getElementById(`${caseId}-content`).classList.add('active');
+            });
+        });
+
+        // Chart.js configurations
+        const chartColors = {
+            stage1: '#2ecc71',
+            stage2: '#f39c12',
+            stage3: '#e74c3c',
+            background: 'rgba(46, 204, 113, 0.1)'
+        };
+
+        // Uber Chart - Service Quality Over Time
+        const uberCtx = document.getElementById('uberChart').getContext('2d');
+        new Chart(uberCtx, {
+            type: 'line',
+            data: {
+                labels: ['2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2020', '2025'],
+                datasets: [{
+                    label: 'User Value',
+                    data: [90, 95, 95, 85, 80, 75, 60, 55, 45, 40],
+                    borderColor: chartColors.stage3,
+                    backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }, {
+                    label: 'Company Profit',
+                    data: [10, 15, 20, 30, 40, 50, 70, 80, 90, 95],
+                    borderColor: chartColors.stage1,
+                    backgroundColor: 'rgba(46, 204, 113, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    title: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Netflix Chart - Pricing Evolution
+        const netflixCtx = document.getElementById('netflixChart').getContext('2d');
+        new Chart(netflixCtx, {
+            type: 'bar',
+            data: {
+                labels: ['2007\n(Launch)', '2015\n(Pre-tiering)', '2022\n(Ad tier)', '2025\n(Current)'],
+                datasets: [{
+                    label: 'Base Price (£/month)',
+                    data: [5.99, 7.99, 7.99, 7.99],
+                    backgroundColor: chartColors.stage1
+                }, {
+                    label: 'Standard Price (£/month)',
+                    data: [null, null, 10.99, 17.99],
+                    backgroundColor: chartColors.stage2
+                }, {
+                    label: 'Premium Price (£/month)',
+                    data: [null, null, 17.99, 24.99],
+                    backgroundColor: chartColors.stage3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '£' + value;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Amazon Chart - User Distribution
+        const amazonCtx = document.getElementById('amazonChart').getContext('2d');
+        new Chart(amazonCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Ad-Supported (80%)', 'Ad-Free Premium (20%)'],
+                datasets: [{
+                    data: [128, 32],
+                    backgroundColor: [
+                        chartColors.stage3,
+                        chartColors.stage1
+                    ],
+                    borderWidth: 3,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Total: 160M Users (2024)'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.parsed + 'M users';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
