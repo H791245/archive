@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaking On The Spot: 3 Problems &amp; 3 Solutions</title>
+    <style>
+        :root {
+            --dark-navy: #1a237e;
+            --dark-gray: #2c3e50;
+            --white: #ffffff;
+            --yellow: #ffd700;
+            --cyan: #00d4ff;
+            --red: #e74c3c;
+            --orange: #e67e22;
+            --amber: #f39c12;
+            --green: #27ae60;
+            --blue: #3498db;
+            --purple: #9b59b6;
+            --light-bg: rgba(255, 255, 255, 0.05);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--dark-navy) 0%, var(--dark-gray) 100%);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #0f1a4d 0%, #1a237e 100%);
+            border-bottom: 5px solid var(--cyan);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--yellow) 0%, var(--cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--cyan);
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Statistics Banner */
+        .statistics {
+            background: linear-gradient(135deg, var(--orange) 0%, var(--red) 100%);
+            padding: 40px 20px;
+            margin: 40px 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .statistics h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--white);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--yellow);
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        /* Problems and Solutions Section */
+        .problems-solutions {
+            margin: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--yellow);
+        }
+        
+        .ps-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        @media (max-width: 1024px) {
+            .ps-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .problems-column, .solutions-column {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .column-header {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .problems-header {
+            background: linear-gradient(135deg, var(--red) 0%, var(--orange) 100%);
+            color: var(--white);
+        }
+        
+        .solutions-header {
+            background: linear-gradient(135deg, var(--green) 0%, var(--blue) 100%);
+            color: var(--white);
+        }
+        
+        .card {
+            background: var(--light-bg);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        
+        .card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+        
+        .problem-card {
+            border-color: var(--red);
+        }
+        
+        .problem-card.active {
+            background: rgba(231, 76, 60, 0.2);
+            border-width: 3px;
+        }
+        
+        .problem-card:nth-child(2) {
+            border-color: var(--amber);
+        }
+        
+        .problem-card:nth-child(2).active {
+            background: rgba(243, 156, 18, 0.2);
+        }
+        
+        .problem-card:nth-child(3) {
+            border-color: var(--orange);
+        }
+        
+        .problem-card:nth-child(3).active {
+            background: rgba(230, 126, 34, 0.2);
+        }
+        
+        .solution-card {
+            border-color: var(--green);
+        }
+        
+        .solution-card.active {
+            background: rgba(39, 174, 96, 0.2);
+            border-width: 3px;
+        }
+        
+        .solution-card:nth-child(2) {
+            border-color: var(--blue);
+        }
+        
+        .solution-card:nth-child(2).active {
+            background: rgba(52, 152, 219, 0.2);
+        }
+        
+        .solution-card:nth-child(3) {
+            border-color: var(--purple);
+        }
+        
+        .solution-card:nth-child(3).active {
+            background: rgba(155, 89, 182, 0.2);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--yellow);
+        }
+        
+        .card-description {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+        
+        .card-details {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            display: none;
+        }
+        
+        .card.expanded .card-details {
+            display: block;
+        }
+        
+        .card-steps {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .card-steps li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1rem;
+        }
+        
+        .card-steps li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--cyan);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .example-box {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border-left: 4px solid var(--cyan);
+        }
+        
+        .example-label {
+            font-weight: 700;
+            color: var(--cyan);
+            margin-bottom: 5px;
+        }
+        
+        .example-text {
+            font-style: italic;
+            color: var(--white);
+        }
+        
+        /* Body Language Section */
+        .body-language {
+            background: linear-gradient(135deg, #1a237e 0%, #4a148c 100%);
+            padding: 50px 20px;
+            margin: 60px 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .body-language h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--cyan);
+        }
+        
+        .bl-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .bl-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .bl-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .bl-card:nth-child(1) { border-color: var(--blue); }
+        .bl-card:nth-child(2) { border-color: var(--green); }
+        .bl-card:nth-child(3) { border-color: var(--amber); }
+        .bl-card:nth-child(4) { border-color: var(--red); }
+        
+        .bl-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .bl-tip {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--yellow);
+        }
+        
+        .bl-detail {
+            font-size: 1rem;
+            color: var(--white);
+        }
+        
+        /* Key Takeaways */
+        .takeaways {
+            background: linear-gradient(135deg, var(--green) 0%, var(--blue) 50%, var(--purple) 100%);
+            padding: 50px 30px;
+            border-radius: 20px;
+            margin: 60px 0 40px 0;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        
+        .takeaways h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--white);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .takeaway-list li {
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            border-left: 5px solid var(--yellow);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+        
+        .takeaway-list li:hover {
+            transform: translateX(10px);
+        }
+        
+        /* Click Hint */
+        .click-hint {
+            text-align: center;
+            color: var(--cyan);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        
+        .click-hint::before {
+            content: '👆 ';
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .card-title {
+                font-size: 1.3rem;
+            }
+            
+            .takeaway-list li {
+                font-size: 1.2rem;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        /* Prep Framework Visual */
+        .prep-framework {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .prep-step {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px 20px;
+            border-radius: 10px;
+            border: 2px solid var(--cyan);
+            font-weight: 700;
+            color: var(--cyan);
+            position: relative;
+        }
+        
+        .prep-step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--yellow);
+            font-size: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .prep-framework {
+                flex-direction: column;
+            }
+            
+            .prep-step:not(:last-child)::after {
+                content: '↓';
+                right: 50%;
+                top: auto;
+                bottom: -30px;
+                transform: translateX(50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero fade-in">
+            <h1>Speaking On The Spot:<br>3 Problems &amp; 3 Solutions</h1>
+            <p>Master Impromptu Speaking in 3 Simple Steps</p>
+        </section>
+        
+        <!-- Statistics Banner -->
+        <section class="statistics fade-in">
+            <h2>📊 Public Speaking Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">75%</span>
+                    <span class="stat-label">Fear Public Speaking</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">90%</span>
+                    <span class="stat-label">Anxiety from Lack of Preparation</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">10%</span>
+                    <span class="stat-label">Actually Love Speaking</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">80%</span>
+                    <span class="stat-label">Are Somewhere in Between</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Problems and Solutions -->
+        <section class="problems-solutions">
+            <h2 class="section-title">The Framework</h2>
+            <p class="click-hint">Click on any card to see more details and examples</p>
+            
+            <div class="ps-grid">
+                <!-- Problems Column -->
+                <div class="problems-column">
+                    <div class="column-header problems-header">❌ 3 Common Problems</div>
+                    
+                    <div class="card problem-card" data-index="0">
+                        <span class="card-icon">💬💬💬</span>
+                        <h3 class="card-title">Problem #1: You Say Too Many Things Up Front</h3>
+                        <p class="card-description">Run-on sentences, trying to say A, B, C all at once with connectors like 'and', 'but', 'so'</p>
+                        <p class="card-description"><strong>Consequence:</strong> You lose track of where you are</p>
+                    </div>
+                    
+                    <div class="card problem-card" data-index="1">
+                        <span class="card-icon">🧩❓</span>
+                        <h3 class="card-title">Problem #2: You're Not Following a Framework</h3>
+                        <p class="card-description">Going blank, no structure, literally just rambling</p>
+                        <p class="card-description"><strong>Consequence:</strong> Everything falls apart</p>
+                    </div>
+                    
+                    <div class="card problem-card" data-index="2">
+                        <span class="card-icon">🔀🤯</span>
+                        <h3 class="card-title">Problem #3: You're Overcomplicating Everything</h3>
+                        <p class="card-description">Using technical jargon and verbose language instead of simple, natural speech</p>
+                        <p class="card-description"><strong>Consequence:</strong> Audience loses interest, you seem inauthentic</p>
+                    </div>
+                </div>
+                
+                <!-- Solutions Column -->
+                <div class="solutions-column">
+                    <div class="column-header solutions-header">✅ 3 Simple Solutions</div>
+                    
+                    <div class="card solution-card" data-index="0">
+                        <span class="card-icon">⬆️🎯</span>
+                        <h3 class="card-title">Solution #1: Use B-L-U-F (Bottom Line Up Front)</h3>
+                        <p class="card-description">Present ONE point, clearly and concisely</p>
+                        
+                        <div class="card-details">
+                            <ul class="card-steps">
+                                <li>Keep it to 7-10 seconds maximum</li>
+                                <li>One point only, not 2 or 3 jammed together</li>
+                                <li>Reframe the question in your answer</li>
+                                <li>Pause and look UP, not down</li>
+                            </ul>
+                            
+                            <div class="example-box">
+                                <div class="example-label">Question:</div>
+                                <div class="example-text">"How did you get into communication coaching?"</div>
+                                <div class="example-label" style="margin-top: 10px;">Answer (B-L-U-F):</div>
+                                <div class="example-text">"Well, what got me into communication coaching was a personal struggle with speaking myself."</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card solution-card" data-index="1">
+                        <span class="card-icon">📋✨</span>
+                        <h3 class="card-title">Solution #2: Use P.R.E.P Framework</h3>
+                        <p class="card-description">Structure your response with 4 simple components</p>
+                        
+                        <div class="card-details">
+                            <div class="prep-framework">
+                                <div class="prep-step">P: Point</div>
+                                <div class="prep-step">R: Reason</div>
+                                <div class="prep-step">E: Example</div>
+                                <div class="prep-step">P: Point</div>
+                            </div>
+                            
+                            <ul class="card-steps">
+                                <li><strong>Point:</strong> Your BLUF (the one main thing)</li>
+                                <li><strong>Reason:</strong> Why you said that (first thing that comes to mind)</li>
+                                <li><strong>Example:</strong> Tell a story or specific instance</li>
+                                <li><strong>Point:</strong> Restate your main point to reinforce</li>
+                            </ul>
+                            
+                            <div class="example-box">
+                                <div class="example-label">Question:</div>
+                                <div class="example-text">"What is your ultimate goal with your coaching business?"</div>
+                                <div class="example-label" style="margin-top: 10px;">P.R.E.P Response:</div>
+                                <div class="example-text">
+                                    <strong>Point:</strong> "To help as many professionals as possible get confident when put on the spot."<br><br>
+                                    <strong>Reason:</strong> "Because I struggled so much with this myself."<br><br>
+                                    <strong>Example:</strong> "When preparing for interviews, I drill on five key questions."<br><br>
+                                    <strong>Point:</strong> "That's why I'm so passionate about this mission."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card solution-card" data-index="2">
+                        <span class="card-icon">☕💭</span>
+                        <h3 class="card-title">Solution #3: Lower the Stakes - Relive, Don't Report</h3>
+                        <p class="card-description">Talk naturally like you're having coffee with a friend</p>
+                        
+                        <div class="card-details">
+                            <ul class="card-steps">
+                                <li>Replay specific scenes from your own experience</li>
+                                <li>Narrate it as you see it, not in technical terms</li>
+                                <li>Let it flow naturally instead of trying to sound impressive</li>
+                                <li>Use personal stories that adapt to any question</li>
+                            </ul>
+                            
+                            <div class="example-box">
+                                <div class="example-label">Question:</div>
+                                <div class="example-text">"What is your strategy for preparing for interviews?"</div>
+                                <div class="example-label" style="margin-top: 10px;">Relive, Don't Report:</div>
+                                <div class="example-text">"Get 8 personal stories down on paper that you can adapt to almost any interviewing question. When I was preparing for my current job, I remember drilling on five key questions about their personal values..."</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Body Language Tips -->
+        <section class="body-language fade-in">
+            <h2>🎭 Body Language &amp; Delivery Tips</h2>
+            <div class="bl-grid">
+                <div class="bl-card">
+                    <div class="bl-icon">👁️</div>
+                    <div class="bl-tip">Eye Contact</div>
+                    <div class="bl-detail">Hold eye contact for 2-3 seconds per person</div>
+                </div>
+                
+                <div class="bl-card">
+                    <div class="bl-icon">🧍</div>
+                    <div class="bl-tip">Posture</div>
+                    <div class="bl-detail">Stand tall, shoulders back, chest open</div>
+                </div>
+                
+                <div class="bl-card">
+                    <div class="bl-icon">⏸️</div>
+                    <div class="bl-tip">Pause</div>
+                    <div class="bl-detail">Take a moment before answering - shows thoughtfulness</div>
+                </div>
+                
+                <div class="bl-card">
+                    <div class="bl-icon">🫁</div>
+                    <div class="bl-tip">Breathe</div>
+                    <div class="bl-detail">Deep breathing calms nerves and centers you</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Key Takeaways -->
+        <section class="takeaways fade-in">
+            <h2>🎯 Key Takeaways</h2>
+            <ul class="takeaway-list">
+                <li>ONE point. 7-10 seconds. That's it.</li>
+                <li>Follow P.R.E.P. No blank moments.</li>
+                <li>Talk like you would to a friend.</li>
+                <li>Your experience is your best teacher.</li>
+                <li>Preparation reduces anxiety by 90%</li>
+            </ul>
+        </section>
+    </div>
+    
+    <script>
+        // Interactive card expansion
+        const problemCards = document.querySelectorAll('.problem-card');
+        const solutionCards = document.querySelectorAll('.solution-card');
+        
+        // Add click handlers to problem cards
+        problemCards.forEach((card, index) => {
+            card.addEventListener('click', () => {
+                toggleCard(card, solutionCards[index]);
+            });
+        });
+        
+        // Add click handlers to solution cards
+        solutionCards.forEach((card, index) => {
+            card.addEventListener('click', () => {
+                toggleCard(card, problemCards[index]);
+            });
+        });
+        
+        function toggleCard(clickedCard, pairedCard) {
+            const isExpanded = clickedCard.classList.contains('expanded');
+            
+            // Close all cards first
+            document.querySelectorAll('.card').forEach(c => {
+                c.classList.remove('expanded', 'active');
+            });
+            
+            // If it wasn't expanded, expand it and its pair
+            if (!isExpanded) {
+                clickedCard.classList.add('expanded', 'active');
+                pairedCard.classList.add('active');
+                
+                // Smooth scroll to show the expanded content
+                setTimeout(() => {
+                    clickedCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }
+        }
+        
+        // Hover effects for paired cards
+        problemCards.forEach((card, index) => {
+            card.addEventListener('mouseenter', () => {
+                if (!card.classList.contains('active')) {
+                    solutionCards[index].style.opacity = '0.7';
+                }
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                solutionCards[index].style.opacity = '1';
+            });
+        });
+        
+        solutionCards.forEach((card, index) => {
+            card.addEventListener('mouseenter', () => {
+                if (!card.classList.contains('active')) {
+                    problemCards[index].style.opacity = '0.7';
+                }
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                problemCards[index].style.opacity = '1';
+            });
+        });
+        
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
