@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prompt Engineering — Educational Infographic</title>
+  <style>
+    :root{
+      --bg:#0b132b;           /* deep navy */
+      --panel:#1c2541;        /* slate */
+      --muted:#3a506b;        /* steel */
+      --text:#ffffff;         /* white */
+      --acc1:#00e5ff;         /* cyan */
+      --acc2:#ffd166;         /* amber */
+      --acc3:#06d6a0;         /* mint */
+      --acc4:#ef476f;         /* magenta */
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    html,body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+    *{box-sizing:border-box}
+    a{color:var(--acc1)}
+    header{
+      max-width:1200px;margin:40px auto 24px;padding:24px;border-radius:var(--radius);
+      background:linear-gradient(135deg, rgba(0,229,255,.12), rgba(239,71,111,.12));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:var(--shadow);
+    }
+    header h1{margin:0 0 12px;font-size: clamp(28px, 4vw, 42px);letter-spacing:.3px}
+    header p{opacity:.9;margin:0}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:var(--panel);border:1px solid rgba(255,255,255,.12);font-size:14px}
+    .grid{max-width:1200px;margin:0 auto 70px;display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .card{
+      background:linear-gradient(180deg, var(--panel), rgba(28,37,65,.92));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius);padding:18px 18px 16px;box-shadow:var(--shadow);position:relative;overflow:hidden
+    }
+    .card h3{margin:0 0 10px;font-size:18px;letter-spacing:.2px}
+    .pill{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.03);font-size:12px;margin-right:6px}
+    .kpi{font-weight:700;font-size:40px}
+    .muted{color:#d6e0f5;opacity:.85}
+    .accent{color:var(--acc2)}
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    .icon{width:22px;height:22px;display:inline-block;border-radius:6px}
+    .i-green{background:var(--acc3)}
+    .i-amber{background:var(--acc2)}
+    .i-pink{background:var(--acc4)}
+    .i-cyan{background:var(--acc1)}
+    .hl{background:linear-gradient(90deg, rgba(0,229,255,.25), rgba(255,209,102,.25));padding:2px 6px;border-radius:8px}
+    .footer{max-width:1200px;margin:12px auto 40px;color:#b9c7e6;opacity:.9}
+    /* timeline */
+    .timeline{position:relative;padding-left:20px}
+    .timeline::before{content:"";position:absolute;left:9px;top:0;bottom:0;width:2px;background:linear-gradient(var(--acc1), var(--acc4))}
+    .tl-item{position:relative;margin:12px 0 16px;padding-left:12px}
+    .tl-item::before{content:"";position:absolute;left:-3px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--acc1);box-shadow:0 0 0 3px rgba(0,229,255,.2)}
+    /* table */
+    table{width:100%;border-collapse:separate;border-spacing:0 8px}
+    th,td{padding:10px 12px;text-align:left;font-size:14px}
+    thead th{color:#a9b7d9;font-weight:600}
+    tbody tr{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+    tbody tr td:first-child{border-top-left-radius:12px;border-bottom-left-radius:12px}
+    tbody tr td:last-child{border-top-right-radius:12px;border-bottom-right-radius:12px}
+    .tag{padding:4px 8px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);font-size:12px}
+    .tag.red{background:rgba(239,71,111,.15);border-color:rgba(239,71,111,.35)}
+    .tag.yellow{background:rgba(255,209,102,.15);border-color:rgba(255,209,102,.35)}
+    .tag.green{background:rgba(6,214,160,.15);border-color:rgba(6,214,160,.35)}
+    /* mini chart */
+    .bars{display:flex;align-items:flex-end;gap:10px;height:120px;margin:6px 0 4px}
+    .bar{flex:1;background:linear-gradient(180deg,var(--acc1),#4dd9ff);border-radius:8px 8px 4px 4px;min-width:18px;transition:height .6s ease}
+    .bar:nth-child(2){background:linear-gradient(180deg,var(--acc2),#ffe08a)}
+    .bar:nth-child(3){background:linear-gradient(180deg,var(--acc4),#ff86a4)}
+    .bar:nth-child(4){background:linear-gradient(180deg,var(--acc3),#73efc7)}
+    .bar-labels{display:flex;justify-content:space-between;font-size:12px;color:#cbd6f0}
+    /* code blocks */
+    pre{background:#0e1733;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:12px;overflow:auto;color:#cfe7ff}
+    code{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
+    /* responsive images */
+    .figure{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:12px}
+    .figure img{max-width:100%;height:auto;border-radius:10px;display:block}
+    .figure small{display:block;color:#b9c7e6;margin-top:6px}
+    /* sticky nav */
+    nav{
+      position:sticky;top:8px;z-index:5;max-width:1200px;margin:0 auto 10px;padding:8px;backdrop-filter:blur(8px);
+      background:rgba(11,19,43,.6);border:1px solid rgba(255,255,255,.08);border-radius:14px
+    }
+    nav .row{justify-content:center}
+    nav a{font-size:14px;text-decoration:none;color:#e9f2ff}
+    nav a .pill{background:rgba(255,255,255,.04)}
+    /* CTA */
+    .cta{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{background:linear-gradient(90deg,var(--acc1),var(--acc2));color:#0b132b;border:0;padding:10px 14px;border-radius:12px;font-weight:700;cursor:pointer}
+    .btn.secondary{background:linear-gradient(90deg,var(--acc3),var(--acc2))}
+    .note{font-size:12px;color:#b9c7e6}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="row" style="justify-content:space-between;align-items:center">
+      <div>
+        <div class="badge">🎯 <strong>Prompt Engineering</strong> — design prompts that get the output you want.</div>
+        <h1>From <span class="hl">clear prompts</span> to <span class="hl">useful outputs</span></h1>
+        <p class="muted">Learn how LLMs work, their limitations, and hands‑on techniques—clarity, iteration, and few‑shot prompting—to get better AI results.</p>
+      </div>
+      <div class="kpi" aria-hidden="true">✨</div>
+    </div>
+  </header>
+
+  <nav aria-label="On-page navigation">
+    <div class="row">
+      <a href="#llms" class="pill">How LLMs Work</a>
+      <a href="#limits" class="pill">Limitations</a>
+      <a href="#principles" class="pill">Core Principles</a>
+      <a href="#techniques" class="pill">Techniques & Demos</a>
+      <a href="#usecases" class="pill">Use Cases</a>
+      <a href="#sources" class="pill">Sources</a>
+    </div>
+  </nav>
+
+  <!-- SECTION: How LLMs Work -->
+  <section id="llms" class="grid" aria-labelledby="h-llms">
+    <div class="card" style="grid-column:1/-1">
+      <h2 id="h-llms">🔧 How Large Language Models (LLMs) generate text</h2>
+      <div class="timeline">
+        <div class="tl-item"><strong>Train on text</strong> → models learn patterns from books, articles, and websites.</div>
+        <div class="tl-item"><strong>Tokenize</strong> → text is split into small units (tokens).</div>
+        <div class="tl-item"><strong>Predict next token</strong> → the model assigns probabilities to many possible next words and picks or samples one. Repeat.</div>
+      </div>
+      <div class="row" style="margin-top:12px">
+        <span class="tag">Concept: next‑token prediction</span>
+        <span class="tag">Autoregressive generation</span>
+        <span class="tag">Sampling vs. greedy</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Simulated next‑token probabilities</h3>
+      <p class="muted">Adjust the slider to see how likely each word is.</p>
+      <div class="bars" id="probBars" role="img" aria-label="Bar chart of token probabilities"></div>
+      <div class="bar-labels"><span>wet</span><span>clean</span><span>dry</span><span>damp</span></div>
+      <input id="temp" type="range" min="0" max="100" value="15" aria-label="randomness (temperature)" style="width:100%"/>
+      <div class="note">Lower values ≈ more deterministic; higher ≈ more varied outputs.</div>
+    </div>
+
+    <figure class="card figure">
+      <img alt="Illustration of predicting next token in a language model" src="https://rbcborealis.com/wp-content/uploads/2023/08/llm-token-probabilities-1-1024x1024.png"/>
+      <small>Illustration of token probabilities in an LLM. Source: Borealis AI.</small>
+    </figure>
+
+    <figure class="card figure">
+      <img alt="RNN style language modeling diagram showing next token prediction" src="https://lena-voita.github.io/resources/lec8_lm/lm_rnn1.png"/>
+      <small>Language modeling concept art. Source: Lena Voita NLP course.</small>
+    </figure>
+  </section>
+
+  <!-- SECTION: Limitations -->
+  <section id="limits" class="grid" aria-labelledby="h-limits">
+    <div class="card" style="grid-column:1/-1">
+      <h2 id="h-limits">⚠️ Be aware of limitations</h2>
+      <div class="row">
+        <div class="pill"><span class="icon i-amber"></span>Hallucinations (plausible but incorrect text)</div>
+        <div class="pill"><span class="icon i-pink"></span>Biases from training data</div>
+        <div class="pill"><span class="icon i-cyan"></span>Gaps in domain knowledge</div>
+        <div class="pill"><span class="icon i-green"></span>Inconsistent outputs</div>
+      </div>
+      <p class="muted" style="margin-top:10px">Always evaluate: <em>accurate?</em> <em>unbiased?</em> <em>relevant?</em> <em>sufficient?</em></p>
+    </div>
+
+    <div class="card">
+      <h3>Common failure modes</h3>
+      <table>
+        <thead><tr><th>Issue</th><th>Why it happens</th><th>What to do</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Hallucination</td>
+            <td>Model samples fluent text that isn’t grounded in facts.</td>
+            <td><span class="tag red">Verify</span> <span class="tag yellow">Cite</span> <span class="tag green">Add sources / RAG</span></td>
+          </tr>
+          <tr>
+            <td>Bias</td>
+            <td>Training data reflects social stereotypes or skew.</td>
+            <td><span class="tag yellow">Neutral wording</span> <span class="tag green">Diverse examples</span></td>
+          </tr>
+          <tr>
+            <td>Ambiguity</td>
+            <td>Prompt leaves out key context or constraints.</td>
+            <td><span class="tag green">Clarify</span> <span class="tag green">Add constraints</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <figure class="card figure">
+      <img alt="Few-shot prompting ladder graphic" src="https://images.cybernews.com/HDdf6jXiG4ZM0wMGp36fn7fx5y4=/1200x0/filters:quality(90)/images/cybernews/cn-few-shot-steps-02.webp"/>
+      <small>How few‑shot prompting guides outputs. Source: CyberNews.</small>
+    </figure>
+  </section>
+
+  <!-- SECTION: Core Principles -->
+  <section id="principles" class="grid" aria-labelledby="h-principles">
+    <div class="card" style="grid-column:1/-1">
+      <h2 id="h-principles">📐 Core prompt‑engineering principles</h2>
+    </div>
+
+    <div class="card">
+      <h3>1) Be <span class="accent">clear & specific</span></h3>
+      <ul>
+        <li>State the task with a strong verb: <em>summarize / analyze / classify / generate</em>.</li>
+        <li>Include audience, format, tone, constraints, and examples.</li>
+      </ul>
+      <pre><code>// Weak
+"What restaurants should I go to in San Francisco?"
+
+// Strong
+"I am vegetarian. Recommend 5 SF restaurants with excellent vegetarian options. Return a table: name | neighborhood | price | top dish."
+</code></pre>
+    </div>
+
+    <div class="card">
+      <h3>2) <span class="accent">Iterate</span> based on evaluation</h3>
+      <div class="timeline">
+        <div class="tl-item">Draft → Get output</div>
+        <div class="tl-item">Evaluate → accuracy, bias, relevance, sufficiency</div>
+        <div class="tl-item">Revise → add context, restructure, adjust style/length</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>3) Use <span class="accent">few‑shot examples</span></h3>
+      <p class="muted">Provide 2–5 labeled examples to teach style, structure, or format directly in the prompt.</p>
+      <pre><code>Instruction: Write a 1‑sentence product description with two adjectives.
+
+Examples:
+[Bicycle] Sleek and durable road bike for daily commutes.
+[Rollerblades] Smooth and stylish skates for city gliding.
+
+Target:
+[Skateboard] → ???  // model completes in the same style
+</code></pre>
+    </div>
+  </section>
+
+  <!-- SECTION: Techniques & Demos -->
+  <section id="techniques" class="grid" aria-labelledby="h-techniques">
+    <div class="card" style="grid-column:1/-1">
+      <h2 id="h-techniques">🧪 Techniques & interactive demos</h2>
+    </div>
+
+    <div class="card">
+      <h3>Zero‑shot → Better prompt</h3>
+      <p class="muted">Toggle to compare vague vs. specific prompts.</p>
+      <div class="row cta">
+        <button class="btn" id="btnWeak">Zero‑shot</button>
+        <button class="btn secondary" id="btnStrong">Improved</button>
+      </div>
+      <pre id="demoPrompt"><code>Ask: "Plan a conference theme" → (click a button)</code></pre>
+      <pre id="demoOutput"><code>(simulated output)</code></pre>
+    </div>
+
+    <div class="card">
+      <h3>Few‑shot builder</h3>
+      <p class="muted">Add 1–3 examples, then generate a target in similar style.</p>
+      <div class="row">
+        <input id="ex1" placeholder="[Product] Adjective1 & Adjective2 ..." class="pill" style="flex:1;min-width:220px;background:#0e1733;color:#fff"/>
+        <input id="ex2" placeholder="[Product] ..." class="pill" style="flex:1;min-width:220px;background:#0e1733;color:#fff"/>
+        <input id="target" placeholder="[Target Product]" class="pill" style="flex:1;min-width:220px;background:#0e1733;color:#fff"/>
+        <button class="btn" id="btnFewShot">Generate style‑match</button>
+      </div>
+      <pre id="fewShotOut"><code>(your styled line will appear here)</code></pre>
+    </div>
+
+    <div class="card">
+      <h3>Prompt checklist</h3>
+      <ul>
+        <li>Role + task verb</li>
+        <li>Audience + tone</li>
+        <li>Format + fields</li>
+        <li>Constraints (length, scope, sources)</li>
+        <li>Examples (few‑shot) and iteration plan</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SECTION: Use cases -->
+  <section id="usecases" class="grid" aria-labelledby="h-usecases">
+    <div class="card" style="grid-column:1/-1">
+      <h2 id="h-usecases">💡 Common ways to leverage LLMs</h2>
+    </div>
+
+    <div class="card">
+      <h3>Content & Editing</h3>
+      <ul>
+        <li>Draft emails, outlines, articles</li>
+        <li>Edit tone <em>(formal → friendly)</em>, simplify, shorten</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Summarize & Explain</h3>
+      <ul>
+        <li>Key points from long docs</li>
+        <li>Explain like I’m 5 / executive brief</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Classify & Extract</h3>
+      <ul>
+        <li>Sentiment, intent, category</li>
+        <li>Pull entities to a table</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Translate & Localize</h3>
+      <ul>
+        <li>Multi‑language content</li>
+        <li>Adapt to audience & culture</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Problem‑solving & Ideation</h3>
+      <ul>
+        <li>Brainstorm options with constraints</li>
+        <li>Compare trade‑offs, propose next steps</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SECTION: Sources / Further reading -->
+  <section id="sources" class="grid" aria-labelledby="h-sources">
+    <div class="card" style="grid-column:1/-1">
+      <h2 id="h-sources">📚 Sources & further reading</h2>
+      <ul class="muted">
+        <li>Google Vertex AI — <a href="https://cloud.google.com/vertex-ai/generative-ai/docs/learn/prompts/prompt-design-strategies" target="_blank" rel="noreferrer">Prompt design strategies</a></li>
+        <li>CSET, Georgetown — <a href="https://cset.georgetown.edu/article/the-surprising-power-of-next-word-prediction-large-language-models-explained-part-1/" target="_blank" rel="noreferrer">Next‑word prediction explainer</a></li>
+        <li>Financial Times — <a href="https://www.ft.com/content/7a4e7eae-f004-486a-987f-4a2e4dbd34fb" target="_blank" rel="noreferrer">Why chatbots hallucinate</a></li>
+        <li>Borealis AI — <a href="https://rbcborealis.com/research-blogs/training-and-fine-tuning-large-language-models/" target="_blank" rel="noreferrer">Training & token probabilities</a></li>
+        <li>Dataiku — <a href="https://knowledge.dataiku.com/latest/ml-analytics/gen-ai/concept-intro-to-llms.html" target="_blank" rel="noreferrer">Intro to LLMs & tokenization</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="footer">
+    <div class="row" style="justify-content:space-between;align-items:center">
+      <div>© 2025 • Interactive infographic. Colors optimized for high contrast on dark backgrounds.</div>
+      <div><span class="pill">Try: add examples → iterate → verify with sources</span></div>
+    </div>
+  </div>
+
+  <script>
+    // --- Simulated token probabilities demo ---
+    const bars = document.getElementById('probBars');
+    const temp = document.getElementById('temp');
+    const base = {wet:.62, clean:.18, dry:.02, damp:.28};
+    const keys = Object.keys(base);
+    function renderBars(t){
+      bars.innerHTML = '';
+      // Mix base probs with temperature-like randomness
+      const noisy = keys.map(k=>({k, v: Math.max(0.0001, base[k] ** (1 + t))}));
+      const sum = noisy.reduce((a,b)=>a+b.v,0);
+      noisy.forEach((o,i)=>{
+        const h = (o.v/sum)*100; // percent height
+        const div = document.createElement('div');
+        div.className='bar';
+        div.style.height = Math.max(6, h).toFixed(1) + '%';
+        div.title = o.k + ': ' + (100*h/100).toFixed(1) + '%';
+        bars.appendChild(div);
+      });
+    }
+    renderBars(0.15);
+    temp.addEventListener('input', e=>{
+      // map 0..100 → 0..1.2
+      const t = (+e.target.value)/100*1.2;
+      renderBars(t);
+    });
+
+    // --- Zero-shot vs improved prompt demo ---
+    const weak = `Prompt:\n\n"Plan a conference theme"\n\nOutput (typical):\n- Masquerade Night\n- Neon Party\n- Retro 80s`;
+    const strong = `Prompt:\n\nRole: You are an event strategist.\nTask: Generate <5> professional theme ideas for a *customer experience* conference in the *hospitality industry*.\nAudience: Directors & VPs. Tone: professional, inspiring.\nFormat: table with columns = Theme | Rationale | Sample Session Title.`;
+    const weakOut = `Themes skew toward social parties because the model lacks context.`;
+    const strongOut = `Themes align to customer experience in hospitality with rationales and session ideas.`;
+    const demoPrompt = document.getElementById('demoPrompt');
+    const demoOutput = document.getElementById('demoOutput');
+    document.getElementById('btnWeak').onclick = ()=>{demoPrompt.textContent = weak; demoOutput.textContent = weakOut;}
+    document.getElementById('btnStrong').onclick = ()=>{demoPrompt.textContent = strong; demoOutput.textContent = strongOut;}
+
+    // --- Few-shot style-matching mini-generator (no external model; rule-based) ---
+    function pickAdj(s){
+      // Grab two adjectives found between brackets and noun, or fallback list
+      const m = s.match(/\]\s*(.+)/);
+      if(!m) return ['sleek','durable'];
+      const text = m[1].toLowerCase();
+      const adjs = text.replace(/[^a-z\s-]/g,'').split(/\s+/).filter(w=>w.length>2);
+      return [adjs[0]||'sleek', adjs[1]||'durable'];
+    }
+    document.getElementById('btnFewShot').onclick = ()=>{
+      const e1 = document.getElementById('ex1').value.trim();
+      const e2 = document.getElementById('ex2').value.trim();
+      const target = document.getElementById('target').value.trim().replace(/[\[\]]/g,'');
+      const [a1,b1] = pickAdj(e1);
+      const [a2,b2] = pickAdj(e2);
+      const pool = [a1,b1,a2,b2].filter(Boolean);
+      const adjA = pool[0] || 'versatile';
+      const adjB = pool[2] || pool[1] || 'refined';
+      const line = target ? `[${target}] ${adjA} and ${adjB}—styled to match your examples.` : '(add a [Target Product])';
+      document.getElementById('fewShotOut').textContent = line;
+    };
+  </script>
+</body>
+</html>
