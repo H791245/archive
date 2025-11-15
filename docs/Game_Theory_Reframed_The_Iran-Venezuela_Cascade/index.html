@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Theory Reframed: The Iran-Venezuela Cascade</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F3E5F5;
+            color: #1A202C;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 500px;
+        }
+        .bar-chart-container {
+             position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 500px;
+            }
+             .bar-chart-container {
+                height: 400px;
+            }
+        }
+        .axis-box {
+            border: 2px solid;
+            background-color: #FFFFFF;
+            transition: all 0.3s ease;
+        }
+        .axis-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+            padding-left: 2.5rem;
+            border-left: 3px solid #FF6F00;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -0.7rem;
+            top: 0.15rem;
+            width: 1.25rem;
+            height: 1.25rem;
+            background-color: white;
+            border: 3px solid #FF6F00;
+            border-radius: 9999px;
+        }
+        .timeline-item:last-child {
+            border-left: 3px solid transparent;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="max-w-7xl mx-auto my-8 p-4">
+
+        <header class="p-8 md:p-12 rounded-2xl shadow-xl mb-8" style="background-color: #4A148C; color: white;">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-center mb-4">Game Theory Reframed</h1>
+            <p class="text-xl md:text-2xl text-center text-purple-200">The Iran-Venezuela Cascade: How Regime Change in Tehran Dooms Maduro in Caracas</p>
+        </header>
+
+        <main class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <section class="md:col-span-2 bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold mb-4" style="color: #4A148C;">1. The "Anti-American Axis"</h2>
+                <p class="text-lg text-gray-700 mb-6">
+                    Maduro's survival is not just a domestic issue; it relies on a strategic foreign support network. Iran, Russia, and Cuba form an axis to project power in Latin America and sustain the Venezuelan regime against U.S. pressure.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div class="axis-box p-6 rounded-lg" style="border-color: #AD1457;">
+                        <h3 class="font-bold text-2xl mb-2" style="color: #AD1457;">Iran</h3>
+                        <p class="text-gray-700">Provides Quds Force security infrastructure and trains Hezbollah operatives, offering a direct intelligence and unconventional warfare presence.</p>
+                    </div>
+                    <div class="axis-box p-6 rounded-lg" style="border-color: #1565C0;">
+                        <h3 class="font-bold text-2xl mb-2" style="color: #1565C0;">Russia</h3>
+                        <p class="text-gray-700">Props up Maduro via Rosneft oil deals and supplies critical "boots on the ground" through military advisors and Wagner mercenaries.</p>
+                    </div>
+                    <div class="axis-box p-6 rounded-lg" style="border-color: #FF6F00;">
+                        <h3 class="font-bold text-2xl mb-2" style="color: #FF6F00;">Venezuela</h3>
+                        <p class="text-gray-700">Acts as the key strategic foothold in the Western Hemisphere, allowing allies to launder money, evade sanctions, and project power.</p>
+                    </div>
+                </div>
+                <div class="p-6 rounded-lg text-center bg-gray-100 border-t-4 border-gray-400">
+                    <h3 class="font-bold text-2xl mb-2 text-gray-700">The Glue: Cuba</h3>
+                    <p class="text-gray-700 text-lg">Cuba acts as the central logistics hub, hosting Iranian Mahan Air flights and staging Russian flights to Venezuela, binding the axis together.</p>
+                </div>
+            </section>
+
+            <section class="md:col-span-2 bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold mb-4" style="color: #4A148C;">2. The Flipped Payoff Matrix</h2>
+                <p class="text-lg text-gray-700 mb-4">
+                    The "Black Swan" event—Israeli strikes in June 2025 and potential U.S. regime change in Iran—fundamentally alters Maduro's "Sunk Cost Trap." The logic of "waiting it out" collapses. This chart shows how Maduro's strategic calculus flips.
+                </p>
+                <div class="chart-container">
+                    <canvas id="payoffChart"></canvas>
+                </div>
+                <p class="text-lg text-gray-700 mt-6">
+                    Following the strikes on Iran, the <span class="font-bold" style="color: #FF6F00;">"Post-Strike"</span> calculus shows the perceived risk of a U.S. strike skyrocketing while the reliability of foreign backers and military loyalty plummets. For the first time, the <span class="font-bold">Value of a Negotiated Exit</span> becomes the most attractive option.
+                </p>
+            </section>
+
+            <section class="md:col-span-2 bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold mb-4" style="color: #4A148C;">3. Scenario A (Most Likely): The Cascade (If Iran Falls)</h2>
+                <p class="text-lg text-gray-700 mb-6">
+                    If Iran's regime falls or is severely weakened, its ability to support the axis collapses. This triggers a cascade effect, leading to a negotiated exit for Maduro, predicted by April 2026.
+                </p>
+                <div class="max-w-3xl mx-auto">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h4 class="text-xl font-semibold" style="color: #AD1457;">1. Iran's Regime Change</h4>
+                        <p class="text-gray-600">The primary foreign support pillar is removed. Iran can no longer project power or funds.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h4 class="text-xl font-semibold" style="color: #1565C0;">2. Russia & Cuba Withdraw</h4>
+                        <p class="text-gray-600">Russia becomes isolated and cuts its losses. Cuba loses its patron and can no longer afford to sustain Maduro.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h4 class="text-xl font-semibold" style="color: #FF6F00;">3. Military Defections Accelerate</h4>
+                        <p class="text-gray-600">Venezuelan officers see the writing on the wall. The deterrent is gone. Defections start at mid-ranks and fracture the command structure.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h4 class="text-xl font-semibold" style="color: #4A148C;">4. Internal Pressure Peaks</h4>
+                        <p class="text-gray-600">Regime insiders (like Cabello, Padrino) realize their window is closing and pressure Maduro to take an exit deal while they still can.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot" style="border-color: #38A169; background-color: #C6F6D5;"></div>
+                        <h4 class="text-xl font-semibold" style="color: #276749;">5. Negotiated Exit (by April 2026)</h4>
+                        <p class="text-gray-600">Maduro accepts asylum in Russia or Cuba. A transitional government is formed, and Trump claims a "win" without a war.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="md:col-span-2 bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold mb-4" style="color: #4A148C;">4. Scenario B (30% Chance): The Reprieve</h2>
+                <p class="text-lg text-gray-700 mb-6">
+                    A "Black Swan" within the Black Swan: If Iran's regime *survives* and *retaliates* militarily (e.g., closing the Strait of Hormuz), the U.S. becomes distracted. This gives Maduro breathing room.
+                </p>
+                <div class="bar-chart-container">
+                    <canvas id="timelineChart"></canvas>
+                </div>
+                 <p class="text-lg text-gray-700 mt-6">
+                    In this scenario, the U.S. focus shifts to a new conflict in the Middle East, pushing the Venezuela problem to the back burner. The stalemate is extended, and Maduro gets a reprieve, likely pushing any endgame to 2027.
+                </p>
+            </section>
+
+            <footer class="md:col-span-2 p-8 md:p-10 rounded-2xl shadow-xl" style="background-color: #1A202C; color: #E2E8F0;">
+                <h2 class="text-4xl font-extrabold text-center mb-4 text-white">Bottom Line: The Foreign Policy Endgame</h2>
+                <p class="text-xl text-center text-gray-300">
+                    Maduro's survival is not primarily about Venezuelan domestic politics—it's about whether his foreign backers (Russia, Iran) can sustain him. Remove Iran from the equation, and the entire "anti-American axis" collapses. The game is effectively over within 6 months.
+                </p>
+            </footer>
+
+        </main>
+    </div>
+
+    <script>
+        (function() {
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                } else {
+                    return label;
+                }
+            };
+
+            const defaultChartPlugins = {
+                legend: {
+                    labels: {
+                        color: '#1A202C',
+                        font: {
+                            size: 14,
+                            family: "'Inter', sans-serif"
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    },
+                    bodyFont: {
+                        size: 14,
+                        family: "'Inter', sans-serif"
+                    },
+                    titleFont: {
+                        size: 16,
+                        family: "'Inter', sans-serif"
+                    }
+                }
+            };
+            
+            const defaultRadarScales = {
+                r: {
+                    angleLines: {
+                        color: '#E2E8F0'
+                    },
+                    grid: {
+                        color: '#CBD5E0'
+                    },
+                    pointLabels: {
+                        color: '#1A202C',
+                        font: {
+                            size: 14,
+                            family: "'Inter', sans-serif",
+                            weight: '600'
+                        }
+                    },
+                    ticks: {
+                        backdropColor: 'rgba(255, 255, 255, 0.75)',
+                        color: '#4A5568'
+                    },
+                    min: 0,
+                    max: 10
+                }
+            };
+
+            const payoffCtx = document.getElementById('payoffChart').getContext('2d');
+            new Chart(payoffCtx, {
+                type: 'radar',
+                data: {
+                    labels: [
+                        ['Risk of', 'US Strike'], 
+                        ['Reliability of', 'Foreign Backers'], 
+                        ['Military', 'Loyalty'], 
+                        ['Value of', 'Negotiated Exit']
+                    ],
+                    datasets: [
+                        {
+                            label: 'Pre-Iran Strike (Stalemate)',
+                            data: [2, 8, 8, 2],
+                            fill: true,
+                            backgroundColor: 'rgba(21, 101, 192, 0.2)',
+                            borderColor: '#1565C0',
+                            pointBackgroundColor: '#1565C0',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: '#1565C0',
+                            borderWidth: 3
+                        },
+                        {
+                            label: 'Post-Iran Strike (Cascade)',
+                            data: [9, 2, 3, 9],
+                            fill: true,
+                            backgroundColor: 'rgba(255, 111, 0, 0.2)',
+                            borderColor: '#FF6F00',
+                            pointBackgroundColor: '#FF6F00',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: '#FF6F00',
+                            borderWidth: 3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: defaultChartPlugins,
+                    scales: defaultRadarScales
+                }
+            });
+
+            const timelineCtx = document.getElementById('timelineChart').getContext('2d');
+            new Chart(timelineCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        ['Scenario A:', 'Iran Falls'], 
+                        ['Scenario B:', 'Iran Retaliates']
+                    ],
+                    datasets: [{
+                        label: 'Predicted Months to Endgame',
+                        data: [6, 18],
+                        backgroundColor: ['#FF6F00', '#AD1457'],
+                        borderColor: ['#C53030', '#880E4F'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: defaultChartPlugins,
+                    scales: {
+                         x: {
+                            ticks: {
+                                color: '#4A5568',
+                                font: { size: 14, family: "'Inter', sans-serif" }
+                            },
+                            grid: {
+                                display: false
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                color: '#4A5568',
+                                font: { size: 12, family: "'Inter', sans-serif" }
+                            },
+                            grid: {
+                                color: '#E2E8F0'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Months',
+                                color: '#1A202C',
+                                font: { size: 14, family: "'Inter', sans-serif" }
+                            }
+                        }
+                    }
+                }
+            });
+
+        })();
+    </script>
+
+</body>
+</html>
