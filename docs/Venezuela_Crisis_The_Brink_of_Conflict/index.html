@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venezuela Crisis: The Brink of Conflict</title>
+    
+    <!--
+        Visualization Narrative Plan:
+        1. Header: Title and hook ("Game of Chicken").
+        2. Section 1 (US Escalation): "Operation Southern Spear" intro. "Big Number" KPIs for US forces. Line chart for strike casualties.
+        3. Section 2 (Military Standoff): Asymmetric defense intro. Logarithmic Bar Chart comparing US deployed forces vs. Venezuelan active military and militia.
+        4. Section 3 (Internal Front): Public opinion intro. Donut chart for 80/20 Maduro opposition/support split.
+        5. Section 4 (Political Crisis): Democratic deficit intro. Donut chart for Machado's 93% primary win.
+        6. Section 5 (The Core Stalemate): "Game of Chicken" intro. HTML/CSS flowchart visualizing the US gamble on military defections.
+        7. Footer: Concluding "Bottom Line" summary.
+        
+        Selected Color Palette: "Brilliant Blues" (#00449E, #0059CF, #007BFF, #419AFF, #99C7FF) with a high-contrast Red (#E53E3E) for opposing data and warnings.
+        
+        Visualization Choices:
+        - US Forces (KPIs): Goal(Inform) -> Viz(Big Number) -> Method(HTML/Tailwind) -> NO SVG.
+        - Strike Casualties (Data): Goal(Change) -> Viz(Line Chart) -> Method(Chart.js/Canvas) -> NO SVG.
+        - Military Comparison (Data): Goal(Compare) -> Viz(Logarithmic Bar Chart) -> Method(Chart.js/Canvas) -> NO SVG.
+        - Public Opinion (Data): Goal(Compare/Composition) -> Viz(Donut Chart) -> Method(Chart.js/Canvas) -> NO SVG.
+        - 2023 Primary (Data): Goal(Inform) -> Viz(Donut Chart) -> Method(Chart.js/Canvas) -> NO SVG.
+        - Strategic Gamble (Process): Goal(Organize) -> Viz(Flow Chart) -> Method(HTML/Tailwind CSS) -> NO SVG, NO MERMAID JS.
+        
+        Constraint Confirmation: NEITHER Mermaid JS NOR SVG were used anywhere in the output.
+    -->
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F7FAFC;
+            color: #1A202C;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .flow-box {
+            border: 2px solid #0059CF;
+            background-color: #F0F5FF;
+            color: #00449E;
+        }
+        .flow-arrow {
+            font-size: 2rem;
+            color: #0059CF;
+            line-height: 1;
+        }
+        .flow-decision {
+            border: 2px solid #E53E3E;
+            background-color: #FFF5F5;
+            color: #C53030;
+        }
+        .flow-path {
+            border-top: 2px dashed #4A5568;
+        }
+        .flow-outcome-neg {
+            background-color: #FED7D7;
+            border: 2px solid #E53E3E;
+            color: #9B2C2C;
+        }
+        .flow-outcome-pos {
+            background-color: #C6F6D5;
+            border: 2px solid #38A169;
+            color: #276749;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="max-w-7xl mx-auto my-8 p-4">
+
+        <header class="p-8 md:p-12 bg-white rounded-2xl shadow-xl mb-8 border-t-8 border-blue-800" style="background-color: #00449E; color: white;">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-center mb-4">Venezuela: The Brink of Conflict</h1>
+            <p class="text-xl md:text-2xl text-center text-blue-200">A high-stakes game of military pressure and political survival.</p>
+        </header>
+
+        <main class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <section class="md:col-span-2 bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold mb-4 text-blue-900" style="color: #00449E;">1. The Escalation: "Operation Southern Spear"</h2>
+                <p class="text-lg text-gray-700 mb-6">
+                    The U.S. has initiated its largest naval deployment in the region since 1989, officially for "counter-narcotics." This operation provides a pretext for an overwhelming military presence designed to apply maximum pressure on the Maduro regime.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6">
+                    <div class="text-center p-6 bg-blue-50 rounded-lg shadow-inner border border-blue-200">
+                        <div class="text-5xl font-extrabold" style="color: #0059CF;">15,000</div>
+                        <div class="text-lg font-semibold text-blue-800">U.S. Troops Deployed</div>
+                    </div>
+                    <div class="text-center p-6 bg-blue-50 rounded-lg shadow-inner border border-blue-200">
+                        <div class="text-5xl font-extrabold" style="color: #0059CF;">1</div>
+                        <div class="text-lg font-semibold text-blue-800">Carrier Strike Group</div>
+                        <span class="text-sm text-gray-600">(USS Gerald R. Ford)</span>
+                    </div>
+                    <div class="text-center p-6 bg-blue-50 rounded-lg shadow-inner border border-blue-200">
+                        <div class="text-5xl font-extrabold" style="color: #0059CF;">12+</div>
+                        <div class="text-lg font-semibold text-blue-800">Supporting Warships</div>
+                    </div>
+                </div>
+                
+                <h3 class="text-xl font-semibold text-gray-800 mt-8">Active Strikes and Casualties</h3>
+                <p class="text-gray-600 mb-4">
+                    As part of the operation, the U.S. has actively struck alleged drug-smuggling vessels, resulting in a significant number of casualties since September.
+                </p>
+                <div class="chart-container">
+                    <canvas id="strikesChart"></canvas>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold mb-4 text-blue-900" style="color: #00449E;">2. The Military Standoff</h2>
+                <p class="text-lg text-gray-700 mb-4">
+                    Venezuela cannot win a conventional war. In response, it has mobilized a massive civilian militia for an "asymmetric" guerrilla war, aiming to make any invasion unthinkably costly. This chart uses a logarithmic scale to visualize the vast difference in force composition.
+                </p>
+                <div class="chart-container">
+                    <canvas id="militaryChart"></canvas>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold mb-4 text-blue-900" style="color: #00449E;">3. The Internal Front</h2>
+                <p class="text-lg text-gray-700 mb-4">
+                    The U.S. pressure is being applied to a deeply divided and exhausted nation. While President Maduro is widely unpopular, the public is worn down by economic collapse and remains wary of civil conflict, leading to low active mobilization on all sides.
+                </p>
+                <div class="chart-container">
+                    <canvas id="opinionChart"></canvas>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold mb-4 text-blue-900" style="color: #00449E;">4. The Political Crisis</h2>
+                <p class="text-lg text-gray-700 mb-4">
+                    The crisis is rooted in a democratic deficit. Opposition leader María Corina Machado, winner of the 2025 Nobel Peace Prize, won the 2023 opposition primary in a landslide but was banned from the 2024 election. Her chosen successor, Edmundo González, is widely believed to have won, but Maduro's council declared him the winner.
+                </p>
+                <h3 class="text-xl font-semibold text-gray-800 text-center">2023 Opposition Primary Results</h3>
+                <div class="chart-container">
+                    <canvas id="primaryChart"></canvas>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold mb-4 text-blue-900" style="color: #00449E;">5. The Core Stalemate</h2>
+                <p class="text-lg text-gray-700 mb-4">
+                    The U.S. strategy is a gamble. It is betting that military pressure will force Maduro's top generals to "flip." Maduro is betting they will remain loyal. This flowchart, built with HTML and Tailwind, visualizes the "Game of Chicken."
+                </p>
+                
+                <div class="flex flex-col items-center p-4">
+                    <div class="flow-box rounded-lg p-4 text-center font-bold text-lg shadow">
+                        U.S. APPLIES MAX PRESSURE
+                        <span class="block text-sm font-normal">(USS Ford, "Southern Spear", Strike Options)</span>
+                    </div>
+                    <div class="flow-arrow my-2">↓</div>
+                    <div class="flow-decision rounded-lg p-4 text-center font-bold text-lg shadow">
+                        CRITICAL QUESTION:
+                        <span class="block text-sm font-normal">How do top Venezuelan Generals react?</span>
+                    </div>
+
+                    <div class="w-full flex flex-col md:flex-row mt-6 space-y-4 md:space-y-0 md:space-x-4">
+                        <div class="flex-1 flex flex-col items-center">
+                            <div class="w-full p-3 text-center flow-path">
+                                <h4 class="text-red-700 font-bold text-lg">PATH A: REMAIN LOYAL</h4>
+                                <p class="text-sm text-gray-700">(Fear of U.S. unites them; they keep regime benefits)</p>
+                            </div>
+                            <div class="flow-arrow my-2">↓</div>
+                            <div class="flow-outcome-neg rounded-lg p-4 text-center w-full shadow">
+                                <strong class="text-lg">OUTCOME: STALEMATE</strong>
+                                <p>Maduro survives. U.S. must back down or risk a costly full-scale war.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex-1 flex flex-col items-center">
+                            <div class="w-full p-3 text-center flow-path">
+                                <h4 class="text-green-700 font-bold text-lg">PATH B: DEFECT</h4>
+                                <p class="text-sm text-gray-700">(Generals fear U.S. strikes more; they force Maduro out)</p>
+                            </div>
+                            <div class="flow-arrow my-2">↓</div>
+                            <div class="flow-outcome-pos rounded-lg p-4 text-center w-full shadow">
+                                <strong class="text-lg">OUTCOME: REGIME COLLAPSE</strong>
+                                <p>U.S. "wins" its gamble without a full-scale invasion.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="md:col-span-2 p-8 md:p-10 rounded-2xl shadow-xl" style="background-color: #1A202C; color: #E2E8F0;">
+                <h2 class="text-4xl font-extrabold text-center mb-4 text-white">The Bottom Line</h2>
+                <p class="text-xl text-center text-gray-300">
+                    This is not a conventional war; it is a war of intimidation. The U.S. is betting that overwhelming military force will cause the regime to crack from within. Maduro is betting that his military command will remain loyal, and that the U.S. will ultimately "swerve" to avoid a costly and protracted guerrilla conflict.
+                </p>
+            </footer>
+
+        </main>
+    </div>
+
+    <script>
+        (function() {
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                } else {
+                    return label;
+                }
+            };
+            
+            const chartDefaultOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#1A202C',
+                            font: {
+                                size: 14,
+                                family: "'Inter', sans-serif"
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        },
+                        bodyFont: {
+                            size: 14,
+                            family: "'Inter', sans-serif"
+                        },
+                        titleFont: {
+                            size: 16,
+                            family: "'Inter', sans-serif"
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: '#4A5568',
+                            font: { size: 12, family: "'Inter', sans-serif" }
+                        },
+                        grid: {
+                            color: '#E2E8F0'
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: '#4A5568',
+                            font: { size: 12, family: "'Inter', sans-serif" }
+                        },
+                        grid: {
+                            color: '#E2E8F0'
+                        }
+                    }
+                }
+            };
+            
+            const chartDefaultDoughnutOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#1A202C',
+                            font: {
+                                size: 14,
+                                family: "'Inter', sans-serif"
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        },
+                        bodyFont: {
+                            size: 14,
+                            family: "'Inter', sans-serif"
+                        },
+                        titleFont: {
+                            size: 16,
+                            family: "'Inter', sans-serif"
+                        }
+                    }
+                }
+            };
+
+            const strikesCtx = document.getElementById('strikesChart').getContext('2d');
+            new Chart(strikesCtx, {
+                type: 'line',
+                data: {
+                    labels: ['September', 'October', 'November (Mid)'],
+                    datasets: [{
+                        label: 'Cumulative Casualties Reported',
+                        data: [11, 45, 80],
+                        borderColor: '#E53E3E',
+                        backgroundColor: 'rgba(229, 62, 62, 0.1)',
+                        fill: true,
+                        tension: 0.1,
+                        borderWidth: 3
+                    }]
+                },
+                options: { ...chartDefaultOptions }
+            });
+
+            const militaryCtx = document.getElementById('militaryChart').getContext('2d');
+            new Chart(militaryCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        ['US Deployed', 'Troops'], 
+                        ['Venezuela Active', 'Military'], 
+                        ['Venezuela', 'Bolivarian Militia']
+                    ],
+                    datasets: [{
+                        label: 'Force Numbers (Logarithmic Scale)',
+                        data: [15000, 125000, 4000000],
+                        backgroundColor: ['#0059CF', '#E53E3E', '#FCA5A5'],
+                        borderColor: ['#00449E', '#C53030', '#F97575'],
+                        borderWidth: 1
+                    }]
+                },
+                options: { 
+                    ...chartDefaultOptions,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            type: 'logarithmic',
+                            ticks: {
+                                color: '#4A5568',
+                                font: { size: 12, family: "'Inter', sans-serif" }
+                            },
+                            grid: {
+                                color: '#E2E8F0'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Number of Personnel (Log Scale)',
+                                color: '#1A202C'
+                            }
+                        },
+                        y: {
+                           ticks: {
+                                color: '#4A5568',
+                                font: { size: 12, family: "'Inter', sans-serif" }
+                            },
+                            grid: {
+                                display: false
+                            } 
+                        }
+                    }
+                }
+            });
+
+            const opinionCtx = document.getElementById('opinionChart').getContext('2d');
+            new Chart(opinionCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: [
+                        ['Oppose Maduro', '(80%)'], 
+                        ['Identify as', 'Chavista (20%)']
+                    ],
+                    datasets: [{
+                        data: [80, 20],
+                        backgroundColor: ['#E53E3E', '#0059CF'],
+                        hoverOffset: 4
+                    }]
+                },
+                options: { ...chartDefaultDoughnutOptions }
+            });
+
+            const primaryCtx = document.getElementById('primaryChart').getContext('2d');
+            new Chart(primaryCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: [
+                        ['María Corina', 'Machado (93%)'], 
+                        ['Other Candidates', '(7%)']
+                    ],
+                    datasets: [{
+                        data: [93, 7],
+                        backgroundColor: ['#0059CF', '#99C7FF'],
+                        hoverOffset: 4
+                    }]
+                },
+                options: { ...chartDefaultDoughnutOptions }
+            });
+
+        })();
+    </script>
+
+</body>
+</html>
