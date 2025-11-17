@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sustainable Product Launch: Step-by-Step Roadmap Infographic</title>
+  <style>
+    :root {
+      /* Design system variables from instructions (full token list included above) */
+      --icon-size: 38px;
+      --phase-spacing: 40px;
+      --milestone-radius: 26px;
+      --timeline-color: var(--color-gray-300);
+      --timeline-width: 6px;
+      --milestone-font: var(--font-size-base);
+      --white: #fff;
+    }
+    html, body {
+      font-size: 17px;
+      background: var(--color-background);
+      color: var(--color-text);
+      font-family: var(--font-family-base);
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+    .infographic-root {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-24) var(--space-8);
+      display: flex;
+      gap: var(--space-24);
+    }
+    @media (max-width: 900px) {
+      .infographic-root { flex-direction: column; }
+      .sidebar { order: -1; width: 100%; }
+      .main-content { width: 100%; }
+    }
+    .main-content {
+      flex: 2 1 0%;
+      min-width: 0;
+      width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-24);
+    }
+    .sidebar {
+      flex: 0 0 225px;
+      min-width: 215px;
+      max-width: 280px;
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xs);
+      padding: var(--space-24) var(--space-16);
+      height: fit-content;
+      font-size: 1rem;
+    }
+    .legend-list, .painpoints-list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .legend-list li, .painpoints-list li {
+      display: flex;
+      align-items: center;
+      gap: var(--space-8);
+      margin-bottom: var(--space-8);
+    }
+    .legend-icon {
+      width: 30px; height: 30px; object-fit: contain;
+      background: var(--color-bg-2);
+      border-radius: 50%;
+      border: 1.5px solid var(--color-border);
+      display: flex;
+      justify-content: center; align-items: center;
+    }
+    .header {
+      text-align: left;
+      margin-bottom: var(--space-8);
+    }
+    .section-title {
+      font-size: 1.65em;
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--space-4);
+      letter-spacing: -1px;
+    }
+    .intro-meta {
+      color: var(--color-text-secondary);
+      font-size: var(--font-size-md);
+      margin-bottom: var(--space-4);
+      display: flex;
+      gap: var(--space-16);
+    }
+    .goal-box {
+      font-weight: 500;
+      font-size: 1.08em;
+      background: var(--color-bg-3);
+      border-left: 5px solid var(--color-primary);
+      padding: var(--space-12) var(--space-16);
+      margin-bottom: var(--space-12);
+      border-radius: var(--radius-base);
+      color: var(--color-text);
+    }
+    /* Timeline Lane */
+    .timeline-wrap {
+      position: relative;
+      margin: var(--space-16) 0 var(--space-16) var(--icon-size);
+      padding-bottom: var(--space-24);
+      padding-top: var(--space-8);
+    }
+    .timeline-bar {
+      position: absolute;
+      left: calc(var(--icon-size) / 2 - var(--timeline-width) / 2);
+      top: 0;
+      bottom: 0;
+      width: var(--timeline-width);
+      background: var(--timeline-color);
+      border-radius: var(--timeline-width);
+      z-index: 0;
+      opacity: .26;
+    }
+    /* Timeline Phases */
+    .phase-block {
+      position: relative;
+      display: flex;
+      min-height: 160px;
+      margin-bottom: var(--phase-spacing);
+      align-items: flex-start;
+      z-index: 1;
+    }
+    .phase-block:last-child { margin-bottom: 0; }
+    .phase-icon {
+      background: var(--white);
+      border-radius: 50%;
+      border: 3px solid #ecebd5;
+      margin-right: var(--space-16);
+      box-shadow: var(--shadow-xs);
+      width: var(--icon-size); height: var(--icon-size);
+      flex: none;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 5;
+      position: relative;
+    }
+    .phase-icon img {
+      width: 75%; height: 75%; display: block;
+      margin: auto;
+    }
+    .phase-content {
+      flex: 1 1 0%;
+      min-width: 0;
+      padding: var(--space-8) var(--space-16) var(--space-8) 0;
+      border-radius: var(--radius-md);
+      background: var(--color-bg-1);
+      border-left: 6px solid var(--color-border);
+      margin-right: var(--space-8);
+    }
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-8);
+      margin-bottom: var(--space-4);
+    }
+    .phase-title {
+      color: inherit;
+      background: none;
+      font-size: 1.13em;
+      font-weight: var(--font-weight-semibold);
+    }
+    .phase-metrics {
+      margin-top: var(--space-4);
+      font-size: 1em;
+      color: var(--color-success);
+      font-weight: 500;
+    }
+    /* Milestones in Phase block */
+    .milestones-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-8);
+    }
+    .milestone-item {
+      background: var(--color-surface);
+      box-shadow: var(--shadow-xs);
+      border-radius: 20px;
+      border: 1.5px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      padding: var(--space-8) var(--space-12);
+      position: relative;
+      transition: box-shadow .2s;
+      font-size: 1.08em;
+      min-width: 195px;
+    }
+    .milestone-item:hover, .milestone-item.is-active {
+      z-index: 52;
+      box-shadow: 0 2px 14px rgba(33,128,141,0.13);
+      border-color: var(--color-primary-hover);
+    }
+    .milestone-dot {
+      width: 20px;
+      height: 20px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      margin-right: var(--space-8);
+      flex-shrink: 0;
+      border: 2px solid var(--color-bg-3);
+      box-shadow: var(--shadow-sm);
+    }
+    .milestone-title {
+      font-weight:  500;
+      letter-spacing: -0.2px;
+      color: var(--color-text);
+    }
+    .milestone-popover {
+      display: none;
+      position: absolute;
+      left: 50%;
+      top: 110%;
+      transform: translateX(-50%);
+      background: var(--color-surface);
+      box-shadow: var(--shadow-lg);
+      border-radius: var(--radius-base);
+      border: 1px solid var(--color-card-border-inner);
+      padding: var(--space-16) var(--space-12);
+      min-width: 225px;
+      max-width: 350px;
+      z-index: 100;
+      font-size: 1em;
+      color: var(--color-text-secondary);
+      white-space: pre-line;
+    }
+    .milestone-item.is-active .milestone-popover,
+    .milestone-item:focus .milestone-popover {
+      display: block;
+    }
+    /* Summary & Takeaways */
+    .summary {
+      border-top: 1.5px solid var(--color-border);
+      margin-top: var(--space-16);
+      padding-top: var(--space-16);
+      background: var(--color-bg-5);
+      border-radius: var(--radius-md);
+      padding-bottom: var(--space-16);
+    }
+    .summary-title {
+      font-size: 1.15em;
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--space-8);
+      color: var(--color-primary-active);
+    }
+    .summary-list {
+      list-style: disc inside;
+      font-size: 1.07em;
+      color: var(--color-text-secondary);
+      margin: 0 0 var(--space-12) 0;
+    }
+    /* Checklist */
+    .checklist-section {
+      margin-top: var(--space-24);
+      background: var(--color-bg-6);
+      border-radius: var(--radius-base);
+      border: 1px solid var(--color-border);
+      padding: var(--space-24) var(--space-16);
+    }
+    .checklist-section h3 {
+      font-weight: var(--font-weight-bold);
+      color: var(--color-orange-500);
+      margin-bottom: var(--space-8);
+      font-size: 1.13em;
+    }
+    .checklist-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      color: var(--color-text-secondary);
+      font-size: 1.07em;
+    }
+    .checklist-list li {
+      display: flex;
+      align-items: center;
+      gap: var(--space-8);
+      margin-bottom: var(--space-8);
+    }
+    .checkmark {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: var(--color-success);
+      color: #fff;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.1em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* Focus for accessibility */
+    .milestone-item:focus-visible {
+      outline: var(--focus-outline);
+    }
+    /* Responsive tweaks */
+    @media (max-width: 700px) {
+      html, body { font-size: 15px; }
+      .phase-content { padding: var(--space-4) var(--space-6) var(--space-4) 0; }
+      .main-content { gap: var(--space-12); }
+    }
+  </style>
+</head>
+<body>
+  <div class="infographic-root">
+    <!-- Sidebar legend -->
+    <aside class="sidebar">
+      <h3 class="section-title">Legend</h3>
+      <ul class="legend-list">
+        <li><span class="legend-icon"><img src="https://pplx-res.cloudinary.com/image/upload/v1763416379/search_images/a5d6b3c7525f1440ffd8c6f0d80600ebf6e9178a.jpg" alt="Foundation Icon" /></span> Foundation</li>
+        <li><span class="legend-icon"><img src="https://pplx-res.cloudinary.com/image/upload/v1763416379/search_images/9f3cb0529419a371cd36aceae65b257a6e22faa2.jpg" alt="Validation Icon"/></span> Validation</li>
+        <li><span class="legend-icon"><img src="https://pplx-res.cloudinary.com/image/upload/v1763416379/search_images/5b6972bfff4554649eb1901a9d6663d611e817d9.jpg" alt="Development Icon"/></span> Development</li>
+        <li><span class="legend-icon"><img src="https://pplx-res.cloudinary.com/image/upload/v1763416380/search_images/3d2f74894ed3eea4d105d1e36e9ab9e4dd192437.jpg" alt="Launch/Early Custom Icon"/></span> Launch / Feedback</li>
+        <li><span class="legend-icon"><img src="https://pplx-res.cloudinary.com/image/upload/v1763416379/search_images/5405affedd6cd83a93ad73f950ba21a8cde5ec60.jpg" alt="Scaling Icon"/></span> Scaling</li>
+      </ul>
+      <h4 style="margin-top:var(--space-16);font-size:1.06em;">Pain Points (if heard):</h4>
+      <ul class="painpoints-list">
+        <li>❗ No recurring pain points = pivot</li>
+        <li>❗ Slow response = change messaging</li>
+        <li>❗ Supplier MOQ too high: seek alternatives</li>
+      </ul>
+    </aside>
+    <main class="main-content">
+      <!-- Top: Title, timeframe, goal -->
+      <header class="header">
+        <div class="section-title">Step-by-Step Learning Path: Sustainable Product Launch</div>
+        <div class="intro-meta">
+          <span>Duration: 6–12 months</span>
+          <span>For: Small, consistent actions</span>
+        </div>
+        <div class="goal-box">Goal: Launch a sustainable product through consistent weekly actions, not a sprint. Learn by doing and iterating with real customer feedback.</div>
+      </header>
+      <!-- Timeline Section -->
+      <section class="timeline-wrap">
+        <div class="timeline-bar"></div>
+        <div id="phases-js"></div>
+      </section>
+      <!-- Summary/takeaways -->
+      <section class="summary">
+        <div class="summary-title">Key Takeaways</div>
+        <ul class="summary-list">
+          <li>Consistent customer conversations = key</li>
+          <li>Document actions weekly, pivot fast</li>
+          <li>Content &gt; ads for first 100 customers</li>
+          <li>Progress milestone checklist at bottom</li>
+        </ul>
+      </section>
+      <!-- Progress Checklist -->
+      <section class="checklist-section">
+        <h3>Progress Milestone Checklist</h3>
+        <ul class="checklist-list">
+          <li><span class="checkmark">✓</span> By Week 4: 10 conversations, repeated pains validated</li>
+          <li><span class="checkmark">✓</span> By Week 8: 50 on waitlist, 20-30% buy intent</li>
+          <li><span class="checkmark">✓</span> By Week 18: 50 first customers, NPS 7+/10</li>
+          <li><span class="checkmark">✓</span> By Month 6: 150+ customers, 15%+ repeat</li>
+          <li><span class="checkmark">✓</span> By Month 12: 400-500 customers, €5–8k MRR</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+  <script>
+    // Data for phases (real thread content only)
+    const phaseData = [
+      {
+        phase: 'Foundation (Weeks 1–4)',
+        color: '#FFB347',
+        icon: 'https://pplx-res.cloudinary.com/image/upload/v1763416379/search_images/a5d6b3c7525f1440ffd8c6f0d80600ebf6e9178a.jpg',
+        weeks: [
+          {
+            label: 'Week 1',
+            title: 'Read The Four Steps to the Epiphany',
+            action: '15-min/day reading + notes',
+            decision: 'Validate by customer interviews',
+            extra: 'Key: Validate by talking to customers, not brainstorming.'
+          },
+          {
+            label: 'Week 2',
+            title: 'Learn interview skills (The Mom Test)',
+            action: 'Ask about their life, not your idea',
+            decision: 'Practice Mom Test daily',
+            extra: 'Ask about past actions, not opinions or hypotheticals.'
+          },
+          {
+            label: 'Week 3',
+            title: 'Map customer needs (Value Prop Canvas)',
+            action: 'Fill canvas for one segment',
+            decision: 'Focus on jobs, pains, gains',
+            extra: 'Document specific customer jobs, pains, and gains.'
+          },
+          {
+            label: 'Week 4',
+            title: 'Validate pain points with customers',
+            action: 'Daily conversation + 3-line summary',
+            decision: 'Pivot if no recurring pains',
+            extra: 'If you don\'t hear same pains, revisit your assumptions.'
+          }
+        ],
+        metrics: '10 conversations, same pain = validated'
+      },
+      {
+        phase: 'Product Validation (Weeks 5–8)',
+        color: '#6FCF97',
+        icon: 'https://pplx-res.cloudinary.com/image/upload/v1763416379/search_images/9f3cb0529419a371cd36aceae65b257a6e22faa2.jpg',
+        weeks: [
+          {
+            label: 'Week 5',
+            title: 'Map Value Proposition',
+            action: 'Refine based on interviews',
+            decision: 'Design product/services',
+            extra: 'Match product to top customer pain points found.'
+          },
+          {
+            label: 'Week 6',
+            title: 'Create pre-sales landing page',
+            action: 'Build and launch waitlist page',
+            decision: 'Headline matches pain point',
+            extra: 'CTA: Join waitlist for launch discount.'
+          },
+          {
+            label: 'Week 7',
+            title: 'Cold outreach for pre-sales',
+            action: '20 cold emails/day, track responses',
+            decision: 'Messaging: 5–10%+ response = validated',
+            extra: 'Less than 2%, pivot messaging.'
+          },
+          {
+            label: 'Week 8',
+            title: 'Validate willingness to pay',
+            action: 'Survey pre-waitlist for price point',
+            decision: 'Analyze demand curve',
+            extra: 'Ask: Would you buy at €18/€25/€35?'
+          }
+        ],
+        metrics: '50 waitlist, 20–30% buy intent'
+      },
+      {
+        phase: 'Product Development (Weeks 9–16)',
+        color: '#56CCF2',
+        icon: 'https://pplx-res.cloudinary.com/image/upload/v1763416379/search_images/5b6972bfff4554649eb1901a9d6663d611e817d9.jpg',
+        weeks: [
+          {
+            label: 'Weeks 9–10',
+            title: 'Source suppliers regionally',
+            action: 'Research & email 3 suppliers/day',
+            decision: 'Prioritize green supply + low MOQ',
+            extra: 'Check for recycled packaging, living wages, low batch size.'
+          },
+          {
+            label: 'Week 11',
+            title: 'Negotiate samples + pricing',
+            action: 'Follow up, push for sample & MOQ < 100',
+            decision: 'Secure favorable pricing',
+            extra: 'Realistic: €4–7/unit cost, margin 60–70%.'
+          },
+          {
+            label: 'Week 12',
+            title: 'Finalize product details',
+            action: 'Choose scents, packaging, write brand story',
+            decision: 'Test with 5 friends',
+            extra: 'Keep launch simple, iterate branding.'
+          },
+          {
+            label: 'Weeks 13–16',
+            title: 'Small batch manufacturing',
+            action: 'Order test batch, grow online presence',
+            decision: 'Content creation + email list',
+            extra: 'Content: Ingredient education, supplier story, community.'
+          }
+        ],
+        metrics: '50–100 units made, strong brand story'
+      },
+      {
+        phase: 'Launch & Early Customers (Weeks 17–24)',
+        color: '#9B51E0',
+        icon: 'https://pplx-res.cloudinary.com/image/upload/v1763416380/search_images/3d2f74894ed3eea4d105d1e36e9ab9e4dd192437.jpg',
+        weeks: [
+          {
+            label: 'Weeks 17–18',
+            title: 'Soft launch to core audience',
+            action: 'Offer 40% off to waitlist',
+            decision: 'Goal: 15–25 sales = fit',
+            extra: 'Personal outreach, use feedback for PMF.'
+          },
+          {
+            label: 'Weeks 19–22',
+            title: 'Gather feedback & measure NPS',
+            action: 'Survey, reply to 1st batch customers',
+            decision: 'Read messages personally, respond fast',
+            extra: 'Aim for NPS 8+/10, read every customer message.'
+          },
+          {
+            label: 'Weeks 23–24',
+            title: 'Iterate & prep next batch',
+            action: 'Product improvement based on feedback',
+            decision: 'Document learnings',
+            extra: 'Add scent, improve packaging, adjust price.'
+          }
+        ],
+        metrics: '50 customers, NPS 7+'
+      },
+      {
+        phase: 'Scaling (Months 6–12)',
+        color: '#F2994A',
+        icon: 'https://pplx-res.cloudinary.com/image/upload/v1763416379/search_images/5405affedd6cd83a93ad73f950ba21a8cde5ec60.jpg',
+        weeks: [
+          {
+            label: 'Months 6–7',
+            title: 'Scale acquisition channels',
+            action: 'Content 3x/week, engage Reddit/TikTok',
+            decision: 'Focus on organic, not ads',
+            extra: 'Top channels: Instagram, Reddit, TikTok.'
+          },
+          {
+            label: 'Months 8–9',
+            title: 'Referral + community',
+            action: 'Facebook group, refer-a-friend reward',
+            decision: 'Moderate & answer questions daily',
+            extra: 'Build early customer group, referral credit.'
+          },
+          {
+            label: 'Months 10–12',
+            title: 'Scale manufacturing',
+            action: 'Order 300–500 units, track metrics',
+            decision: 'Review CAC, retention, repurchase',
+            extra: 'Aim: 400–500 customers, €5-8k MRR, CAC < €8.'
+          }
+        ],
+        metrics: '400–500 customers, €5–8k MRR, CAC < €8'
+      },
+    ];
+
+    // Dynamically render the journey
+    function renderPhases() {
+      const $phases = document.getElementById('phases-js');
+      $phases.innerHTML = '';
+      phaseData.forEach((phase, i) => {
+        const phaseBlock = document.createElement('div');
+        phaseBlock.className = 'phase-block';
+        // Phase icon
+        const iconBox = document.createElement('div');
+        iconBox.className = 'phase-icon';
+        iconBox.style.borderColor = phase.color;
+        iconBox.innerHTML = `<img src="${phase.icon}" alt="${phase.phase}"/>`;
+        // Phase main info
+        const contentBox = document.createElement('div');
+        contentBox.className = 'phase-content';
+        contentBox.style.borderLeftColor = phase.color;
+        // Title + metrics
+        contentBox.innerHTML = `
+          <div class="phase-header">
+            <span class="phase-title" style="color:${phase.color};">${phase.phase}</span>
+          </div>
+          <ul class="milestones-list">
+            ${phase.weeks.map((wk, idx) => `
+              <li class="milestone-item" tabindex="0" data-pidx="${i}" data-midx="${idx}">
+                <span class="milestone-dot" style="background:${phase.color};border-color:${phase.color};"></span>
+                <span class="milestone-title">${wk.title}</span>
+                <span class="milestone-popover">${wk.label}\n• <b>Action:</b> ${wk.action}\n• <b>Decision:</b> ${wk.decision}\n${wk.extra ? `• <b>Tip:</b> ${wk.extra}` : ''}</span>
+              </li>
+            `).join('')}
+          </ul>
+          <div class="phase-metrics">${phase.metrics}</div>
+        `;
+        phaseBlock.appendChild(iconBox);
+        phaseBlock.appendChild(contentBox);
+        $phases.appendChild(phaseBlock);
+      });
+    }
+    renderPhases();
+
+    // Milestone interactive popovers
+    document.addEventListener('click', function(e) {
+      const all = document.querySelectorAll('.milestone-item');
+      all.forEach(el => el.classList.remove('is-active'));
+      if (e.target.closest('.milestone-item')) {
+        e.target.closest('.milestone-item').classList.add('is-active');
+      }
+    });
+    document.addEventListener('mouseover', function(e){
+      if(e.target.closest('.milestone-item')){
+        e.target.closest('.milestone-item').classList.add('is-active');
+      }
+    });
+    document.addEventListener('mouseout', function(e){
+      if(e.target.closest('.milestone-item')){
+        e.target.closest('.milestone-item').classList.remove('is-active');
+      }
+    });
+    // Hide popover on Esc
+    document.addEventListener('keydown', function(e){
+      if(e.key==='Escape'){
+        document.querySelectorAll('.milestone-item.is-active').forEach(el=>el.classList.remove('is-active'));
+      }
+    });
+  </script>
+</body>
+</html>
