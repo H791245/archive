@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-R" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Framing: US-Venezuela Crisis</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the accordion */
+        .accordion-content {
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            overflow: hidden;
+            max-height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .accordion-content.open {
+            max-height: 5000px; /* Generous max height */
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .accordion-toggle .icon-minus {
+            display: none;
+        }
+        .accordion-toggle.open .icon-minus {
+            display: inline-block;
+        }
+        .accordion-toggle.open .icon-plus {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans">
+
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-5xl font-bold text-cyan-400 mb-2">Game Framing: US-Venezuela Crisis</h1>
+            <p class="text-lg md:text-xl text-gray-400">An Interactive Analysis of Coercive Brinkmanship</p>
+        </header>
+
+        <!-- Introduction Card -->
+        <div class="bg-gray-800 rounded-lg shadow-xl p-6 mb-6">
+            <h2 class="text-2xl font-semibold text-cyan-300 mb-3">The Setup: A High-Stakes Game</h2>
+            <p class="text-gray-300">
+                The US deployment of troops to Venezuela's coasts, officially framed as a counternarcotics operation, is strategically functioning as coercive regime-change brinkmanship. This is a classic commitment-device game with significant signaling overlays, aimed at forcing a change in the Maduro regime.
+            </p>
+        </div>
+
+        <!-- Accordion Sections -->
+        <div class="space-y-4">
+
+            <!-- Players -->
+            <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden">
+                <button class="accordion-toggle flex justify-between items-center w-full p-6 text-left">
+                    <h2 class="text-2xl font-semibold text-cyan-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-2.144M12 6a3 3 0 100-6 3 3 0 000 6zM12 18a3 3 0 100-6 3 3 0 000 6zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        The Players
+                    </h2>
+                    <div class="text-cyan-400">
+                        <svg class="w-6 h-6 icon-plus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path></svg>
+                        <svg class="w-6 h-6 icon-minus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6"></path></svg>
+                    </div>
+                </button>
+                <div class="accordion-content px-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="bg-gray-700 p-4 rounded-md">
+                            <h3 class="font-bold text-lg text-white">US Administration</h3>
+                            <p class="text-sm">Principal: Trump</p>
+                            <p class="text-sm">Agents: Sec. State Rubio, Def. Sec. Hegseth, CIA</p>
+                        </div>
+                        <div class="bg-gray-700 p-4 rounded-md">
+                            <h3 class="font-bold text-lg text-white">Maduro Regime</h3>
+                            <p class="text-sm">Principal: Maduro</p>
+                            <p class="text-sm">Agents: Military elite (some in drug trade)</p>
+                        </div>
+                        <div class="bg-gray-700 p-4 rounded-md">
+                            <h3 class="font-bold text-lg text-white">Venezuelan Generals</h3>
+                            <p class="text-sm">Pivotal swing player; can defect or support.</p>
+                        </div>
+                        <div class="bg-gray-700 p-4 rounded-md">
+                            <h3 class="font-bold text-lg text-white">Venezuelan Opposition</h3>
+                            <p class="text-sm">Machado and coalition; awaiting opportunity.</p>
+                        </div>
+                        <div class="bg-gray-700 p-4 rounded-md">
+                            <h3 class="font-bold text-lg text-white">Regional Actors</h3>
+                            <p class="text-sm">Colombia, Brazil, CARICOM; constrained players.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Strategy Sets -->
+            <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden">
+                <button class="accordion-toggle flex justify-between items-center w-full p-6 text-left">
+                    <h2 class="text-2xl font-semibold text-cyan-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+                        Strategy Sets (The Moves)
+                    </h2>
+                    <div class="text-cyan-400">
+                        <svg class="w-6 h-6 icon-plus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path></svg>
+                        <svg class="w-6 h-6 icon-minus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6"></path></svg>
+                    </div>
+                </button>
+                <div class="accordion-content px-6">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <!-- US Strategies -->
+                        <div>
+                            <h3 class="font-bold text-lg text-white mb-2">United States</h3>
+                            <ul class="list-disc list-inside text-gray-300 space-y-1">
+                                <li>Naval blockade / show-of-force</li>
+                                <li>Continue vessel airstrikes</li>
+                                <li>Escalate to land-based strikes (ports/airstrips)</li>
+                                <li>Full invasion</li>
+                                <li>Negotiate with Maduro or intermediaries</li>
+                                <li>Designate "Cartel de los Soles" as terrorist org</li>
+                            </ul>
+                        </div>
+                        <!-- Maduro Strategies -->
+                        <div>
+                            <h3 class="font-bold text-lg text-white mb-2">Maduro Regime</h3>
+                            <ul class="list-disc list-inside text-gray-300 space-y-1">
+                                <li>Mobilize militia/military (propaganda)</li>
+                                <li>Seek Russian/Chinese/Iranian military aid</li>
+                                <li>Negotiate exile/transition deal</li>
+                                <li>Hold power & gamble US won't invade</li>
+                                <li>Crack down domestically to prevent coup</li>
+                            </ul>
+                        </div>
+                        <!-- Generals' Strategies -->
+                        <div>
+                            <h3 class="font-bold text-lg text-white mb-2">Venezuelan Generals</h3>
+                            <ul class="list-disc list-inside text-gray-300 space-y-1">
+                                <li>Stay loyal to Maduro (preserve drug revenue)</li>
+                                <li>Defect/arrange coup (claim $50M bounty + amnesty)</li>
+                                <li>Wait-and-see</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payoffs -->
+            <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden">
+                <button class="accordion-toggle flex justify-between items-center w-full p-6 text-left">
+                    <h2 class="text-2xl font-semibold text-cyan-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.539 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.539-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
+                        Payoffs (What's to Win or Lose?)
+                    </h2>
+                    <div class="text-cyan-400">
+                        <svg class="w-6 h-6 icon-plus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path></svg>
+                        <svg class="w-6 h-6 icon-minus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6"></path></svg>
+                    </div>
+                </button>
+                <div class="accordion-content px-6">
+                    <ul class="space-y-3">
+                        <li>
+                            <strong class="text-white">Trump:</strong> <span class="text-gray-300">Victory = Maduro removed (no quagmire). Defeat = costly invasion or backing down. Moderate Win = negotiated transition.</span>
+                        </li>
+                        <li>
+                            <strong class="text-white">Maduro:</strong> <span class="text-gray-300">Survival in power > negotiated golden-parachute exile > capture/death.</span>
+                        </li>
+                        <li>
+                            <strong class="text-white">Generals:</strong> <span class="text-gray-300">Drug revenue + regime survival > US amnesty + bounty (if regime falls) > being targeted or purged.</span>
+                        </li>
+                        <li>
+                            <strong class="text-white">Venezuelan People:</strong> <span class="text-gray-300">Regime change (potential) > status quo, but fear invasion chaos.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Information & Time -->
+            <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden">
+                <button class="accordion-toggle flex justify-between items-center w-full p-6 text-left">
+                    <h2 class="text-2xl font-semibold text-cyan-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M12 18c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zM20.998 12c0 1.48-.302 2.892-.84 4.19M3.002 12A9 9 0 1120.998 12M12 4.002c-1.48.002-2.892.302-4.19.84M12 20.002c1.48 0 2.892-.302 4.19-.84" /></svg>
+                        Information & Time Horizon
+                    </h2>
+                    <div class="text-cyan-400">
+                        <svg class="w-6 h-6 icon-plus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path></svg>
+                        <svg class="w-6 h-6 icon-minus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6"></path></svg>
+                    </div>
+                </button>
+                <div class="accordion-content px-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Information Structure -->
+                        <div>
+                            <h3 class="font-bold text-lg text-white mb-2">Information Structure</h3>
+                            <ul class="list-disc list-inside text-gray-300 space-y-2">
+                                <li><strong>Incomplete Information:</strong> US unsure which generals will flip. Maduro unsure if Trump is bluffing about land strikes.</li>
+                                <li><strong>Signaling Game:</strong> Deployment of USS Gerald R. Ford, B-52/B-1B overflights, and "Cartel de los Soles" terrorist designation are costly signals of resolve.</li>
+                                <li><strong>Asymmetric Credibility:</strong> Trump's unpredictability raises risk for Maduro, but invasion is also costly for Trump (ghosts of Iraq/Vietnam).</li>
+                            </ul>
+                        </div>
+                        <!-- Time Horizon -->
+                        <div>
+                            <h3 class="font-bold text-lg text-white mb-2">Time Horizon</h3>
+                            <ul class="list-disc list-inside text-gray-300 space-y-2">
+                                <li><strong>Shrinking Discount Factor:</strong> Each escalation (airstrikes, designations) ratchets up pressure and reduces Maduro's expected survival time.</li>
+                                <li><strong>Dynamic Coordination Problem:</strong> Generals face a dilemma. Early defectors claim the bounty; late defectors risk being purged or killed.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Equilibrium Analysis -->
+            <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden">
+                <button class="accordion-toggle flex justify-between items-center w-full p-6 text-left">
+                    <h2 class="text-2xl font-semibold text-cyan-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0h2a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm0 0h2" /></svg>
+                        Equilibrium Analysis (The Likely Outcome)
+                    </h2>
+                    <div class="text-cyan-400">
+                        <svg class="w-6 h-6 icon-plus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path></svg>
+                        <svg class="w-6 h-6 icon-minus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6"></path></svg>
+                    </div>
+                </button>
+                <div class="accordion-content px-6">
+                    <div class="space-y-4">
+                        <p class="text-gray-300">This is a <strong class="text-white">war of attrition</strong> meets <strong class="text-white">crisis bargaining</strong>. The equilibrium Trump is engineering:</p>
+                        <ul class="list-decimal list-inside text-gray-300 space-y-3">
+                            <li><strong>Separating Equilibrium:</strong> Massive show of force (carrier, bombers, designation) acts as a costly sunk cost, separating this from "cheap talk" and creating a commitment device.</li>
+                            <li><strong>Generals' Trigger Strategy:</strong> US is targeting the drug revenue (the "folk theorem" cooperation) sustaining Maduro. By "effectively shutting down" cocaine routes, Trump aims to make generals' loyalty collapse.</li>
+                            <li><strong>Maduro's Dominated Strategy:</strong> Full resistance is dominated if US will strike land targets. But early negotiation signals weakness. He is stuck in a "wait-and-see" mixed strategy.</li>
+                            <li><strong>Trump's "Madman" Strategy:</strong> Designating Maduro personally and authorizing lethal ops "burns bridges," making invasion/killing credible (Schelling's "rationality of irrationality").</li>
+                        </ul>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+                            <div class="bg-gray-700 p-4 rounded-md">
+                                <h4 class="font-bold text-lg text-white">Nash Equilibrium (if no negotiation)</h4>
+                                <ul class="list-disc list-inside text-sm">
+                                    <li><strong>Trump:</strong> Escalate to limited land strikes (ports/airstrips).</li>
+                                    <li><strong>Maduro:</strong> Hunker down, hope for pullback.</li>
+                                    <li><strong>Generals:</strong> Conditional defection (coordination cascade).</li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-700 p-4 rounded-md">
+                                <h4 class="font-bold text-lg text-white">Bayesian Nash (Uncertainty)</h4>
+                                <ul class="list-disc list-inside text-sm">
+                                    <li>If Maduro believes P(Land Strike) > 70% → Negotiate.</li>
+                                    <li>If P(Land Strike) < 40% → Resist.</li>
+                                    <li>Current signals suggest P is rising but hasn't crossed the threshold.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Human Biases -->
+            <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden">
+                <button class="accordion-toggle flex justify-between items-center w-full p-6 text-left">
+                    <h2 class="text-2xl font-semibold text-cyan-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                        Exploitable Biases & Failures
+                    </h2>
+                    <div class="text-cyan-400">
+                        <svg class="w-6 h-6 icon-plus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path></svg>
+                        <svg class="w-6 h-6 icon-minus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6"></path></svg>
+                    </div>
+                </button>
+                <div class="accordion-content px-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Maduro's Errors -->
+                        <div>
+                            <h3 class="font-bold text-lg text-red-400 mb-2">Where Maduro is Screwing Up</h3>
+                            <ul class="list-disc list-inside text-gray-300 space-y-2">
+                                <li><strong>Status Quo Bias / Sunk Cost:</strong> Anchoring on 25+ years of regime survival, overthinking the "death vs. exile" binary when a deal is available.</li>
+                                <li><strong>Overconfidence:</strong> Mobilizing a "4.5 million militia" (propaganda that wastes resources) after getting <3.8M votes.</li>
+                            </ul>
+                        </div>
+                        <!-- Trump's Exploits -->
+                        <div>
+                            <h3 class="font-bold text-lg text-green-400 mb-2">Where Trump is Exploiting</h3>
+                            <ul class="list-disc list-inside text-gray-300 space-y-2">
+                                <li><strong>Hyperbolic Discounting:</strong> Generals value immediate drug cash. By cutting this route, Trump forces them to a shorter time horizon, making defection attractive.</li>
+                                <li><strong>Coordination Failure (Mechanism Design):</strong> Creating a "first-mover advantage" ($50M bounty) to tip the generals' coordination game.</li>
+                            </ul>
+                        </div>
+                        <!-- Trump's Risks -->
+                        <div class="md:col-span-2">
+                            <h3 class="font-bold text-lg text-yellow-400 mb-2">Where Trump Could Screw Up</h3>
+                            <ul class="list-disc list-inside text-gray-300 space-y-2">
+                                <li><strong>Overcommitment:</strong> The "credibility trap." If Maduro doesn't fold, Trump must either invade (quagmire) or back down (credibility loss).</li>
+                                <li><strong>Misreading Cohesion:</strong> If generals stay loyal (coercion, ideology, Russia), the strategy collapses into expensive failure.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Optimal Strategy -->
+            <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden">
+                <button class="accordion-toggle flex justify-between items-center w-full p-6 text-left">
+                    <h2 class="text-2xl font-semibold text-cyan-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                        Optimal Strategy (for US)
+                    </h2>
+                    <div class="text-cyan-400">
+                        <svg class="w-6 h-6 icon-plus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path></svg>
+                        <svg class="w-6 h-6 icon-minus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6"></path></svg>
+                    </div>
+                </button>
+                <div class="accordion-content px-6">
+                    <h3 class="font-bold text-lg text-white mb-2">Ranked by Robustness:</h3>
+                    <ol class="list-decimal list-inside text-gray-300 space-y-3">
+                        <li><strong>Escalate + Back-channel:</strong> Continue escalation but privately offer Maduro a "golden parachute" (dignified transition) via UAE or Turkey. (Rubinstein bargaining).</li>
+                        <li><strong>Limited Land Strikes:</strong> Strike 2-3 high-value land targets (ports/airstrips) after Nov 24. Crosses the Rubicon, shows resolve, forces generals to update beliefs.</li>
+                        <li><strong>Direct General Comms:</strong> CIA back-channels top 5 generals: "72 hours to arrange handover or be targeted personally." (Schelling focal point).</li>
+                    </ol>
+                    
+                    <div class="bg-cyan-900/50 p-4 rounded-md mt-6 border-l-4 border-cyan-400">
+                        <h3 class="font-bold text-lg text-cyan-300 mb-2">Surprising Move 99% Miss: The Public Summit</h3>
+                        <p class="text-gray-300">Publicly invite Maduro to a neutral-site summit (e.g., Doha). This appears soft but is a dominant strategy:</p>
+                        <ul class="list-disc list-inside text-gray-300 space-y-1 mt-2">
+                            <li><strong>If Maduro accepts:</strong> Trump controls the narrative and can extract concessions or walk away with the moral high ground.</li>
+                            <li><strong>If Maduro refuses:</strong> It isolates him internationally and justifies military action.</li>
+                        </ul>
+                        <p class="text-gray-300 mt-2">It's costless and strengthens the US position either way. Perception of "softness" is irrelevant after deploying a carrier strike group (the sunk cost is paid).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Precedents -->
+            <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden">
+                <button class="accordion-toggle flex justify-between items-center w-full p-6 text-left">
+                    <h2 class="text-2xl font-semibold text-cyan-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13.5M1-1.747l-6 6 6-6zm0 0l6 6m-6-6v1-1.747m0 0h1-1.747M12 4.006c-3.132 0-6.138 1.173-8.8 3.494l-3.2 3.201M12 21.994c3.132 0 6.138-1.173 8.8-3.494l3.2-3.201" /></svg>
+                        Real-World Precedents
+                    </h2>
+                    <div class="text-cyan-400">
+                        <svg class="w-6 h-6 icon-plus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path></svg>
+                        <svg class="w-6 h-6 icon-minus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6"></path></svg>
+                    </div>
+                </button>
+                <div class="accordion-content px-6">
+                    <ul class="space-y-3">
+                        <li>
+                            <strong class="text-white">1989 Panama (Just Cause):</strong> <span class="text-gray-300">Removed Noriega (drug charges) via invasion. Quick victory, but condemned. Trump is copying the playbook, trying to avoid the invasion.</span>
+                        </li>
+                        <li>
+                            <strong class="text-white">2003 Iraq (Failed Coercion):</strong> <span class="text-gray-300">Massive force deployment failed to make Saddam flee; he miscalculated US resolve and was invaded.</span>
+                        </li>
+                        <li>
+                            <strong class="text-white">1962 Cuban Missile Crisis (Success):</strong> <span class="text-gray-300">Kennedy combined public quarantine (toughness) with secret back-channel deal (face-saving). Trump needs to give Maduro a similar out.</span>
+                        </li>
+                        <li>
+                            <strong class="text-white">2011 Libya (Regime Change Gone Wrong):</strong> <span class="text-gray-300">NATO strikes enabled overthrow, but led to a failed state. A key risk for Trump; Venezuela is 10x larger.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Go Deeper -->
+            <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden">
+                <button class="accordion-toggle flex justify-between items-center w-full p-6 text-left">
+                    <h2 class="text-2xl font-semibold text-cyan-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        Go Deeper: Next-Level Questions
+                    </h2>
+                    <div class="text-cyan-400">
+                        <svg class="w-6 h-6 icon-plus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path></svg>
+                        <svg class="w-6 h-6 icon-minus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6"></path></svg>
+                    </div>
+                </button>
+                <div class="accordion-content px-6">
+                    <p class="text-gray-300 mb-2">The core of this game is the credible commitment problem. The next questions to ask are:</p>
+                    <ul class="list-disc list-inside text-gray-300 space-y-2">
+                        <li>"How should Trump structure a credible commitment mechanism to guarantee the Venezuelan military elite safe exile + asset protection if they overthrow Maduro, given that the US has a history of reneging on such deals (see: Noriega)? What's the subgame-perfect contract design?"</li>
+                        <li>"If Maduro is rational and knows Trump's optimal strategy is 'threaten invasion but settle for negotiated transition,' why doesn't Maduro just call the bluff? What's the mixed-strategy equilibrium that makes Trump's threat credible despite the obvious costs of invasion?"</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer / Sources -->
+        <footer class="mt-8 text-center text-gray-500 text-xs">
+            <p class="mb-2">Sources referenced in this analysis:</p>
+            <div class="flex flex-wrap justify-center gap-x-4 gap-y-2">
+                <span>dw.com</span>
+                <span>aljazeera.com</span>
+                <span>en.wikipedia.org</span>
+                <span>youtube.com</span>
+                <span>nytimes.com</span>
+                <span>newsweek.com</span>
+                <span>reuters.com</span>
+                <span>abcnews.go.com</span>
+                <span>politico.com</span>
+                <span>cnn.com</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- JavaScript for Accordion -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const accordionToggles = document.querySelectorAll('.accordion-toggle');
+
+            accordionToggles.forEach(toggle => {
+                // Auto-open the first panel (Players)
+                if (toggle.textContent.includes('Players')) {
+                    toggle.classList.add('open');
+                    const content = toggle.nextElementSibling;
+                    if (content) {
+                        content.classList.add('open');
+                    }
+                }
+
+                toggle.addEventListener('click', () => {
+                    // Toggle the button's 'open' state
+                    toggle.classList.toggle('open');
+                    
+                    // Find the content panel
+                    const content = toggle.nextElementSibling;
+                    if (content) {
+                        // Toggle the content's 'open' state
+                        content.classList.toggle('open');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
