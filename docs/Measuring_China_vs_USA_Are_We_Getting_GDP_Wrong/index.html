@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Measuring China vs USA: Are We Getting GDP Wrong?</title>
+    <style>
+        :root {
+            --bg-dark: #0f0f23;
+            --bg-section: #1a1a2e;
+            --text-primary: #ffffff;
+            --accent-gold: #ffd700;
+            --accent-cyan: #00d9ff;
+            --accent-orange: #ff6b35;
+            --accent-teal: #4ecdc4;
+            --accent-green: #00ff88;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1a0e3e 100%);
+            padding: 40px 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-cyan) 50%, var(--accent-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            max-width: 800px;
+            margin-bottom: 15px;
+            color: var(--accent-cyan);
+        }
+
+        .hero .credit {
+            font-size: 1.1rem;
+            color: var(--accent-gold);
+            margin-top: 30px;
+            font-style: italic;
+        }
+
+        .scroll-indicator {
+            margin-top: 50px;
+            animation: bounce 2s infinite;
+            font-size: 2rem;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--accent-gold);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Problem Cards */
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .problem-card {
+            background: var(--bg-section);
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-cyan), var(--accent-orange));
+        }
+
+        .problem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(0, 217, 255, 0.3);
+            border-color: var(--accent-cyan);
+        }
+
+        .problem-card .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .problem-card h3 {
+            font-size: 1.8rem;
+            color: var(--accent-cyan);
+            margin-bottom: 15px;
+        }
+
+        .problem-card .value {
+            font-size: 1.5rem;
+            color: var(--accent-orange);
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .problem-card p {
+            color: #cccccc;
+            margin-bottom: 15px;
+        }
+
+        .comparison-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .comparison-item strong {
+            color: var(--accent-gold);
+        }
+
+        /* GDP Measurement Methods */
+        .methods-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .method-card {
+            background: var(--bg-section);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            border: 2px solid;
+            transition: transform 0.3s ease;
+        }
+
+        .method-card:nth-child(1) {
+            border-color: var(--accent-orange);
+        }
+
+        .method-card:nth-child(2) {
+            border-color: var(--accent-cyan);
+        }
+
+        .method-card:nth-child(3) {
+            border-color: var(--accent-green);
+        }
+
+        .method-card:hover {
+            transform: scale(1.05);
+        }
+
+        .method-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .method-card:nth-child(1) h3 { color: var(--accent-orange); }
+        .method-card:nth-child(2) h3 { color: var(--accent-cyan); }
+        .method-card:nth-child(3) h3 { color: var(--accent-green); }
+
+        .method-card .big-stat {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 20px 0;
+            color: var(--accent-gold);
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--bg-section);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            border: 2px solid var(--accent-cyan);
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+            margin: 20px 0;
+        }
+
+        /* Statistics Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            background: var(--bg-section);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid var(--accent-teal);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 5px 25px rgba(255, 215, 0, 0.2);
+        }
+
+        .stat-card .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent-gold);
+            margin: 10px 0;
+        }
+
+        .stat-card .stat-label {
+            color: var(--accent-cyan);
+            font-size: 1rem;
+        }
+
+        /* Comparison Bars */
+        .comparison-bar {
+            margin: 25px 0;
+        }
+
+        .comparison-bar .label {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--accent-cyan);
+        }
+
+        .bar-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-orange));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            font-weight: bold;
+            transition: width 1s ease;
+            width: 0;
+        }
+
+        .bar-fill.animate {
+            width: var(--bar-width);
+        }
+
+        /* Key Takeaways */
+        .takeaways-list {
+            list-style: none;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        .takeaways-list li {
+            background: var(--bg-section);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 5px solid var(--accent-gold);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .takeaways-list li:hover {
+            transform: translateX(10px);
+            border-left-color: var(--accent-cyan);
+        }
+
+        .takeaways-list li::before {
+            content: '✓';
+            color: var(--accent-green);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        /* Bottom Line */
+        .bottom-line {
+            background: linear-gradient(135deg, #1a0e3e 0%, var(--bg-section) 100%);
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 3px solid var(--accent-gold);
+        }
+
+        .bottom-line h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--accent-orange);
+            margin-bottom: 30px;
+        }
+
+        .bottom-line .quote {
+            font-size: clamp(1.3rem, 2.5vw, 2rem);
+            font-style: italic;
+            color: var(--accent-gold);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.5;
+            padding: 30px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 15px;
+            border: 2px solid var(--accent-gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .problems-grid,
+            .methods-container,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 50px 15px;
+            }
+        }
+
+        /* Highlight Text */
+        .highlight {
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        .highlight-cyan {
+            color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
+        .highlight-orange {
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Measuring China vs USA:<br>Are We Getting GDP Wrong?</h1>
+        <p>GDP comparisons may be fundamentally flawed.<br>Traditional metrics don't tell the full story of economic power.</p>
+        <p class="credit">— John Shan, Guangdong Products</p>
+        <div class="scroll-indicator">⬇</div>
+    </div>
+
+    <!-- Section 1: Three Major Problems -->
+    <section id="problems">
+        <div class="container">
+            <h2 class="section-title">🚨 The Three Major Problems</h2>
+            <div class="problems-grid">
+                <!-- Problem 1: Imputation -->
+                <div class="problem-card">
+                    <div class="icon">💰</div>
+                    <h3>Imputation Problem</h3>
+                    <div class="value">$4 trillion (14% of US GDP)</div>
+                    <p>The US adds estimated values for non-cash economic activity that never actually happens.</p>
+                    <div class="comparison-item">
+                        <strong>Examples:</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Imputed rent (if you owned your home)</li>
+                            <li>Employer-provided health insurance value</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-item">
+                        <strong>China &amp; most countries:</strong> Don't include these imputations. If there are no actual cash flows, it doesn't get counted.
+                    </div>
+                </div>
+
+                <!-- Problem 2: Purchasing Power -->
+                <div class="problem-card">
+                    <div class="icon">🏗️</div>
+                    <h3>Purchasing Power Problem</h3>
+                    <div class="value">Same $ ≠ Same Output</div>
+                    <p>Construction spending looks similar, but real output tells a vastly different story.</p>
+                    <div class="comparison-item">
+                        <strong>Construction Spending:</strong><br>
+                        🇺🇸 USA: $1.1 trillion<br>
+                        🇨🇳 China: $1.2 trillion
+                    </div>
+                    <div class="comparison-item">
+                        <strong>Steel Production (2022):</strong><br>
+                        🇨🇳 China: 1.3 billion tons<br>
+                        🇺🇸 USA: 97 million tons<br>
+                        <span class="highlight-orange">China produces 13x more!</span>
+                    </div>
+                    <div class="comparison-item">
+                        <strong>High-Speed Rail:</strong><br>
+                        🇨🇳 China: 48,000 km<br>
+                        🇺🇸 USA: 0 km
+                    </div>
+                </div>
+
+                <!-- Problem 3: Services Sector -->
+                <div class="problem-card">
+                    <div class="icon">⚖️</div>
+                    <h3>Services Sector Problem</h3>
+                    <div class="value">High-Paid, Low-Production</div>
+                    <p>China has 4x the population of the USA, but...</p>
+                    <div class="comparison-item">
+                        <strong>🇺🇸 USA has MORE of:</strong><br>
+                        • <span class="highlight">2x more attorneys</span><br>
+                        • <span class="highlight">5x more accountants</span><br>
+                        • <span class="highlight">15x more investment advisors</span><br>
+                        • Massive lobbying industry (unique globally)
+                    </div>
+                    <div class="comparison-item">
+                        These high-paid service jobs inflate US GDP without producing actual tradable goods.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: GDP Measurement Methods -->
+    <section id="methods">
+        <div class="container">
+            <h2 class="section-title">📊 Three Ways to Measure GDP</h2>
+            <div class="methods-container">
+                <div class="method-card">
+                    <h3>Nominal GDP</h3>
+                    <p>Traditional calculation with all imputations and dollar cost problems</p>
+                    <div class="big-stat">🇺🇸 USA Leads</div>
+                    <p style="color: #999;">This is what most people cite, but it's misleading</p>
+                </div>
+
+                <div class="method-card">
+                    <h3>Purchasing Power Parity</h3>
+                    <p>Adjusts for price differences across countries</p>
+                    <div class="big-stat">🇨🇳 China: $37T+</div>
+                    <div style="margin: 10px 0; color: var(--accent-cyan);">🇺🇸 USA: $30T</div>
+                    <p style="color: #999;">China became world's largest economy by PPP in 2016</p>
+                </div>
+
+                <div class="method-card">
+                    <h3>Productive GDP</h3>
+                    <p>Only counts tradable goods (excludes finance, insurance, legal, lobbying)</p>
+                    <div class="big-stat">🇨🇳 3x Larger</div>
+                    <p style="color: var(--accent-green);"><strong>China is bigger than the next 4 economies COMBINED</strong></p>
+                    <div style="margin-top: 15px; text-align: left;">
+                        <p style="font-size: 0.9rem; color: #ccc;">Changes in Top 10:</p>
+                        <ul style="margin-left: 20px; color: #aaa;">
+                            <li>UK &amp; France drop out</li>
+                            <li>Indonesia moves ahead of Japan</li>
+                            <li>Turkey enters at #8</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Chart -->
+            <div class="chart-container">
+                <h3 style="color: var(--accent-cyan); margin-bottom: 20px; text-align: center;">Visual Comparison: GDP Measurement Methods</h3>
+                <div class="chart-wrapper">
+                    <canvas id="gdpChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Productive GDP Evidence -->
+    <section id="evidence">
+        <div class="container">
+            <h2 class="section-title">🔬 What Productive GDP Reveals</h2>
+            
+            <h3 style="color: var(--accent-cyan); font-size: 2rem; margin: 40px 0 20px;">📋 Patents (2021)</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🥇</div>
+                    <div class="stat-number" data-target="38">0</div>
+                    <div class="stat-label">% of ALL Global Patents</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💡</div>
+                    <div class="stat-number">1.59M</div>
+                    <div class="stat-label">Patent Applications<br>(= Countries 2-13 Combined)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🤖</div>
+                    <div class="stat-number" data-target="70">0</div>
+                    <div class="stat-label">% of Global AI Patents</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📡</div>
+                    <div class="stat-number" data-target="30">0</div>
+                    <div class="stat-label">% of Global 6G Patents</div>
+                </div>
+            </div>
+
+            <!-- Patent Chart -->
+            <div class="chart-container">
+                <h3 style="color: var(--accent-gold); margin-bottom: 20px; text-align: center;">China's Share of Global Patents by Field</h3>
+                <div class="chart-wrapper">
+                    <canvas id="patentChart"></canvas>
+                </div>
+            </div>
+
+            <h3 style="color: var(--accent-cyan); font-size: 2rem; margin: 60px 0 20px;">🚢 Port Activity</h3>
+            <div class="comparison-bar">
+                <div class="label">7 of World's Top 10 Busiest Ports are in China</div>
+                <div class="bar-container">
+                    <div class="bar-fill" style="--bar-width: 70%;">70%</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin: 20px 0; padding: 20px; background: var(--bg-section); border-radius: 10px;">
+                <p style="font-size: 1.3rem; color: var(--accent-gold);">🏆 <strong>Shanghai Port:</strong> 51.5 million TEUs (2024) - World's Busiest</p>
+                <p style="color: #ccc; margin-top: 10px;">Raw materials inbound, finished products shipped out</p>
+            </div>
+
+            <h3 style="color: var(--accent-cyan); font-size: 2rem; margin: 60px 0 20px;">⚡ Electricity Consumption (2024)</h3>
+            <div style="background: var(--bg-section); padding: 30px; border-radius: 15px; border: 2px solid var(--accent-orange);">
+                <div class="comparison-bar">
+                    <div class="label">🇨🇳 China: 10,000+ TWh</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="--bar-width: 100%; background: linear-gradient(90deg, var(--accent-orange), #ff0000);">100%</div>
+                    </div>
+                </div>
+                <div class="comparison-bar">
+                    <div class="label">🌍 USA + India + EU + Russia + Japan + Brazil + Canada COMBINED</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="--bar-width: 85%; background: linear-gradient(90deg, #666, #999);">~85%</div>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 20px; color: var(--accent-gold); font-size: 1.2rem;">
+                    ⚡ Factories require massive energy to run - China consumes more than 7 major economies combined!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Key Takeaways -->
+    <section id="takeaways">
+        <div class="container">
+            <h2 class="section-title">💡 Key Takeaways</h2>
+            <ul class="takeaways-list">
+                <li>Traditional GDP metrics favor service economies over manufacturing economies</li>
+                <li>Purchasing Power Parity shows China surpassed the US economy in 2016</li>
+                <li>Productive GDP (actual goods) reveals China is 3x larger than the USA</li>
+                <li>This explains China's dominance in infrastructure, manufacturing, and innovation</li>
+                <li>Factory zones built for the same dollar value as a single US/European factory</li>
+                <li>Entire metro/subway systems built for the cost of one US subway station</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Bottom Line -->
+    <div class="bottom-line">
+        <h2>The Bottom Line</h2>
+        <div class="quote">
+            "We're measuring everything wrong and we believe things that are not true."
+        </div>
+        <p style="margin-top: 30px; font-size: 1.2rem; color: var(--accent-cyan);">
+            Traditional GDP comparisons don't reflect real economic productive capacity.<br>
+            When we measure what actually matters — goods, infrastructure, innovation —<br>
+            the picture looks dramatically different.
+        </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate bars
+                    const bars = entry.target.querySelectorAll('.bar-fill');
+                    bars.forEach(bar => {
+                        bar.classList.add('animate');
+                    });
+                    
+                    // Animate counter numbers
+                    const counters = entry.target.querySelectorAll('[data-target]');
+                    counters.forEach(counter => {
+                        animateCounter(counter);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Counter animation
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + '%';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + '%';
+                }
+            }, 16);
+        }
+
+        // GDP Comparison Chart
+        const gdpCtx = document.getElementById('gdpChart').getContext('2d');
+        new Chart(gdpCtx, {
+            type: 'bar',
+            data: {
+                labels: ['USA', 'China'],
+                datasets: [
+                    {
+                        label: 'Nominal GDP',
+                        data: [28, 18],
+                        backgroundColor: '#ff6b35',
+                        borderColor: '#ff6b35',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'PPP GDP',
+                        data: [30, 37],
+                        backgroundColor: '#00d9ff',
+                        borderColor: '#00d9ff',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Productive GDP (Relative)',
+                        data: [25, 75],
+                        backgroundColor: '#00ff88',
+                        borderColor: '#00ff88',
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: '#ffffff'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#ffffff',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        },
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#ffffff',
+                            font: {
+                                size: 12
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Patent Chart
+        const patentCtx = document.getElementById('patentChart').getContext('2d');
+        new Chart(patentCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['China', 'USA', 'Japan', 'South Korea', 'Germany', 'Rest of World'],
+                datasets: [{
+                    data: [38, 15, 10, 8, 5, 24],
+                    backgroundColor: [
+                        '#ff0000',
+                        '#00d9ff',
+                        '#ffd700',
+                        '#4ecdc4',
+                        '#ff6b35',
+                        '#999999'
+                    ],
+                    borderColor: '#0f0f23',
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#ffffff',
+                            font: {
+                                size: 12
+                            },
+                            padding: 15
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.parsed + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
