@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SK Hynix: How They Won the AI Memory War</title>
+    <style>
+        :root {
+            --bg-dark: #0a0e27;
+            --text-primary: #ffffff;
+            --accent-cyan: #00d9ff;
+            --accent-blue: #0099ff;
+            --secondary-dark: #1a2540;
+            --positive-green: #00ff88;
+            --neutral-gray: #6b7280;
+            --samsung-blue: #1a5f7a;
+            --micron-blue: #0077b3;
+            --others-gray: #4a5568;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        .infographic-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .main-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: var(--text-primary);
+            opacity: 0.8;
+            font-weight: 300;
+        }
+
+        /* Main Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 35% 30% 35%;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: start;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            background: var(--secondary-dark);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent-cyan) 0%, var(--accent-blue) 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 35px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: -40px;
+            width: 30px;
+            height: 30px;
+            background: var(--bg-dark);
+            border: 3px solid var(--accent-cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .timeline-year {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 5px;
+        }
+
+        .timeline-event {
+            font-size: 16px;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        /* Moat Section */
+        .moat-section {
+            background: var(--secondary-dark);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .venn-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            margin-top: 20px;
+        }
+
+        .venn-circle {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid rgba(0, 217, 255, 0.6);
+            backdrop-filter: blur(10px);
+        }
+
+        .venn-circle.circle-1 {
+            background: rgba(0, 153, 255, 0.25);
+            top: 20px;
+            left: 30px;
+        }
+
+        .venn-circle.circle-2 {
+            background: rgba(0, 217, 255, 0.25);
+            top: 20px;
+            right: 30px;
+        }
+
+        .venn-circle.circle-3 {
+            background: rgba(0, 217, 255, 0.35);
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .circle-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 8px;
+        }
+
+        .circle-description {
+            font-size: 12px;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        /* Market Win Section */
+        .win-section {
+            background: var(--secondary-dark);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .chart-container {
+            margin-bottom: 30px;
+        }
+
+        .pie-chart {
+            width: 280px;
+            height: 280px;
+            margin: 20px auto;
+        }
+
+        .legend {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+        }
+
+        .stats-container {
+            margin-top: 20px;
+        }
+
+        .stat-box {
+            background: rgba(0, 217, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            margin-bottom: 15px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-primary);
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 5px;
+        }
+
+        .stat-growth {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--positive-green);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stat-neutral {
+            font-size: 16px;
+            color: var(--neutral-gray);
+            font-weight: 500;
+        }
+
+        .arrow-up {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 8px solid var(--positive-green);
+        }
+
+        /* Bottom Banner */
+        .bottom-banner {
+            background: linear-gradient(135deg, var(--secondary-dark) 0%, rgba(0, 217, 255, 0.15) 100%);
+            padding: 35px 50px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .banner-text {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            line-height: 1.6;
+            text-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .main-title {
+                font-size: 36px;
+            }
+
+            .venn-container {
+                height: 350px;
+            }
+
+            .venn-circle {
+                width: 150px;
+                height: 150px;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 28px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+
+            .banner-text {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic-container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="main-title">SK Hynix: How They Won the AI Memory War</h1>
+            <p class="subtitle">16 Years of Strategic Foresight in AI Memory</p>
+        </header>
+
+        <!-- Main Content Grid -->
+        <div class="content-grid">
+            <!-- Timeline Section -->
+            <div class="timeline-section">
+                <h2 class="section-title">Timeline</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🔬</div>
+                        <div class="timeline-year">2009</div>
+                        <div class="timeline-event">HBM Development Starts</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">✓</div>
+                        <div class="timeline-year">2013</div>
+                        <div class="timeline-event">First HBM Chip Launched</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🏭</div>
+                        <div class="timeline-year">2022</div>
+                        <div class="timeline-event">Mass HBM3 Production</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">👑</div>
+                        <div class="timeline-year">2025</div>
+                        <div class="timeline-event">64% Market Dominance<br>$11.4B Profit</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Moat Section -->
+            <div class="moat-section">
+                <h2 class="section-title">The Moat</h2>
+                <div class="venn-container">
+                    <div class="venn-circle circle-1">
+                        <div class="circle-title">Manufacturing Expertise</div>
+                        <div class="circle-description">Advanced MR-MUF thermal management beats Samsung/Micron</div>
+                    </div>
+                    <div class="venn-circle circle-2">
+                        <div class="circle-title">Nvidia Lockdown</div>
+                        <div class="circle-description">Exclusive supplier &amp; co-development partner</div>
+                    </div>
+                    <div class="venn-circle circle-3">
+                        <div class="circle-title">First-Mover Scale</div>
+                        <div class="circle-description">Everyone else catching up</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Win Section -->
+            <div class="win-section">
+                <h2 class="section-title">The Win</h2>
+                <div class="chart-container">
+                    <canvas id="marketShareChart" class="pie-chart"></canvas>
+                    <div class="legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #00d9ff;"></div>
+                            <span>SK Hynix (64%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #1a5f7a;"></div>
+                            <span>Samsung (20%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #0077b3;"></div>
+                            <span>Micron (12%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #4a5568;"></div>
+                            <span>Others (4%)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stats-container">
+                    <div class="stat-box">
+                        <div class="stat-label">SK Hynix Q3 2025 Profit</div>
+                        <div class="stat-value">$11.4 Trillion Won</div>
+                        <div class="stat-growth">
+                            <span class="arrow-up"></span>
+                            <span>+39% YoY</span>
+                        </div>
+                    </div>
+                    <div class="stat-box" style="background: rgba(107, 114, 128, 0.1); border-color: rgba(107, 114, 128, 0.3);">
+                        <div class="stat-label">Intel Q2 2025 Revenue</div>
+                        <div class="stat-neutral">Flat</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Banner -->
+        <div class="bottom-banner">
+            <p class="banner-text">The difference: SK Hynix bet 16 years on a technology nobody needed. When AI changed everything, they already owned it.</p>
+        </div>
+    </div>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Market Share Pie Chart
+        const ctx = document.getElementById('marketShareChart').getContext('2d');
+        const marketShareChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['SK Hynix', 'Samsung', 'Micron', 'Others'],
+                datasets: [{
+                    data: [64, 20, 12, 4],
+                    backgroundColor: [
+                        '#00d9ff',
+                        '#1a5f7a',
+                        '#0077b3',
+                        '#4a5568'
+                    ],
+                    borderColor: '#0a0e27',
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#1a2540',
+                        titleColor: '#00d9ff',
+                        bodyColor: '#ffffff',
+                        borderColor: '#00d9ff',
+                        borderWidth: 1,
+                        padding: 12,
+                        displayColors: true,
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.parsed + '%';
+                            }
+                        }
+                    },
+                    datalabels: {
+                        display: true,
+                        color: '#ffffff',
+                        font: {
+                            weight: 'bold',
+                            size: 16
+                        },
+                        formatter: (value) => {
+                            return value + '%';
+                        }
+                    }
+                }
+            },
+            plugins: [{
+                id: 'centerText',
+                beforeDraw: function(chart) {
+                    const width = chart.width;
+                    const height = chart.height;
+                    const ctx = chart.ctx;
+                    ctx.restore();
+                    
+                    const fontSize = (height / 180).toFixed(2);
+                    ctx.font = fontSize + "em sans-serif";
+                    ctx.textBaseline = "middle";
+                    ctx.fillStyle = "#ffffff";
+                    
+                    const text = "HBM Market";
+                    const textX = Math.round((width - ctx.measureText(text).width) / 2);
+                    const textY = height / 2.3;
+                    
+                    ctx.fillText(text, textX, textY);
+                    
+                    ctx.font = (fontSize * 0.8) + "em sans-serif";
+                    const text2 = "Share 2025";
+                    const textX2 = Math.round((width - ctx.measureText(text2).width) / 2);
+                    const textY2 = height / 1.85;
+                    
+                    ctx.fillText(text2, textX2, textY2);
+                    ctx.save();
+                }
+            }]
+        });
+    </script>
+</body>
+</html>
