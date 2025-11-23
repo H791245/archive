@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tangier Romance: 2-Day Itinerary</title>
+    <style>
+        :root {
+            --color-primary: #1D5B79;
+            --color-accent: #C84B31;
+            --color-sand: #F4E4C1;
+            --color-terracotta: #E67E50;
+            --color-teal: #2A8B8E;
+            --color-cream: #FFF8F0;
+            --color-dark: #2C3333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Garamond', serif;
+            background: linear-gradient(135deg, var(--color-sand) 0%, var(--color-cream) 100%);
+            color: var(--color-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-teal) 100%);
+            color: white;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '✨';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 40px;
+            opacity: 0.3;
+        }
+
+        .header::after {
+            content: '🌙';
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-size: 40px;
+            opacity: 0.3;
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .header .subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
+            font-style: italic;
+        }
+
+        .header .meta {
+            margin-top: 20px;
+            font-size: 1em;
+            opacity: 0.9;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Info Cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--color-accent);
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-card h3 {
+            color: var(--color-primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3em;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-card li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .info-card li:last-child {
+            border-bottom: none;
+        }
+
+        /* Day Cards */
+        .day-section {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.12);
+            border-top: 6px solid var(--color-terracotta);
+        }
+
+        .day-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--color-sand);
+        }
+
+        .day-number {
+            font-size: 3em;
+            color: var(--color-accent);
+            font-weight: bold;
+            opacity: 0.3;
+        }
+
+        .day-title {
+            flex: 1;
+        }
+
+        .day-title h2 {
+            color: var(--color-primary);
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        .day-title p {
+            color: var(--color-teal);
+            font-style: italic;
+            font-size: 1.1em;
+        }
+
+        /* Timeline Items */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--color-terracotta), var(--color-teal));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            background: var(--color-cream);
+            padding: 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 25px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--color-accent);
+        }
+
+        .time-badge {
+            display: inline-block;
+            background: var(--color-primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .activity-title {
+            font-size: 1.4em;
+            color: var(--color-dark);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .activity-desc {
+            color: #555;
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+
+        .activity-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .tag {
+            background: var(--color-sand);
+            color: var(--color-dark);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            border: 1px solid var(--color-terracotta);
+        }
+
+        /* Icon styles */
+        .icon {
+            font-size: 1.3em;
+        }
+
+        /* Tips Section */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .tip-card {
+            background: linear-gradient(135deg, #FFF5E6 0%, #FFE5CC 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid var(--color-teal);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .tip-card h3 {
+            color: var(--color-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tip-card p {
+            color: #444;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: var(--color-primary);
+            color: white;
+            border-radius: 15px;
+        }
+
+        .footer p {
+            font-size: 1.2em;
+            font-style: italic;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .header .subtitle {
+                font-size: 1.1em;
+            }
+
+            .day-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .timeline {
+                padding-left: 30px;
+            }
+
+            .info-grid,
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🌙 Tangier Romance 🌙</h1>
+            <div class="subtitle">A 2-Day Enchanting Journey Through Morocco's Gateway</div>
+            <div class="meta">
+                <div class="meta-item">
+                    <span class="icon">📅</span>
+                    <span>Mid-December Visit</span>
+                </div>
+                <div class="meta-item">
+                    <span class="icon">💑</span>
+                    <span>Couples' Escape</span>
+                </div>
+                <div class="meta-item">
+                    <span class="icon">💰</span>
+                    <span>€150/day Budget</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Essential Info Cards -->
+        <div class="info-grid">
+            <div class="info-card">
+                <h3><span class="icon">🌤️</span> Weather & Packing</h3>
+                <ul>
+                    <li><strong>Temp:</strong> 13-17°C (55-63°F)</li>
+                    <li><strong>Rain:</strong> 4-12 rainy days</li>
+                    <li><strong>Pack:</strong> Layers, light jacket, scarf</li>
+                    <li><strong>Evenings:</strong> Cool (10-13°C)</li>
+                    <li><strong>Sunset:</strong> ~5:30 PM</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3><span class="icon">💰</span> Budget Tips</h3>
+                <ul>
+                    <li><strong>Meals:</strong> €20-40/day for two</li>
+                    <li><strong>Local lunch:</strong> 70-270 MAD</li>
+                    <li><strong>Mint tea:</strong> 15 MAD/glass</li>
+                    <li><strong>Tagine:</strong> 20-90 MAD</li>
+                    <li><strong>Taxis:</strong> Negotiate beforehand</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3><span class="icon">🛡️</span> Safety for Couples</h3>
+                <ul>
+                    <li>✓ Generally safe for tourists</li>
+                    <li>✓ Stay in well-lit areas at night</li>
+                    <li>✓ Watch belongings in markets</li>
+                    <li>✓ Dress modestly (cover arms/legs)</li>
+                    <li>✓ Use official taxis with meters</li>
+                    <li>✓ Avoid excessive PDA</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3><span class="icon">📍</span> Getting Around</h3>
+                <ul>
+                    <li><strong>Medina:</strong> Walk (get lost!)</li>
+                    <li><strong>Cafés:</strong> Uphill from medina</li>
+                    <li><strong>Cap Spartel:</strong> 14km (taxi)</li>
+                    <li><strong>Taxis:</strong> Confirm meter is on</li>
+                    <li><strong>Walk:</strong> Comfortable shoes!</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- DAY 1 -->
+        <div class="day-section">
+            <div class="day-header">
+                <div class="day-number">01</div>
+                <div class="day-title">
+                    <h2>Medina Magic & Clifftop Sunsets</h2>
+                    <p>Explore the old city's soul and romantic coastal views</p>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time-badge">9:00 AM - 11:00 AM</div>
+                    <div class="activity-title">☕ Breakfast at Gran Café de Paris</div>
+                    <div class="activity-desc">
+                        Start your Tangier romance at this legendary 1927 café on Place de France. Sip coffee overlooking the boulevard, soaking in the bohemian history where artists and writers once gathered. Perfect for people-watching and setting the tone for your adventure.
+                    </div>
+                    <div class="activity-tags">
+                        <span class="tag">Historic Café</span>
+                        <span class="tag">Budget: 40-60 MAD</span>
+                        <span class="tag">Iconic Spot</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="time-badge">11:00 AM - 1:30 PM</div>
+                    <div class="activity-title">🕌 Wander the Old Medina</div>
+                    <div class="activity-desc">
+                        Enter through <strong>Bab El Bahr</strong> (sea gate) for stunning views, then lose yourselves in the labyrinthine alleys. Visit <strong>Petit Socco</strong>, the beating heart where spies and writers once conspired. Browse the souks—handwoven rugs, spices, leather goods, pottery. Bargain respectfully! Discover the <strong>Kasbah</strong> in the northwestern corner with its whitewashed walls and ocean vistas.
+                    </div>
+                    <div class="activity-tags">
+                        <span class="tag">🗺️ Get Lost Together</span>
+                        <span class="tag">Shopping</span>
+                        <span class="tag">Free Entry</span>
+                        <span class="tag">Historic Quarter</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="time-badge">1:30 PM - 3:00 PM</div>
+                    <div class="activity-title">🍽️ Lunch at Restaurant Ahlen</div>
+                    <div class="activity-desc">
+                        Authentic Moroccan-Mediterranean fusion in a cozy, welcoming atmosphere. Try the <strong>tagine</strong> (chicken or lamb with prunes), fresh <strong>harira soup</strong>, or <strong>chicken pastilla</strong>. End with complimentary mint tea and Moroccan sweets. Locals love this place for its fair prices and genuine flavors.
+                    </div>
+                    <div class="activity-tags">
+                        <span class="tag">Local Favorite</span>
+                        <span class="tag">Budget: 130-170 MAD for two</span>
+                        <span class="tag">Vegetarian Options</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="time-badge">3:00 PM - 4:30 PM</div>
+                    <div class="activity-title">🏛️ Tangier American Legation Museum</div>
+                    <div class="activity-desc">
+                        Step into the first U.S. diplomatic property outside America (1821). Wander through rooms filled with historical documents, art exhibitions, and tales of Tangier's international past. A quiet, cultured escape from the bustling medina.
+                    </div>
+                    <div class="activity-tags">
+                        <span class="tag">History & Art</span>
+                        <span class="tag">Small Entry Fee</span>
+                        <span class="tag">Unique Heritage</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="time-badge">4:45 PM - 6:30 PM</div>
+                    <div class="activity-title">🌅 Sunset at Café Hafa</div>
+                    <div class="activity-desc">
+                        The crown jewel of Tangier cafés since 1921. Perched on cliffs overlooking the Strait of Gibraltar, this multi-level terrace offers <strong>magical panoramic views</strong> where the Atlantic meets the Mediterranean. Arrive early (around 4:45 PM) to secure a terrace table before sunset (~5:30 PM). Order sweet mint tea and watch the sky transform into gold and pink as the sun dips into the water. Pure romance.
+                    </div>
+                    <div class="activity-tags">
+                        <span class="tag">🌅 MUST-SEE Sunset</span>
+                        <span class="tag">Tea: 15 MAD/glass</span>
+                        <span class="tag">Iconic Views</span>
+                        <span class="tag">Romantic</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="time-badge">7:30 PM - 9:30 PM</div>
+                    <div class="activity-title">🍴 Dinner at Dar Harruch</div>
+                    <div class="activity-desc">
+                        Celebrated for authentic Moroccan cuisine in a warm, unpretentious setting. Try the <strong>lamb tagine</strong>, <strong>mixed fish tagine</strong>, or <strong>kefta tagine</strong>. Fresh salads, harira soup, and traditional couscous round out the menu. Budget-friendly and delicious—perfect for ending your first day.
+                    </div>
+                    <div class="activity-tags">
+                        <span class="tag">Authentic Dining</span>
+                        <span class="tag">Budget: 130-200 MAD</span>
+                        <span class="tag">Local Gem</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="time-badge">Evening</div>
+                    <div class="activity-title">🌙 Stroll Along the Corniche</div>
+                    <div class="activity-desc">
+                        Take a romantic evening walk along Tangier's waterfront promenade. The city lights reflect on the water, and the gentle Mediterranean breeze creates perfect ambiance. Stop at <strong>Faro Square (Sour Al Maâgazine)</strong>—the famous meeting place of lovers in Tangier—for bay views under the stars.
+                    </div>
+                    <div class="activity-tags">
+                        <span class="tag">💑 Romantic Walk</span>
+                        <span class="tag">Free</span>
+                        <span class="tag">Scenic Views</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DAY 2 -->
+        <div class="day-section">
+            <div class="day-header">
+                <div class="day-number">02</div>
+                <div class="day-title">
+                    <h2>Coastal Adventures & Hidden Treasures</h2>
+                    <p>Discover legendary caves, lighthouses, and bohemian corners</p>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time-badge">9:00 AM - 10:00 AM</div>
+                    <div class="activity-title">☕ Morning Coffee at Alma Kitchen & Coffee</div>
+                    <div class="activity-desc">
+                        A modern 2022 addition to Tangier's café scene by jewelry designer Lamiae and photographer husband Seif. Bright white walls, minimalist wooden furniture, verdant plants. Enjoy specialty coffee and a relaxed, contemporary vibe—a refreshing contrast to yesterday's historic spots.
+                    </div>
+                    <div class="activity-tags">
+                        <span class="tag">Modern Café</span>
+                        <span class="tag">Specialty Coffee</span>
+                        <span class="tag">Instagrammable</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="time-badge">10:30 AM - 12:30 PM</div>
+                    <div class="activity-title">🏞️ Caves of Hercules & Beach Walk</div>
+                    <div class="activity-desc">
+                        Take a taxi (14km, ~15-20 min) to the legendary <strong>Caves of Hercules</strong>—mythical caverns with an opening shaped like Africa facing the Atlantic. Explore the natural formations and soak in the mystical atmosphere. Afterward, walk north along <strong>Robinson Plage</strong> beach toward Cap Spartel (1 hour scenic walk). Abandoned holiday houses, cliffs, and crashing waves create a wild, romantic landscape.
+                    </div>
+                    <div class="activity-tags">
+                        <span class="tag">🌊 Mythical Site</span>
+                        <span class="tag">Entry: Small fee</span>
+                        <span class="tag">Beach Walk</span>
+                        <span class="tag">Adventure</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="time-badge">12:30 PM - 1:00 PM</div>
+                    <div class="activity-title">🗼 Cap Spartel Lighthouse</div>
+                    <div class="activity-desc">
+                        Arrive at the 160-year-old lighthouse perched 326m high—where the Atlantic Ocean meets the Mediterranean Sea! A symbolic meeting point featured on the 200 MAD banknote. Tiny museum inside tells the history of guiding ships along Morocco's coast. Take photos together at the geographical marker. Breathtaking coastal views.
+                    </div>
+                    <div class="activity-tags">
+                        <span class="tag">🌍 Two Seas Meet</span>
+                        <span class="tag">Landmark</span>
+                        <span class="tag">Photo Opportunity</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="time-badge">1:30 PM - 3:00 PM</div>
+                    <div class="activity-title">🐟 Lunch at Restaurant Saveur de Poisson</div>
+                    <div class="activity-desc">
+                        Anthony Bourdain ate here! Located on the famous street featured in <em>James Bond: Spectre</em>. Fixed-price menu (250 MAD) includes four courses: flavorful fish soup, catch of the day with fresh bread/olives, homemade seasonal fruit juice (figs, dates, or grapes), and dessert of honey with almonds. An authentic Tangier seafood experience you won't forget.
+                    </div>
+                    <div class="activity-tags">
+                        <span class="tag">Celebrity Favorite</span>
+                        <span class="tag">Fixed Menu: 250 MAD</span>
+                        <span class="tag">Fresh Seafood</span>
+                        <span class="tag">Iconic Location</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="time-badge">3:30 PM - 5:00 PM</div>
+                    <div class="activity-title">📚 Café Baba - Time Capsule Experience</div>
+                    <div class="activity-desc">
+                        Hidden gem in the medina since 1943. Step into a living museum—time has literally stood still. Faded sign, worn furniture, vintage chairs, and walls covered in celebrity memorabilia (Rolling Stones, Paul Bowles, William Burroughs once gathered here). Sip traditional mint tea in this bohemian sanctuary where artists found inspiration. A must for history lovers and romantics.
+                    </div>
+                    <div class="activity-tags">
+                        <span class="tag">🎭 Bohemian History</span>
+                        <span class="tag">Literary Haven</span>
+                        <span class="tag">Budget: 15-30 MAD</span>
+                        <span class="tag">Hidden Gem</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="time-badge">5:00 PM - 6:30 PM</div>
+                    <div class="activity-title">🕌 Kasbah & Rooftop Views</div>
+                    <div class="activity-desc">
+                        Return to the Kasbah for golden hour magic. Visit the <strong>Mosque of the Kasbah</strong> with its iconic octagonal minaret. Wander to one of the hidden <strong>rooftop cafés</strong> near Rue de la Kasbah for mint tea and sweeping views over the bay and medina rooftops. Watch the city glow as the sun sets—intimate and unforgettable.
+                    </div>
+                    <div class="activity-tags">
+                        <span class="tag">🌅 Golden Hour</span>
+                        <span class="tag">Panoramic Views</span>
+                        <span class="tag">Architectural Beauty</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="time-badge">7:30 PM - 9:30 PM</div>
+                    <div class="activity-title">🍽️ Farewell Dinner at Chez Hassan Bab Kasbah</div>
+                    <div class="activity-desc">
+                        Traditional Moroccan feast in the heart of the old city. Everything cooked fresh to order: <strong>mixed fish tagine</strong>, <strong>kefta tagine</strong>, vegetarian options, grilled skewers. Pair with natural juices or refreshing mint tea. Authentic flavors, warm hospitality, and fair prices. The perfect ending to your Tangier romance.
+                    </div>
+                    <div class="activity-tags">
+                        <span class="tag">Fresh Cooking</span>
+                        <span class="tag">Budget: 140-210 MAD</span>
+                        <span class="tag">Traditional Atmosphere</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="time-badge">Evening</div>
+                    <div class="activity-title">🌙 Final Stroll Through Petit Socco</div>
+                    <div class="activity-desc">
+                        End your journey where writers, spies, and lovers once roamed. Sit at <strong>Café Tingis</strong> on the exact spot where Phoenicians built the Roman Forum (Tingis) in the 6th century BC. Soak in the atmosphere one last time, holding hands and reflecting on two magical days in Morocco's most enchanting city.
+                    </div>
+                    <div class="activity-tags">
+                        <span class="tag">💑 Romantic Finale</span>
+                        <span class="tag">Historic Square</span>
+                        <span class="tag">Memories</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tips Section -->
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h3><span class="icon">🍴</span> Must-Try Local Foods</h3>
+                <p><strong>Tagine</strong> (slow-cooked stew), <strong>Pastilla</strong> (sweet-savory pastry), <strong>Harira</strong> (hearty soup), <strong>Couscous</strong> (Fridays!), Fresh <strong>seafood</strong>, Sweet <strong>mint tea</strong> (everywhere!), <strong>Msemen</strong> (flatbread), Honey & almond desserts</p>
+            </div>
+
+            <div class="tip-card">
+                <h3><span class="icon">🎯</span> Insider Tips</h3>
+                <p>• Bargain respectfully in souks (start 50% lower) • Confirm taxi prices before departure • Dress modestly to blend in • Learn basic French/Arabic greetings • Carry small bills (10/20 MAD) • Café Hafa gets crowded—arrive early for sunset!</p>
+            </div>
+
+            <div class="tip-card">
+                <h3><span class="icon">🗣️</span> Useful Phrases</h3>
+                <p><strong>[translate:السلام عليكم]</strong> (As-salamu alaykum) - Hello • <strong>[translate:شكرا]</strong> (Shukran) - Thank you • <strong>[translate:بحال]</strong> (B'chal?) - How much? • <strong>Merci</strong> (French) - Thank you • <strong>S'il vous plaît</strong> - Please</p>
+            </div>
+
+            <div class="tip-card">
+                <h3><span class="icon">📸</span> Photo Spots</h3>
+                <p>🌅 Café Hafa terraces (sunset) • 🌊 Cap Spartel lighthouse • 🏛️ Petit Socco square • 🎨 Colorful medina doorways • 🕌 Kasbah rooftops • 🌴 Corniche waterfront • 🏖️ Robinson Plage beach walk</p>
+            </div>
+
+            <div class="tip-card">
+                <h3><span class="icon">💡</span> Money-Saving Tips</h3>
+                <p>• Eat at local spots like Bachir/Ahlen (avoid tourist traps) • Buy spices/tea in medina (cheaper than hotels) • Walk medina on foot (free!) • Share tagines (portions are huge) • Afternoon tea cheaper than full meals</p>
+            </div>
+
+            <div class="tip-card">
+                <h3><span class="icon">⚠️</span> Safety Reminders</h3>
+                <p>• Stay together in medina at night • Use hotel safe for valuables • Ignore persistent "guides" politely • Official taxis only (petit taxi for city) • Keep copies of passport separate • Emergency: Police 19, Ambulance 15</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>✨ May your Tangier adventure be filled with magic, romance, and unforgettable memories ✨</p>
+            <p style="margin-top: 15px; font-size: 0.95em; opacity: 0.9;">
+                <strong>[translate:بسلامة]</strong> (B'slama) - Safe travels! 🌙💙
+            </p>
+        </div>
+    </div>
+</body>
+</html>
