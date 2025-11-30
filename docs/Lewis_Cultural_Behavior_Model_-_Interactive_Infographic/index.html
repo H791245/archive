@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lewis Cultural Behavior Model - Interactive Infographic</title>
+    <style>
+        :root {
+            --color-linear: #2E86AB;
+            --color-multi: #A23B72;
+            --color-reactive: #F18F01;
+            --color-bg: #0F1419;
+            --color-surface: #1A1F2E;
+            --color-text: #E8E8E8;
+            --color-text-secondary: #B0B0B0;
+            --color-accent: #00D9FF;
+            --color-linear-light: rgba(46, 134, 171, 0.15);
+            --color-multi-light: rgba(162, 59, 114, 0.15);
+            --color-reactive-light: rgba(241, 143, 1, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--color-linear) 0%, var(--color-multi) 50%, var(--color-reactive) 100%);
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="2"/></pattern></defs><rect width="1200" height="400" fill="url(%23grid)"/></svg>');
+            z-index: 1;
+        }
+
+        header > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .researcher {
+            font-size: 0.95em;
+            margin-top: 15px;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--color-surface);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--color-accent);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Main Content */
+        main {
+            padding: 40px 0;
+        }
+
+        section {
+            margin-bottom: 60px;
+            scroll-margin-top: 100px;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Culture Cards */
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .culture-card {
+            border-radius: 12px;
+            padding: 30px;
+            border-left: 6px solid;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            background: var(--color-surface);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .culture-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .culture-card.linear {
+            border-left-color: var(--color-linear);
+            background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-linear-light) 100%);
+        }
+
+        .culture-card.multi {
+            border-left-color: var(--color-multi);
+            background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-multi-light) 100%);
+        }
+
+        .culture-card.reactive {
+            border-left-color: var(--color-reactive);
+            background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-reactive-light) 100%);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .card-icon {
+            font-size: 2.5em;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+
+        .culture-card.linear .card-title {
+            color: var(--color-linear);
+        }
+
+        .culture-card.multi .card-title {
+            color: var(--color-multi);
+        }
+
+        .culture-card.reactive .card-title {
+            color: var(--color-reactive);
+        }
+
+        .culture-subtitle {
+            font-size: 0.9em;
+            color: var(--color-text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .characteristics {
+            flex: 1;
+        }
+
+        .char-title {
+            font-weight: 700;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .char-list {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        .char-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            gap: 10px;
+        }
+
+        .char-list li:before {
+            content: '→';
+            font-weight: bold;
+            flex-shrink: 0;
+            min-width: 15px;
+        }
+
+        /* Countries Section */
+        .countries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .country-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid;
+            border-radius: 25px;
+            padding: 10px 18px;
+            font-size: 0.95em;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+        }
+
+        .culture-card.linear .country-tag {
+            border-color: var(--color-linear);
+            color: var(--color-linear);
+        }
+
+        .culture-card.multi .country-tag {
+            border-color: var(--color-multi);
+            color: var(--color-multi);
+        }
+
+        .culture-card.reactive .country-tag {
+            border-color: var(--color-reactive);
+            color: var(--color-reactive);
+        }
+
+        /* Comparison Section */
+        .comparison-table {
+            background: var(--color-surface);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin: 30px 0;
+        }
+
+        .table-row {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr 1fr;
+            gap: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .table-row:last-child {
+            border-bottom: none;
+        }
+
+        .table-row.header {
+            background: linear-gradient(90deg, rgba(46, 134, 171, 0.2), rgba(162, 59, 114, 0.2), rgba(241, 143, 1, 0.2));
+            font-weight: 700;
+            border-bottom: 2px solid var(--color-accent);
+        }
+
+        .table-cell {
+            padding: 18px 15px;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .table-cell:last-child {
+            border-right: none;
+        }
+
+        .table-cell-header {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Workplace Conflicts */
+        .conflicts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .conflict-card {
+            background: var(--color-surface);
+            border-radius: 12px;
+            padding: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .conflict-card:hover {
+            border-color: var(--color-accent);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+        }
+
+        .conflict-number {
+            display: inline-block;
+            background: var(--color-accent);
+            color: var(--color-bg);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .conflict-card h4 {
+            margin: 10px 0 15px 0;
+            font-size: 1.1em;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+            margin: 40px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: flex-start;
+        }
+
+        .timeline-marker {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 80px;
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            border: 3px solid var(--color-surface);
+            box-shadow: 0 0 20px var(--color-accent);
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline-line {
+            width: 2px;
+            background: linear-gradient(to bottom, var(--color-accent), var(--color-surface));
+            flex: 1;
+        }
+
+        .timeline-content {
+            background: var(--color-surface);
+            padding: 20px;
+            border-radius: 8px;
+            flex: 1;
+            border-left: 3px solid var(--color-accent);
+        }
+
+        .timeline-title {
+            font-weight: 700;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .timeline-desc {
+            color: var(--color-text-secondary);
+            font-size: 0.95em;
+        }
+
+        /* Tips Section */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .tip-card {
+            background: var(--color-surface);
+            border-radius: 12px;
+            padding: 25px;
+            border-top: 4px solid var(--color-accent);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .tip-icon {
+            font-size: 2.5em;
+            margin-bottom: 12px;
+        }
+
+        .tip-card h4 {
+            margin: 15px 0;
+            font-size: 1.1em;
+        }
+
+        /* Quiz Section */
+        .quiz-container {
+            background: var(--color-surface);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 2px solid var(--color-accent);
+        }
+
+        .quiz-question {
+            margin-bottom: 25px;
+        }
+
+        .quiz-question h4 {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            background: rgba(0, 217, 255, 0.1);
+            border-color: var(--color-accent);
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .result-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .result-message.show {
+            background: rgba(0, 217, 255, 0.2);
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+        }
+
+        /* Key Takeaways */
+        .takeaways {
+            background: linear-gradient(135deg, rgba(46, 134, 171, 0.1) 0%, rgba(162, 59, 114, 0.1) 50%, rgba(241, 143, 1, 0.1) 100%);
+            border: 2px solid var(--color-accent);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .takeaways h3 {
+            margin-bottom: 20px;
+            color: var(--color-accent);
+        }
+
+        .takeaway-item {
+            padding: 15px;
+            margin-bottom: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border-left: 4px solid var(--color-accent);
+            display: flex;
+            gap: 15px;
+        }
+
+        .takeaway-item::before {
+            content: '✓';
+            font-weight: bold;
+            color: var(--color-accent);
+            font-size: 1.3em;
+            flex-shrink: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-surface);
+            border-top: 2px solid var(--color-accent);
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            color: var(--color-text-secondary);
+            font-size: 0.9em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .table-row {
+                grid-template-columns: 1fr;
+            }
+
+            .culture-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 0.9em;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .timeline-marker {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .timeline-line {
+                width: 100%;
+                height: 2px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .culture-card, .conflict-card, .tip-card {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .culture-card:nth-child(1) { animation-delay: 0.1s; }
+        .culture-card:nth-child(2) { animation-delay: 0.2s; }
+        .culture-card:nth-child(3) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🌍 The Lewis Model</h1>
+            <p class="subtitle">Understanding Cultural Behavior Across the World</p>
+            <p class="researcher">Research by Richard D. Lewis | 135 Countries Studied</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#overview">📋 Overview</a></li>
+            <li><a href="#cultures">🎭 Three Cultures</a></li>
+            <li><a href="#comparison">📊 Comparison</a></li>
+            <li><a href="#workplace">💼 At Work</a></li>
+            <li><a href="#tips">💡 Tips</a></li>
+            <li><a href="#quiz">🧠 Quiz</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <!-- Overview Section -->
+        <section id="overview">
+            <h2>📋 The Big Picture</h2>
+            <div class="takeaways">
+                <p>Richard Lewis studied over 135 countries and discovered something revolutionary: <strong>human behavior can be divided into three distinct communication styles</strong>, regardless of nationality or religion. It's not stereotypes—it's behavioral science.</p>
+                <div style="margin-top: 20px; font-style: italic; color: var(--color-text-secondary);">
+                    "These three types explain workplace misunderstandings better than almost any other model. Understanding them can transform how your international teams collaborate."
+                </div>
+            </div>
+        </section>
+
+        <!-- Three Cultures Section -->
+        <section id="cultures">
+            <h2>🎭 Meet the Three Types</h2>
+            <div class="culture-grid">
+                <!-- Linear-Active -->
+                <div class="culture-card linear">
+                    <div class="card-header">
+                        <div class="card-icon">🎯</div>
+                        <div class="card-title">LINEAR-ACTIVE</div>
+                    </div>
+                    <p class="culture-subtitle">Task-First Environment</p>
+                    
+                    <div class="characteristics">
+                        <div class="char-title">Core Traits:</div>
+                        <ul class="char-list">
+                            <li>Task-oriented & highly organized</li>
+                            <li>One thing at a time (sequential)</li>
+                            <li>Follow agendas strictly</li>
+                            <li>Restricted body language</li>
+                            <li>Efficient & professional</li>
+                            <li>Logic-driven decisions</li>
+                            <li>Time = Money</li>
+                        </ul>
+
+                        <div class="char-title">Perception:</div>
+                        <ul class="char-list">
+                            <li>See Multi-actives as chaotic</li>
+                            <li>Find Reactive people passive</li>
+                        </ul>
+
+                        <div class="char-title">Key Countries:</div>
+                    </div>
+                    <div class="countries-grid">
+                        <span class="country-tag">🇩🇪 Germany</span>
+                        <span class="country-tag">🇬🇧 UK</span>
+                        <span class="country-tag">🇺🇸 USA</span>
+                        <span class="country-tag">🇳🇱 Netherlands</span>
+                        <span class="country-tag">Scandinavia</span>
+                    </div>
+                </div>
+
+                <!-- Multi-Active -->
+                <div class="culture-card multi">
+                    <div class="card-header">
+                        <div class="card-icon">🎪</div>
+                        <div class="card-title">MULTI-ACTIVE</div>
+                    </div>
+                    <p class="culture-subtitle">Relationship-First Environment</p>
+                    
+                    <div class="characteristics">
+                        <div class="char-title">Core Traits:</div>
+                        <ul class="char-list">
+                            <li>Relationship-oriented</li>
+                            <li>Multiple tasks simultaneously</li>
+                            <li>Emotional & expressive</li>
+                            <li>Animated body language</li>
+                            <li>Storytelling everywhere</li>
+                            <li>Flexible with plans</li>
+                            <li>People matter first</li>
+                        </ul>
+
+                        <div class="char-title">Perception:</div>
+                        <ul class="char-list">
+                            <li>See Linears as robotic & cold</li>
+                            <li>Find Reactives too passive</li>
+                        </ul>
+
+                        <div class="char-title">Key Countries:</div>
+                    </div>
+                    <div class="countries-grid">
+                        <span class="country-tag">🇮🇹 Italy</span>
+                        <span class="country-tag">🇪🇸 Spain</span>
+                        <span class="country-tag">🇧🇷 Brazil</span>
+                        <span class="country-tag">🇸🇦 Arab World</span>
+                        <span class="country-tag">🇵🇹 Portugal</span>
+                    </div>
+                </div>
+
+                <!-- Reactive -->
+                <div class="culture-card reactive">
+                    <div class="card-header">
+                        <div class="card-icon">🧘</div>
+                        <div class="card-title">REACTIVE</div>
+                    </div>
+                    <p class="culture-subtitle">Listening-First Environment</p>
+                    
+                    <div class="characteristics">
+                        <div class="char-title">Core Traits:</div>
+                        <ul class="char-list">
+                            <li>Listen first, respond second</li>
+                            <li>Rarely interrupt</li>
+                            <li>Harmony & face matter</li>
+                            <li>Subtle communication</li>
+                            <li>Indirect approach</li>
+                            <li>Contemplative</li>
+                            <li>Group consensus focused</li>
+                        </ul>
+
+                        <div class="char-title">Perception:</div>
+                        <ul class="char-list">
+                            <li>See Multi-actives as rude</li>
+                            <li>Think Linears lack respect</li>
+                        </ul>
+
+                        <div class="char-title">Key Countries:</div>
+                    </div>
+                    <div class="countries-grid">
+                        <span class="country-tag">🇯🇵 Japan</span>
+                        <span class="country-tag">🇨🇳 China</span>
+                        <span class="country-tag">🇫🇮 Finland</span>
+                        <span class="country-tag">🇻🇳 Vietnam</span>
+                        <span class="country-tag">🇹🇭 Thailand</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Table -->
+        <section id="comparison">
+            <h2>📊 Side-by-Side Comparison</h2>
+            <div class="comparison-table">
+                <div class="table-row header">
+                    <div class="table-cell"><div class="table-cell-header">⚖️ Dimension</div></div>
+                    <div class="table-cell"><div class="table-cell-header">🎯 Linear</div></div>
+                    <div class="table-cell"><div class="table-cell-header">🎪 Multi</div></div>
+                    <div class="table-cell"><div class="table-cell-header">🧘 Reactive</div></div>
+                </div>
+
+                <div class="table-row">
+                    <div class="table-cell"><strong>Primary Focus</strong></div>
+                    <div class="table-cell">Tasks & Goals</div>
+                    <div class="table-cell">People & Relationships</div>
+                    <div class="table-cell">Harmony & Listening</div>
+                </div>
+
+                <div class="table-row">
+                    <div class="table-cell"><strong>Communication Style</strong></div>
+                    <div class="table-cell">Direct & explicit</div>
+                    <div class="table-cell">Emotional & expressive</div>
+                    <div class="table-cell">Indirect & implicit</div>
+                </div>
+
+                <div class="table-row">
+                    <div class="table-cell"><strong>Body Language</strong></div>
+                    <div class="table-cell">Controlled</div>
+                    <div class="table-cell">Animated & gesturing</div>
+                    <div class="table-cell">Minimal & measured</div>
+                </div>
+
+                <div class="table-row">
+                    <div class="table-cell"><strong>Multitasking</strong></div>
+                    <div class="table-cell">Sequential focus</div>
+                    <div class="table-cell">Multiple activities</div>
+                    <div class="table-cell">One thing at a time</div>
+                </div>
+
+                <div class="table-row">
+                    <div class="table-cell"><strong>Saying "No"</strong></div>
+                    <div class="table-cell">Direct refusal</div>
+                    <div class="table-cell">May soften it</div>
+                    <div class="table-cell">Silence or gradual</div>
+                </div>
+
+                <div class="table-row">
+                    <div class="table-cell"><strong>Time Orientation</strong></div>
+                    <div class="table-cell">Clock-driven</div>
+                    <div class="table-cell">Relationship-driven</div>
+                    <div class="table-cell">Harmony-driven</div>
+                </div>
+
+                <div class="table-row">
+                    <div class="table-cell"><strong>Interruptions</strong></div>
+                    <div class="table-cell">Generally avoided</div>
+                    <div class="table-cell">Happens frequently</div>
+                    <div class="table-cell">Rarely occurs</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workplace Clashes -->
+        <section id="workplace">
+            <h2>💼 Why They Clash at Work</h2>
+            
+            <div class="conflicts-grid">
+                <div class="conflict-card">
+                    <span class="conflict-number">1</span>
+                    <h4>Linear Presenting to Multi-Active</h4>
+                    <p><strong>The Problem:</strong> You've prepared a beautiful agenda. The Multi-active doesn't care—they want to build relationship first.</p>
+                    <p style="margin-top: 10px;"><strong>Why:</strong> Your agenda means nothing until there's a personal connection.</p>
+                    <p style="margin-top: 10px; color: var(--color-text-secondary); font-style: italic;">📌 Tip: Start with personal chat, build trust, THEN discuss business.</p>
+                </div>
+
+                <div class="conflict-card">
+                    <span class="conflict-number">2</span>
+                    <h4>Multi-Active in a Linear Meeting</h4>
+                    <p><strong>The Problem:</strong> You feel suffocated. The Linear person feels like the room is on fire.</p>
+                    <p style="margin-top: 10px;"><strong>Why:</strong> Different engagement styles—what's expressive to you is chaotic to them.</p>
+                    <p style="margin-top: 10px; color: var(--color-text-secondary); font-style: italic;">📌 Tip: Adapt your energy; respect their need for structure.</p>
+                </div>
+
+                <div class="conflict-card">
+                    <span class="conflict-number">3</span>
+                    <h4>Reactive Won't Say "No"</h4>
+                    <p><strong>The Problem:</strong> You ask for feedback. They stop responding. Silence IS disagreement.</p>
+                    <p style="margin-top: 10px;"><strong>Why:</strong> Direct refusal causes loss of face and disrupts harmony.</p>
+                    <p style="margin-top: 10px; color: var(--color-text-secondary); font-style: italic;">📌 Tip: Ask indirectly; look for non-verbal cues; never force a public "no".</p>
+                </div>
+
+                <div class="conflict-card">
+                    <span class="conflict-number">4</span>
+                    <h4>German × Italian Clash</h4>
+                    <p><strong>The Problem:</strong> German directness offends Italian relationship-focus. Italian emotion frustrates German logic.</p>
+                    <p style="margin-top: 10px;"><strong>Why:</strong> Different values—efficiency vs. connection.</p>
+                    <p style="margin-top: 10px; color: var(--color-text-secondary); font-style: italic;">📌 Tip: Germans soften directness; Italians accept efficiency.</p>
+                </div>
+
+                <div class="conflict-card">
+                    <span class="conflict-number">5</span>
+                    <h4>Dutch Directness × Arab Sensitivity</h4>
+                    <p><strong>The Problem:</strong> Dutch straight talk feels disrespectful to Arab colleagues who value politeness and face-saving.</p>
+                    <p style="margin-top: 10px;"><strong>Why:</strong> Different communication thresholds.</p>
+                    <p style="margin-top: 10px; color: var(--color-text-secondary); font-style: italic;">📌 Tip: Dutch add diplomacy; Arabs appreciate directness if respectful.</p>
+                </div>
+
+                <div class="conflict-card">
+                    <span class="conflict-number">6</span>
+                    <h4>Different Culture, Same Company</h4>
+                    <p><strong>The Problem:</strong> What works brilliantly in one room dies in another.</p>
+                    <p style="margin-top: 10px;"><strong>Why:</strong> No single "best" communication style—it's about cultural fit.</p>
+                    <p style="margin-top: 10px; color: var(--color-text-secondary); font-style: italic;">📌 Tip: Understand your team's makeup; adapt your leadership style.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practical Tips -->
+        <section id="tips">
+            <h2>💡 Practical Tips for Working Across Cultures</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">🤝</div>
+                    <h4>With Linear Colleagues</h4>
+                    <ul class="char-list">
+                        <li>Stick to agenda & timelines</li>
+                        <li>Be direct & factual</li>
+                        <li>Prepare documents in advance</li>
+                        <li>Respect their planning approach</li>
+                        <li>Avoid last-minute changes</li>
+                    </ul>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🎉</div>
+                    <h4>With Multi-Active Colleagues</h4>
+                    <ul class="char-list">
+                        <li>Build personal connection first</li>
+                        <li>Be warm & expressive</li>
+                        <li>Allow flexibility in schedule</li>
+                        <li>Share stories & experiences</li>
+                        <li>Engage with emotion, not just logic</li>
+                    </ul>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🎧</div>
+                    <h4>With Reactive Colleagues</h4>
+                    <ul class="char-list">
+                        <li>Listen more than you speak</li>
+                        <li>Never force a public answer</li>
+                        <li>Respect silence & reflection</li>
+                        <li>Protect their face/honor</li>
+                        <li>Build long-term relationships</li>
+                    </ul>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🌐</div>
+                    <h4>Universal Best Practice</h4>
+                    <ul class="char-list">
+                        <li>Observe without judgment</li>
+                        <li>Ask about preferences</li>
+                        <li>Adapt your style</li>
+                        <li>Show cultural curiosity</li>
+                        <li>Default to respect</li>
+                    </ul>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">⚡</div>
+                    <h4>In Meetings</h4>
+                    <ul class="char-list">
+                        <li>Send agenda in advance</li>
+                        <li>Allow time for rapport</li>
+                        <li>Don't dominate conversation</li>
+                        <li>Follow up in writing</li>
+                        <li>Confirm understanding</li>
+                    </ul>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">💬</div>
+                    <h4>Remote Communication</h4>
+                    <ul class="char-list">
+                        <li>Overwrite things explicitly</li>
+                        <li>Use multiple channels</li>
+                        <li>Allow processing time</li>
+                        <li>Video > Email for nuance</li>
+                        <li>Confirm receipt & meaning</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Takeaways -->
+        <section>
+            <h2>✨ Key Takeaways</h2>
+            <div class="takeaways">
+                <div class="takeaway-item">It's not stereotypes—it's behavioral science. These patterns are observable, predictable, and learnable.</div>
+                <div class="takeaway-item">Most people are a blend. Few people fit purely into one type. Context matters.</div>
+                <div class="takeaway-item">Understanding doesn't mean agreeing. It means you can navigate differences effectively.</div>
+                <div class="takeaway-item">Cultural awareness is a leadership superpower. It reduces conflict and increases innovation.</div>
+                <div class="takeaway-item">Flexibility beats rigidity. The most successful global leaders adapt their communication style.</div>
+                <div class="takeaway-item">These three types exist in EVERY country. It's not about geography—it's about behavior.</div>
+                <div class="takeaway-item">What works brilliantly in one room can die in another. Always adapt.</div>
+            </div>
+        </section>
+
+        <!-- Interactive Quiz -->
+        <section id="quiz">
+            <h2>🧠 What's Your Cultural Style?</h2>
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    <h4>1. In a meeting, you prefer to...</h4>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="linear"> Follow the agenda & stay on schedule
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="multi"> Build relationships first, then discuss business
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="reactive"> Listen carefully before responding
+                        </label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. When someone disagrees with you, you...</h4>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="linear"> State your position clearly & logically
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="multi"> Appeal to emotion & find common ground
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="reactive"> Try to understand their perspective first
+                        </label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. Your body language during presentations is...</h4>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="linear"> Controlled & professional
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="multi"> Animated with lots of gestures
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="reactive"> Minimal & measured
+                        </label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. How do you handle multiple tasks?</h4>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="linear"> One at a time in sequence
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="multi"> Multiple things simultaneously
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="reactive"> Prioritize thoughtfully, then focus
+                        </label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. When you need to decline an invitation, you...</h4>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="linear"> Say "no" directly and explain why
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="multi"> Soften it with an explanation & apology
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="reactive"> Politely decline without much detail
+                        </label>
+                    </div>
+                </div>
+
+                <button onclick="calculateQuiz()" style="background: var(--color-accent); color: var(--color-bg); border: none; padding: 15px 30px; font-size: 1em; border-radius: 8px; cursor: pointer; font-weight: 700; margin-top: 20px; width: 100%;">
+                    See My Results
+                </button>
+
+                <div id="result" class="result-message" style="display: none; margin-top: 20px;"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p><strong>Source:</strong> Richard D. Lewis's research from "When Cultures Collide" (1996) | Based on observations from 135+ countries</p>
+            <p style="margin-top: 10px;">📚 Model by Richard D. Lewis | 🎨 Interactive Infographic by Cultural Intelligence Team</p>
+            <p style="margin-top: 10px; opacity: 0.7;">Remember: These are generalizations. Individuals exist on spectrums and often blend styles. Cultural awareness is a journey, not a destination.</p>
+        </div>
+    </footer>
+
+    <script>
+        function calculateQuiz() {
+            const answers = {
+                linear: 0,
+                multi: 0,
+                reactive: 0
+            };
+
+            // Get all selected answers
+            for (let i = 1; i <= 5; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selected) {
+                    answers[selected.value]++;
+                }
+            }
+
+            const resultDiv = document.getElementById('result');
+            const total = answers.linear + answers.multi + answers.reactive;
+
+            if (total === 0) {
+                resultDiv.textContent = '⚠️ Please answer all questions first!';
+                resultDiv.classList.add('show');
+                return;
+            }
+
+            let dominantStyle = Object.keys(answers).reduce((a, b) => 
+                answers[a] > answers[b] ? a : b
+            );
+
+            const results = {
+                linear: {
+                    emoji: '🎯',
+                    title: 'LINEAR-ACTIVE',
+                    desc: "You're task-focused, organized, and appreciate efficiency. You value logic and clear agendas. You likely thrive in structured environments. Watch out: slow down with Multi-actives and listen more with Reactives."
+                },
+                multi: {
+                    emoji: '🎪',
+                    title: 'MULTI-ACTIVE',
+                    desc: "You're relationship-oriented, emotional, and love dynamic environments. You excel at connecting people and building networks. You're flexible and adaptable. Watch out: Linears may find you scattered; Reactives may find you pushy."
+                },
+                reactive: {
+                    emoji: '🧘',
+                    title: 'REACTIVE',
+                    desc: "You're thoughtful, patient, and value harmony. You listen carefully and think before speaking. You build deep relationships. Watch out: Linears may see you as slow; Multi-actives may see you as passive."
+                }
+            };
+
+            const result = results[dominantStyle];
+            resultDiv.innerHTML = `
+                <div style="font-size: 2em; margin-bottom: 10px;">${result.emoji}</div>
+                <div style="font-size: 1.4em; margin-bottom: 10px;">You're predominantly <strong>${result.title}</strong></div>
+                <div style="font-size: 0.95em; margin-top: 15px;">${result.desc}</div>
+                <div style="margin-top: 15px; font-size: 0.85em; opacity: 0.9;">
+                    Linear: ${answers.linear}/5 | Multi-Active: ${answers.multi}/5 | Reactive: ${answers.reactive}/5
+                </div>
+            `;
+            resultDiv.classList.add('show');
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const href = link.getAttribute('href');
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Add keyboard support for quiz
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    calculateQuiz();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
