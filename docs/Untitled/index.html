@@ -1,103 +1,291 @@
-const ctxStack = document.getElementById('strategyStackChart').getContext('2d');
-        new Chart(ctxStack, {
-            type: 'bar',
-            data: {
-                labels: [['Gross Profit'], ['Profit After', 'Allowances'], ['Final Taxable', 'Income']],
-                datasets: [{
-                    label: 'Profit (€)',
-                    data: [profitData.grossProfit, profitAfterAllowances, finalTaxableIncome],
-                    backgroundColor: [
-                        '#045B83',
-                        '#11B5E4',
-                        '#F6A219'
-                    ],
-                    borderColor: [
-                        '#045B83',
-                        '#11B5E4',
-                        '#F6A219'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                ...sharedChartOptions,
-                indexAxis: 'y',
-                maintainAspectRatio: false,
-                scales: {
-                    x: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Amount in Euros (€)'
-                        }
-                    }
-                },
-                plugins: {
-                    ...sharedChartOptions.plugins,
-                    legend: {
-                        display: false
-                    },
-                    title: {
-                        display: true,
-                        text: 'Impact of Deductions on €80,000 Gross Profit'
-                    }
-                }
-            }
-        });
+import React, { useState } from 'react';
+import { 
+  Zap, Factory, Clock, Box, BarChart3, TrendingUp, Cpu, 
+  Layers, DollarSign, Target, ShieldCheck, Microchip, 
+  ChevronRight, Info, AlertCircle
+} from 'lucide-react';
 
-        const singleZzpDeductions = (profitData.zelfstandigenaftrek + profitData.startersaftrek) + mkbExemptionAmount;
-        
-        const p1Profit = 40000;
-        const p1Allowances = profitData.zelfstandigenaftrek + profitData.startersaftrek;
-        const p1ProfitAfter = p1Profit - p1Allowances;
-        const p1Mkb = p1ProfitAfter * profitData.mkbRate;
-        const p1TotalDeductions = p1Allowances + p1Mkb;
-        
-        const dualZzpDeductions = p1TotalDeductions * 2; 
+const App = () => {
+  const [activeTab, setActiveTab] = useState('comparison');
 
-        const ctxDual = document.getElementById('dualZzpChart').getContext('2d');
-        new Chart(ctxDual, {
-            type: 'bar',
-            data: {
-                labels: ['Single ZZP (1x €80k Profit)', 'Dual ZZP (2x €40k Profit)'],
-                datasets: [{
-                    label: 'Total Non-Taxable Amount (€)',
-                    data: [singleZzpDeductions, dualZzpDeductions],
-                    backgroundColor: [
-                        '#00A1E4',
-                        '#F17F29'
-                    ],
-                    borderColor: [
-                        '#00A1E4',
-                        '#F17F29'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                ...sharedChartOptions,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Total Deductions + Exemptions (€)'
-                        }
-                    }
-                },
-                plugins: {
-                    ...sharedChartOptions.plugins,
-                    legend: {
-                        display: false
-                    },
-                    title: {
-                        display: true,
-                        text: 'Total Household Non-Taxable Income (Hypothetical)'
-                    }
-                }
-            }
-        });
-    </script>
-</body>
-</html>
+  const IntelCard = ({ icon: Icon, title, value, subtext, colorClass }) => (
+    <div className="bg-slate-900/50 border border-slate-800 p-4 rounded-xl hover:border-slate-700 transition-colors">
+      <div className="flex items-center gap-2 mb-2">
+        <Icon className={`w-4 h-4 ${colorClass}`} />
+        <p className="text-slate-500 text-[10px] font-bold uppercase tracking-wider">{title}</p>
+      </div>
+      <p className={`text-xl font-bold ${colorClass}`}>{value}</p>
+      <p className="text-[10px] text-slate-500 mt-1">{subtext}</p>
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100 p-4 md:p-8 font-sans selection:bg-indigo-500/30">
+      {/* Header Section */}
+      <div className="max-w-6xl mx-auto mb-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-8">
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="bg-indigo-500 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-tighter">Market Intelligence Report</span>
+              <span className="text-slate-500 text-[10px] font-medium tracking-widest uppercase">Release: Jan 2026</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-blue-400 via-indigo-400 to-emerald-400 bg-clip-text text-transparent italic tracking-tight">
+              THE 2nm GEOPOLITICAL DUEL
+            </h1>
+            <p className="text-slate-400 mt-2 max-w-xl text-sm leading-relaxed">
+              Analyzing the disruptive "Single Wafer" RUMS model of Japan's Rapidus vs. the dominant "Mega-Batch" Foundry standard of TSMC.
+            </p>
+          </div>
+          <div className="flex gap-2 bg-slate-900 p-1 rounded-lg border border-slate-800">
+            <button 
+              onClick={() => setActiveTab('comparison')}
+              className={`px-4 py-1.5 text-xs font-bold rounded-md transition-all ${activeTab === 'comparison' ? 'bg-indigo-600 text-white' : 'text-slate-500 hover:text-slate-300'}`}
+            >
+              Direct Comparison
+            </button>
+            <button 
+              onClick={() => setActiveTab('intel')}
+              className={`px-4 py-1.5 text-xs font-bold rounded-md transition-all ${activeTab === 'intel' ? 'bg-indigo-600 text-white' : 'text-slate-500 hover:text-slate-300'}`}
+            >
+              Intel Deep-Dive
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {activeTab === 'comparison' ? (
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          
+          {/* Rapidus Focus */}
+          <div className="bg-slate-900 rounded-3xl p-8 border border-blue-500/30 shadow-2xl shadow-blue-500/5 relative overflow-hidden group">
+            <div className="absolute -top-12 -right-12 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-all"></div>
+            
+            <div className="flex items-center gap-4 mb-8">
+              <div className="p-4 bg-blue-500/20 rounded-2xl border border-blue-500/30">
+                <Zap className="text-blue-400 w-8 h-8" />
+              </div>
+              <div>
+                <h2 className="text-3xl font-black text-blue-400 tracking-tighter italic">RAPIDUS</h2>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
+                  <p className="text-blue-300/60 text-[10px] font-bold tracking-widest uppercase">The Agile Boutique</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div className="bg-slate-800/40 rounded-2xl p-6 border border-slate-700/50">
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="text-blue-300 font-bold italic uppercase text-xs flex items-center gap-2">
+                    <Microchip className="w-4 h-4" /> 2nm Performance (2HP)
+                  </h3>
+                  <span className="text-[10px] bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded border border-blue-500/30">LATEST SAMPLE</span>
+                </div>
+                <div className="grid grid-cols-2 gap-6">
+                  <div>
+                    <p className="text-slate-500 text-[10px] font-bold uppercase mb-1">Logic Density</p>
+                    <p className="text-2xl font-black text-white">237.3<span className="text-xs font-medium text-slate-500 ml-1">M/mm²</span></p>
+                  </div>
+                  <div>
+                    <p className="text-slate-500 text-[10px] font-bold uppercase mb-1">Architecture</p>
+                    <p className="text-2xl font-black text-white">GAA<span className="text-xs font-medium text-slate-500 ml-1">(2nm)</span></p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-4 p-2">
+                <div className="flex gap-4">
+                  <ShieldCheck className="text-blue-400 w-5 h-5 flex-shrink-0 mt-1" />
+                  <div>
+                    <h4 className="font-bold text-sm">Strategic Validation</h4>
+                    <p className="text-xs text-slate-400 leading-relaxed">Broadcom confirmed as lead customer (Samples: June 2025). Critical validation for high-speed AI networking.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <Layers className="text-blue-400 w-5 h-5 flex-shrink-0 mt-1" />
+                  <div>
+                    <h4 className="font-bold text-sm">RUMS Model</h4>
+                    <p className="text-xs text-slate-400 leading-relaxed">50-day standard cycle time (15 days for "Hot Lots"). Targets "High-Mix, Low-Volume" AI custom silicon.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <TrendingUp className="text-blue-400 w-5 h-5 flex-shrink-0 mt-1" />
+                  <div>
+                    <h4 className="font-bold text-sm">Design Play</h4>
+                    <p className="text-xs text-slate-400 leading-relaxed">RAADS AI Suite cuts design time by 50%. Bypasses Japan's engineer shortage via agentic automation.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* TSMC Comparison */}
+          <div className="bg-slate-900 rounded-3xl p-8 border border-emerald-500/30 shadow-2xl shadow-emerald-500/5 relative overflow-hidden group">
+            <div className="absolute -top-12 -right-12 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl group-hover:bg-emerald-500/20 transition-all"></div>
+
+            <div className="flex items-center gap-4 mb-8">
+              <div className="p-4 bg-emerald-500/20 rounded-2xl border border-emerald-500/30">
+                <Factory className="text-emerald-400 w-8 h-8" />
+              </div>
+              <div>
+                <h2 className="text-3xl font-black text-emerald-400 tracking-tighter italic">TSMC</h2>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+                  <p className="text-emerald-300/60 text-[10px] font-bold tracking-widest uppercase">The Sovereign Giga-Fab</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div className="bg-slate-800/40 rounded-2xl p-6 border border-slate-700/50">
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="text-emerald-300 font-bold italic uppercase text-xs flex items-center gap-2">
+                    <Microchip className="w-4 h-4" /> 2nm Performance (N2)
+                  </h3>
+                  <span className="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded border border-emerald-500/30">RISK PRODUCTION</span>
+                </div>
+                <div className="grid grid-cols-2 gap-6">
+                  <div>
+                    <p className="text-slate-500 text-[10px] font-bold uppercase mb-1">Logic Density</p>
+                    <p className="text-2xl font-black text-white">236.2<span className="text-xs font-medium text-slate-500 ml-1">M/mm²</span></p>
+                  </div>
+                  <div>
+                    <p className="text-slate-500 text-[10px] font-bold uppercase mb-1">Architecture</p>
+                    <p className="text-2xl font-black text-white">Nanosheet<span className="text-xs font-medium text-slate-500 ml-1">(2nm)</span></p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-4 p-2">
+                <div className="flex gap-4">
+                  <Target className="text-emerald-400 w-5 h-5 flex-shrink-0 mt-1" />
+                  <div>
+                    <h4 className="font-bold text-sm">Market Stature</h4>
+                    <p className="text-xs text-slate-400 leading-relaxed">Apple/Nvidia lock in ~80% of initial capacity. TSMC remains the default "Mass-Volume" choice.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <Clock className="text-emerald-400 w-5 h-5 flex-shrink-0 mt-1" />
+                  <div>
+                    <h4 className="font-bold text-sm">Efficiency Model</h4>
+                    <p className="text-xs text-slate-400 leading-relaxed">120+ day standard cycle. Optimized for mega-batch economies of scale and unit-cost reduction.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <DollarSign className="text-emerald-400 w-5 h-5 flex-shrink-0 mt-1" />
+                  <div>
+                    <h4 className="font-bold text-sm">Capital Dominance</h4>
+                    <p className="text-xs text-slate-400 leading-relaxed">$56B 2026 CapEx budget. Building a global 2nm footprint (Taiwan, Arizona, Kumamoto).</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="max-w-6xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <IntelCard 
+              icon={DollarSign}
+              title="Capital Leverage"
+              value="$18.5B Gov Funding"
+              subtext="Rapidus total multi-year state support."
+              colorClass="text-blue-400"
+            />
+            <IntelCard 
+              icon={BarChart3}
+              title="Scale Disparity"
+              value="$56B Annual CapEx"
+              subtext="TSMC's projected 2026 infrastructure spend."
+              colorClass="text-emerald-400"
+            />
+            <IntelCard 
+              icon={Zap}
+              title="Design Speed"
+              value="RAADS AI Suite"
+              subtext="50% reduction in chip design time."
+              colorClass="text-indigo-400"
+            />
+            <IntelCard 
+              icon={Info}
+              title="Wait Times"
+              value="50 Days vs 120+"
+              subtext="The Rapidus TAT (Turnaround Time) advantage."
+              colorClass="text-slate-300"
+            />
+          </div>
+
+          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8">
+            <h3 className="text-xl font-black mb-6 flex items-center gap-2 italic underline decoration-indigo-500 underline-offset-8">
+              <TrendingUp className="w-6 h-6 text-indigo-400" /> 2026-2027 MARKET FORECAST
+            </h3>
+            <div className="space-y-8">
+              <div className="flex flex-col md:flex-row gap-8">
+                <div className="flex-1 bg-slate-800/30 p-6 rounded-2xl border border-slate-700/50">
+                  <h4 className="font-bold text-sm text-blue-400 uppercase tracking-widest mb-4">Rapidus Trajectory</h4>
+                  <ul className="space-y-3">
+                    <li className="flex gap-3 text-xs text-slate-300">
+                      <ChevronRight className="w-4 h-4 text-blue-500 flex-shrink-0" />
+                      <span><strong>Mass Production Entry:</strong> April 2027. Focused on 300mm wafer efficiency.</span>
+                    </li>
+                    <li className="flex gap-3 text-xs text-slate-300">
+                      <ChevronRight className="w-4 h-4 text-blue-500 flex-shrink-0" />
+                      <span><strong>Lead Client:</strong> Broadcom & Tenstorrent (RISC-V/AI focus).</span>
+                    </li>
+                    <li className="flex gap-3 text-xs text-slate-300">
+                      <ChevronRight className="w-4 h-4 text-blue-500 flex-shrink-0" />
+                      <span><strong>Yield Projection:</strong> Target 50% at 2nm launch, scaling to 90% by 2029.</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="flex-1 bg-slate-800/30 p-6 rounded-2xl border border-slate-700/50">
+                  <h4 className="font-bold text-sm text-emerald-400 uppercase tracking-widest mb-4">TSMC Dominance</h4>
+                  <ul className="space-y-3">
+                    <li className="flex gap-3 text-xs text-slate-300">
+                      <ChevronRight className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                      <span><strong>N2 Capacity:</strong> TSMC will control {' >70% '} of 2nm wafer supply in 2027.</span>
+                    </li>
+                    <li className="flex gap-3 text-xs text-slate-300">
+                      <ChevronRight className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                      <span><strong>Global Footprint:</strong> Arizona Fab 2 entering commercial ops late 2027.</span>
+                    </li>
+                    <li className="flex gap-3 text-xs text-slate-300">
+                      <ChevronRight className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                      <span><strong>Tech Roadmap:</strong> A16 (1.6nm) risk production begins as 2nm stabilizes.</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Critical Analysis Footer */}
+      <div className="max-w-6xl mx-auto mt-8 flex flex-col md:flex-row gap-4 items-center justify-between p-6 bg-indigo-500/10 rounded-2xl border border-indigo-500/20">
+        <div className="flex items-center gap-4">
+          <div className="p-3 bg-indigo-500/20 rounded-full">
+            <AlertCircle className="text-indigo-400 w-6 h-6" />
+          </div>
+          <p className="text-sm text-slate-300 max-w-2xl">
+            <span className="text-white font-bold block mb-1">INTEL ADVISORY:</span> 
+            The competitive edge for Rapidus is not volume, but <span className="text-indigo-400 font-semibold italic">cycle-time reduction.</span> By integrating RAADS AI design with single-wafer manufacturing, they are the only player offering a "Short-TAT" (Turnaround Time) ecosystem for sovereign AI hardware.
+          </p>
+        </div>
+        <div className="text-right">
+          <p className="text-[10px] text-slate-500 uppercase tracking-widest">Confidence Level</p>
+          <div className="flex gap-1 mt-1 justify-end">
+            {[1,2,3,4].map(i => <div key={i} className="w-4 h-1.5 bg-indigo-400 rounded-full"></div>)}
+            <div className="w-4 h-1.5 bg-slate-700 rounded-full"></div>
+          </div>
+        </div>
+      </div>
+
+      <footer className="mt-8 text-center text-slate-600 text-[10px] uppercase tracking-[0.3em] font-bold">
+        Foundry Intelligence Index v2.1 • © 2026 Analytical Insights Group
+      </footer>
+    </div>
+  );
+};
+
+export default App;
