@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BYD and the Global Auto Industry Shift</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: #0d1b2a;
+      --panel-2: #12243a;
+      --card: #10263f;
+      --text: #eff6ff;
+      --muted: #b8c7da;
+      --cyan: #4dd0e1;
+      --blue: #60a5fa;
+      --green: #34d399;
+      --yellow: #fbbf24;
+      --orange: #fb923c;
+      --red: #f87171;
+      --pink: #f472b6;
+      --line: rgba(255,255,255,0.12);
+      --shadow: 0 18px 50px rgba(0,0,0,0.35);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(77,208,225,0.13), transparent 30%),
+        radial-gradient(circle at 80% 10%, rgba(96,165,250,0.12), transparent 26%),
+        linear-gradient(180deg, #050b14 0%, var(--bg) 42%, #081524 100%);
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    .page {
+      width: min(1300px, calc(100vw - 32px));
+      margin: 24px auto 48px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero, .section, .footer {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)), var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero {
+      padding: 30px;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.25fr 0.9fr;
+      gap: 22px;
+      min-height: 330px;
+    }
+
+    .badge {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #d8f7fb;
+      background: rgba(77, 208, 225, 0.14);
+      border: 1px solid rgba(77, 208, 225, 0.28);
+    }
+
+    h1 {
+      font-size: clamp(32px, 4vw, 58px);
+      line-height: .98;
+      margin: 14px 0 16px;
+      max-width: 11ch;
+    }
+
+    .lead {
+      max-width: 68ch;
+      color: var(--muted);
+      font-size: 17px;
+      margin: 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      align-content: start;
+    }
+
+    .mini {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .mini .k {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .mini .l {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .hero-art {
+      position: relative;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 50% 30%, rgba(52,211,153,0.18), transparent 32%),
+        linear-gradient(180deg, #0c1826, #10243c);
+      min-height: 280px;
+      overflow: hidden;
+    }
+
+    .section {
+      padding: 24px;
+    }
+
+    .section h2 {
+      margin: 0 0 6px;
+      font-size: clamp(24px, 2.4vw, 36px);
+    }
+
+    .section .sub {
+      color: var(--muted);
+      margin: 0 0 18px;
+      max-width: 75ch;
+    }
+
+    .grid-2, .grid-3, .grid-4 {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.01)), var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .card ul {
+      margin: 10px 0 0 18px;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: #dbeafe;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--cyan), var(--blue), var(--green));
+    }
+
+    .t-item {
+      position: relative;
+      padding: 14px 14px 14px 18px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .t-item::before {
+      content: "";
+      position: absolute;
+      left: -20px;
+      top: 18px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 0 4px rgba(77,208,225,0.16);
+    }
+
+    .year {
+      color: var(--yellow);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .chart-wrap {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.01));
+      padding: 14px;
+    }
+
+    canvas {
+      width: 100%;
+      height: 340px;
+      display: block;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .callout {
+      border-left: 4px solid var(--orange);
+      padding: 14px 16px;
+      background: rgba(251,146,60,0.09);
+      border-radius: 12px;
+      color: #fff1e6;
+      margin-top: 14px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 16px;
+    }
+
+    .scorecard {
+      display: grid;
+      gap: 10px;
+    }
+
+    .score {
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .score b {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .bar {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--cyan), var(--green));
+    }
+
+    .footer {
+      padding: 18px 24px 24px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer strong { color: var(--text); }
+
+    .small-note {
+      font-size: 12px;
+      color: #c9d4e5;
+    }
+
+    .world {
+      position: absolute;
+      inset: 0;
+      opacity: 0.9;
+    }
+
+    .brand-chip {
+      position: absolute;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(7,17,31,0.82);
+      font-size: 12px;
+      font-weight: 700;
+      backdrop-filter: blur(4px);
+    }
+
+    .brand-chip:nth-child(2) { top: 18%; left: 12%; }
+    .brand-chip:nth-child(3) { top: 22%; right: 10%; }
+    .brand-chip:nth-child(4) { bottom: 20%; left: 10%; }
+    .brand-chip:nth-child(5) { bottom: 14%; right: 14%; }
+
+    @media (max-width: 980px) {
+      .hero, .split, .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+      }
+      .hero-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      canvas { height: 280px; }
+    }
+
+    @media (max-width: 640px) {
+      .page { width: min(100vw - 16px, 1300px); margin: 8px auto 24px; }
+      .hero, .section, .footer { border-radius: 18px; }
+      .hero { padding: 18px; }
+      .section { padding: 18px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .mini .k { font-size: 24px; }
+      canvas { height: 250px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <div>
+        <div class="badge">Educational infographic · HTML + JavaScript</div>
+        <h1>How BYD Helped Redraw the Global Auto Map</h1>
+        <p class="lead">
+          The shift in the car industry is not just a story about one brand beating another. It is a story about batteries,
+          vertical integration, plug-in hybrids, industrial policy, and a fast global expansion that put pressure on legacy automakers.
+        </p>
+        <div class="hero-grid" style="margin-top:18px;">
+          <div class="mini">
+            <div class="k">1995</div>
+            <div class="l">BYD founded as a battery company by Wang Chuanfu</div>
+          </div>
+          <div class="mini">
+            <div class="k">2003</div>
+            <div class="l">Entry into the automotive industry</div>
+          </div>
+          <div class="mini">
+            <div class="k">4.27M</div>
+            <div class="l">BYD 2024 new-energy vehicle sales (BEV + PHEV)</div>
+          </div>
+          <div class="mini">
+            <div class="k">1.76M</div>
+            <div class="l">BYD 2024 battery-electric vehicle sales</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <svg class="world" viewBox="0 0 800 500" aria-hidden="true">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0%" stop-color="#4dd0e1" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.15"/>
+            </linearGradient>
+          </defs>
+          <g fill="url(#g1)" stroke="rgba(255,255,255,.14)" stroke-width="1">
+            <path d="M118 175l60-42 84 15 54-31 80 17 53-16 74 20 60 48-35 44-72 6-39 31-98-9-58 40-113-19-67-49z"/>
+            <path d="M538 310l64 5 36 28-28 34-79 8-58-33 14-24z"/>
+            <path d="M230 336l47 8 23 24-14 28-53 2-30-18 4-21z"/>
+          </g>
+          <g stroke-linecap="round" fill="none">
+            <path d="M160 165 C 280 110, 420 110, 610 175" stroke="#4dd0e1" stroke-width="4" opacity=".65"/>
+            <path d="M560 174 C 495 230, 455 265, 408 330" stroke="#34d399" stroke-width="4" opacity=".7"/>
+            <path d="M170 190 C 230 260, 285 300, 360 340" stroke="#fbbf24" stroke-width="4" opacity=".7"/>
+          </g>
+        </svg>
+        <div class="brand-chip">China: scale + supply chain</div>
+        <div class="brand-chip">Europe: tariffs + pressure</div>
+        <div class="brand-chip">SE Asia: rapid expansion</div>
+        <div class="brand-chip">Brazil: strong EV foothold</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>1) The industry backdrop</h2>
+      <p class="sub">For decades, global automotive prestige was associated with the United States, Germany, and Japan. The EV transition changed the basis of competition from engines and transmissions to batteries, software, power electronics, and supply chains.</p>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Old advantage</h3>
+          <p>Legacy automakers built their lead on combustion-engine expertise, manufacturing discipline, dealer networks, and brand loyalty.</p>
+        </div>
+        <div class="card">
+          <h3>New advantage</h3>
+          <p>The EV era rewards battery chemistry, semiconductor access, low-cost manufacturing, charging strategy, and fast product iteration.</p>
+        </div>
+        <div class="card">
+          <h3>Why this matters</h3>
+          <p>That shift favored companies already strong in batteries and electronics. BYD entered the EV age with those capabilities at the center.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section split">
+      <div>
+        <h2>2) BYD's rise in one timeline</h2>
+        <p class="sub">The company did not emerge overnight. Its growth came in layers: batteries first, cars second, then a broad manufacturing ecosystem.</p>
+        <div class="timeline">
+          <div class="t-item">
+            <div class="year">1995</div>
+            <div><strong>Battery origins.</strong> Wang Chuanfu founded BYD as a rechargeable-battery maker in Shenzhen.</div>
+          </div>
+          <div class="t-item">
+            <div class="year">2003</div>
+            <div><strong>Auto entry.</strong> BYD moved into automobiles by acquiring a car business and applying battery know-how to transport.</div>
+          </div>
+          <div class="t-item">
+            <div class="year">2020</div>
+            <div><strong>Blade Battery era.</strong> BYD pushed its LFP Blade Battery as a safer, durable, lower-cost solution for EVs and hybrids.</div>
+          </div>
+          <div class="t-item">
+            <div class="year">2024</div>
+            <div><strong>Global scale.</strong> BYD sold 4.27 million new-energy vehicles, including 1.76 million battery-electric vehicles.</div>
+          </div>
+          <div class="t-item">
+            <div class="year">2025–2026</div>
+            <div><strong>Export phase.</strong> BYD expanded aggressively in Europe, Southeast Asia, and Latin America while facing tariffs, recalls, and scrutiny abroad.</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <h3>Core idea</h3>
+          <p>Instead of asking, “How do we electrify a traditional car?” BYD effectively asked, “How do we build a vehicle around battery expertise we already control?”</p>
+          <div class="pill-row">
+            <div class="pill">Batteries</div>
+            <div class="pill">Motors</div>
+            <div class="pill">Power electronics</div>
+            <div class="pill">Semiconductors</div>
+            <div class="pill">Hybrids</div>
+            <div class="pill">Scale manufacturing</div>
+          </div>
+          <div class="callout">Learning point: BYD's edge is best understood as a system advantage, not just a single great car model.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>3) Why BYD became hard to compete with</h2>
+      <p class="sub">Three strategic choices show up again and again in analyses of BYD's performance.</p>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Vertical integration</h3>
+          <ul>
+            <li>BYD makes key components in-house.</li>
+            <li>This reduces dependence on outside suppliers.</li>
+            <li>It can soften shocks from chip shortages and battery supply swings.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Dual path: BEV + PHEV</h3>
+          <ul>
+            <li>BYD did not bet on pure EVs alone.</li>
+            <li>Plug-in hybrids widened the addressable market where charging was less mature.</li>
+            <li>That gave the company volume, and volume drove costs down further.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>LFP Blade Battery</h3>
+          <ul>
+            <li>LFP chemistry is generally cheaper than nickel-heavy chemistries.</li>
+            <li>BYD marketed the Blade Battery around safety and durability.</li>
+            <li>Battery strategy became a product advantage and a pricing advantage.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>4) Sales mix: scale came from hybrids as well as EVs</h2>
+      <p class="sub">One of the biggest misunderstandings is to treat BYD as a pure-BEV story. In reality, plug-in hybrids were a major growth engine.</p>
+      <div class="chart-wrap">
+        <canvas id="salesMixChart" width="1100" height="360"></canvas>
+        <div class="legend">
+          <span><i class="dot" style="background:#4dd0e1"></i> BEV sales (millions)</span>
+          <span><i class="dot" style="background:#34d399"></i> PHEV sales (millions)</span>
+          <span><i class="dot" style="background:#fbbf24"></i> Total NEV sales (millions)</span>
+        </div>
+      </div>
+      <div class="small-note" style="margin-top:10px;">Illustrative data shown: 2024 BYD sales mix based on reported totals.</div>
+    </section>
+
+    <section class="section split">
+      <div>
+        <h2>5) Global expansion map</h2>
+        <p class="sub">BYD's growth story is not confined to China. It gained traction in Southeast Asia, Europe, and Brazil while building local manufacturing and distribution footprints.</p>
+        <div class="chart-wrap">
+          <canvas id="marketChart" width="1100" height="360"></canvas>
+          <div class="legend">
+            <span><i class="dot" style="background:#60a5fa"></i> Thailand EV share (2024, approx.)</span>
+            <span><i class="dot" style="background:#34d399"></i> Brazil EV share (2025–2026, approx.)</span>
+            <span><i class="dot" style="background:#f472b6"></i> Singapore new-car share (2025)</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <h3>What the bars mean</h3>
+          <p>These figures are snapshots from different markets and years, so they are not directly comparable as one single global ranking. Their purpose is educational: to show that BYD's success is not just domestic.</p>
+        </div>
+        <div class="scorecard" style="margin-top:12px;">
+          <div class="score">
+            <b>Thailand EV market</b>
+            <div>BYD held roughly 38.5% of Thailand's EV market in 2024.</div>
+            <div class="bar" style="margin-top:8px;"><div class="fill" style="width:38.5%"></div></div>
+          </div>
+          <div class="score">
+            <b>Brazil EV segment</b>
+            <div>BYD controlled more than 74% of Brazil's EV segment by early 2026 reporting.</div>
+            <div class="bar" style="margin-top:8px;"><div class="fill" style="width:74%"></div></div>
+          </div>
+          <div class="score">
+            <b>Singapore new-car market</b>
+            <div>BYD accounted for about 21.2% of new passenger-car registrations in 2025.</div>
+            <div class="bar" style="margin-top:8px;"><div class="fill" style="width:21.2%"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>6) The state support question</h2>
+      <p class="sub">A complete educational picture needs both company strategy and policy context. China supported the EV sector through subsidies, industrial policy, procurement, and ecosystem building. That helped firms like BYD scale faster than many foreign rivals.</p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Why it mattered</h3>
+          <ul>
+            <li>Lower effective prices for buyers boosted demand.</li>
+            <li>Capital support accelerated factory construction and R&amp;D.</li>
+            <li>Scale lowered cost per vehicle and reinforced supply-chain power.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Why it is controversial</h3>
+          <ul>
+            <li>Critics argue state support distorted global competition.</li>
+            <li>The EU imposed definitive countervailing duties on Chinese BEV imports in 2024.</li>
+            <li>This means the BYD story is about industrial policy as much as corporate execution.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout">Teaching takeaway: a fair analysis of BYD must combine innovation, manufacturing skill, and government support rather than reducing the story to only one of those factors.</div>
+    </section>
+
+    <section class="section">
+      <h2>7) Risks and limits to the narrative</h2>
+      <p class="sub">A strong growth story does not mean a friction-free story. Several issues now shape how investors, regulators, and consumers view BYD.</p>
+      <div class="grid-4">
+        <div class="card">
+          <h3>Trade friction</h3>
+          <p>European tariffs and scrutiny raise the cost of expansion and complicate the export model.</p>
+        </div>
+        <div class="card">
+          <h3>Recalls</h3>
+          <p>Vehicle recalls, including a major 2024 recall in China, show that speed and scale can create quality-control challenges.</p>
+        </div>
+        <div class="card">
+          <h3>Labor and governance</h3>
+          <p>International expansion has brought legal and labor scrutiny, including a labor case tied to a Brazil factory-construction site.</p>
+        </div>
+        <div class="card">
+          <h3>Margin pressure</h3>
+          <p>China's EV price war can hurt profitability even for the strongest players. Scale helps, but it does not eliminate pressure.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section split">
+      <div>
+        <h2>8) What legacy automakers can learn</h2>
+        <p class="sub">The central lesson is not simply “copy BYD.” It is that the rules of competition changed.</p>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Strategic lessons</h3>
+            <ul>
+              <li>Battery capability is not a side issue; it is a core competitive moat.</li>
+              <li>Platform speed and cost discipline matter more in mass-market EVs.</li>
+              <li>Regional product strategy matters: not every market wants the same powertrain mix.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Policy lessons</h3>
+            <ul>
+              <li>Industrial policy can shape winners and losers.</li>
+              <li>Supply-chain resilience is now a geopolitical issue.</li>
+              <li>Tariffs can slow competition, but they do not erase a capability gap.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <h3>Bottom line</h3>
+          <p>BYD's rise is best understood as the convergence of engineering competence, manufacturing integration, product-market fit, huge domestic scale, and state-backed industrial strategy.</p>
+          <div class="callout">The bigger story is not one company alone. It is how the EV transition redistributed industrial power across regions.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer">
+      <strong>About this infographic</strong>
+      <p>This version turns a long narrative into a teachable layout: headline summary, timeline, system-level explanation, market snapshots, and a balanced section on risks and controversy.</p>
+      <p>Visual design notes: high contrast typography, dark background, bright accent palette, responsive cards, and canvas-based charts drawn with vanilla JavaScript.</p>
+    </section>
+  </div>
+
+  <script>
+    const palette = {
+      cyan: '#4dd0e1',
+      blue: '#60a5fa',
+      green: '#34d399',
+      yellow: '#fbbf24',
+      pink: '#f472b6',
+      text: '#eff6ff',
+      muted: '#b8c7da',
+      line: 'rgba(255,255,255,0.12)',
+      grid: 'rgba(255,255,255,0.08)'
+    };
+
+    function scaleCanvas(canvas) {
+      const ratio = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      const width = rect.width;
+      const height = rect.height;
+      canvas.width = Math.round(width * ratio);
+      canvas.height = Math.round(height * ratio);
+      const ctx = canvas.getContext('2d');
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+      return { ctx, width, height };
+    }
+
+    function roundedRect(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+    }
+
+    function drawPanel(ctx, width, height) {
+      const grad = ctx.createLinearGradient(0, 0, 0, height);
+      grad.addColorStop(0, 'rgba(255,255,255,0.03)');
+      grad.addColorStop(1, 'rgba(255,255,255,0.01)');
+      roundedRect(ctx, 0.5, 0.5, width - 1, height - 1, 18);
+      ctx.fillStyle = grad;
+      ctx.fill();
+      ctx.strokeStyle = palette.line;
+      ctx.stroke();
+    }
+
+    function drawSalesMixChart() {
+      const canvas = document.getElementById('salesMixChart');
+      const { ctx, width, height } = scaleCanvas(canvas);
+      ctx.clearRect(0, 0, width, height);
+      drawPanel(ctx, width, height);
+
+      const data = [
+        { label: 'BEV', value: 1.76, color: palette.cyan },
+        { label: 'PHEV', value: 2.49, color: palette.green },
+        { label: 'Total', value: 4.27, color: palette.yellow }
+      ];
+
+      const pad = { top: 38, right: 24, bottom: 56, left: 64 };
+      const cw = width - pad.left - pad.right;
+      const ch = height - pad.top - pad.bottom;
+      const max = 4.8;
+
+      ctx.strokeStyle = palette.grid;
+      ctx.fillStyle = palette.muted;
+      ctx.font = '12px Inter, sans-serif';
+
+      for (let i = 0; i <= 6; i++) {
+        const y = pad.top + ch - (i / 6) * ch;
+        ctx.beginPath();
+        ctx.moveTo(pad.left, y);
+        ctx.lineTo(width - pad.right, y);
+        ctx.stroke();
+        const label = ((max / 6) * i).toFixed(1);
+        ctx.fillText(label, 18, y + 4);
+      }
+
+      const barW = cw / data.length * 0.55;
+      const gap = cw / data.length;
+
+      data.forEach((d, i) => {
+        const x = pad.left + i * gap + (gap - barW) / 2;
+        const h = (d.value / max) * ch;
+        const y = pad.top + ch - h;
+        const g = ctx.createLinearGradient(0, y, 0, y + h);
+        g.addColorStop(0, d.color);
+        g.addColorStop(1, 'rgba(255,255,255,0.18)');
+        roundedRect(ctx, x, y, barW, h, 14);
+        ctx.fillStyle = g;
+        ctx.fill();
+
+        ctx.fillStyle = palette.text;
+        ctx.font = 'bold 15px Inter, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(d.value.toFixed(2) + 'M', x + barW / 2, y - 10);
+        ctx.fillStyle = palette.muted;
+        ctx.font = '13px Inter, sans-serif';
+        ctx.fillText(d.label, x + barW / 2, height - 24);
+      });
+
+      ctx.save();
+      ctx.translate(18, height / 2 + 24);
+      ctx.rotate(-Math.PI / 2);
+      ctx.fillStyle = palette.muted;
+      ctx.font = '13px Inter, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('Vehicles sold (millions)', 0, 0);
+      ctx.restore();
+    }
+
+    function drawMarketChart() {
+      const canvas = document.getElementById('marketChart');
+      const { ctx, width, height } = scaleCanvas(canvas);
+      ctx.clearRect(0, 0, width, height);
+      drawPanel(ctx, width, height);
+
+      const data = [
+        { label: 'Thailand\nEV share', value: 38.5, color: palette.blue },
+        { label: 'Brazil\nEV share', value: 74.0, color: palette.green },
+        { label: 'Singapore\nnew-car share', value: 21.2, color: palette.pink }
+      ];
+
+      const pad = { top: 38, right: 24, bottom: 72, left: 60 };
+      const cw = width - pad.left - pad.right;
+      const ch = height - pad.top - pad.bottom;
+      const max = 100;
+
+      ctx.strokeStyle = palette.grid;
+      ctx.fillStyle = palette.muted;
+      ctx.font = '12px Inter, sans-serif';
+      ctx.textAlign = 'left';
+      for (let i = 0; i <= 5; i++) {
+        const y = pad.top + ch - (i / 5) * ch;
+        ctx.beginPath();
+        ctx.moveTo(pad.left, y);
+        ctx.lineTo(width - pad.right, y);
+        ctx.stroke();
+        ctx.fillText(String(i * 20) + '%', 16, y + 4);
+      }
+
+      const barW = cw / data.length * 0.52;
+      const gap = cw / data.length;
+
+      data.forEach((d, i) => {
+        const x = pad.left + i * gap + (gap - barW) / 2;
+        const h = (d.value / max) * ch;
+        const y = pad.top + ch - h;
+        const grad = ctx.createLinearGradient(0, y, 0, y + h);
+        grad.addColorStop(0, d.color);
+        grad.addColorStop(1, 'rgba(255,255,255,0.2)');
+        roundedRect(ctx, x, y, barW, h, 14);
+        ctx.fillStyle = grad;
+        ctx.fill();
+
+        ctx.fillStyle = palette.text;
+        ctx.font = 'bold 15px Inter, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(d.value.toFixed(1) + '%', x + barW / 2, y - 10);
+
+        ctx.fillStyle = palette.muted;
+        ctx.font = '13px Inter, sans-serif';
+        const lines = d.label.split('\n');
+        lines.forEach((line, idx) => ctx.fillText(line, x + barW / 2, height - 34 + idx * 16));
+      });
+    }
+
+    function renderAll() {
+      drawSalesMixChart();
+      drawMarketChart();
+    }
+
+    window.addEventListener('resize', renderAll);
+    renderAll();
+  </script>
+</body>
+</html>
