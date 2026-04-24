@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>STEM Beam Alignment — Design Review</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0f1117;
+      color: #e5e7eb;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin: 0 0 4px;
+    }
+
+    .subtitle {
+      color: #9ca3af;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, #1f2933, #111827);
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      padding: 14px 14px 8px;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .tag {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+    }
+
+    .chip {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: #9ca3af;
+    }
+
+    .toggle-icon {
+      font-size: 16px;
+      color: #6b7280;
+    }
+
+    .card-body {
+      font-size: 13px;
+      line-height: 1.5;
+      margin-top: 2px;
+    }
+
+    .card-body ul {
+      margin: 0;
+      padding-left: 16px;
+    }
+
+    .card-body li {
+      margin-bottom: 4px;
+    }
+
+    /* Color accents per section */
+    .agenda .tag { background: #22c55e; }
+    .concepts .tag { background: #a855f7; }
+    .decisions .tag { background: #f59e0b; }
+    .questions .tag { background: #f97373; }
+    .actions .tag { background: #0ea5e9; }
+    .timeline .tag { background: #10b981; }
+
+    /* Timeline */
+    .timeline-track {
+      position: relative;
+      margin-top: 6px;
+      padding-top: 18px;
+    }
+
+    .timeline-line {
+      position: absolute;
+      top: 30px;
+      left: 4%;
+      right: 4%;
+      height: 2px;
+      background: linear-gradient(90deg, #10b981, #22d3ee);
+      opacity: 0.9;
+    }
+
+    .timeline-items {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      padding: 0 8px;
+    }
+
+    .timeline-item {
+      text-align: center;
+      font-size: 11px;
+      color: #d1d5db;
+    }
+
+    .timeline-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: #10b981;
+      border: 2px solid #022c22;
+      margin: 0 auto 4px;
+      position: relative;
+      top: 8px;
+    }
+
+    .timeline-label {
+      font-weight: 600;
+      margin-top: 12px;
+      margin-bottom: 2px;
+      color: #a7f3d0;
+    }
+
+    .timeline-desc {
+      white-space: pre-line;
+      color: #9ca3af;
+    }
+
+    /* Small helper text */
+    .legend {
+      font-size: 11px;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <h1>STEM Beam Alignment — Design Review</h1>
+  <div class="subtitle">Structured summary of the discussion about beam shift, alignment logic, and storage strategy.</div>
+
+  <!-- Top row -->
+  <div class="grid">
+    <!-- Agenda -->
+    <div class="card agenda" data-collapsed="false">
+      <div class="card-header">
+        <div class="card-title">
+          <span class="tag"></span>
+          <span>Agenda</span>
+        </div>
+        <div class="chip">Context</div>
+        <div class="toggle-icon">–</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Clarify which beam/image shift values are used and stored (user vs system vs corrector).</li>
+          <li>Understand the alignment flow: acquire images → measure pixel shift → compute beam correction.</li>
+          <li>Decide where to persist shifts: LG file, STEM FEC registers, or exported elements.</li>
+          <li>Review why we zero some elements and what risks that introduces.</li>
+          <li>Define microscope experiments to validate assumptions and diagrams.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Key Concepts -->
+    <div class="card concepts" data-collapsed="false">
+      <div class="card-header">
+        <div class="card-title">
+          <span class="tag"></span>
+          <span>Key concepts</span>
+        </div>
+        <div class="chip">What’s being discussed</div>
+        <div class="toggle-icon">–</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li><b>beamAlignmentShift</b>: corrective shift applied after comparing images.</li>
+          <li>Difference between image shift, user‑induced shift, and system/corrector shift.</li>
+          <li>Zeroing of exported elements before running alignment to avoid user interference.</li>
+          <li>Three alignment attempts with an acceptance window for the measured shift.</li>
+          <li>Goal: keep FEC registers independent from corrector state while still compensating drift.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Middle row -->
+  <div class="grid">
+    <!-- Decisions -->
+    <div class="card decisions" data-collapsed="false">
+      <div class="card-header">
+        <div class="card-title">
+          <span class="tag"></span>
+          <span>Decisions</span>
+        </div>
+        <div class="chip">Current stance</div>
+        <div class="toggle-icon">–</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Verify where <b>beamAlignmentShift</b> actually lives (LG file vs FEC vs model) before changing logic.</li>
+          <li>Do not change corrector‑related elements for now; treat them as stable references.</li>
+          <li>Use the beam shift that has no dependency on exported elements as the main stored reference.</li>
+          <li>Treat the current zeroing logic as suspicious; validate on a real system before refactoring.</li>
+          <li>Keep existing behavior until microscope tests confirm the intended data flow.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Open Questions -->
+    <div class="card questions" data-collapsed="false">
+      <div class="card-header">
+        <div class="card-title">
+          <span class="tag"></span>
+          <span>Open questions</span>
+        </div>
+        <div class="chip">Unknowns</div>
+        <div class="toggle-icon">–</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Is <b>beamAlignmentShift</b> stored in the LG file, a fixed STEM register, or an internal model?</li>
+          <li>Does Alam‑STEM use a dedicated beam shift or reuse the generic one?</li>
+          <li>Who “owns” the effective shift: user actions, alignment code, or corrector configuration?</li>
+          <li>Should shifts be stored per mode (STEM1/2/3, voltages, currents) or shared globally?</li>
+          <li>Why do we need to re‑zero if the corrector is supposed to be stable?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action items -->
+  <div class="card actions" data-collapsed="false">
+    <div class="card-header">
+      <div class="card-title">
+        <span class="tag"></span>
+        <span>Action items</span>
+      </div>
+      <div class="chip">What happens next</div>
+      <div class="toggle-icon">–</div>
+    </div>
+    <div class="card-body">
+      <div class="grid">
+        <div>
+          <b>Code & registers</b>
+          <ul>
+            <li>Trace <b>beamAlignmentShift</b> through the code to its storage location.</li>
+            <li>Compare the current diagram to real implementation and fix mismatches.</li>
+            <li>Log before/after values of beam shift, image shift, and related registers with no code changes.</li>
+          </ul>
+        </div>
+        <div>
+          <b>Microscope tests</b>
+          <ul>
+            <li>Switch beam currents (e.g. 100 pA ↔ 500 pA) and see if shift changes or only intensity/focus.</li>
+            <li>Switch accelerating voltage (e.g. 25 kV → 5 kV) and confirm shifts vs pure focus effects.</li>
+            <li>Probe Alam‑STEM vs STEM behavior to see whether they share or separate beam shifts.</li>
+          </ul>
+        </div>
+        <div>
+          <b>Design & alignment strategy</b>
+          <ul>
+            <li>Write a short design note explaining current logic, risks, and the desired target model.</li>
+            <li>Align with domain experts on who is allowed to modify which registers or files.</li>
+            <li>Create work items for a safer alignment refactor if tests justify it.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="legend">Tip: read left → right in this section to follow “implementation → hardware tests → design decisions”.</div>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="card timeline" data-collapsed="false">
+    <div class="card-header">
+      <div class="card-title">
+        <span class="tag"></span>
+        <span>Timeline</span>
+      </div>
+      <div class="chip">When</div>
+      <div class="toggle-icon">–</div>
+    </div>
+    <div class="card-body">
+      <div class="timeline-track">
+        <div class="timeline-line"></div>
+        <div class="timeline-items">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Today</div>
+            <div class="timeline-desc">Log current behavior on microscope<br>Confirm where shifts are stored</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">This week</div>
+            <div class="timeline-desc">Lock down a verified dependency diagram<br>Clarify ownership of each parameter</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Next sprint</div>
+            <div class="timeline-desc">Implement minimal, safe code changes<br>Re‑run alignment tests and acceptance checks</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Backlog</div>
+            <div class="timeline-desc">Apply the same pattern to other modes<br>(tomography, EDS, etc.)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Simple collapse / expand behavior
+  document.querySelectorAll('.card').forEach(card => {
+    const header = card.querySelector('.card-header');
+    const body = card.querySelector('.card-body');
+    const icon = card.querySelector('.toggle-icon');
+
+    header.addEventListener('click', (e) => {
+      // Avoid toggling when clicking inside chips
+      if (e.target.classList.contains('chip')) return;
+
+      const collapsed = card.getAttribute('data-collapsed') === 'true';
+      card.setAttribute('data-collapsed', String(!collapsed));
+      body.style.display = collapsed ? 'block' : 'none';
+      icon.textContent = collapsed ? '–' : '+';
+    });
+  });
+</script>
+</body>
+</html>
